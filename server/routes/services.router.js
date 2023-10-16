@@ -17,13 +17,11 @@ router.get("/", (req, res) => {
   });
 
 // POST ROUTE
-router.post('/', (req, res) => {
     router.post("/", (req, res) => {
         const service = req.body;
         console.log(req.body);
-        console.log(req.user);
         const queryText = `
-        INSERT INTO services ("service")
+        INSERT INTO "services" ("service")
         VALUES (
             $1);`;
         pool
@@ -36,6 +34,18 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
           });
       });
-});
+
+// DELETE
+router.delete("/:id", (req, res) => {
+    pool
+      .query('DELETE FROM "services" WHERE id=$1', [req.params.id])
+      .then((response) => {
+        res.sendStatus(200);
+      })
+      .catch((error) => {
+        console.log("Error DELETE /api/services", error);
+        res.sendStatus(500);
+      });
+  });
 
 module.exports = router;
