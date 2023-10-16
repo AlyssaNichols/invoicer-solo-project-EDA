@@ -31,13 +31,13 @@ function Nav() {
             <Link className="navLink" to="/customers">
               Add New Customer
             </Link>
-            <Link className="navLink" to="/createInvoice">
+            <Link className="navLink" to="/invoice">
               Create Invoice
             </Link>
             <Link className="navLink" to="/invoiceHistory">
               Invoice History
             </Link>
-            <Link className="navLink" to="/info">
+            <Link className="navLink" to="/admin">
               Admin
             </Link>
 
