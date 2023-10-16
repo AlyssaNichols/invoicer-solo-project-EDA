@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
+import CustomerInputForm from '../CustomerInputForm/CustomerInputForm';
 // import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
@@ -60,12 +61,20 @@ function App() {
             <UserPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
             path="/info"
           >
             <InfoPage />
+          </ProtectedRoute> */}
+
+<ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/customers"
+          >
+            <CustomerInputForm />
           </ProtectedRoute>
 
           <Route

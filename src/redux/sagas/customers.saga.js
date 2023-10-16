@@ -14,7 +14,7 @@ function* fetchCustomersSaga() {
   function* addCustomerSaga(action) {
     try {
       console.log(action.payload);
-      yield axios.post("/api/customers", action.payload);
+      yield axios.post("/api/customers", action.payload );
       yield put({ type: "FETCH_CUSTOMERS" });
     } catch (error) {
       console.log("error in addCustomerSaga", error);
@@ -31,8 +31,9 @@ function* fetchCustomersSaga() {
   }
 
 
-  export default function* itemsSaga() {
+  export default function* customersSaga() {
     yield takeEvery("FETCH_CUSTOMERS", fetchCustomersSaga);
     yield takeEvery("ADD_CUSTOMER", addCustomerSaga);
     yield takeEvery("DELETE_CUSTOMER", deleteCustomerSaga);
   }
+

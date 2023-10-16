@@ -29,7 +29,7 @@ function Nav() {
             </Link>
 
             <Link className="navLink" to="/customers">
-              Input Customer
+              Add New Customer
             </Link>
             <Link className="navLink" to="/createInvoice">
               Create Invoice
