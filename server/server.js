@@ -12,7 +12,8 @@ const userRouter = require('./routes/user.router');
 const customersRouter = require('./routes/customers.router')
 const servicesRouter = require('./routes/services.router')
 const lineItemRouter = require('./routes/lineItem.router')
-const invoiceRouter = require("./routes/invoice.router")
+const invoiceRouter = require("./routes/invoice.router");
+const invoiceHistory  = require('./routes/invoiceHistory.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,6 +32,7 @@ app.use("/api/customers", customersRouter);
 app.use("/api/services", servicesRouter);
 app.use("/api/lineItem", lineItemRouter);
 app.use("/api/invoice", invoiceRouter);
+app.use("/api/invoiceHistory", invoiceHistory);
 
 // Serve static files
 app.use(express.static('build'));

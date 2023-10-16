@@ -34,6 +34,7 @@ export default function CustomerInputForm() {
 
   return (
     <>
+      <center>
       <h2>Add a New Customer</h2>
       <form onSubmit={addNewCustomer}>
         <input
@@ -94,6 +95,7 @@ export default function CustomerInputForm() {
         <br />
         <button type="submit">Add New Customer</button>
       </form>
+      </center>
     </>
   );
 }

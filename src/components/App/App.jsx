@@ -22,6 +22,7 @@ import CustomerInputForm from "../CustomerInputForm/CustomerInputForm";
 import CreateInvoiceForm from "../CreateInvoiceForm/CreateInvoiceForm";
 import InvoiceHistory from "../InvoiceHistory/InvoiceHistory";
 import AdminPage from "../AdminPage/AdminPage";
+
 // import RegisterPage from '../RegisterPage/RegisterPage';
 
 import "./App.css";
@@ -86,16 +87,12 @@ function App() {
           >
             <CreateInvoiceForm />
           </ProtectedRoute>
-          <ProtectedRoute
-            exact
-            path="/invoiceHistory"
-          >
+
+          <ProtectedRoute exact path="/invoiceHistory">
             <InvoiceHistory />
           </ProtectedRoute>
-          <ProtectedRoute
-            exact
-            path="/admin"
-          >
+ 
+          <ProtectedRoute exact path="/admin">
             <AdminPage />
           </ProtectedRoute>
           <Route exact path="/login">

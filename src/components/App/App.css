@@ -110,3 +110,28 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.invoice-table th, .invoice-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.invoice-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.invoice-table ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.invoice-table li {
+  margin: 5px 0;
+}
