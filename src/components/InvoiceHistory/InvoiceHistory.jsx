@@ -75,11 +75,11 @@ export default function InvoiceHistory() {
                     {invoice.first_name} {invoice.last_name}
                   </td>
                   <td>
-                    {invoice.address} {invoice.city}, {invoice.state}
+                    {invoice.address} <br /> {invoice.city}, {invoice.state}{" "}
                     {invoice.zip}
                   </td>
                   <td>
-                    {invoice.phone} {invoice.email}
+                    Phone: {invoice.phone}<br /> Email: {invoice.email}
                   </td>
                   <td>
                     {inEditMode ? (
