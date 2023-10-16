@@ -7,17 +7,17 @@ function LoginPage() {
 
   return (
     <div>
-      <LoginForm />
 
       <center>
+      <LoginForm />
         <button
           type="button"
           className="btn btn_asLink"
           onClick={() => {
-            history.push('/registration');
+            history.push('/home');
           }}
         >
-          Register
+          Back To Home
         </button>
       </center>
     </div>

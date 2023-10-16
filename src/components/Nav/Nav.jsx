@@ -10,14 +10,14 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">INVOICER</h2>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
           <Link className="navLink" to="/login">
-            Login / Register
+            Login
           </Link>
         )}
 
@@ -28,17 +28,22 @@ function Nav() {
               Home
             </Link>
 
+            <Link className="navLink" to="/customers">
+              Input Customer
+            </Link>
+            <Link className="navLink" to="/createInvoice">
+              Create Invoice
+            </Link>
+            <Link className="navLink" to="/invoiceHistory">
+              Invoice History
+            </Link>
             <Link className="navLink" to="/info">
-              Info Page
+              Admin
             </Link>
 
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );
