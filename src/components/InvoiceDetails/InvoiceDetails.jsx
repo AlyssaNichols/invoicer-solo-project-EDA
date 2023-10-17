@@ -14,6 +14,15 @@ export default function InvoiceDetails() {
   const details = useSelector((store) => store.invoiceDetails);
   console.log(details);
 
+  const formatDate = (dateString) => {
+    if (!dateString) {
+      return " ";
+    }
+    const date = new Date(dateString); // Assuming the date string is in 'YYYY-MM-DD' format
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return date.toLocaleDateString(undefined, options);
+  };
+
   const [newLineItem, setNewLineItem] = useState({
     service_id: "",
     date_performed: "",
@@ -99,7 +108,7 @@ export default function InvoiceDetails() {
       <button onClick={handleAddLineItem}>Add Line Item</button>
       <br />
        <br />
-      <table>
+      <table className="invoice-table">
         <thead>
           <tr>
             <th>Service</th>
@@ -112,13 +121,14 @@ export default function InvoiceDetails() {
             return (
               <tr key={index}>
                 <td>{item.type}</td>
-                <td>{item.date}</td>
-                <td>{item.price}</td>
+                <td>{formatDate(item.date)}</td>
+                <td>${item.price}</td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <h4>Total Price: ${details.total_price}</h4>
 <br />
 <br />
 <br />

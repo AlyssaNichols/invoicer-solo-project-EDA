@@ -29,7 +29,7 @@ export default function InvoiceHistory() {
   };
   const handleDeleteInvoice = (invoiceId) => {
     // Dispatch an action to delete the invoice with the given ID
-    dispatch({ type: "DELETE_INVOICE"});
+    dispatch({ type: "DELETE_INVOICE", payload: invoiceId });
   };
 
   const moreDetails = (invoiceId) => {

@@ -48,30 +48,17 @@ GROUP BY i.id, i.total_price, i.customer_id, c.first_name, c.last_name, c.addres
         });
     });
 
-    // router.delete("/details/:id", (req, res) => {
-    //   pool
-    //     .query('DELETE FROM "invoice" WHERE id=$1', [req.params.id])
-    //     .then((response) => {
-    //       res.sendStatus(200);
-    //     })
-    //     .catch((error) => {
-    //       console.log("Error DELETE /api/customers", error);
-    //       res.sendStatus(500);
-    //     });
-    // });
-
-    router.delete('/', async (req, res) => {
-      try {
-        await pool.query('BEGIN');
-        await pool.query('DELETE FROM line_item WHERE invoice_id = $1', [req.params.id]);
-        await pool.query('DELETE FROM invoice WHERE id = $1', [req.params.id]);
-        await pool.query('COMMIT');
-        res.status(200).send('Invoice and associated line items deleted successfully.');
-      } catch (error) {
-        await pool.query('ROLLBACK');
-        console.error(error);
-        res.status(500).send('Error deleting invoice and associated line items.');
-      } 
+    router.delete("/:id", (req, res) => {
+      pool
+        .query(`DELETE FROM "invoice" WHERE id=$1`, [req.params.id])
+        .then((response) => {
+          res.sendStatus(200);
+        })
+        .catch((error) => {
+          console.log("Error DELETE /api/customers", error);
+          res.sendStatus(500);
+        });
     });
+
 
   module.exports = router;

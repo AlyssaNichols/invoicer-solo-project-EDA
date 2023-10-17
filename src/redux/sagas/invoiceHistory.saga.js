@@ -33,7 +33,7 @@ function* fetchInvoiceHistorySaga() {
   }
   function* deleteInvoiceSaga(action) {
     try {
-      yield axios.delete(`/api/invoiceHistory`);
+      yield axios.delete(`/api/invoiceHistory/${action.payload}`);
       yield put({ type: "FETCH_INVOICES" });
     } catch (error) {
       console.log("error with DELETE saga request", error);
