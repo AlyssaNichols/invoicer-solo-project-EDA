@@ -22,18 +22,18 @@ import { takeEvery, put } from "redux-saga/effects";
     }
   }
 
-  function* deleteLineItemSaga(action) {
-    try {
-      yield axios.delete(`/api/lineItems/${action.payload}`);
-      yield put({ type: "FETCH_LINE_ITEMS" });
-    } catch (error) {
-      console.log("error with DELETE saga request", error);
-    }
-  }
+//   function* deleteLineItemSaga(action) {
+//     try {
+//       yield axios.delete(`/api/lineItems/${action.payload}`);
+//       yield put({ type: "FETCH_LINE_ITEMS" });
+//     } catch (error) {
+//       console.log("error with DELETE saga request", error);
+//     }
+//   }
 
 
 export default function* lineItemSaga() {
     yield takeEvery("FETCH_LINE_ITEMS", fetchLineItemsSaga);
     yield takeEvery("ADD_LINE_ITEM", addLineItemSaga);
-    yield takeEvery("DELETE_LINE_ITEM", deleteLineItemSaga);
+    // yield takeEvery("DELETE_LINE_ITEM", deleteLineItemSaga);
   }

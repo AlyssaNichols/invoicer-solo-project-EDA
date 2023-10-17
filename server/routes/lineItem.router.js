@@ -5,6 +5,7 @@ const router = express.Router();
 router.get("/:id", (req, res) => {
   const id = req.params.id;
   console.log("GET /api/lineItems");
+  console.log("id:", id)
   pool
     .query(`SELECT * from "line_item" WHERE "invoice_id" = $1;`, [id])
     .then((response) => {
@@ -40,7 +41,7 @@ router.post("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   pool
-    .query('DELETE FROM "line_item" WHERE id=$1', [req.params.id])
+    .query(`DELETE FROM "line_item" WHERE "id" = $1;`, [req.params.id])
     .then((response) => {
       res.sendStatus(200);
     })
