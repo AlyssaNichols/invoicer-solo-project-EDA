@@ -7,7 +7,7 @@ function* fetchLineItemsSaga() {
       console.log("FETCH request lineItems");
       yield put({ type: "SET_LINE_ITEMS", payload: response.data });
     } catch {
-      console.log("error in fetch invoices");
+      console.log("error in fetch lineitems");
     }
   }
 
@@ -17,7 +17,7 @@ function* fetchLineItemsSaga() {
       yield axios.post("/api/lineItems", action.payload );
       yield put({ type: "FETCH_LINE_ITEMS" });
     } catch (error) {
-      console.log("error in add invoice", error);
+      console.log("error in add lineItem", error);
     }
   }
 

@@ -35,17 +35,29 @@ GROUP BY i.id, i.total_price, i.customer_id, c.first_name, c.last_name, c.addres
 
     // for invoice table to update date paid
     router.put("/", (req, res) => {
-        const queryText = `UPDATE "invoice"
-                                  SET "date_paid" = $1 WHERE "id" = $2;`;
-        pool
-          .query(queryText, [req.body.date_paid, req.body.id])
-          .then((response) => {
-            res.sendStatus(200);
-          })
-          .catch((err) => {
-            console.log("error saving to database", err);
-            res.sendStatus(500);
-          });
-      });
+      const queryText = `UPDATE "invoice"
+                                SET "date_paid" = $1 WHERE "id" = $2;`;
+      pool
+        .query(queryText, [req.body.date_paid, req.body.id])
+        .then((response) => {
+          res.sendStatus(200);
+        })
+        .catch((err) => {
+          console.log("error saving to database", err);
+          res.sendStatus(500);
+        });
+    });
 
+
+router.delete("/", (req, res) => {
+    pool
+      .query('DELETE FROM "invoice" WHERE id=$1', [req.body])
+      .then((response) => {
+        res.sendStatus(200);
+      })
+      .catch((error) => {
+        console.log("Error DELETE /api/customers", error);
+        res.sendStatus(500);
+      });
+  });
   module.exports = router;

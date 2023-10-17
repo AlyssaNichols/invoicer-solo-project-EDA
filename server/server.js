@@ -30,7 +30,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use("/api/customers", customersRouter);
 app.use("/api/services", servicesRouter);
-app.use("/api/lineItem", lineItemRouter);
+app.use("/api/lineItems", lineItemRouter);
 app.use("/api/invoice", invoiceRouter);
 app.use("/api/invoiceHistory", invoiceHistory);
 

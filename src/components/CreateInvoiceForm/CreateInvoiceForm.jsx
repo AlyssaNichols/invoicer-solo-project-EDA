@@ -4,6 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 function CreateInvoiceForm() {
   const dispatch = useDispatch();
   const servicesList = useSelector((store) => store.services);
+  const customerList = useSelector((store) => store.customers);
+  console.log(servicesList);
+  console.log(customerList);
+  const [newInvoice, setNewInvoice] = useState({
+    date_issued: "",
+    customer_id: "",
+  });
 
   const [lineItems, setLineItems] = useState([]);
   const [newLineItem, setNewLineItem] = useState({
@@ -13,11 +20,12 @@ function CreateInvoiceForm() {
   });
   const [invoiceId, setInvoiceId] = useState(null);
 
-  console.log(servicesList);
   useEffect(() => {
     console.log("component did mount");
     dispatch({ type: "FETCH_SERVICES" });
+    dispatch({ type: "FETCH_CUSTOMERS" });
   }, []);
+
   const handleAddLineItem = () => {
     // Validate the input fields and ensure they are not empty
     if (
@@ -26,40 +34,45 @@ function CreateInvoiceForm() {
       newLineItem.service_price
     ) {
       setLineItems([...lineItems, newLineItem]);
-      // Clear the input fields for the next line item
+      dispatch({ type: "ADD_LINE_ITEM", payload: newLineItem });
       setNewLineItem({
         service_id: "",
         date_performed: "",
         service_price: "",
       });
-    } else {
-      // Handle validation errors or display an error message to the user
+      // } else {
+      // }
     }
   };
 
   const handleCreateInvoice = async () => {
-    // Send a request to your server to create the invoice.
-    // Include any relevant data for the invoice creation.
-    // The server should return the generated invoice ID.
-
-    // Simulate obtaining the generated invoice ID from the server (for demonstration).
-    const generatedInvoiceId = Math.floor(Math.random() * 1000);
-
-    // Set the generated invoice ID in the state.
-    setInvoiceId(generatedInvoiceId);
-
-    // Clear the line items array after associating them with the invoice.
+    dispatch({ type: "ADD_INVOICE", payload: newInvoice });
     setLineItems([]);
-
-    // In a real application, you would associate the line items with the actual invoice ID.
-    console.log("Associating line items with invoice ID:", generatedInvoiceId);
   };
 
   return (
     <div>
       <form>
         <div>
-          <label htmlFor="serviceSelect">Select a service:</label>
+          <label>Select a Customer:</label>
+          <select
+            id="customerSelect"
+            value={newInvoice.customer_id}
+            onChange={(e) =>
+              setNewInvoice({ ...newInvoice, customer_id: e.target.value })
+            }
+          >
+            <option value="">Select a customer</option>
+            {customerList.map((customer) => (
+              <option key={customer.id} value={customer.id}>
+                {customer.last_name}, {customer.first_name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <br />
+        <div>
+          <label>Select a service:</label>
           <select
             id="serviceSelect"
             value={newLineItem.service_id}
@@ -75,6 +88,7 @@ function CreateInvoiceForm() {
             ))}
           </select>
         </div>
+        <br />
         <div>
           <label htmlFor="date_performed">Date Performed:</label>
           <input
@@ -86,6 +100,7 @@ function CreateInvoiceForm() {
             }
           />
         </div>
+
         <div>
           <label htmlFor="service_price">Service Price:</label>
           <input
@@ -99,16 +114,41 @@ function CreateInvoiceForm() {
         </div>
       </form>
       <button onClick={handleAddLineItem}>Add Line Item</button>
-      <button onClick={handleCreateInvoice}>Create Invoice</button>
-      <ul>
-        {lineItems.map((item, index) => (
-          <li key={index}>
-            Service ID: {item.service_id}, Date Performed: {item.date_performed}
-            , Service Price: {item.service_price}
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Service</th>
+            <th>Date Performed</th>
+            <th>Service Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {lineItems.map((item, index) => {
+            return (
+              <tr key={index.id}>
+                <td>{newInvoice.customer_id}</td>
+                <td>{item.service_id}</td>
+                <td>{item.date_performed}</td>
+                <td>{item.service_price}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <br />
       {invoiceId && <p>Invoice ID: {invoiceId}</p>}
+      <label>Date Issued:</label>
+      <input
+        type="date"
+        id="date_issued"
+        value={newInvoice.date_issued}
+        onChange={(e) =>
+          setNewInvoice({ ...newInvoice, date_issued: e.target.value })
+        }
+      />
+      <br />
+      <button onClick={handleCreateInvoice}>Create Invoice</button>
     </div>
   );
 }
