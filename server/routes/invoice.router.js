@@ -63,21 +63,7 @@ GROUP BY i.id, i.total_price, i.customer_id, c.first_name, c.last_name, c.addres
   });
 
 
-  // router.delete('/details/:id', async (req, res) => {
-  //   try {
-  //     await client.query('BEGIN');
-  //     await client.query('DELETE FROM line_item WHERE invoice_id = $1', [req.params.id]);
-  //     await client.query('DELETE FROM invoice WHERE id = $1', [req.params.id]);
-  //     await client.query('COMMIT');
-  //     res.status(200).send('Invoice and associated line items deleted successfully.');
-  //   } catch (error) {
-  //     await client.query('ROLLBACK');
-  //     console.error(error);
-  //     res.status(500).send('Error deleting invoice and associated line items.');
-  //   } finally {
-  //     client.release();
-  //   }
-  // });
+
 
 
 

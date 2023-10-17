@@ -59,9 +59,9 @@ export default function InvoiceDetails() {
     });
   };
 
-  const handleDelete = () => {
+  const handleDelete = (itemId) => {
     // Dispatch an action to delete the invoice with the given ID
-    dispatch({ type: "DELETE_LINE_ITEM", payload:  params.id});
+    dispatch({ type: "DELETE_LINE_ITEM", payload: itemId});
   };
 
   useEffect(() => {
@@ -141,7 +141,7 @@ export default function InvoiceDetails() {
                 <td>{item.type}</td>
                 <td>{formatDate(item.date)}</td>
                 <td>${item.price}</td>
-                <td><button onClick={handleDelete}>Delete Line</button></td>
+                <td><button  onClick={() => handleDelete()}>Delete Line</button></td>
               </tr>
             );
           })}

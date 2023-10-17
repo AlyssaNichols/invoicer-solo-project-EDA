@@ -27,7 +27,8 @@ function* fetchInvoiceDetails(action) {
 
   function* deleteInvoiceSaga(action) {
     try {
-      yield axios.delete(`/api/invoice/details/${action.payload.invoiceId}`);
+      console.log("action:", action)
+      const response = yield axios.delete(`/api/invoice/details/${action.payload}`);
       yield put({ type: "FETCH_INVOICES" });
     } catch (error) {
       console.log("error with DELETE saga request", error);
