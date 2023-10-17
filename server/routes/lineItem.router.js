@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.get("/", (req, res) => {
-    console.log("GET /api/lineItem");
+    console.log("GET /api/lineItems");
     pool
       .query('SELECT * from "line_item";')
       .then((response) => {
@@ -41,7 +41,7 @@ router.get("/", (req, res) => {
             res.sendStatus(200);
           })
           .catch((error) => {
-            console.log("Error DELETE /api/line_item", error);
+            console.log("Error DELETE /api/lineItems", error);
             res.sendStatus(500);
           });
       });

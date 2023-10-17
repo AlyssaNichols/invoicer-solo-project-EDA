@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import customersSaga from './customers.saga';
 import servicesSaga from './services.saga';
 import invoiceSaga from './invoices.saga';
+import lineItemsSaga from './lineItems.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -20,6 +21,7 @@ export default function* rootSaga() {
     userSaga(),
     customersSaga(),
     servicesSaga(),
-    invoiceSaga()
+    invoiceSaga(),
+    lineItemsSaga(),
   ]);
 }
