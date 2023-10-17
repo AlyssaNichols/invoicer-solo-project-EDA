@@ -21,9 +21,7 @@ export default function InvoiceHistory() {
     if (!dateString) {
       return " ";
     }
-
     const date = new Date(dateString); // Assuming the date string is in 'YYYY-MM-DD' format
-
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
   };

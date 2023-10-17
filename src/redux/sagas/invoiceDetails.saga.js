@@ -11,6 +11,8 @@ function* fetchInvoiceDetails(action) {
     }
   }
 
+
+
   function* addInvoiceSaga(action) {
     try {
         const history = action.payload.history;
@@ -32,10 +34,20 @@ function* fetchInvoiceDetails(action) {
     }
   }
   
+  function* editDetails(action) {
+    try {
+      const response = yield axios.put(`/api/invoice/${action.payload.invoiceId}`, action.payload.updatedInvoice);
+      console.log("RESPONSE IS", response);
+      yield put({ type: "FETCH_INVOICES" });
+    } catch (error) {
+      console.log("error in edit invoice", error);
+    }
+  }
 
   export default function* invoiceDetails() {
     yield takeEvery("FETCH_INVOICE_DETAILS", fetchInvoiceDetails);
     yield takeEvery("DELETE_INVOICE", deleteInvoiceSaga);
     yield takeEvery("ADD_INVOICE", addInvoiceSaga);
+    yield takeEvery("EDIT_DETAILS", editDetails);
   }
 
