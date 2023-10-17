@@ -18,7 +18,7 @@ router.get("/details/:id", (req, res) => {
 
 
   //  post route to add an invoice
-  router.post("/details/:id", (req, res) => {
+  router.post("/", (req, res) => {
     console.log(req.body);
     const invoiceId = req.params.id;
     const queryText = `

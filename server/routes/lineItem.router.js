@@ -3,52 +3,39 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 router.get("/:id", (req, res) => {
-    const id = req.params.id;
+  const id = req.params.id;
   console.log("GET /api/lineItems");
   pool
-    .query('SELECT * from "line_item";', [id])
+    .query(`SELECT * from "line_item" WHERE "invoice_id" = $1;`, [id])
     .then((response) => {
-      res.send(response.rows[0]);
+      res.send(response.rows);
     })
     .catch((error) => {
-      console.log("Error GET /api/lineItem", error);
+      console.log("Error GET /api/lineItems", error);
       res.sendStatus(500);
     });
 });
 
-router.post("/", async (req, res) => {
-  const { lineItem, invoice } = req.body;
-
-  try {
-    // Start a PostgreSQL transaction
-    const client = await pool.connect();
-    await client.query("BEGIN");
-
-    // Insert the line item
-    const lineItemQueryText = `
-                INSERT INTO "line_item" ("service_id", "date_performed", "service_price", "invoice_id")
-                VALUES ($1, $2, $3, $4)
-                RETURNING "id";`;
-
-    const lineItemResult = await client.query(lineItemQueryText, [
-      lineItem.service_id,
-      lineItem.date_performed,
-      lineItem.service_price,
-      invoice.id, // Use the provided invoice ID to associate the line item
-    ]);
-
-    const lineItemId = lineItemResult.rows[0].id;
-
-    // Commit the transaction
-    await client.query("COMMIT");
-    client.release();
-
-    res.status(201).json({ id: lineItemId });
-  } catch (err) {
-    // Rollback the transaction if an error occurs
-    console.error("Error POSTing line_item", err);
-    res.status(500).json({ error: "Failed to insert line item" });
-  }
+router.post("/:id", (req, res) => {
+  console.log(req.body);
+  const id = req.params.id;
+  const queryText = `
+  INSERT INTO line_item ("service_id", "date_performed", "service_price", "invoice_id")
+  VALUES (
+      $1,
+      $2,
+      $3,
+      $4)`;
+  pool
+    .query(queryText, [req.body.service_id, req.body.date_performed, req.body.service_price, id])
+    .then((response) => {
+      console.log(response);
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log("error POSTing lineItem", err);
+      res.sendStatus(500);
+    });
 });
 
 router.delete("/:id", (req, res) => {

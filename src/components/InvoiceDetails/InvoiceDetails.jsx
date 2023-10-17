@@ -7,11 +7,12 @@ export default function InvoiceDetails() {
   const dispatch = useDispatch();
   const history = useHistory();
   const params = useParams();
-  const invoiceDetails = useSelector((store) => store.invoiceDetails);
-  console.log(invoiceDetails);
+
+  const invoiceList = useSelector((store) => store.invoice);
+  console.log("INVOICE LIST", invoiceList);
   const servicesList = useSelector((store) => store.services);
 
-  const [lineItems, setLineItems] = useState([]);
+
   const [newLineItem, setNewLineItem] = useState({
     service_id: "",
     date_performed: "",
@@ -22,8 +23,12 @@ export default function InvoiceDetails() {
     console.log("handleAdd");
   }
 
+  const foundInvoice = invoiceList.find(
+    (invoice) => Number(invoice.id) === Number(params.id)
+  );
+
   const handleAddLineItem = () => {
-    setLineItems([...lineItems, newLineItem]);
+    setNewLineItem(newLineItem);
     dispatch({ type: "ADD_LINE_ITEM", payload: newLineItem });
     setNewLineItem({
       service_id: "",
@@ -38,10 +43,17 @@ export default function InvoiceDetails() {
       type: "FETCH_INVOICE_DETAILS",
       payload: params.id,
     });
+    dispatch({ type: "FETCH_INVOICES" });
   }, []);
 
+  if (!foundInvoice){
+    return (<h1>loading...</h1>)
+  }
   return (
     <div>
+      <h1>Invoice Number: {foundInvoice.id}</h1>
+      <h2>{foundInvoice.first_name} {foundInvoice.last_name}</h2>
+      <h4>{foundInvoice.address} {foundInvoice.city}, {foundInvoice.state} {foundInvoice.zip}</h4>
       <form>
         <br />
         <div>
@@ -90,20 +102,18 @@ export default function InvoiceDetails() {
       <table>
         <thead>
           <tr>
-            <th>Customer Name</th>
             <th>Service</th>
             <th>Date Performed</th>
             <th>Service Price</th>
           </tr>
         </thead>
         <tbody>
-          {lineItems.map((item, index) => {
+          {foundInvoice.service_data.map((item, index) => {
             return (
               <tr key={index.id}>
-                <td> need to figure out</td>
-                <td>{item.service_id}</td>
-                <td>{item.date_performed}</td>
-                <td>{item.service_price}</td>
+                <td>{item.type}</td>
+                <td>{item.date}</td>
+                <td>{item.price}</td>
               </tr>
             );
           })}
