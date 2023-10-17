@@ -48,16 +48,16 @@ GROUP BY i.id, i.total_price, i.customer_id, c.first_name, c.last_name, c.addres
         });
     });
 
+    router.delete("/:id", (req, res) => {
+      pool
+        .query('DELETE FROM "invoice" WHERE id=$1', [req.params.id])
+        .then((response) => {
+          res.sendStatus(200);
+        })
+        .catch((error) => {
+          console.log("Error DELETE /api/customers", error);
+          res.sendStatus(500);
+        });
+    });
 
-router.delete("/", (req, res) => {
-    pool
-      .query('DELETE FROM "invoice" WHERE id=$1', [req.body])
-      .then((response) => {
-        res.sendStatus(200);
-      })
-      .catch((error) => {
-        console.log("Error DELETE /api/customers", error);
-        res.sendStatus(500);
-      });
-  });
   module.exports = router;

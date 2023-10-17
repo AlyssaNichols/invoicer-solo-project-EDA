@@ -34,6 +34,9 @@ function Nav() {
             <Link className="navLink" to="/invoice">
               Create Invoice
             </Link>
+            <Link className="navLink" to="/invoice/details/:id">
+              Invoice Details
+            </Link>
             <Link className="navLink" to="/invoiceHistory">
               Invoice History
             </Link>

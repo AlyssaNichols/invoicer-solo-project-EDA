@@ -2,12 +2,13 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/:id", (req, res) => {
+    const id = req.params.id;
   console.log("GET /api/lineItems");
   pool
-    .query('SELECT * from "line_item";')
+    .query('SELECT * from "line_item";', [id])
     .then((response) => {
-      res.send(response.rows);
+      res.send(response.rows[0]);
     })
     .catch((error) => {
       console.log("Error GET /api/lineItem", error);

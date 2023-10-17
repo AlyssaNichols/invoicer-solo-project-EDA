@@ -3,7 +3,8 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import customers from './customers.reducer';
 import services from './services.reducer';
-import invoice from './invoice.reducer'
+import invoice from './invoice.reducer';
+import invoiceDetails from './invoiceDetails.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   customers,
   services,
-  invoice
+  invoice,
+  invoiceDetails
 });
 
 export default rootReducer;

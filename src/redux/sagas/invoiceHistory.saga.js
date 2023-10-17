@@ -11,24 +11,16 @@ function* fetchInvoiceHistorySaga() {
     }
   }
 
-  function* addInvoiceSaga(action) {
-    try {
-      console.log(action.payload);
-      yield axios.post("/api/invoice", action.payload );
-      yield put({ type: "FETCH_INVOICES" });
-    } catch (error) {
-      console.log("error in add invoice", error);
-    }
-  }
+  // function* addInvoiceSaga(action) {
+  //   try {
+  //     console.log(action.payload);
+  //     yield axios.post("/api/invoice", action.payload );
+  //     yield put({ type: "FETCH_INVOICES" });
+  //   } catch (error) {
+  //     console.log("error in add invoice", error);
+  //   }
+  // }
 
-  function* deleteInvoiceSaga(action) {
-    try {
-      yield axios.delete(`/api/invoice/${action.payload}`);
-      yield put({ type: "FETCH_INVOICES" });
-    } catch (error) {
-      console.log("error with DELETE saga request", error);
-    }
-  }
 
   function* editInvoiceSaga(action) {
     try {
@@ -39,11 +31,18 @@ function* fetchInvoiceHistorySaga() {
       console.log("Error in editing movie", err);
     }
   }
-  
+  function* deleteInvoiceSaga(action) {
+    try {
+      yield axios.delete(`/api/invoiceHistory/${action.payload}`);
+      yield put({ type: "FETCH_INVOICES" });
+    } catch (error) {
+      console.log("error with DELETE saga request", error);
+    }
+  }
 
   export default function* invoiceSaga() {
     yield takeEvery("FETCH_INVOICES", fetchInvoiceHistorySaga);
-    yield takeEvery("ADD_INVOICE", addInvoiceSaga);
-    yield takeEvery("DELETE_INVOICE", deleteInvoiceSaga);
+    // yield takeEvery("ADD_INVOICE", addInvoiceSaga);
     yield takeEvery("EDIT_INVOICE", editInvoiceSaga)
+    yield takeEvery ("DELETE_INVOICE", deleteInvoiceSaga)
   }

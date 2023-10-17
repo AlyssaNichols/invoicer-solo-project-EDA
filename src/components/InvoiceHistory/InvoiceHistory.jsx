@@ -27,7 +27,10 @@ export default function InvoiceHistory() {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
   };
-
+  const handleDeleteInvoice = (invoiceId) => {
+    // Dispatch an action to delete the invoice with the given ID
+    dispatch({ type: "DELETE_INVOICE", payload: invoiceId });
+  };
 
   return (
     <>
@@ -95,16 +98,21 @@ export default function InvoiceHistory() {
                         Save
                       </button>
                     ) : (
-                      <button
-                        onClick={() => {
-                          {
+                      <>
+                        <button
+                          onClick={() => {
                             setEditedDate(invoice.date_paid || "");
                             setEditMode(invoice.id);
-                          }
-                        }}
-                      >
-                        Edit
-                      </button>
+                          }}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDeleteInvoice(invoice.id)}
+                        >
+                          Delete
+                        </button>
+                      </>
                     )}
                   </td>
                 </tr>

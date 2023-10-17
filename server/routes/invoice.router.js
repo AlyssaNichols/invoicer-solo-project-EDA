@@ -2,17 +2,31 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-  
+router.get("/details/:id", (req, res) => {
+    const queryText = `SELECT * FROM "invoices" WHERE id=$1`;
+    pool
+      .query(queryText, [req.params.id])
+      .then((result) => {
+        res.send(result.rows);
+        console.log(result.rows);
+      })
+      .catch((err) => {
+        console.log("Error GETTING invoice details param id query", err);
+        res.sendStatus(500);
+      });
+  });
+
+
   //  post route to add an invoice
-  router.post("/", (req, res) => {
+  router.post("/details/:id", (req, res) => {
     console.log(req.body);
-    console.log(req.user);
+    const invoiceId = req.params.id;
     const queryText = `
     INSERT INTO invoice ("user_id", "date_issued", "customer_id")
     VALUES (
         $1,
         $2,
-        $3);`;
+        $3) RETURNING "id";`;
     pool
       .query(queryText, [
         req.user.id,
@@ -20,7 +34,9 @@ const router = express.Router();
         req.body.customer_id,
       ])
       .then((response) => {
-        res.sendStatus(201);
+        console.log(response)
+        // const generatedId = response.rows[0].id;
+        res.send({invoiceId: response.rows[0].id}).status(201);
       })
       .catch((err) => {
         console.log("error POSTing invoice", err);
@@ -30,17 +46,6 @@ const router = express.Router();
 
 
 
-// DELETE- LINE ITEMS MUST BE DELETED FIRST
-// router.delete("/:id", (req, res) => {
-//     pool
-//       .query('DELETE FROM "invoice" WHERE id=$1', [req.params.id])
-//       .then((response) => {
-//         res.sendStatus(200);
-//       })
-//       .catch((error) => {
-//         console.log("Error DELETE /api/customers", error);
-//         res.sendStatus(500);
-//       });
-//   });
+
 
 module.exports = router;

@@ -19,13 +19,15 @@ import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import CustomerInputForm from "../CustomerInputForm/CustomerInputForm";
-import CreateInvoiceForm from "../CreateInvoiceForm/CreateInvoiceForm";
+import CreateInvoicePage from "../CreateInvoiceForm/CreateInvoiceForm";
 import InvoiceHistory from "../InvoiceHistory/InvoiceHistory";
 import AdminPage from "../AdminPage/AdminPage";
+import invoiceDetails from "../../redux/sagas/invoiceDetails.saga";
 
 // import RegisterPage from '../RegisterPage/RegisterPage';
 
 import "./App.css";
+import InvoiceDetails from "../InvoiceDetails/InvoiceDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -85,13 +87,21 @@ function App() {
             exact
             path="/invoice"
           >
-            <CreateInvoiceForm />
+            <CreateInvoicePage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/invoice/details/:id"
+          >
+            <InvoiceDetails />
           </ProtectedRoute>
 
           <ProtectedRoute exact path="/invoiceHistory">
             <InvoiceHistory />
           </ProtectedRoute>
- 
+
           <ProtectedRoute exact path="/admin">
             <AdminPage />
           </ProtectedRoute>
