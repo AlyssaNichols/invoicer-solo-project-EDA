@@ -3,7 +3,25 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get("/details/:id", (req, res) => {
-    const queryText = `SELECT * FROM "invoices" WHERE id=$1`;
+    const queryText = `SELECT i.id AS id,
+    json_agg(json_build_object('type', s.service, 'date', li.date_performed, 'price', li.service_price )) AS service_data,
+    i.total_price,
+    date_paid,
+    i.customer_id,
+    c.first_name,
+    c.last_name,
+    c.address,
+    c.city,
+    c.state,
+    c.zip,
+    c.email,
+    c.phone
+FROM invoice i
+LEFT JOIN line_item li ON i.id = li.invoice_id
+LEFT JOIN services AS s ON li.service_id = s.id
+LEFT JOIN customers AS c ON i.customer_id = c.id
+WHERE i.id = $1
+GROUP BY i.id, i.total_price, i.customer_id, c.first_name, c.last_name, c.address, c.city, c.state, c.zip, c.email, c.phone;`;
     pool
       .query(queryText, [req.params.id])
       .then((result) => {
@@ -44,6 +62,22 @@ router.get("/details/:id", (req, res) => {
       });
   });
 
+
+  // router.delete('/details/:id', async (req, res) => {
+  //   try {
+  //     await client.query('BEGIN');
+  //     await client.query('DELETE FROM line_item WHERE invoice_id = $1', [req.params.id]);
+  //     await client.query('DELETE FROM invoice WHERE id = $1', [req.params.id]);
+  //     await client.query('COMMIT');
+  //     res.status(200).send('Invoice and associated line items deleted successfully.');
+  //   } catch (error) {
+  //     await client.query('ROLLBACK');
+  //     console.error(error);
+  //     res.status(500).send('Error deleting invoice and associated line items.');
+  //   } finally {
+  //     client.release();
+  //   }
+  // });
 
 
 

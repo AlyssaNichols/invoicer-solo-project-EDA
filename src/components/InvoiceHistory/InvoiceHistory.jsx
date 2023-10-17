@@ -29,8 +29,12 @@ export default function InvoiceHistory() {
   };
   const handleDeleteInvoice = (invoiceId) => {
     // Dispatch an action to delete the invoice with the given ID
-    dispatch({ type: "DELETE_INVOICE", payload: invoiceId });
+    dispatch({ type: "DELETE_INVOICE"});
   };
+
+  const moreDetails = (invoiceId) => {
+    history.push(`/invoice/details/${invoiceId}`);
+  }
 
   return (
     <>
@@ -111,6 +115,11 @@ export default function InvoiceHistory() {
                           onClick={() => handleDeleteInvoice(invoice.id)}
                         >
                           Delete
+                        </button>
+                        <button
+                          onClick={() => moreDetails(invoice.id)}
+                        >
+                         More Details
                         </button>
                       </>
                     )}

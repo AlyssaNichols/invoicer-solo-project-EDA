@@ -1,7 +1,7 @@
 import axios from "axios";
 import { takeEvery, put } from "redux-saga/effects";
 
-function* fetchInvoiceDetails() {
+function* fetchInvoiceDetails(action) {
     try {
       const response = yield axios.get(`/api/invoice/details/${action.payload}`);
       console.log("FETCH request invoicesSaga");

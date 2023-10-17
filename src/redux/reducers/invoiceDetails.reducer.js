@@ -1,5 +1,5 @@
 
-const invoiceDetailsReducer = (state = [], action) => {
+const invoiceDetailsReducer = (state = {}, action) => {
     switch (action.type) {
       case "SET_INVOICE_DETAILS":
         return action.payload;

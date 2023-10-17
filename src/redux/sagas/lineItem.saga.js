@@ -1,7 +1,7 @@
 import axios from "axios";
 import { takeEvery, put } from "redux-saga/effects";
 
-  function* fetchLineItemsSaga() {
+  function* fetchLineItemsSaga(action) {
     try {
       const response = yield axios.get(`/api/lineItems/${action.payload}`);
       console.log("FETCH request lineItems");
@@ -12,10 +12,11 @@ import { takeEvery, put } from "redux-saga/effects";
   }
 
   function* addLineItemSaga(action) {
+    console.log("am i even running idiot")
     try {
-      console.log(action.payload);
-      yield axios.post("/api/lineItems", action.payload );
-      yield put({ type: "FETCH_LINE_ITEMS" });
+      console.log("ACTION.PAYLOAD", action.payload);
+      yield axios.post(`/api/lineItems/${action.payload.invoice_id}`, action.payload.newLineItem );
+      yield put({ type: "FETCH_INVOICE_DETAILS", payload: action.payload.invoice_id });
     } catch (error) {
       console.log("error in add lineItem", error);
     }
@@ -31,7 +32,7 @@ import { takeEvery, put } from "redux-saga/effects";
   }
 
 
-export default function* invoiceDetails() {
+export default function* lineItemSaga() {
     yield takeEvery("FETCH_LINE_ITEMS", fetchLineItemsSaga);
     yield takeEvery("ADD_LINE_ITEM", addLineItemSaga);
     yield takeEvery("DELETE_LINE_ITEM", deleteLineItemSaga);

@@ -11,7 +11,8 @@ export default function InvoiceDetails() {
   const invoiceList = useSelector((store) => store.invoice);
   console.log("INVOICE LIST", invoiceList);
   const servicesList = useSelector((store) => store.services);
-
+  const details = useSelector((store) => store.invoiceDetails);
+  console.log(details);
 
   const [newLineItem, setNewLineItem] = useState({
     service_id: "",
@@ -23,13 +24,13 @@ export default function InvoiceDetails() {
     console.log("handleAdd");
   }
 
-  const foundInvoice = invoiceList.find(
-    (invoice) => Number(invoice.id) === Number(params.id)
-  );
+  // const foundInvoice = invoiceList.find(
+  //   (invoice) => Number(invoice.id) === Number(params.id)
+  // );
 
   const handleAddLineItem = () => {
     setNewLineItem(newLineItem);
-    dispatch({ type: "ADD_LINE_ITEM", payload: newLineItem });
+    dispatch({ type: "ADD_LINE_ITEM", payload: {newLineItem, invoice_id:params.id}});
     setNewLineItem({
       service_id: "",
       date_performed: "",
@@ -43,17 +44,14 @@ export default function InvoiceDetails() {
       type: "FETCH_INVOICE_DETAILS",
       payload: params.id,
     });
-    dispatch({ type: "FETCH_INVOICES" });
   }, []);
 
-  if (!foundInvoice){
-    return (<h1>loading...</h1>)
-  }
+
   return (
     <div>
-      <h1>Invoice Number: {foundInvoice.id}</h1>
-      <h2>{foundInvoice.first_name} {foundInvoice.last_name}</h2>
-      <h4>{foundInvoice.address} {foundInvoice.city}, {foundInvoice.state} {foundInvoice.zip}</h4>
+      <h1>Invoice Number: {details.id}</h1>
+      <h2>{details.first_name} {details.last_name}</h2>
+      <h4>{details.address} {details.city}, {details.state} {details.zip}</h4>
       <form>
         <br />
         <div>
@@ -99,6 +97,8 @@ export default function InvoiceDetails() {
         </div>
       </form>
       <button onClick={handleAddLineItem}>Add Line Item</button>
+      <br />
+       <br />
       <table>
         <thead>
           <tr>
@@ -108,9 +108,9 @@ export default function InvoiceDetails() {
           </tr>
         </thead>
         <tbody>
-          {foundInvoice.service_data.map((item, index) => {
+          {details.service_data?.map((item, index) => {
             return (
-              <tr key={index.id}>
+              <tr key={index}>
                 <td>{item.type}</td>
                 <td>{item.date}</td>
                 <td>{item.price}</td>
@@ -119,8 +119,10 @@ export default function InvoiceDetails() {
           })}
         </tbody>
       </table>
-
-      <button onClick={handleAdd}>Add to Invoice</button>
+<br />
+<br />
+<br />
+      <button onClick={handleAdd}>Generate Invoice!</button>
     </div>
   );
 }

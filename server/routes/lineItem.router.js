@@ -27,7 +27,7 @@ router.post("/:id", (req, res) => {
       $3,
       $4)`;
   pool
-    .query(queryText, [req.body.service_id, req.body.date_performed, req.body.service_price, id])
+    .query(queryText, [req.body.service_id, req.body.date_performed, Number(req.body.service_price), id])
     .then((response) => {
       console.log(response);
       res.sendStatus(201);
