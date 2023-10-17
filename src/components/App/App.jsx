@@ -22,7 +22,7 @@ import CustomerInputForm from "../CustomerInputForm/CustomerInputForm";
 import CreateInvoicePage from "../CreateInvoiceForm/CreateInvoiceForm";
 import InvoiceHistory from "../InvoiceHistory/InvoiceHistory";
 import AdminPage from "../AdminPage/AdminPage";
-import invoiceDetails from "../../redux/sagas/invoiceDetails.saga";
+import AdminServicePage from "../AdminServicesPage/AdminServicesPAge";
 
 // import RegisterPage from '../RegisterPage/RegisterPage';
 
@@ -105,6 +105,15 @@ function App() {
           <ProtectedRoute exact path="/admin">
             <AdminPage />
           </ProtectedRoute>
+          <ProtectedRoute exact path="/admin/services">
+              <AdminServicePage />
+            </ProtectedRoute>
+            <ProtectedRoute  exact path="/admin/customers">
+              Customer List
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/admin/employees">
+              Employee List
+            </ProtectedRoute>
           <Route exact path="/login">
             {user.id ? (
               // If the user is already logged in,
