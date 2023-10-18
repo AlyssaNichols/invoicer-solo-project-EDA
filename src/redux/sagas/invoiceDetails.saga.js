@@ -51,4 +51,3 @@ function* fetchInvoiceDetails(action) {
     yield takeEvery("ADD_INVOICE", addInvoiceSaga);
     yield takeEvery("EDIT_DETAILS", editDetails);
   }
-

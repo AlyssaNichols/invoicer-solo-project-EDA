@@ -64,8 +64,4 @@ GROUP BY i.id, i.total_price, i.customer_id, c.first_name, c.last_name, c.addres
 
 
 
-
-
-
-
 module.exports = router;

@@ -107,7 +107,7 @@ export default function InvoiceHistory() {
                             setEditMode(invoice.id);
                           }}
                         >
-                          Edit
+                        Mark Date Paid
                         </button>
                         <button
                           onClick={() => handleDeleteInvoice(invoice.id)}
