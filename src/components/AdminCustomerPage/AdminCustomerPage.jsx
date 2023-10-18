@@ -50,7 +50,6 @@ export default function AdminCustomerPage() {
           value={firstName}
           onChange={(event) => setFirstName(event.target.value)}
         />
-        <br />
         <input
           placeholder="Last Name"
           type="text"
@@ -64,21 +63,18 @@ export default function AdminCustomerPage() {
           value={address}
           onChange={(event) => setAddress(event.target.value)}
         />
-        <br />
         <input
           placeholder="City"
           type="text"
           value={city}
           onChange={(event) => setCity(event.target.value)}
         />
-        <br />
         <input
           placeholder="State"
           type="text"
           value={state}
           onChange={(event) => setState(event.target.value)}
         />
-        <br />
         <input
           placeholder="Zip Code"
           type="number"
@@ -92,7 +88,6 @@ export default function AdminCustomerPage() {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <br />
         <input
           placeholder="Phone Number"
           type="number"
