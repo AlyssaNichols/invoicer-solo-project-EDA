@@ -28,13 +28,16 @@ export default function InvoiceDetails() {
     service_price: "",
   });
 
-  function handleAdd() {
+  function generateInvoice() {
     console.log("handleAdd");
   }
 
   // const foundInvoice = invoiceList.find(
   //   (invoice) => Number(invoice.id) === Number(params.id)
   // );
+function handleDelete(itemId){
+  dispatch({ type: "DELETE_LINE_ITEM", payload: {itemId, invoice_id:params.id}})
+}
 
   const handleAddLineItem = () => {
     setNewLineItem(newLineItem);
@@ -125,7 +128,7 @@ export default function InvoiceDetails() {
                 <td>{item.type}</td>
                 <td>{formatDate(item.date)}</td>
                 <td>${item.price}</td>
-                <td><button  onClick={() => {dispatch({ type: "DELETE_LINE_ITEM", payload: item.id }); console.log("item info", item)}}>Delete Service</button>
+                <td><button  onClick={() => handleDelete(item.id)}>Delete Service</button>
                 <br /><button  onClick={() => handleEdit()}>Edit Service</button></td>
               </tr>
             );
@@ -136,7 +139,7 @@ export default function InvoiceDetails() {
 <br />
 <br />
 <br />
-      <button onClick={handleAdd}>Generate Invoice!</button>
+      <button onClick={generateInvoice}>Generate Invoice!</button>
     </div>
   );
 }

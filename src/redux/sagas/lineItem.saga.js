@@ -24,8 +24,8 @@ import { takeEvery, put } from "redux-saga/effects";
 
   function* deleteLineItemSaga(action) {
     try {
-      yield axios.delete(`/api/lineItems/${action.payload}`);
-      yield put({ type: "FETCH_LINE_ITEMS" });
+      yield axios.delete(`/api/lineItems/${action.payload.itemId}`);
+      yield put({ type: "FETCH_INVOICE_DETAILS", payload: action.payload.invoice_id });
     } catch (error) {
       console.log("error with DELETE saga request", error);
     }
