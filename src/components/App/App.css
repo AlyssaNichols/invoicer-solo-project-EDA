@@ -163,7 +163,7 @@ input {
 }
 
 .adminNav {
-  background-color: #333; /* Background color of the sidebar */
+  background-color: #565757; /* Background color of the sidebar */
   color: #fff; /* Text color */
   width: 150px; /* Adjust the width as needed */
   position: fixed;
