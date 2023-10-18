@@ -1,20 +1,14 @@
 import { Link } from 'react-router-dom';
-export default function AdminPage(){
 
-    return(<>
-    <nav>
-          <Link className="navLink" to="/user">
-              Home
-            </Link>
-            <Link className="navLink" to="/admin/services">
-              Services List
-            </Link>
-            <Link className="navLink" to="/admin/customers">
-              Customer List
-            </Link>
-            <Link className="navLink" to="/admin/employees">
-              Employee List
-            </Link>
-            </nav>
-    </>)
+export default function AdminPage() {
+  return (
+    <nav className="adminNav">
+      <div className="adminNavLinks">
+        <Link to="/user">Home</Link>
+        <Link to="/admin/services">Services List</Link>
+        <Link to="/admin/customers">Customer List</Link>
+        <Link to="/admin/employees">Employee List</Link>
+      </div>
+    </nav>
+  );
 }
