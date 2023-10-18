@@ -127,7 +127,7 @@ export default function InvoiceDetails() {
 <br />
 <br />
 <br />
-      <button onClick={generateInvoice}>Generate Invoice!</button>
+      <button onClick={generateInvoice}>Print Invoice!</button>
     </div>
   );
 }

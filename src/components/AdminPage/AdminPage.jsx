@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 export default function AdminPage(){
 
     return(<>
+    <nav>
           <Link className="navLink" to="/user">
               Home
             </Link>
@@ -14,5 +15,6 @@ export default function AdminPage(){
             <Link className="navLink" to="/admin/employees">
               Employee List
             </Link>
+            </nav>
     </>)
 }

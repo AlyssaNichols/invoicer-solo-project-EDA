@@ -73,6 +73,7 @@ export default function AdminCustomerPage() {
   return (
     <>
 <center>
+    <h2>Customer List</h2>
 {showCustomerForm ? (
   <h2>Add a New Customer</h2>
 ) : (

@@ -46,7 +46,8 @@ export default function InvoiceHistory() {
   };
   return (
     <>
-      <h2>Invoice history</h2>
+      <center><h2>Invoice history</h2></center>
+      <br />
       <div>
         <table className="invoice-table">
           <thead>

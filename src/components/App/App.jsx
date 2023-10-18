@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   HashRouter as Router,
   Redirect,
@@ -27,6 +27,7 @@ import AdminCustomerPage from "../AdminCustomerPage/AdminCustomerPage";
 import AdminPageServices from "../AdminPageServices/AdminPageServices";
 // import RegisterPage from '../RegisterPage/RegisterPage';
 import PrintInvoice from "../PrintInvoice/PrintInvoice";
+import AdminEmployeeList from "../AdminEmployeeList/AdminEmployeeList";
 
 import "./App.css";
 import InvoiceDetails from "../InvoiceDetails/InvoiceDetails";
@@ -43,11 +44,8 @@ function App() {
 
   return (
     <Router>
-
-      
       <div>
-        
-        <Nav />
+      <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -124,7 +122,7 @@ function App() {
             <AdminCustomerPage />
             </ProtectedRoute>
             <ProtectedRoute exact path="/admin/employees">
-              Employee List
+              <AdminEmployeeList />
             </ProtectedRoute>
           <Route exact path="/login">
             {user.id ? (

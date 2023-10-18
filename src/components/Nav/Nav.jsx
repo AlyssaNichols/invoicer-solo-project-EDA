@@ -4,8 +4,11 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 
-function Nav() {
+function Nav({hideNav}) {
   const user = useSelector((store) => store.user);
+  if (hideNav) {
+    return null; // Don't render the Nav component
+  }
 
   return (
     <div className="nav">

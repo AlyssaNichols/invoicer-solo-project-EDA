@@ -1,13 +1,23 @@
-import React from 'react';
-import './Footer.css';
-
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import "./Footer.css";
 
 function Footer() {
-  return <footer>&copy; figure out footer eventually </footer>;
+  const history = useHistory(); // Use the useHistory hook to get the history object
+
+  const goToHomePage = () => {
+    history.push('/home'); // Use history.push to navigate to the home page
+  };
+
+  return (
+    <footer>
+      &copy; figure out footer eventually
+      <br />
+      <center>
+        <button onClick={goToHomePage}>Go Home</button>
+      </center>
+    </footer>
+  );
 }
 
 export default Footer;
