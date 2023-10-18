@@ -34,6 +34,12 @@ export default function InvoiceHistory() {
     history.push(`/invoice/details/${invoiceId}`);
   };
 
+  const formatPrice = (price) => {
+    if (typeof price === 'number') {
+      return price.toFixed(2);
+    }
+    return "";
+  };
   return (
     <>
       <h2>Invoice history</h2>
@@ -77,7 +83,7 @@ export default function InvoiceHistory() {
                       ))}
                     </ul>
                   </td>
-                  <td>{invoice.total_price}</td>
+                  <td>{parseFloat(invoice.total_price).toFixed(2)}</td>
                   <td>
                     {inEditMode ? (
                       <input

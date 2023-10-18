@@ -15,13 +15,11 @@ export default function InvoiceDetails() {
   const details = useSelector((store) => store.invoiceDetails);
 
   const formatDate = (dateString) => {
-    if (!dateString) {
-      return " ";
-    }
     const date = new Date(dateString); // Assuming the date string is in 'YYYY-MM-DD' format
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
   };
+
   const [newLineItem, setNewLineItem] = useState({
     service_id: "",
     date_performed: "",
@@ -121,11 +119,11 @@ export default function InvoiceDetails() {
         </thead>
         <tbody>
           {details.service_data?.map((item, index) => (
-<ServiceListItem key={index} item={item} formatDate={formatDate} index={index}/>
+<ServiceListItem key={index} item={item} index={index}/>
           ))}
         </tbody>
       </table>
-      <h4>Total Price: ${details.total_price}</h4>
+      <h4>Total Price: ${parseFloat(details.total_price).toFixed(2)}</h4>
 <br />
 <br />
 <br />
