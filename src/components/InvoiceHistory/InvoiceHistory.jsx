@@ -48,7 +48,6 @@ export default function InvoiceHistory() {
               <th>Service Data</th>
               <th>Total Price</th>
               <th>Date Paid</th>
-      
               <th>Actions</th>
             </tr>
           </thead>
@@ -87,7 +86,7 @@ export default function InvoiceHistory() {
                       formatDate(invoice.date_paid)
                     )}
                   </td>
-    
+
                   <td>
                     {inEditMode ? (
                       <button
@@ -109,7 +108,7 @@ export default function InvoiceHistory() {
                             setEditMode(invoice.id);
                           }}
                         >
-                        Mark Date Paid
+                          Mark Date Paid
                         </button>
                         <button
                           onClick={() => handleDeleteInvoice(invoice.id)}
