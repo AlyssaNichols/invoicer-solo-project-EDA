@@ -7,12 +7,44 @@ export default function AdminCustomerPage() {
   const dispatch = useDispatch();
   const customerList = useSelector((store) => store.customers);
 
+  const [showCustomerForm, setShowCustomerForm] = useState(false);
+
+  const toggleCustomerForm = () => {
+    setShowCustomerForm(!showCustomerForm);
+  };
+
   const addNewCustomer = (event) => {
     event.preventDefault();
     if (!firstName || !lastName || !address || !city || !state || !zip || !phone) {
-        alert("Please make sure all fields are filled in before submitting!");
-      } else {
-    dispatch({ type: "ADD_CUSTOMER", payload: {firstName, lastName, address, city, state, zip, email, phone} });
+      alert("Please make sure all fields are filled in before submitting!");
+    } else {
+      dispatch({
+        type: "ADD_CUSTOMER",
+        payload: {
+          firstName,
+          lastName,
+          address,
+          city,
+          state,
+          zip,
+          email,
+          phone,
+        },
+      });
+      setFirstName("");
+      setLastName("");
+      setAddress("");
+      setCity("");
+      setState("");
+      setZip("");
+      setEmail("");
+      setPhone("");
+      toggleCustomerForm(); // Hide the form after adding a customer
+    }
+  }
+
+  const cancelAddCustomer = () => {
+    // Reset form fields and hide the form
     setFirstName("");
     setLastName("");
     setAddress("");
@@ -21,9 +53,8 @@ export default function AdminCustomerPage() {
     setZip("");
     setEmail("");
     setPhone("");
+    toggleCustomerForm(); // Hide the form
   }
-}
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
@@ -41,16 +72,21 @@ export default function AdminCustomerPage() {
 
   return (
     <>
-      <center>
-      <h2>Add a New Customer</h2>
-      <form onSubmit={addNewCustomer}>
-        <input
-          placeholder="First Name"
-          type="text"
-          value={firstName}
-          onChange={(event) => setFirstName(event.target.value)}
-        />
-        <input
+<center>
+{showCustomerForm ? (
+  <h2>Add a New Customer</h2>
+) : (
+  <button onClick={toggleCustomerForm}>Add New Customer</button>
+)}
+{showCustomerForm && (
+  <form onSubmit={addNewCustomer}>
+    <input
+      placeholder="First Name"
+      type="text"
+      value={firstName}
+      onChange={(event) => setFirstName(event.target.value)}
+    />
+            <input
           placeholder="Last Name"
           type="text"
           value={lastName}
@@ -95,9 +131,12 @@ export default function AdminCustomerPage() {
           onChange={(event) => setPhone(Number(event.target.value))}
         />
         <br />
-        <button type="submit">Add New Customer</button>
-      </form>
-      </center>
+    <button type="submit">Add New Customer</button> 
+    <br />
+    <button type="button" onClick={cancelAddCustomer}>Cancel Add</button>
+  </form>
+)}
+</center>
       <br />
       <br />
       <br />
@@ -111,7 +150,7 @@ export default function AdminCustomerPage() {
             <th>ZIP</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Actions</th>
+            {/* <th>Actions</th> */}
           </tr>
         </thead>
         <tbody>
@@ -125,7 +164,7 @@ export default function AdminCustomerPage() {
                 <td>{customer.zip}</td>
                 <td>{customer.phone}</td>
                 <td>{customer.email}</td>
-                <td><button onClick={() => dispatch({ type: "DELETE_CUSTOMER", payload: customer.id })}>Delete Line</button></td>
+                {/* <td><button onClick={() => dispatch({ type: "DELETE_CUSTOMER", payload: customer.id })}>Delete Line</button></td> */}
               </tr>
             );
           })}
@@ -134,3 +173,5 @@ export default function AdminCustomerPage() {
     </>
   );
 }
+
+
