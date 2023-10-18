@@ -12,19 +12,6 @@ export default function InvoiceDetails() {
   console.log("INVOICE LIST", invoiceList);
   const servicesList = useSelector((store) => store.services);
   const details = useSelector((store) => store.invoiceDetails);
-  // const [editedInvoice, setEditedInvoice] = useState({
-  //   service_id: "",
-  //   date_performed: "",
-  //   service_price: "",
-  // });
-  
-  // const handleEditLineItem = (lineItem) => {
-  //   setEditedLineItem({
-  //     service_id: lineItem.service_id,
-  //     date_performed: lineItem.date_performed,
-  //     service_price: lineItem.service_price,
-  //   });
-  // };
 
   const formatDate = (dateString) => {
     if (!dateString) {
@@ -59,10 +46,7 @@ export default function InvoiceDetails() {
     });
   };
 
-  const handleDelete = (itemId) => {
-    // Dispatch an action to delete the invoice with the given ID
-    dispatch({ type: "DELETE_LINE_ITEM", payload: itemId});
-  };
+
 
   useEffect(() => {
     dispatch({ type: "FETCH_SERVICES" });
@@ -141,7 +125,8 @@ export default function InvoiceDetails() {
                 <td>{item.type}</td>
                 <td>{formatDate(item.date)}</td>
                 <td>${item.price}</td>
-                <td><button  onClick={() => handleDelete()}>Delete Line</button></td>
+                <td><button  onClick={() => {dispatch({ type: "DELETE_LINE_ITEM", payload: item.id }); console.log("item info", item)}}>Delete Service</button>
+                <br /><button  onClick={() => handleEdit()}>Edit Service</button></td>
               </tr>
             );
           })}

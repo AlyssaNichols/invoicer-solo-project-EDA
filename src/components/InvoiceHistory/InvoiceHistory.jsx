@@ -42,12 +42,13 @@ export default function InvoiceHistory() {
           <thead>
             <tr>
               <th>Invoice Number</th>
-              <th>Service Data</th>
-              <th>Total Price</th>
-              <th>Date Paid</th>
               <th>Name</th>
               <th>Address</th>
               <th>Contact Info</th>
+              <th>Service Data</th>
+              <th>Total Price</th>
+              <th>Date Paid</th>
+      
               <th>Actions</th>
             </tr>
           </thead>
@@ -57,6 +58,16 @@ export default function InvoiceHistory() {
               return (
                 <tr key={invoice.id}>
                   <td>{invoice.id}</td>
+                  <td>
+                    {invoice.first_name} {invoice.last_name}
+                  </td>
+                  <td>
+                    {invoice.address} <br /> {invoice.city}, {invoice.state}{" "}
+                    {invoice.zip}
+                  </td>
+                  <td>
+                    Phone: {invoice.phone}<br /> Email: {invoice.email}
+                  </td>
                   <td>
                     <ul>
                       {invoice.service_data.map((service, index) => (
@@ -76,16 +87,7 @@ export default function InvoiceHistory() {
                       formatDate(invoice.date_paid)
                     )}
                   </td>
-                  <td>
-                    {invoice.first_name} {invoice.last_name}
-                  </td>
-                  <td>
-                    {invoice.address} <br /> {invoice.city}, {invoice.state}{" "}
-                    {invoice.zip}
-                  </td>
-                  <td>
-                    Phone: {invoice.phone}<br /> Email: {invoice.email}
-                  </td>
+    
                   <td>
                     {inEditMode ? (
                       <button

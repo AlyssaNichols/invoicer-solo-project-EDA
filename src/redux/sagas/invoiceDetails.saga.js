@@ -25,15 +25,7 @@ function* fetchInvoiceDetails(action) {
     }
   }
 
-  function* deleteInvoiceSaga(action) {
-    try {
-      console.log("action:", action)
-      const response = yield axios.delete(`/api/invoice/details/${action.payload}`);
-      yield put({ type: "FETCH_INVOICES" });
-    } catch (error) {
-      console.log("error with DELETE saga request", error);
-    }
-  }
+
   
   function* editDetails(action) {
     try {
@@ -47,7 +39,6 @@ function* fetchInvoiceDetails(action) {
 
   export default function* invoiceDetails() {
     yield takeEvery("FETCH_INVOICE_DETAILS", fetchInvoiceDetails);
-    yield takeEvery("DELETE_LINE_ITEM", deleteInvoiceSaga);
     yield takeEvery("ADD_INVOICE", addInvoiceSaga);
     yield takeEvery("EDIT_DETAILS", editDetails);
   }

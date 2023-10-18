@@ -22,7 +22,7 @@ import CustomerInputForm from "../CustomerInputForm/CustomerInputForm";
 import CreateInvoicePage from "../CreateInvoiceForm/CreateInvoiceForm";
 import InvoiceHistory from "../InvoiceHistory/InvoiceHistory";
 import AdminPage from "../AdminPage/AdminPage";
-import AdminServicePage from "../AdminServicesPage/AdminServicesPAge";
+import AdminServicePage from "../AdminServicesPage/AdminServicesPage";
 
 // import RegisterPage from '../RegisterPage/RegisterPage';
 
