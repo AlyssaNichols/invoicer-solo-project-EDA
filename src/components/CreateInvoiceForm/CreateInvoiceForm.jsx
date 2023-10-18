@@ -31,6 +31,7 @@ console.log(newInvoice)
 
   return (
     <div>
+      <center>
  <div>
           <label>Select a Customer:</label>
           <select
@@ -64,6 +65,7 @@ console.log(newInvoice)
 >
   Create Invoice
 </button>
+</center>
     </div>
   );
 }

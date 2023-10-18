@@ -32,7 +32,7 @@ export default function InvoiceHistory() {
 
   const moreDetails = (invoiceId) => {
     history.push(`/invoice/details/${invoiceId}`);
-  }
+  };
 
   return (
     <>
@@ -42,6 +42,7 @@ export default function InvoiceHistory() {
           <thead>
             <tr>
               <th>Invoice Number</th>
+              <th>Date Issued</th>
               <th>Name</th>
               <th>Address</th>
               <th>Contact Info</th>
@@ -57,6 +58,7 @@ export default function InvoiceHistory() {
               return (
                 <tr key={invoice.id}>
                   <td>{invoice.id}</td>
+                  <td>{formatDate(invoice.date_issued)}</td>
                   <td>
                     {invoice.first_name} {invoice.last_name}
                   </td>
@@ -65,7 +67,8 @@ export default function InvoiceHistory() {
                     {invoice.zip}
                   </td>
                   <td>
-                    Phone: {invoice.phone}<br /> Email: {invoice.email}
+                    Phone: {invoice.phone}
+                    <br /> Email: {invoice.email}
                   </td>
                   <td>
                     <ul>
@@ -89,17 +92,26 @@ export default function InvoiceHistory() {
 
                   <td>
                     {inEditMode ? (
-                      <button
-                        onClick={() => {
-                          dispatch({
-                            type: "EDIT_INVOICE",
-                            payload: { ...invoice, date_paid: editedDate },
-                          });
-                          setEditMode(null);
-                        }}
-                      >
-                        Save
-                      </button>
+                      <>
+                        <button
+                          onClick={() => {
+                            dispatch({
+                              type: "EDIT_INVOICE",
+                              payload: { ...invoice, date_paid: editedDate },
+                            });
+                            setEditMode(null);
+                          }}
+                        >
+                          Save
+                        </button>
+                        <button
+                          onClick={() => {
+                            setEditMode(null);
+                          }}
+                        >
+                          Cancel
+                        </button>
+                      </>
                     ) : (
                       <>
                         <button
@@ -110,15 +122,11 @@ export default function InvoiceHistory() {
                         >
                           Mark Date Paid
                         </button>
-                        <button
-                          onClick={() => handleDeleteInvoice(invoice.id)}
-                        >
+                        <button onClick={() => handleDeleteInvoice(invoice.id)}>
                           Delete
                         </button>
-                        <button
-                          onClick={() => moreDetails(invoice.id)}
-                        >
-                         More Details
+                        <button onClick={() => moreDetails(invoice.id)}>
+                          More Details
                         </button>
                       </>
                     )}

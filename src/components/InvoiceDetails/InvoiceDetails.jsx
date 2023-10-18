@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import ServiceListItem from "../ServiceLineItems/ServiceLineItems";
 
 export default function InvoiceDetails() {
   const dispatch = useDispatch();
@@ -21,7 +22,6 @@ export default function InvoiceDetails() {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
   };
-
   const [newLineItem, setNewLineItem] = useState({
     service_id: "",
     date_performed: "",
@@ -35,9 +35,7 @@ export default function InvoiceDetails() {
   // const foundInvoice = invoiceList.find(
   //   (invoice) => Number(invoice.id) === Number(params.id)
   // );
-function handleDelete(itemId){
-  dispatch({ type: "DELETE_LINE_ITEM", payload: {itemId, invoice_id:params.id}})
-}
+
 
   const handleAddLineItem = () => {
     setNewLineItem(newLineItem);
@@ -63,8 +61,8 @@ function handleDelete(itemId){
   return (
     <div>
       <h1>Invoice Number: {details.id}</h1>
-      <h2>{details.first_name} {details.last_name}</h2>
-      <h4>{details.address} {details.city}, {details.state} {details.zip}</h4>
+      <h2>Date Issued: {formatDate(details.date_issued)}</h2>
+      <h3>{details.first_name} {details.last_name} <br/> {details.address} {details.city}, {details.state} {details.zip}</h3>
       <form>
         <br />
         <div>
@@ -122,17 +120,9 @@ function handleDelete(itemId){
           </tr>
         </thead>
         <tbody>
-          {details.service_data?.map((item, index) => {
-            return (
-              <tr key={index}>
-                <td>{item.type}</td>
-                <td>{formatDate(item.date)}</td>
-                <td>${item.price}</td>
-                <td><button  onClick={() => handleDelete(item.id)}>Delete Service</button>
-                <br /><button  onClick={() => handleEdit()}>Edit Service</button></td>
-              </tr>
-            );
-          })}
+          {details.service_data?.map((item, index) => (
+<ServiceListItem key={index} item={item} formatDate={formatDate} index={index}/>
+          ))}
         </tbody>
       </table>
       <h4>Total Price: ${details.total_price}</h4>

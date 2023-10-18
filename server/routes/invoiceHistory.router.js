@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
       .query(`SELECT i.id AS id,
       json_agg(json_build_object('id', li.id, 'type', s.service, 'date', li.date_performed, 'price', li.service_price )) AS service_data,
       i.total_price,
+      date_issued,
       date_paid,
       i.customer_id,
       c.first_name,

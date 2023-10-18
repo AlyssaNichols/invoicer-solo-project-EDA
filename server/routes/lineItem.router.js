@@ -5,7 +5,7 @@ const router = express.Router();
 router.get("/:id", (req, res) => {
   const id = req.params.id;
   console.log("GET /api/lineItems");
-  console.log("id:", id)
+  console.log("id:", id);
   pool
     .query(`SELECT * from "line_item" WHERE "invoice_id" = $1;`, [id])
     .then((response) => {
@@ -28,7 +28,12 @@ router.post("/:id", (req, res) => {
       $3,
       $4)`;
   pool
-    .query(queryText, [req.body.service_id, req.body.date_performed, Number(req.body.service_price), id])
+    .query(queryText, [
+      req.body.service_id,
+      req.body.date_performed,
+      Number(req.body.service_price),
+      id,
+    ])
     .then((response) => {
       console.log(response);
       res.sendStatus(201);
@@ -47,6 +52,26 @@ router.delete("/:id", (req, res) => {
     })
     .catch((error) => {
       console.log("Error DELETE /api/lineItems", error);
+      res.sendStatus(500);
+    });
+});
+
+router.put("/:id", (req, res) => {
+  const queryText = `UPDATE "line_item"
+  SET "date_performed" = $1,
+      "service_price" = $2
+  WHERE "id" = $3;`;
+  pool
+    .query(queryText, [
+      req.body.date_performed,
+      Number(req.body.service_price),
+      req.body.itemId,
+    ])
+    .then((response) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("error saving to database", err);
       res.sendStatus(500);
     });
 });
