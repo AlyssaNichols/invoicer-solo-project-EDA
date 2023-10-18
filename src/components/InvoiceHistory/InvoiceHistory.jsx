@@ -34,6 +34,10 @@ export default function InvoiceHistory() {
     history.push(`/invoice/details/${invoiceId}`);
   };
 
+  function printInvoice(invoiceId) {
+    history.push(`/invoice/print/${invoiceId}`);
+  }
+
   const formatPrice = (price) => {
     if (typeof price === 'number') {
       return price.toFixed(2);
@@ -133,6 +137,9 @@ export default function InvoiceHistory() {
                         </button>
                         <button onClick={() => moreDetails(invoice.id)}>
                           More Details
+                        </button>
+                        <button onClick={() => printInvoice(invoice.id)}>
+                          Print
                         </button>
                       </>
                     )}

@@ -27,7 +27,7 @@ export default function InvoiceDetails() {
   });
 
   function generateInvoice() {
-    console.log("handleAdd");
+    history.push(`/invoice/print/${details.id}`);
   }
 
   // const foundInvoice = invoiceList.find(

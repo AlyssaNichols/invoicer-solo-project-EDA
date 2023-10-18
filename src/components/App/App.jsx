@@ -25,6 +25,7 @@ import AdminPage from "../AdminPage/AdminPage";
 import AdminCustomerPage from "../AdminCustomerPage/AdminCustomerPage";
 import AdminPageServices from "../AdminPageServices/AdminPageServices";
 // import RegisterPage from '../RegisterPage/RegisterPage';
+import PrintInvoice from "../PrintInvoice/PrintInvoice";
 
 import "./App.css";
 import InvoiceDetails from "../InvoiceDetails/InvoiceDetails";
@@ -97,7 +98,13 @@ function App() {
           >
             <InvoiceDetails />
           </ProtectedRoute>
-
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/invoice/print/:id"
+          >
+            <PrintInvoice />
+          </ProtectedRoute>
           <ProtectedRoute exact path="/invoiceHistory">
             <InvoiceHistory />
           </ProtectedRoute>
