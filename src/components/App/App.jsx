@@ -22,8 +22,8 @@ import CustomerInputForm from "../CustomerInputForm/CustomerInputForm";
 import CreateInvoicePage from "../CreateInvoiceForm/CreateInvoiceForm";
 import InvoiceHistory from "../InvoiceHistory/InvoiceHistory";
 import AdminPage from "../AdminPage/AdminPage";
-import AdminServicePage from "../AdminServicesPage/AdminServicesPAge";
-
+import AdminCustomerPage from "../AdminCustomerPage/AdminCustomerPage";
+import AdminPageServices from "../AdminPageServices/AdminPageServices";
 // import RegisterPage from '../RegisterPage/RegisterPage';
 
 import "./App.css";
@@ -106,10 +106,10 @@ function App() {
             <AdminPage />
           </ProtectedRoute>
           <ProtectedRoute exact path="/admin/services">
-              <AdminServicePage />
+              <AdminPageServices />
             </ProtectedRoute>
             <ProtectedRoute  exact path="/admin/customers">
-              Customer List
+            <AdminCustomerPage />
             </ProtectedRoute>
             <ProtectedRoute exact path="/admin/employees">
               Employee List

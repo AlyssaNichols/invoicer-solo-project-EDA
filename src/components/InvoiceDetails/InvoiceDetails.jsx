@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import ServiceListItem from "../ServiceLineItems/ServiceLineItems";
 
 export default function InvoiceDetails() {
   const dispatch = useDispatch();
@@ -12,24 +13,8 @@ export default function InvoiceDetails() {
   console.log("INVOICE LIST", invoiceList);
   const servicesList = useSelector((store) => store.services);
   const details = useSelector((store) => store.invoiceDetails);
-  // const [editedInvoice, setEditedInvoice] = useState({
-  //   service_id: "",
-  //   date_performed: "",
-  //   service_price: "",
-  // });
-  
-  // const handleEditLineItem = (lineItem) => {
-  //   setEditedLineItem({
-  //     service_id: lineItem.service_id,
-  //     date_performed: lineItem.date_performed,
-  //     service_price: lineItem.service_price,
-  //   });
-  // };
 
   const formatDate = (dateString) => {
-    if (!dateString) {
-      return " ";
-    }
     const date = new Date(dateString); // Assuming the date string is in 'YYYY-MM-DD' format
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
@@ -41,13 +26,14 @@ export default function InvoiceDetails() {
     service_price: "",
   });
 
-  function handleAdd() {
+  function generateInvoice() {
     console.log("handleAdd");
   }
 
   // const foundInvoice = invoiceList.find(
   //   (invoice) => Number(invoice.id) === Number(params.id)
   // );
+
 
   const handleAddLineItem = () => {
     setNewLineItem(newLineItem);
@@ -59,10 +45,7 @@ export default function InvoiceDetails() {
     });
   };
 
-  const handleDelete = (itemId) => {
-    // Dispatch an action to delete the invoice with the given ID
-    dispatch({ type: "DELETE_LINE_ITEM", payload: itemId});
-  };
+
 
   useEffect(() => {
     dispatch({ type: "FETCH_SERVICES" });
@@ -76,8 +59,8 @@ export default function InvoiceDetails() {
   return (
     <div>
       <h1>Invoice Number: {details.id}</h1>
-      <h2>{details.first_name} {details.last_name}</h2>
-      <h4>{details.address} {details.city}, {details.state} {details.zip}</h4>
+      <h2>Date Issued: {formatDate(details.date_issued)}</h2>
+      <h3>{details.first_name} {details.last_name} <br/> {details.address} {details.city}, {details.state} {details.zip}</h3>
       <form>
         <br />
         <div>
@@ -135,23 +118,16 @@ export default function InvoiceDetails() {
           </tr>
         </thead>
         <tbody>
-          {details.service_data?.map((item, index) => {
-            return (
-              <tr key={index}>
-                <td>{item.type}</td>
-                <td>{formatDate(item.date)}</td>
-                <td>${item.price}</td>
-                <td><button  onClick={() => handleDelete()}>Delete Line</button></td>
-              </tr>
-            );
-          })}
+          {details.service_data?.map((item, index) => (
+<ServiceListItem key={index} item={item} index={index}/>
+          ))}
         </tbody>
       </table>
-      <h4>Total Price: ${details.total_price}</h4>
+      <h4>Total Price: ${parseFloat(details.total_price).toFixed(2)}</h4>
 <br />
 <br />
 <br />
-      <button onClick={handleAdd}>Generate Invoice!</button>
+      <button onClick={generateInvoice}>Generate Invoice!</button>
     </div>
   );
 }

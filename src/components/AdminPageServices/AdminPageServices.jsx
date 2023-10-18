@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-export default function AdminServicePage() {
+export default function AdminPageServices() {
   const history = useHistory();
   const dispatch = useDispatch();
   const serviceList = useSelector((store) => store.services);

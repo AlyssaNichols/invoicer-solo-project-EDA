@@ -32,8 +32,14 @@ export default function InvoiceHistory() {
 
   const moreDetails = (invoiceId) => {
     history.push(`/invoice/details/${invoiceId}`);
-  }
+  };
 
+  const formatPrice = (price) => {
+    if (typeof price === 'number') {
+      return price.toFixed(2);
+    }
+    return "";
+  };
   return (
     <>
       <h2>Invoice history</h2>
@@ -42,12 +48,13 @@ export default function InvoiceHistory() {
           <thead>
             <tr>
               <th>Invoice Number</th>
-              <th>Service Data</th>
-              <th>Total Price</th>
-              <th>Date Paid</th>
+              <th>Date Issued</th>
               <th>Name</th>
               <th>Address</th>
               <th>Contact Info</th>
+              <th>Service Data</th>
+              <th>Total Price</th>
+              <th>Date Paid</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -57,6 +64,18 @@ export default function InvoiceHistory() {
               return (
                 <tr key={invoice.id}>
                   <td>{invoice.id}</td>
+                  <td>{formatDate(invoice.date_issued)}</td>
+                  <td>
+                    {invoice.first_name} {invoice.last_name}
+                  </td>
+                  <td>
+                    {invoice.address} <br /> {invoice.city}, {invoice.state}{" "}
+                    {invoice.zip}
+                  </td>
+                  <td>
+                    Phone: {invoice.phone}
+                    <br /> Email: {invoice.email}
+                  </td>
                   <td>
                     <ul>
                       {invoice.service_data.map((service, index) => (
@@ -64,7 +83,7 @@ export default function InvoiceHistory() {
                       ))}
                     </ul>
                   </td>
-                  <td>{invoice.total_price}</td>
+                  <td>{parseFloat(invoice.total_price).toFixed(2)}</td>
                   <td>
                     {inEditMode ? (
                       <input
@@ -76,29 +95,29 @@ export default function InvoiceHistory() {
                       formatDate(invoice.date_paid)
                     )}
                   </td>
-                  <td>
-                    {invoice.first_name} {invoice.last_name}
-                  </td>
-                  <td>
-                    {invoice.address} <br /> {invoice.city}, {invoice.state}{" "}
-                    {invoice.zip}
-                  </td>
-                  <td>
-                    Phone: {invoice.phone}<br /> Email: {invoice.email}
-                  </td>
+
                   <td>
                     {inEditMode ? (
-                      <button
-                        onClick={() => {
-                          dispatch({
-                            type: "EDIT_INVOICE",
-                            payload: { ...invoice, date_paid: editedDate },
-                          });
-                          setEditMode(null);
-                        }}
-                      >
-                        Save
-                      </button>
+                      <>
+                        <button
+                          onClick={() => {
+                            dispatch({
+                              type: "EDIT_INVOICE",
+                              payload: { ...invoice, date_paid: editedDate },
+                            });
+                            setEditMode(null);
+                          }}
+                        >
+                          Save
+                        </button>
+                        <button
+                          onClick={() => {
+                            setEditMode(null);
+                          }}
+                        >
+                          Cancel
+                        </button>
+                      </>
                     ) : (
                       <>
                         <button
@@ -107,17 +126,13 @@ export default function InvoiceHistory() {
                             setEditMode(invoice.id);
                           }}
                         >
-                        Mark Date Paid
+                          Mark Date Paid
                         </button>
-                        <button
-                          onClick={() => handleDeleteInvoice(invoice.id)}
-                        >
+                        <button onClick={() => handleDeleteInvoice(invoice.id)}>
                           Delete
                         </button>
-                        <button
-                          onClick={() => moreDetails(invoice.id)}
-                        >
-                         More Details
+                        <button onClick={() => moreDetails(invoice.id)}>
+                          More Details
                         </button>
                       </>
                     )}

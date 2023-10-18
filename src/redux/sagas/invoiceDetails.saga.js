@@ -25,29 +25,47 @@ function* fetchInvoiceDetails(action) {
     }
   }
 
-  function* deleteInvoiceSaga(action) {
+  function* addLineItemSaga(action) {
+    console.log("am i even running idiot")
     try {
-      console.log("action:", action)
-      const response = yield axios.delete(`/api/invoice/details/${action.payload}`);
-      yield put({ type: "FETCH_INVOICES" });
+      console.log("ACTION.PAYLOAD", action.payload);
+      yield axios.post(`/api/lineItems/${action.payload.invoice_id}`, action.payload.newLineItem );
+      yield put({ type: "FETCH_INVOICE_DETAILS", payload: action.payload.invoice_id });
+    } catch (error) {
+      console.log("error in add lineItem", error);
+    }
+  }
+
+  function* deleteLineItemSaga(action) {
+    try {
+      yield axios.delete(`/api/lineItems/${action.payload.itemId}`);
+      yield put({ type: "FETCH_INVOICE_DETAILS", payload: action.payload.invoice_id });
     } catch (error) {
       console.log("error with DELETE saga request", error);
     }
   }
-  
-  function* editDetails(action) {
+
+  function* editLineItem(action) {
     try {
-      const response = yield axios.put(`/api/invoice/${action.payload.invoiceId}`, action.payload.updatedInvoice);
+      console.log("ACTION>PAYLOAD IS", action.payload)
+      const response = yield axios.put(`/api/lineItems/${action.payload.invoice_id}`, {
+        itemId: action.payload.itemId,
+        date_performed: action.payload.date_performed,
+        service_price: action.payload.service_price,
+      });
       console.log("RESPONSE IS", response);
-      yield put({ type: "FETCH_INVOICES" });
+      yield put({ type: "FETCH_INVOICE_DETAILS", payload: action.payload.invoice_id });
     } catch (error) {
       console.log("error in edit invoice", error);
     }
   }
+  
+
 
   export default function* invoiceDetails() {
     yield takeEvery("FETCH_INVOICE_DETAILS", fetchInvoiceDetails);
-    yield takeEvery("DELETE_LINE_ITEM", deleteInvoiceSaga);
     yield takeEvery("ADD_INVOICE", addInvoiceSaga);
-    yield takeEvery("EDIT_DETAILS", editDetails);
+    yield takeEvery("ADD_LINE_ITEM", addLineItemSaga);
+    yield takeEvery("DELETE_LINE_ITEM", deleteLineItemSaga);
+    yield takeEvery("EDIT_LINE_ITEM", editLineItem);
   }
