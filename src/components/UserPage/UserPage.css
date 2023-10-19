@@ -1,81 +1,29 @@
-/* --------------------------------------------------------------------------------
-Grid
--------------------------------------------------------------------------------- */
+.aboutDiv {
+    width: 50%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the content horizontally */
+    padding: 20px; /* Add some padding for spacing */
+  }
+  
+  .mainUserHeader {
+    font-size: 40px;
+    font-weight: normal;
+    margin-bottom: 20px;
+    color: #333; 
+    text-align: center;
 
-.grid {
-    display: flex;
-    flex: 0 1 auto;
-    /* defaults to 'row' */
-    flex-direction: row;
-    flex-wrap: wrap;
-    /* defaults to 'flex-start' */
-    justify-content: flex-start;
-    align-items: flex-start;
   }
   
-  .grid-col {
-    flex: 0 0 auto;
-    padding: 0 0.5rem 0.5rem;
-    box-sizing: border-box;
+  .infoParagraph {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #666; 
+    text-align: center;
   }
-  
-  .grid-col_1 {
-    flex-basis: 8.33333333%;
-    max-width: 8.33333333%;
-  }
-  
-  .grid-col_2 {
-    flex-basis: 16.66666667%;
-    max-width: 16.66666667%;
-  }
-  
-  .grid-col_3 {
-    flex-basis: 25%;
-    max-width: 25%;
-  }
-  
-  .grid-col_4 {
-    flex-basis: 33.33333333%;
-    max-width: 33.33333333%;
-  }
-  
-  .grid-col_5 {
-    flex-basis: 41.66666667%;
-    max-width: 41.66666667%;
-  }
-  
-  .grid-col_6 {
-    flex-basis: 50%;
-    max-width: 50%;
-  }
-  
-  .grid-col_7 {
-    flex-basis: 58.33333333%;
-    max-width: 58.33333333%;
-  }
-  
-  .grid-col_8 {
-    flex-basis: 66.66666667%;
-    max-width: 66.66666667%;
-  }
-  
-  .grid-col_9 {
-    flex-basis: 75%;
-    max-width: 75%;
-  }
-  
-  .grid-col_10 {
-    flex-basis: 83.33333333%;
-    max-width: 83.33333333%;
-  }
-  
-  .grid-col_11 {
-    flex-basis: 91.66666667%;
-    max-width: 91.66666667%;
-  }
-  
-  .grid-col_12 {
-    flex-basis: 100%;
-    max-width: 100%;
+
+  .professionalInvoice {
+    font-size: 40px; /* Increase the font size to make it stand out */
+    font-weight: bold; /* Make the text bold */
+    color: black
+
   }
   

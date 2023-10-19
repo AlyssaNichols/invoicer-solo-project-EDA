@@ -13,6 +13,7 @@ export default function CreateInvoicePage() {
 
   const customerList = useSelector((store) => store.customers);
 
+
   useEffect(() => {
     console.log("fetching services and customers");
     dispatch({ type: "FETCH_CUSTOMERS" });
