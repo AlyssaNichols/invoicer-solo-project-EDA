@@ -3,16 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 export default function CreateInvoicePage() {
-
-    const history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
-
 
   const [newInvoice, setNewInvoice] = useState({
     date_issued: "",
     customer_id: "",
   });
-  
+
   const customerList = useSelector((store) => store.customers);
 
   useEffect(() => {
@@ -22,17 +20,22 @@ export default function CreateInvoicePage() {
 
   const handleCreateInvoice = async () => {
     // Dispatch the ADD_INVOICE action and wait for it to complete
-    const actionResult = await dispatch({ type: "ADD_INVOICE", payload: {newInvoice, history} });
+    const actionResult = await dispatch({
+      type: "ADD_INVOICE",
+      payload: { newInvoice, history },
+    });
+  };
 
-    }
-
-
-console.log(newInvoice)
+  console.log(newInvoice);
 
   return (
     <div>
+      <br />
+      <br />
+      <br />
+      <br />
       <center>
- <div>
+        <div>
           <label>Select a Customer:</label>
           <select
             id="customerSelect"
@@ -49,25 +52,18 @@ console.log(newInvoice)
             ))}
           </select>
         </div>
-      <label>Date Issued:</label>
-      <input
-        type="date"
-        id="date_issued"
-        value={newInvoice.date_issued}
-        onChange={(e) =>
-          setNewInvoice({ ...newInvoice, date_issued: e.target.value })
-        }
-      />
-      <br />
-      <button
-  onClick={
-    handleCreateInvoice}
->
-  Create Invoice
-</button>
-</center>
+        <label>Date Issued:</label>
+        <input
+          type="date"
+          id="date_issued"
+          value={newInvoice.date_issued}
+          onChange={(e) =>
+            setNewInvoice({ ...newInvoice, date_issued: e.target.value })
+          }
+        />
+        <br />
+        <button onClick={handleCreateInvoice}>Create Invoice</button>
+      </center>
     </div>
   );
 }
-
-

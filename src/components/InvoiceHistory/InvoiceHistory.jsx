@@ -39,14 +39,18 @@ export default function InvoiceHistory() {
   }
 
   const formatPrice = (price) => {
-    if (typeof price === 'number') {
+    if (typeof price === "number") {
       return price.toFixed(2);
     }
     return "";
   };
   return (
     <>
-      <center><h2>Invoice history</h2></center>
+      <br />
+      <br />
+      <center>
+        <h2>Invoice history</h2>
+      </center>
       <br />
       <div>
         <table className="invoice-table">

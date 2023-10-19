@@ -34,8 +34,10 @@ export default function CustomerInputForm() {
 
   return (
     <>
+          <br />
+          <br />
       <center>
-      <h2>Add a New Customer</h2>
+      <h2>Input New Customer</h2>
       <form onSubmit={addNewCustomer}>
         <input
           placeholder="First Name"

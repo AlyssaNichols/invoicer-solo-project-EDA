@@ -85,7 +85,7 @@ export default function PrintInvoice() {
           <thead>
             <tr>
               <th>Date Performed</th>
-              <th>Service</th>
+              <th>Service Type</th>
               <th>Service Price</th>
             </tr>
           </thead>
@@ -99,13 +99,14 @@ export default function PrintInvoice() {
             ))}
           </tbody>
         </table>
+        <hr />
         <div className="total">
-          <h4>Total: ${parseFloat(details.total_price).toFixed(2)}</h4>
+          {/* <h4>Total: ${parseFloat(details.total_price).toFixed(2)}</h4> */}
         </div>
       </div>
 
       <div className="footer">
-        <h2>Balance Due: ${parseFloat(details.total_price).toFixed(2)}</h2>
+        <h2 className="balance-footer">Balance Due: ${parseFloat(details.total_price).toFixed(2)}</h2>
       </div>
     </div>
         

@@ -11,48 +11,58 @@ function Nav() {
     <nav>
       <div className="nav">
         <h2 className="navbar-title">INVOICER</h2>
-          <ul>
-            {/* If no user is logged in, show these links */}
-            {!user.id && (
-              // If there's no user, show login/registration links
+        <ul>
+          {/* If no user is logged in, show these links */}
+          {!user.id && (
+            // If there's no user, show login/registration links
+            <li>
+              <Link className="navLink" to="/login">
+                Login
+              </Link>
+            </li>
+          )}
+
+          {/* If a user is logged in, show these links */}
+          {user.id && (
+            <>
               <li>
-                <Link className="navLink" to="/login">
-                  Login
+                <Link className="navLink" to="/user">
+                  Home
                 </Link>
               </li>
-            )}
 
-            {/* If a user is logged in, show these links */}
-            {user.id && (
-              <>
-                <li><Link className="navLink" to="/user">
-                  Home
-                </Link></li>
-
-                <li><Link className="navLink" to="/customers">
-                  Add New Customer
-                </Link></li>
-                <li><Link className="navLink" to="/invoice">
+              <li>
+                <Link className="navLink" to="/customers">
+                  Input New Customer
+                </Link>
+              </li>
+              <li>
+                <Link className="navLink" to="/invoice">
                   Create Invoice
-                </Link></li>
-                {/* <Link className="navLink" to="/invoice/details/:id">
+                </Link>
+              </li>
+              {/* <Link className="navLink" to="/invoice/details/:id">
               Invoice Details
             </Link> */}
-                <li><Link className="navLink" to="/invoiceHistory">
+              <li>
+                <Link className="navLink" to="/invoiceHistory">
                   Invoice History
-                </Link></li>
-                <li><Link className="navLink" to="/admin">
+                </Link>
+              </li>
+              <li>
+                <Link className="navLink" to="/admin">
                   Admin
-                </Link></li>
+                </Link>
+              </li>
 
-                <li><LogOutButton className="navLink" /></li>
-
-              </>
-            )}
-          </ul>
+              <li>
+                <LogOutButton className="navLink logout-button" />
+              </li>
+            </>
+          )}
+        </ul>
       </div>
-      <div className="content">
-</div>
+      <div className="content"></div>
     </nav>
   );
 }

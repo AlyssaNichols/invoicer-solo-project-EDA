@@ -1,87 +1,85 @@
 /* Print-specific styles */
 @media print {
-    /* Hide the date, "app," and website information added by the browser */
-    @page {
-      margin: 0; /* Remove default margin */
-      size: auto; /* Auto-size the page */
-    }
+  /* Hide the date, "app," and website information added by the browser */
+  @page {
+    margin: 0; /* Remove default margin */
+    size: auto; /* Auto-size the page */
+  }
 
-    /* Hide specific elements within the .invoice container */
-    .invoice .print-header,
-    .invoice .print-footer {
-      display: none;
-    }
+  /* Hide specific elements within the .invoice container */
+  .invoice .print-header,
+  .invoice .print-footer {
+    display: none;
+  }
 
-    /* You can also set custom margins, page breaks, and other print styles here */
-    .invoice {
-      padding: 0;
-      page-break-before: always; /* Force a page break before .invoice */
-    }
+  /* You can also set custom margins, page breaks, and other print styles here */
+  .invoice {
+    padding: 0;
+    page-break-before: always; /* Force a page break before .invoice */
+  }
+  .nav {
+    display: none;
+  }
 }
 
-  .print-invoice {
-    width: 90%;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    padding: 20px;
-    padding-bottom: 80px;
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+.print-invoice {
+  margin-top: 0;
+  width: 90%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding-top: 80px;
+  padding-bottom: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  .print-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .print-table thead {
-    background-color: #f2f2f2;
-    font-weight: bold;
-    font-size: 18px;
-    border-bottom: 2px solid #000;
-  }
-  
-  .print-table th, .print-table td {
-  
-    padding: 12px;
-    text-align: center;
-  }
-  
-  .print-table th:first-child, .print-table td:first-child {
-    text-align: left;
-  }
-  
-  .total {
-    text-align: right;
-    font-weight: bold;
-    margin-top: 20px
-  }
-  
-  .footer {
-    margin-top: 40px;
-    text-align: right;
-    font-size: 18px;
-  }
+.print-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
 
-  .print-details {
-    margin-bottom: 20px;
-    font-size: 20px;
-  }
-  .print-h1 {
+.print-table thead {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  font-size: 18px;
+  border-bottom: 2px solid #000;
+}
+
+.print-table th,
+.print-table td {
+  padding: 12px;
+  text-align: center;
+}
+
+.print-table th:first-child,
+.print-table td:first-child {
+  text-align: left;
+}
+
+.print-details {
+    margin-top: -20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-align: right;
+}
+
+.print-h1 {
   margin-bottom: 10px;
   margin-right: 25px;
   font-size: 36px;
-  }
-    .table-container {
-    display: inline-block; /* Allow the table to be next to the h1 */
-    vertical-align: top; /* Keep the table aligned to the top */
-    margin-right: 20px; /* Add some spacing between h1 and the table */
-  }
-  
+}
+.table-container {
+  display: inline-block; /* Allow the table to be next to the h1 */
+  vertical-align: top; /* Keep the table aligned to the top */
+  margin-right: 20px; /* Add some spacing between h1 and the table */
+}
+
 .date-table {
   width: 100%;
   max-width: 600px; /* Adjust the maximum width as needed */
@@ -89,7 +87,8 @@
   border-collapse: collapse;
 }
 
-.date-table th, .date-table td {
+.date-table th,
+.date-table td {
   text-align: center;
   padding: 5px;
   border: 1px solid #ccc; /* Add borders for better separation */
@@ -101,46 +100,102 @@
   border-bottom: 1px solid #000;
 }
 
-
-.dueH2{
-    font-size: 28px;
+.dueH2 {
+  font-size: 28px;
 }
 /* Define the customer information section */
 .customer-info {
-    margin-bottom: 40px;
-    font-size: 18px;
-  }
-  
-  
-  /* Define the total section */
-  .total {
-    text-align: right;
-    font-size: 18px;
-  }
-  
-  /* Define the footer section */
-  .footer {
-    text-align: right;
-    font-size: 20px;
-  }
-  
-  .logo {
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+/* Define the total section */
+/* .total {
+
+  text-align: right;
+  font-size: 18px;
+  margin-right: 96px;
+    margin-bottom: 0;
+} */
+
+/* Define the footer section */
+.footer {
+  text-align: right;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-right: 40px;
+}
+
+.logo {
     max-width: 300px;
     height: auto;
-  }
-  
-  .company-info {
-    margin-top: 10px; /* Add top margin to separate it from the logo */
-    font-size: 18px;
-    text-align: left;
-  }
-  .company-info, p {
-    margin-top: 0px; 
     margin-bottom: 0;
-    margin-left: 10px;
   }
-  .bill-to-header{
-    margin-left: 10px;
-    margin-bottom: 5px;
+
+.company-info {
+  margin-top: 10px; /* Add top margin to separate it from the logo */
+  font-size: 18px;
+  text-align: left;
+}
+.company-info,
+p {
+  margin-top: 0px;
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+.bill-to-header {
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
+.balance-footer {
+  padding-top: -10px;
+  margin: 0;
+}
+.header {
+    margin-top: -50px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
   }
-  
+/* .invoice-table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  border-collapse: collapse;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.invoice-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.invoice-table ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.invoice-table li {
+  margin: 5px 0;
+} */
+
+
+/* Define the main invoice container */
+/* .invoice {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} */
+
+/* Define the header section with logo and company info */
+

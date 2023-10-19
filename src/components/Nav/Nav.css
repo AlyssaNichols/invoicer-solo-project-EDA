@@ -42,16 +42,16 @@
 .nav {
   background-color: #4bb89d;
   color: black;
-  font-size: 18px; /* Slightly reduce the font size */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Enhance the shadow */
+  font-size: 18px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 100;
   transition: background-color 0.3s ease;
-  display: flex; /* Make the navbar items flex containers */
-  justify-content: space-between; /* Spread items across the navbar */
-  align-items: center; /* Vertically center the items */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -60,17 +60,17 @@
   padding: 0;
   margin: 0;
   display: flex;
+  align-items: center; /* Center the items vertically */
 }
 
 .nav ul li {
-  margin-right: 10px; /* Increase the spacing between items */
-  font-size: px; /* Slightly reduce the font size */
-  padding: 10px 15px; /* Slightly reduce padding */
-  border-radius: 5px;
+  font-size: 18px;
+  margin: 0 6px;
+  padding: 10px 15px;
 }
 
 .nav ul li:last-child {
-  margin-right: 10px;
+  margin-right: 0; /* Remove the margin on the last item to prevent extra spacing */
 }
 
 .nav ul li a {
@@ -80,12 +80,12 @@
 }
 
 .nav ul li a:hover {
-  color: #ec5be5;
+  color: white
 }
 
 /* Add a cool hover effect for the navbar */
 .nav:hover {
-  background-color: #809d9e; /* Darken the background on hover */
+  background-color: #44a88f;
 }
 
 /* Add a subtle animation for the navbar items on hover */
@@ -98,10 +98,9 @@
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-
 /* Navbar Title */
 .navbar-title {
-  margin-left: 40px; /* Adjust the left margin as needed */
+  margin-left: 40px;
 }
 
 .navbar-title h1 {
@@ -110,6 +109,24 @@
   color: #fff;
   letter-spacing: 1px;
 }
+
 .content {
-  padding-top: 100px; /* Adjust this value to match the height of your navbar */
+  padding-top: 50px;
+}
+
+.navLink.logout-button {
+  color: black;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  margin-left: -18px;
+  
+}
+.navLink.logout-button:hover {
+  color: #f70505;
+  background: none;
+
 }

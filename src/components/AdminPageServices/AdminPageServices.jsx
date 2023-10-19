@@ -27,6 +27,8 @@ export default function AdminPageServices() {
 
   return (
     <>
+    <br />
+    <br />
       <center>
       <h2>Add a New Service</h2>
       <form onSubmit={addNewService}>
