@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { InputLabel } from "@mui/material";
+import { Select } from "@mui/material";
 import { MenuItem, Box, FormControl } from "@mui/material";
 import { Button, TextField } from "@mui/material";
 
@@ -22,15 +23,12 @@ export default function CreateInvoicePage() {
   }, []);
 
   const handleCreateInvoice = async () => {
-    if (!newInvoice.date_issued || !newInvoice.customer_id) {
-      alert("Please make sure all fields are filled in before submitting!");
-    } else {
+    // Dispatch the ADD_INVOICE action and wait for it to complete
     const actionResult = await dispatch({
       type: "ADD_INVOICE",
       payload: { newInvoice, history },
     });
   };
-}
 
   console.log(newInvoice);
 
@@ -39,7 +37,7 @@ export default function CreateInvoicePage() {
       <br />
       <br />
       <center>
-        <h1>Let's Get Started!</h1>
+        <h1 New Customer>Let's Get Started!</h1>
         <InputLabel
           sx={{
             fontWeight: "normal",
@@ -130,3 +128,5 @@ export default function CreateInvoicePage() {
     </div>
   );
 }
+
+
