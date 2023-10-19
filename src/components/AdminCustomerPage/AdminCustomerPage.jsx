@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import ArchivedCutomerList from "../ArchivedCustomerList/ArchivedCustomerList";
+import {
+    Box,
+    TextField,
+    Button,
+  } from "@mui/material";
 
 export default function AdminCustomerPage() {
   const history = useHistory();
@@ -97,71 +102,87 @@ export default function AdminCustomerPage() {
       <center>
         <br />
         <br />
-        <h2>Active Customer List</h2>
         {showCustomerForm ? (
           <h2>Add a New Customer</h2>
-        ) : (
+        ) : (<div>
+            <h2>Active Customer List</h2>
           <button onClick={toggleCustomerForm}>Add New Customer</button>
+          </div>
         )}
-        {showCustomerForm && (
+        {showCustomerForm && (<>
           <form onSubmit={addNewCustomer}>
-            <input
-              placeholder="First Name"
-              type="text"
-              value={firstName}
-              onChange={(event) => setFirstName(event.target.value)}
-            />
-            <input
-              placeholder="Last Name"
-              type="text"
-              value={lastName}
-              onChange={(event) => setLastName(event.target.value)}
-            />
-            <br />
-            <input
-              placeholder="Address"
-              type="text"
-              value={address}
-              onChange={(event) => setAddress(event.target.value)}
-            />
-            <input
-              placeholder="City"
-              type="text"
-              value={city}
-              onChange={(event) => setCity(event.target.value)}
-            />
-            <input
-              placeholder="State"
-              type="text"
-              value={state}
-              onChange={(event) => setState(event.target.value)}
-            />
-            <input
-              placeholder="Zip Code"
+          <Box
+            className="formFields"
+            sx={{
+              "& .MuiTextField-root": { m: .4, width: "40ch",}
+            }}
+            noValidate
+            autoComplete="off"
+          >
+           <TextField
+            label="First Name"
+            value={firstName}
+            onChange={(event) => setFirstName(event.target.value)}
+          />
+    <br />
+          <TextField
+            label="Last Name"
+            value={lastName}
+            onChange={(event) => setLastName(event.target.value)}
+          />
+          <br />
+    
+          <TextField
+            label="Address"
+            value={address}
+            onChange={(event) => setAddress(event.target.value)}
+          />
+    <br />
+          <TextField
+            label="City"
+            value={city}
+            onChange={(event) => setCity(event.target.value)}
+          />
+    <br />
+          <TextField
+            label="State"
+            value={state}
+            onChange={(event) => setState(event.target.value)}
+          />
+    <br />
+          <TextField
+            label="Zip Code"
+            type="number"
+            value={zip}
+            onChange={(event) => setZip(Number(event.target.value))}
+          />
+    <br />
+          <TextField
+            label="Email Address"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <br />
+            <TextField
+              className="phoneInput"
               type="number"
-              value={zip}
-              onChange={(event) => setZip(Number(event.target.value))}
-            />
-            <br />
-            <input
-              placeholder="Email Address"
-              type="text"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <input
-              placeholder="Phone Number"
-              type="number"
+              label="Phone Number"
               value={phone}
               onChange={(event) => setPhone(Number(event.target.value))}
             />
             <br />
-            <button type="submit">Add New Customer</button>
             <br />
-            <button type="button" onClick={cancelAddCustomer}>
-              Cancel Add
-            </button>
-          </form>
+          <Button color="secondary" variant="contained" type="submit">
+            Add New Customer
+          </Button>{" "}
+          <Button color="secondary" variant="contained" type="button" onClick={cancelAddCustomer}>
+            Cancel
+          </Button>
+          </Box>
+          <br />
+           <h2>Active Customer List</h2>
+        </form>
+       </>
         )}
       </center>
       <br />

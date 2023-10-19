@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import ServiceListItem from "../ServiceLineItems/ServiceLineItems";
+import { InputLabel, Select } from "@mui/material";
+import { MenuItem, Box, FormControl } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 
 export default function InvoiceDetails() {
   const dispatch = useDispatch();
@@ -66,29 +69,72 @@ export default function InvoiceDetails() {
           {details.first_name} {details.last_name} <br /> {details.address}{" "}
           {details.city}, {details.state} {details.zip}
         </h3>
-        <form>
-          <br />
-          <div>
-            <label>Select a service:</label>
-            <select
+      </center>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <center>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              padding: "5px",
+              "& .MuiTextField-root": { m: 0.4, width: "40ch" },
+            }}
+          >
+            <InputLabel
+              sx={{
+                fontWeight: "normal",
+                fontSize: "18px",
+                color: "black",
+              }}
+            >
+              Select a Customer:
+            </InputLabel>
+            <TextField
+              select
+              label="Select a Customer"
               id="serviceSelect"
               value={newLineItem.service_id}
               onChange={(e) =>
                 setNewLineItem({ ...newLineItem, service_id: e.target.value })
               }
+              fullWidth
+              InputLabelProps={{
+                shrink: false,
+              }}
             >
-              <option value="">Select a service</option>
               {servicesList.map((service, index) => (
-                <option key={index} value={service.id}>
-                  {service.service}
-                </option>
+                <MenuItem key={service.id} value={service.id}>
+                  {service.last_name}, {service.first_name}
+                </MenuItem>
               ))}
-            </select>
-          </div>
-          <br />
-          <div>
-            <label htmlFor="date_performed">Date Performed:</label>
-            <input
+            </TextField>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              padding: "5px",
+              "& .MuiTextField-root": { m: 0.4, width: "40ch" },
+            }}
+          >
+            <InputLabel
+              sx={{
+                fontWeight: "normal",
+                fontSize: "18px",
+                color: "black",
+              }}
+            >
+              Date Service was Performed:
+            </InputLabel>
+            <TextField
               type="date"
               id="date_performed"
               value={newLineItem.date_performed}
@@ -98,14 +144,31 @@ export default function InvoiceDetails() {
                   date_performed: e.target.value,
                 })
               }
+              fullWidth
             />
-          </div>
-
-          <div>
-            <label htmlFor="service_price">Service Price:</label>
-            <input
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              padding: "5px",
+              "& .MuiTextField-root": { m: 0.4, width: "40ch" },
+            }}
+          >
+            <InputLabel
+              sx={{
+                fontWeight: "normal",
+                fontSize: "18px",
+                color: "black",
+              }}
+            >
+              Service Price:
+            </InputLabel>
+            <TextField
               type="text"
               id="service_price"
+              label="Service Price"
               value={newLineItem.service_price}
               onChange={(e) =>
                 setNewLineItem({
@@ -113,36 +176,53 @@ export default function InvoiceDetails() {
                   service_price: e.target.value,
                 })
               }
+              fullWidth
             />
+          </Box>
+          <br />
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleAddLineItem}
+            sx={{ textAlign: "left", padding: "16px" }}
+          >
+            Add Line Item
+          </Button>
+          </center>
           </div>
-        </form>
-        <button onClick={handleAddLineItem}>Add Line Item</button>
-        <br />
-        <br />
-      </center>
-      s
-      <table className="invoice-table">
-        <thead>
-          <tr>
-            <th>Service</th>
-            <th>Date Performed</th>
-            <th>Service Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {details.service_data?.map((item, index) => (
-            <ServiceListItem key={index} item={item} index={index} />
-          ))}
-        </tbody>
-      </table>
-      <center>
-        <h3>Total Price: ${parseFloat(details.total_price).toFixed(2)}</h3>
-      </center>
-      <br />
-      <br />
-      <br />
-      <button onClick={generateInvoice}>Print Invoice!</button>
+          <br />
+          <br />
+          <table className="invoice-table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Date Performed</th>
+                <th>Service Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {details.service_data?.map((item, index) => (
+                <ServiceListItem key={index} item={item} index={index} />
+              ))}
+            </tbody>
+          </table>
+          <center>
+            {details.total_price ? (
+              <h3>
+                Total Price: ${parseFloat(details.total_price).toFixed(2)}
+              </h3>
+            ) : (
+              <h3></h3>
+            )}
+          </center>
+          <br />
+          <br />
+          <br />
+          <center>
+            <button onClick={generateInvoice}>Print Invoice!</button>
+          </center>
+ 
     </div>
   );
 }

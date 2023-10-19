@@ -29,14 +29,17 @@ const history = useHistory();
             <Typography
               variant="h5"
               component="div"
-              sx={{ marginTop: "-15px" }}
+              sx={{ marginTop: "-15px", fontWeight: "normal",
+              fontSize: "22px",
+              color: "black", }}
+              
             >
               Welcome,{" "}
               {user.username.charAt(0).toUpperCase() + user.username.slice(1)}!
             </Typography>
             <Typography
               sx={{ mb: 1.5, marginBottom: "-2px" }}
-              color="text.secondary"
+              color="black"
             >
               Your ID is: {user.id}
             </Typography>
@@ -66,7 +69,7 @@ const history = useHistory();
         </Button></center>
       </div>
 <div>
-  
+
 </div>
       {/* <div style={{ display: "flex", marginLeft: "120px", marginTop: "100px" }}>
         <Card sx={{ maxWidth: 450, marginRight: "110px" }}>
