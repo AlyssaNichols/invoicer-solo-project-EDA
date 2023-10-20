@@ -72,20 +72,32 @@ INSERT INTO services ("service") VALUES ('Weekly Mow and Trim'), ('Spring Clean-
 CREATE OR REPLACE FUNCTION update_invoice_total_price()
 RETURNS TRIGGER AS $$
 BEGIN
-    UPDATE invoice AS i
-    SET total_price = (
-        SELECT COALESCE(SUM(service_price), 0)
-        FROM line_item AS li
-        WHERE li.invoice_id = i.id
-    )
-    WHERE i.id = NEW.invoice_id;
+    -- Update total_price when a new line item is inserted or an existing one is updated
+    IF TG_OP = 'INSERT' OR TG_OP = 'UPDATE' THEN
+        UPDATE invoice AS i
+        SET total_price = (
+            SELECT COALESCE(SUM(service_price), 0)
+            FROM line_item AS li
+            WHERE li.invoice_id = i.id
+        )
+        WHERE i.id = NEW.invoice_id;
+    -- Update total_price when a line item is deleted
+    ELSIF TG_OP = 'DELETE' THEN
+        UPDATE invoice AS i
+        SET total_price = (
+            SELECT COALESCE(SUM(service_price), 0)
+            FROM line_item AS li
+            WHERE li.invoice_id = i.id
+        )
+        WHERE i.id = OLD.invoice_id;
+    END IF;
     RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql; 
 
 -- Create a trigger to call the function after INSERT or UPDATE on line_item
 CREATE TRIGGER update_invoice_total_price_trigger
-AFTER INSERT OR UPDATE ON line_item
+AFTER INSERT OR UPDATE OR DELETE ON line_item
 FOR EACH ROW
 EXECUTE FUNCTION update_invoice_total_price();
 

@@ -12,6 +12,7 @@ export default function InvoiceHistory() {
   const params = useParams();
 
   const invoices = useSelector((state) => state.invoice);
+  const user = useSelector((store) => store.user);
 
   useEffect(() => {
     dispatch({ type: "FETCH_INVOICES", payload: params.id });
@@ -54,13 +55,15 @@ export default function InvoiceHistory() {
       <Card sx={{ minWidth: 275, marginTop: "20px" }}>
         <center>
           <CardContent>
-            <Typography
-              variant="h5"
-              component="div"
-            >
-              <h2 style={{
-                  marginTop: "-5px", marginBottom: "-5px"
-                }}>Invoice history</h2>
+            <Typography variant="h5" component="div">
+              <h2
+                style={{
+                  marginTop: "-5px",
+                  marginBottom: "-5px",
+                }}
+              >
+                Invoice history
+              </h2>
             </Typography>
           </CardContent>
         </center>
@@ -143,6 +146,7 @@ export default function InvoiceHistory() {
                       </>
                     ) : (
                       <>
+             
                         <button
                           onClick={() => {
                             setEditedDate(invoice.date_paid || "");
@@ -151,16 +155,22 @@ export default function InvoiceHistory() {
                         >
                           Mark Date Paid
                         </button>
-                        <button onClick={() => handleDeleteInvoice(invoice.id)}>
-                          Delete
-                        </button>
+                        <button onClick={() => printInvoice(invoice.id)}>
+                          Print
+                        </button>{" "}
+                        <br />
                         <button onClick={() => moreDetails(invoice.id)}>
                           More Details
                         </button>
                         <br />
-                        <button onClick={() => printInvoice(invoice.id)}>
-                          Print
-                        </button>
+                        {user.is_admin && (
+                          <button
+                            onClick={() => handleDeleteInvoice(invoice.id)}
+                          >
+                            Delete
+                          </button>
+                        )}
+                        <br />
                       </>
                     )}
                   </td>

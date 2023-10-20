@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Box, TextField, Button, Paper } from "@mui/material";
+import { Box, TextField, Button, Paper, Card, CardContent, Typography } from "@mui/material";
 
 export default function CustomerInputForm() {
   const history = useHistory();
@@ -67,11 +67,21 @@ export default function CustomerInputForm() {
     <>
       <br />
       <br />
-      <center>
-        <Paper style={{ width: "40%" }} elevation={3}>
-          <h2 style={{ fontSize: "28px", paddingTop: "25px" }}>
-            Input New Customer
-          </h2>
+      <center>      <Card sx={{ minWidth: 275, marginTop: "20px" }}>
+        <center>
+          <CardContent>
+            <Typography
+              variant="h5"
+              component="div"
+            >
+              <h2 style={{
+                  marginTop: "-5px", marginBottom: "-5px"
+                }}>Input New Customer</h2>
+            </Typography>
+          </CardContent>
+        </center>
+      </Card>
+        <Paper style={{ width: "40%", marginTop: "20px", paddingTop: "30px" }} elevation={3}>
           <form onSubmit={addNewCustomer}>
             <Box
               className="formFields"

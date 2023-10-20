@@ -49,11 +49,13 @@ function Nav() {
                   Invoice History
                 </Link>
               </li>
-              <li>
-                <Link className="navLink" to="/admin">
-                  Admin
-                </Link>
-              </li>
+              {user.is_admin && (
+            <li>
+              <Link className="navLink" to="/admin">
+                Admin
+              </Link>
+            </li>
+          )}
 
               <li>
                 <LogOutButton className="navLink logout-button" />

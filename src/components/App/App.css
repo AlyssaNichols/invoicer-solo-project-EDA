@@ -144,6 +144,10 @@ input {
   margin: 5px 0;
 }
 
+.invoice-table tr:nth-child(even) td {
+  background-color: #eef1f3;
+}
+
 .logo{
   width: 350px;
   height: auto;
@@ -208,3 +212,4 @@ input {
 .history-header{
   padding-top: -20px;
 }
+

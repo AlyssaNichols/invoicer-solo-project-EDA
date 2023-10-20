@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 export default function AdminPageServices() {
   const history = useHistory();
@@ -62,6 +63,19 @@ export default function AdminPageServices() {
           })}
         </tbody>
       </table>
+      <center>
+        <br />
+        <br />
+          <Button
+            style={{ backgroundColor: "#9a5c6f", color: "white" }}
+            variant="contained"
+            onClick={() => {
+              history.push("/admin")
+            }}
+          >
+            Back to Admin Main Page
+          </Button>
+        </center>
     </>
   );
 }

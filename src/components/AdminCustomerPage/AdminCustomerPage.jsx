@@ -229,6 +229,21 @@ export default function AdminCustomerPage() {
       <br />
       <br />
       <center>
+        <br />
+        <br />
+          <Button
+            style={{ backgroundColor: "#9a5c6f", color: "white" }}
+            variant="contained"
+            onClick={() => {
+              history.push("/admin")
+            }}
+          >
+            Back to Admin Main Page
+          </Button>
+        </center>
+        <br />
+        <br />
+      <center>
         {showArchived ? (
           <ArchivedCutomerList toggleArchived={toggleArchived}/>
         ) : (

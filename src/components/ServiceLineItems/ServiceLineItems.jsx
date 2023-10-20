@@ -55,31 +55,33 @@ export default function ServiceListItem({ item, index }) {
         {/* Display "No service selected" if item.type is falsy */}
       </td>
       <td>
-        {edit ? (
-          <input
-            type="date"
-            value={editDate}
-            onChange={(e) => setEditDate(e.target.value)}
-          />
-        ) : item.date ? (
-          formatDate(item.date)
-        ) : (
-          "No date selected"
-        ) // Display "No date selected" if item.date is falsy
+        {
+          edit ? (
+            <input
+              type="date"
+              value={editDate}
+              onChange={(e) => setEditDate(e.target.value)}
+            />
+          ) : item.date ? (
+            formatDate(item.date)
+          ) : (
+            "No date selected"
+          ) // Display "No date selected" if item.date is falsy
         }
       </td>
       <td>
-        {edit ? (
-          <input
-            type="text"
-            value={editPrice}
-            onChange={(e) => setEditPrice(e.target.value)}
-          />
-        ) : item.price ? (
-          `$${parseFloat(item.price).toFixed(2)}`
-        ) : (
-          "No price selected"
-        ) // Display "No price selected" if item.price is falsy
+        {
+          edit ? (
+            <input
+              type="text"
+              value={editPrice}
+              onChange={(e) => setEditPrice(e.target.value)}
+            />
+          ) : item.price ? (
+            `$${parseFloat(item.price).toFixed(2)}`
+          ) : (
+            "No price selected"
+          ) // Display "No price selected" if item.price is falsy
         }
       </td>
       <td>
@@ -95,10 +97,14 @@ export default function ServiceListItem({ item, index }) {
             </button>
           </>
         ) : (
-          <button className="editButton" onClick={() => handleEdit(item)}>Edit Service</button>
+          <button className="editButton" onClick={() => handleEdit(item)}>
+            Edit Service
+          </button>
         )}
         <br />
-        <button className="deleteButton" onClick={() => handleDelete(item.id)}>Delete Service</button>
+        <button className="deleteButton" onClick={() => handleDelete(item.id)}>
+          Delete Service
+        </button>
       </td>
     </tr>
   );
