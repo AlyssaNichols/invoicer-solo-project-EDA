@@ -21,8 +21,18 @@ function* fetchEmployeesSaga() {
     }
   }
 
+  function* softDeleteEmployee(action) {
+    try {
+      yield axios.delete(`/api/employees//${action.payload}`);
+      yield put({ type: "FETCH_EMPLOYEES" });
+    } catch (error) {
+      console.log("error with DELETE saga request", error);
+    }
+  }
+
   export default function* employeesSaga() {
     yield takeEvery("FETCH_EMPLOYEES", fetchEmployeesSaga);
     yield takeEvery("ADD_EMPLOYEE", addEmployeeSaga);
+    yield takeEvery("DELETE_EMPLOYEE", softDeleteEmployee);
   }
 

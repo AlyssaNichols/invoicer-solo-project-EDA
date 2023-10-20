@@ -108,7 +108,7 @@ export default function AdminPageServices() {
             return (
               <tr key={index}>
                 <td>{service.service}</td>
-                <td><button onClick={() => dispatch({ type: "DELETE_SERVICE", payload: service.id })}>Delete Line</button></td>
+                <td><button className="history-deleteButton" onClick={() => dispatch({ type: "DELETE_SERVICE", payload: service.id })}>Delete Service</button></td>
               </tr>
             );
           })}

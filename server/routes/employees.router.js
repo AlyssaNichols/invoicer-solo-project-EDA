@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   console.log("GET /api/employees");
   pool
-    .query('SELECT * from "user" ORDER BY "id" ASC;')
+    .query('SELECT * from "user" WHERE isdeleted = false ORDER BY "id" ASC;')
     .then((response) => {
       res.send(response.rows);
     })
@@ -22,15 +22,30 @@ router.get("/", (req, res) => {
       const employee = req.body;
       console.log(req.body);
       const queryText = `
-      INSERT INTO "user" (username, is_admin)
-    VALUES ($1, $2);`;
+      INSERT INTO "user" (username, is_admin, password)
+    VALUES ($1, $2, $3);`;
       pool
-        .query(queryText, [employee.username, employee.is_admin])
+        .query(queryText, [employee.username, employee.is_admin, employee.password])
         .then((response) => {
           res.sendStatus(201);
         })
         .catch((err) => {
           console.log("error POSTing invoice", err);
+          res.sendStatus(500);
+        });
+    });
+
+    router.delete("/:id", (req, res) => {
+      pool
+        .query(
+          `UPDATE "user" SET isdeleted = true WHERE id = $1;`,
+          [req.params.id]
+        )
+        .then((response) => {
+          res.sendStatus(200);
+        })
+        .catch((error) => {
+          console.log("Error DELETE /api/archived", error);
           res.sendStatus(500);
         });
     });

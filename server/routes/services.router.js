@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
     console.log("GET /api/services");
     pool
-      .query('SELECT * from "services";')
+      .query('SELECT * from "services" WHERE "isdeleted" = false ORDER by "id" ASC;')
       .then((response) => {
         res.send(response.rows);
       })
@@ -38,7 +38,7 @@ router.get("/", (req, res) => {
 // DELETE
 router.delete("/:id", (req, res) => {
     pool
-      .query('DELETE FROM "services" WHERE id=$1', [req.params.id])
+      .query(`UPDATE services SET isdeleted = true WHERE id = $1;`, [req.params.id])
       .then((response) => {
         res.sendStatus(200);
       })

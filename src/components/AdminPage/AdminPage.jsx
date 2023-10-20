@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import AdminFinancialPage from "../AdminFinancesPage/AdminFinancesPage";
 
 export default function AdminPage() {
   const user = useSelector((store) => store.user);
@@ -57,23 +58,16 @@ export default function AdminPage() {
           for your Business
         </h1>
         <p className="infoParagraph">
-          With Invoicer, you have the power to effortlessly craft tailor-made,
-          polished invoices for your valued clients and customers. <br />
-          The best part? It's absolutely free. Don't hesitate, give it a try
-          today!
+      As an Admin, you have the control to:<br />
+      -Add New Services<br />
+      -Remove Old Services<br />
+      -Add Customers<br />
+      -Archive Customers<br />
+      -Create New Employee Credentials<br />
         </p>
         <br />
-        {/* <center>
-          <Button
-            style={{ backgroundColor: "#9a5c6f", color: "white" }}
-            variant="contained"
-            onClick={() => {
-              invoicePage();
-            }}
-          >
-            Create an Invoice Now
-          </Button>
-        </center> */}
+        {/* <AdminFinancialPage /> */}
+
       </div>
     </>
   );

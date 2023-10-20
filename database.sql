@@ -7,7 +7,9 @@ CREATE TABLE "user" (
 	"id" serial primary key,
 	"username" varchar(80) NOT NULL UNIQUE,
 	"password" varchar(1000) NOT NULL,
-	"is_admin" BOOLEAN DEFAULT false NOT NULL
+	"is_admin" BOOLEAN DEFAULT false NOT NULL,
+    "company_id" int DEFAULT 1 NOT NULL,
+    "isdeleted" BOOLEAN DEFAULT FALSE NOT NULL
 );
 
 -- create table "customers"
@@ -20,13 +22,15 @@ CREATE TABLE "customers" (
 	"state" varchar(20) NOT NULL,
 	"zip" BIGINT NOT NULL,
 	"email" varchar(40),
-	"phone" BIGINT NOT NULL
+	"phone" BIGINT NOT NULL,
+    "isdeleted" BOOLEAN DEFAULT FALSE NOT NULL
 );
 
 -- create table "services"
 CREATE TABLE "services" (
 	"id" serial primary key,
-	"service" varchar(30) NOT NULL
+	"service" varchar(30) NOT NULL,
+    "isdeleted" BOOLEAN DEFAULT FALSE NOT NULL
 );
 
 -- create table "invoice"
@@ -56,8 +60,10 @@ CREATE TABLE "companies" (
 	"state" varchar(20) NOT NULL,
 	"zip" BIGINT NOT NULL,
 	"email" varchar(40),
-	"phone" BIGINT NOT NULL
+	"phone" BIGINT NOT NULL,
+    "url" varchar(500)
 );   
+
 -- Insert users into the "customers" table
 INSERT INTO customers ("first_name", "last_name", "address", "city", "state", "zip", "email", "phone")
 VALUES
@@ -111,11 +117,6 @@ AFTER INSERT OR UPDATE OR DELETE ON line_item
 FOR EACH ROW
 EXECUTE FUNCTION update_invoice_total_price();
 
-  INSERT INTO invoice ("user_id", "date_issued", "customer_id")
-  VALUES (
-      1,
-      '10-30-2023',
-      4);
 
 INSERT INTO line_item ("service_id", "date_performed", "service_price", "invoice_id")
 VALUES

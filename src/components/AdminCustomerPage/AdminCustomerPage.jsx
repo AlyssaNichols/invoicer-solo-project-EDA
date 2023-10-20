@@ -136,7 +136,7 @@ export default function AdminCustomerPage() {
                         letterSpacing: ".5px",
                       }}
                     >
-                      Active Customer List
+                      Customer List
                     </h2>
                   </Typography>
                 </CardContent>
@@ -245,42 +245,44 @@ export default function AdminCustomerPage() {
         )}
       </center>
       <br />
-      <table className="invoice-table">
-        <thead>
-          <tr>
-            <th>Last, First Name</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>State</th>
-            <th>ZIP</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Actions</th>
+      {!showCustomerForm && (
+  <table className="invoice-table">
+    <thead>
+      <tr>
+        <th>Last, First Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>ZIP</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {customerList?.map((customer, index) => {
+        return (
+          <tr key={index}>
+            <td>
+              {customer.last_name}, {customer.first_name}{" "}
+            </td>
+            <td>{customer.address}</td>
+            <td>{customer.city}</td>
+            <td>{customer.state}</td>
+            <td>{customer.zip}</td>
+            <td>{customer.phone}</td>
+            <td>{customer.email}</td>
+            <td>
+              <button className="history-deleteButton" onClick={() => handleArchive(customer.id)}>
+                Archive Customer
+              </button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {customerList?.map((customer, index) => {
-            return (
-              <tr key={index}>
-                <td>
-                  {customer.last_name}, {customer.first_name}{" "}
-                </td>
-                <td>{customer.address}</td>
-                <td>{customer.city}</td>
-                <td>{customer.state}</td>
-                <td>{customer.zip}</td>
-                <td>{customer.phone}</td>
-                <td>{customer.email}</td>
-                <td>
-                  <button onClick={() => handleArchive(customer.id)}>
-                    Archive Customer
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+        );
+      })}
+    </tbody>
+  </table>
+)}
       <br />
       <br />
       <center>

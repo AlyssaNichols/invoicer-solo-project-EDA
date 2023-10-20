@@ -10,11 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function ArchivedCutomerList({toggleArchived}) {
-
+export default function ArchivedCutomerList({ toggleArchived }) {
   const dispatch = useDispatch();
   const archivedList = useSelector((store) => store.archived);
-
 
   useEffect(() => {
     dispatch({ type: "FETCH_ARCHIVED_CUSTOMERS" });
@@ -27,16 +25,34 @@ export default function ArchivedCutomerList({toggleArchived}) {
   };
 
   return (
-<center>
-      <h2>Archived Customers</h2>
+    <center>
+      <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+        <center>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              <h2
+                style={{
+                  marginTop: "-5px",
+                  marginBottom: "-15px",
+                  letterSpacing: ".5px",
+                }}
+              >
+                Archived Customers
+              </h2>
+            </Typography>
+          </CardContent>
+        </center>
+      </Card>
+      <br />
+      <br />
       <Button
-          style={{ backgroundColor: "#A09084", color: "white"}}
-          variant="contained"
-          type="button"
-          onClick={toggleArchived}
-        >
-          Collapse List
-        </Button>
+        style={{ backgroundColor: "#A09084", color: "white" }}
+        variant="contained"
+        type="button"
+        onClick={toggleArchived}
+      >
+        Collapse List
+      </Button>
       <br />
       <br />
       <br />
@@ -57,25 +73,28 @@ export default function ArchivedCutomerList({toggleArchived}) {
           {archivedList?.map((customer, index) => {
             return (
               <tr key={index}>
-                <td>{customer.last_name}, {customer.first_name} </td>
+                <td>
+                  {customer.last_name}, {customer.first_name}{" "}
+                </td>
                 <td>{customer.address}</td>
                 <td>{customer.city}</td>
                 <td>{customer.state}</td>
                 <td>{customer.zip}</td>
                 <td>{customer.phone}</td>
                 <td>{customer.email}</td>
-                <td>              <button
+                <td>
+                  <button
+                    className="paidButton"
                     onClick={() => handleReset(customer.id)}
                   >
                     Un-Archive Customer
-                  </button></td>
+                  </button>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
-      </center>
-  )
+    </center>
+  );
 }
-
-

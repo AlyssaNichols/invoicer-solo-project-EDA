@@ -17,6 +17,7 @@ const invoiceHistory = require("./routes/invoiceHistory.router");
 const employeeRouter = require("./routes/employees.router");
 const archivedRouter = require("./routes/archivedCustomer.router");
 const companiesRouter = require("./routes/companies.router");
+const financesRouter = require('./routes/financialData.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -39,6 +40,7 @@ app.use("/api/invoiceHistory", invoiceHistory);
 app.use("/api/employees", employeeRouter);
 app.use("/api/archived", archivedRouter);
 app.use("/api/companies", companiesRouter);
+app.use("/api/finances", financesRouter);
 
 // Serve static files
 app.use(express.static("build"));

@@ -61,7 +61,7 @@ export default function InvoiceHistory() {
                 style={{
                   marginTop: "-5px",
                   marginBottom: "-5px",
-                  letterSpacing: ".5px"
+                  letterSpacing: ".5px",
                 }}
               >
                 Invoice History
