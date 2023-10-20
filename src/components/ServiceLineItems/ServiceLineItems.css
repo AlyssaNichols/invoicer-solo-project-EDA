@@ -1,0 +1,50 @@
+.deleteButton {
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s all;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 3px 10px;
+  background-color: rgb(246, 244, 246);
+  margin-bottom: -10px;
+}
+
+.deleteButton:hover {
+  background-color: rgb(238, 57, 25);
+}
+
+.deleteButton:active {
+  transform: scale(0.93);
+  /* Scaling button to 0.98 to its original size */
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  /* Lowering the shadow */
+}
+
+.editButton:hover {
+  background-color: rgb(66, 227, 141);
+}
+
+.editButton {
+  font-size: 14px;
+  color: black;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s all;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 3px 10px;
+  background-color: rgb(246, 244, 246);
+  margin-bottom: 5px;
+  margin-top: -15px;
+}
+/* Adding transformation when the button is active */
+.editButton:active {
+  transform: scale(0.93);
+  /* Scaling button to 0.98 to its original size */
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  /* Lowering the shadow */
+}

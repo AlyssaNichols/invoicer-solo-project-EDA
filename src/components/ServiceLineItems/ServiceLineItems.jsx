@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import "./ServiceLineItems.css";
 
 export default function ServiceListItem({ item, index }) {
   const formatDate = (dateString) => {
@@ -94,10 +95,10 @@ export default function ServiceListItem({ item, index }) {
             </button>
           </>
         ) : (
-          <button onClick={() => handleEdit(item)}>Edit Service</button>
+          <button className="editButton" onClick={() => handleEdit(item)}>Edit Service</button>
         )}
         <br />
-        <button onClick={() => handleDelete(item.id)}>Delete Service</button>
+        <button className="deleteButton" onClick={() => handleDelete(item.id)}>Delete Service</button>
       </td>
     </tr>
   );

@@ -1,33 +1,30 @@
 .aboutDiv {
-    width: 50%; /* Adjust the width as needed */
-    margin: 0 auto; /* Center the content horizontally */
-    padding: 20px; /* Add some padding for spacing */
-  }
-  
-  .mainUserHeader {
-    font-size: 40px;
-    font-weight: normal;
-    margin-bottom: 20px;
-    color: #333; 
-    text-align: center;
+  width: 50%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the content horizontally */
+  padding: 20px; /* Add some padding for spacing */
+}
 
-  }
-  
-  .infoParagraph {
-    font-size: 18px;
-    line-height: 1.4;
-    color: #3e3d3d; 
-    text-align: center;
-  }
+.mainUserHeader {
+  font-size: 40px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
 
-  .professionalInvoice {
-    font-size: 40px; /* Increase the font size to make it stand out */
-    font-weight: bold; /* Make the text bold */
-    color: black
+.infoParagraph {
+  font-size: 18px;
+  line-height: 1.4;
+  color: #3e3d3d;
+  text-align: center;
+}
 
-  }
+.professionalInvoice {
+  font-size: 40px; /* Increase the font size to make it stand out */
+  font-weight: bold; /* Make the text bold */
+  color: black;
+}
 
-  body{
-    background-color: rgb(234, 234, 234);
-  }
-  
+body {
+  background-color: rgb(234, 234, 234);
+}

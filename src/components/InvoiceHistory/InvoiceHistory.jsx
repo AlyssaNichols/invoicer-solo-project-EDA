@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom"; // Import useParams
 import ServiceData from "../ServiceData/ServiceData";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
 export default function InvoiceHistory() {
   const history = useHistory();
@@ -48,9 +51,20 @@ export default function InvoiceHistory() {
     <>
       <br />
       <br />
-      <center>
-        <h2>Invoice history</h2>
-      </center>
+      <Card sx={{ minWidth: 275, marginTop: "20px" }}>
+        <center>
+          <CardContent>
+            <Typography
+              variant="h5"
+              component="div"
+            >
+              <h2 style={{
+                  marginTop: "-5px", marginBottom: "-5px"
+                }}>Invoice history</h2>
+            </Typography>
+          </CardContent>
+        </center>
+      </Card>
       <br />
       <div>
         <table className="invoice-table">

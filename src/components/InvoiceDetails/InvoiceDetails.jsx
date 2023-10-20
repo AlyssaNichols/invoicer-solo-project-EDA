@@ -6,6 +6,10 @@ import ServiceListItem from "../ServiceLineItems/ServiceLineItems";
 import { InputLabel, Select } from "@mui/material";
 import { MenuItem, Box, FormControl } from "@mui/material";
 import { Button, TextField } from "@mui/material";
+import ServiceData from "../ServiceData/ServiceData";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
 export default function InvoiceDetails() {
   const dispatch = useDispatch();
@@ -62,14 +66,24 @@ export default function InvoiceDetails() {
     <div>
       <br />
       <br />
-      <center>
-        <h1>Invoice Number: {details.id}</h1>
-        <h2>Date Issued: {formatDate(details.date_issued)}</h2>
-        <h3>
-          {details.first_name} {details.last_name} <br /> {details.address}{" "}
-          {details.city}, {details.state} {details.zip}
-        </h3>
-      </center>
+      <Card sx={{ minWidth: 275, marginTop: "20px" }}>
+        <CardContent>
+          <Typography variant="h5" component="div">
+            <center>
+              <h1 style={{
+                  marginTop: "-5px", marginBottom: "5px", fontSize: "40px"}} >Invoice Number: {details.id}</h1>
+              <h2 style={{
+                  marginTop: "0px", marginBottom: "-10px", fontSize: "24px"}}>Date Issued: {formatDate(details.date_issued)}</h2>
+              <h3 style={{
+                  width: "70%", borderTop: "1px solid black", paddingTop: "10px", marginBottom: "-5px", fontSize: "22px", fontWeight: "normal"}}>
+                {details.first_name} {details.last_name} <br />{" "}
+                {details.address} {details.city}, {details.state} {details.zip}
+              </h3>
+            </center>
+          </Typography>
+        </CardContent>
+      </Card>
+
       <div
         style={{
           display: "flex",
@@ -179,47 +193,61 @@ export default function InvoiceDetails() {
           <br />
           <Button
             variant="contained"
-            color="secondary"
+            style={{
+              backgroundColor: "#008080",
+              color: "white",
+              fontSize: "16px",
+              marginTop: "0px",
+            }}
             onClick={handleAddLineItem}
-            sx={{ textAlign: "left", padding: "16px" }}
+            sx={{ padding: "10px 28px" }}
           >
             Add Line Item
           </Button>
-          </center>
-          </div>
-          <br />
-          <br />
-          <table className="invoice-table">
-            <thead>
-              <tr>
-                <th>Service</th>
-                <th>Date Performed</th>
-                <th>Service Price</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {details.service_data?.map((item, index) => (
-                <ServiceListItem key={index} item={item} index={index} />
-              ))}
-            </tbody>
-          </table>
-          <center>
-            {details.total_price ? (
-              <h3>
-                Total Price: ${parseFloat(details.total_price).toFixed(2)}
-              </h3>
-            ) : (
-              <h3></h3>
-            )}
-          </center>
-          <br />
-          <br />
-          <br />
-          <center>
-            <button onClick={generateInvoice}>Print Invoice!</button>
-          </center>
- 
+        </center>
+      </div>
+      <br />
+      <br />
+      <table className="invoice-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Date Performed</th>
+            <th>Service Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {details.service_data?.map((item, index) => (
+            <ServiceListItem key={index} item={item} index={index} />
+          ))}
+        </tbody>
+      </table>
+      <center>
+        {details.total_price ? (
+          <h3>Total Price: ${parseFloat(details.total_price).toFixed(2)}</h3>
+        ) : (
+          <h3></h3>
+        )}
+      </center>
+      <br />
+      <br />
+      <br />
+      <center>
+        <Button
+          variant="contained"
+          style={{
+            backgroundColor: "#785d71",
+            color: "white",
+            fontSize: "16px",
+            marginTop: "0px",
+          }}
+          sx={{ padding: "10px 28px" }}
+          onClick={generateInvoice}
+        >
+          Print Invoice!
+        </Button>
+      </center>
     </div>
   );
 }
@@ -260,7 +288,6 @@ export default function InvoiceDetails() {
 //   //   (invoice) => Number(invoice.id) === Number(params.id)
 //   // );
 
-
 //   const handleAddLineItem = () => {
 //     setNewLineItem(newLineItem);
 //     dispatch({ type: "ADD_LINE_ITEM", payload: {newLineItem, invoice_id:params.id}});
@@ -271,8 +298,6 @@ export default function InvoiceDetails() {
 //     });
 //   };
 
-
-
 //   useEffect(() => {
 //     dispatch({ type: "FETCH_SERVICES" });
 //     dispatch({
@@ -280,7 +305,6 @@ export default function InvoiceDetails() {
 //       payload: params.id,
 //     });
 //   }, []);
-
 
 //   return (
 //     <div>
@@ -357,4 +381,3 @@ export default function InvoiceDetails() {
 //     </div>
 //   );
 // }
-

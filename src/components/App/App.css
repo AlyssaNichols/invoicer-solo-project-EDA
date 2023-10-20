@@ -127,7 +127,11 @@ input {
 }
 
 .invoice-table th {
-  background-color: #f0f0f0;
+  background-color: #dcd5d8;
+  font-weight: bold;
+}
+.invoice-table tr td {
+  background-color: #ffffff;
   font-weight: bold;
 }
 
@@ -201,3 +205,6 @@ input {
 }
 
 
+.history-header{
+  padding-top: -20px;
+}

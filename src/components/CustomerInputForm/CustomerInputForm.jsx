@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField, Button, Paper } from "@mui/material";
 
 export default function CustomerInputForm() {
   const history = useHistory();
@@ -68,81 +68,99 @@ export default function CustomerInputForm() {
       <br />
       <br />
       <center>
-        <h2 style={{ fontSize: "28px" }}>Input New Customer</h2>
-        <form onSubmit={addNewCustomer}>
-          <Box
-            className="formFields"
-            sx={{
-              "& .MuiTextField-root": { m: 0.4, width: "40ch" },
-            }}
-            noValidate
-            autoComplete="off"
-          >
-            <TextField
-              label="First Name"
-              value={firstName}
-              onChange={(event) => setFirstName(event.target.value)}
-            />
-            <br />
-            <TextField
-              label="Last Name"
-              value={lastName}
-              onChange={(event) => setLastName(event.target.value)}
-            />
-            <br />
-            <TextField
-              label="Address"
-              value={address}
-              onChange={(event) => setAddress(event.target.value)}
-            />
-            <br />
-            <TextField
-              label="City"
-              value={city}
-              onChange={(event) => setCity(event.target.value)}
-            />
-            <br />
-            <TextField
-              label="State"
-              value={state}
-              onChange={(event) => setState(event.target.value)}
-            />
-            <br />
-            <TextField
-              label="Zip Code"
-              type="number"
-              value={zip}
-              onChange={(event) => setZip(Number(event.target.value))}
-            />
-            <br />
-            <TextField
-              label="Email Address"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <br />
-            <TextField
-              className="phoneInput"
-              type="number"
-              label="Phone Number"
-              value={phone}
-              onChange={(event) => setPhone(Number(event.target.value))}
-            />
-            <br />
-            <br />
-            <Button color="secondary" variant="contained" type="submit">
-              Add New Customer
-            </Button>{" "}
-            <Button
-               style={{ backgroundColor: '#008080', color: 'white' }}
-              variant="contained"
-              type="button"
-              onClick={cancelAdd}
+        <Paper style={{ width: "40%" }} elevation={3}>
+          <h2 style={{ fontSize: "28px", paddingTop: "25px" }}>
+            Input New Customer
+          </h2>
+          <form onSubmit={addNewCustomer}>
+            <Box
+              className="formFields"
+              sx={{
+                "& .MuiTextField-root": { m: 0.4, width: "40ch" },
+              }}
+              noValidate
+              autoComplete="off"
             >
-              Cancel
-            </Button>
-          </Box>
-        </form>
+              <TextField
+                style={{ backgroundColor: "white" }}
+                label="First Name"
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
+              />
+              <br />
+              <TextField
+                style={{ backgroundColor: "white" }}
+                label="Last Name"
+                value={lastName}
+                onChange={(event) => setLastName(event.target.value)}
+              />
+              <br />
+              <TextField
+                style={{ backgroundColor: "white" }}
+                label="Address"
+                value={address}
+                onChange={(event) => setAddress(event.target.value)}
+              />
+              <br />
+              <TextField
+                style={{ backgroundColor: "white" }}
+                label="City"
+                value={city}
+                onChange={(event) => setCity(event.target.value)}
+              />
+              <br />
+              <TextField
+                style={{ backgroundColor: "white" }}
+                label="State"
+                value={state}
+                onChange={(event) => setState(event.target.value)}
+              />
+              <br />
+              <TextField
+                style={{ backgroundColor: "white" }}
+                label="Zip Code"
+                type="number"
+                value={zip}
+                onChange={(event) => setZip(Number(event.target.value))}
+              />
+              <br />
+              <TextField
+                style={{ backgroundColor: "white" }}
+                label="Email Address"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+              <br />
+              <TextField
+                style={{ backgroundColor: "white" }}
+                className="phoneInput"
+                type="number"
+                label="Phone Number"
+                value={phone}
+                onChange={(event) => setPhone(Number(event.target.value))}
+              />
+              <br />
+              <br />
+              <Button
+                style={{ backgroundColor: "#008080", color: "white" }}
+                variant="contained"
+                type="submit"
+              >
+                Add New Customer
+              </Button>{" "}
+              <Button
+                style={{ backgroundColor: "#7d5e51", color: "white" }}
+                variant="contained"
+                type="button"
+                onClick={cancelAdd}
+              >
+                Cancel
+              </Button>
+            </Box>
+            <br />
+            <br />
+          </form>
+        </Paper>
       </center>
     </>
   );
