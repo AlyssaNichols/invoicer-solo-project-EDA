@@ -13,7 +13,7 @@
   }
   
   .history-deleteButton:hover {
-    background-color: rgb(255, 120, 115);
+    background-color: rgb(255, 126, 121);
   }
   
   .history-deleteButton:active {
@@ -64,7 +64,7 @@
   }
   
   .printButton:hover {
-    background-color: rgb(200, 150, 251);
+    background-color: rgb(203, 178, 228);
   }
   
   .printButton:active {
@@ -89,7 +89,7 @@
   }
   
   .paidButton:hover {
-    background-color: rgb(94, 220, 159);
+    background-color: rgb(173, 216, 195);
   }
   
   .paidButton:active {

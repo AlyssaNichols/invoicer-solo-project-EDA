@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  Box,
+  TextField,
+  Button,
+  Paper,
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/material";
 
 export default function ArchivedCutomerList({toggleArchived}) {
 
@@ -20,7 +29,14 @@ export default function ArchivedCutomerList({toggleArchived}) {
   return (
 <center>
       <h2>Archived Customers</h2>
-      <button onClick={toggleArchived}>Collapse List</button>
+      <Button
+          style={{ backgroundColor: "#A09084", color: "white"}}
+          variant="contained"
+          type="button"
+          onClick={toggleArchived}
+        >
+          Collapse List
+        </Button>
       <br />
       <br />
       <br />

@@ -26,7 +26,7 @@ export default function AdminPage() {
               }}
             >
               {" "}
-              Welcome,
+              Welcome,{" "}
               {user.username.charAt(0).toUpperCase() + user.username.slice(1)}!
             </h2>
             <p

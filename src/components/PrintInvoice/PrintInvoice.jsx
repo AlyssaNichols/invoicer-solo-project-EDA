@@ -1,12 +1,13 @@
 import "./PrintInvoice.css";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom"; // Import useParams
 import Button from "@mui/material/Button";
 
 export default function PrintInvoice() {
   const dispatch = useDispatch();
   const params = useParams();
+  const history = useHistory();
   const details = useSelector((store) => store.invoiceDetails);
   const companies = useSelector((store) => store.companyReducer);
   console.log(companies)
@@ -42,8 +43,12 @@ export default function PrintInvoice() {
       payload: params.id,
     });
   }, [dispatch, params.id]);
+  const moreDetails = (invoiceId) => {
+    history.push(`/invoice/details/${invoiceId}`);
+  };
 
-  const phone_number = `${companies[0].phone}`;
+
+  const phone_number = `${companies[0]?.phone}`;
   const formatted_phone = `${phone_number.slice(0, 3)}-${phone_number.slice(3, 6)}-${phone_number.slice(6)}`;
 
   const printButtonStyle = {
@@ -62,12 +67,12 @@ export default function PrintInvoice() {
     <div className="topSpace">  <br /><br /></div>
     <div className="print-invoice">
       <div className="header">
-        <img className="logo" src={companies[0].url} alt="Company Logo" />
+        <img className="logo" src={companies[0]?.url} alt="Company Logo" />
         <div className="company-info">
-          <p>{companies[0].address}</p>
-          <p>{companies[0].city}, {companies[0].state} {companies[0].zip}</p>
+          <p>{companies[0]?.address}</p>
+          <p>{companies[0]?.city}, {companies[0]?.state} {companies[0]?.zip}</p>
           <p>{formatted_phone}</p>
-          <Button
+          <div><Button
             className="printInvoiceButton" // Use className for the button
             style={buttonStyle}
             variant="contained"
@@ -75,6 +80,20 @@ export default function PrintInvoice() {
           >
             Print This Invoice!
           </Button>
+          <Button
+            className="printInvoiceButton" // Use className for the button
+            style={{    marginTop: '-160px',
+            marginLeft: "687px",
+            backgroundColor: '#A09084',
+            color: 'white',
+            fontSize: "14px",
+            padding: "8px 16px"}}
+            variant="contained"
+          onClick={() => moreDetails(details.id)}
+            >
+              Edit Details
+          </Button>
+          </div>
         </div>
       </div>
 
@@ -143,7 +162,6 @@ export default function PrintInvoice() {
       </div>
     </div>
         <br />
-
         </>
   );
 }

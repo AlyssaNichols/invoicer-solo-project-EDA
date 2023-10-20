@@ -85,6 +85,7 @@ export default function CustomerInputForm() {
                   style={{
                     marginTop: "-5px",
                     marginBottom: "-5px",
+                    letterSpacing: ".5px"
                   }}
                 >
                   Input New Customer
@@ -167,7 +168,7 @@ export default function CustomerInputForm() {
               <br />
               <br />
               <Button
-                style={{ backgroundColor: "#7d5e51", color: "white" }}
+                style={{ backgroundColor: "#A09084", color: "white"}}
                 variant="contained"
                 type="button"
                 onClick={cancelAdd}

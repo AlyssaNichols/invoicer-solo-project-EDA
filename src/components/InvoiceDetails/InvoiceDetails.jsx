@@ -280,7 +280,7 @@ export default function InvoiceDetails() {
         <Button
           variant="contained"
           style={{
-            backgroundColor: "#785d71",
+            backgroundColor: "#996887",
             color: "white",
             fontSize: "16px",
             marginTop: "0px",

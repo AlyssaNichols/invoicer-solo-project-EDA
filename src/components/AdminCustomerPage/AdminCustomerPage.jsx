@@ -3,10 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import ArchivedCutomerList from "../ArchivedCustomerList/ArchivedCustomerList";
 import {
-    Box,
-    TextField,
-    Button,
-  } from "@mui/material";
+  Box,
+  TextField,
+  Button,
+  Paper,
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/material";
 
 export default function AdminCustomerPage() {
   const history = useHistory();
@@ -96,97 +100,150 @@ export default function AdminCustomerPage() {
     dispatch({ type: "FETCH_ARCHIVED_CUSTOMERS" });
   };
 
-
   return (
     <>
       <center>
         <br />
         <br />
         {showCustomerForm ? (
-          <h2>Add a New Customer</h2>
-        ) : (<div>
-            <h2>Active Customer List</h2>
-          <button onClick={toggleCustomerForm}>Add New Customer</button>
+          <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+            <center>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  <h2
+                    style={{
+                      marginTop: "-5px",
+                      marginBottom: "-15px",
+                      letterSpacing: ".5px",
+                    }}
+                  >
+                    Input New Customer
+                  </h2>
+                </Typography>
+              </CardContent>
+            </center>
+          </Card>
+        ) : (
+          <div>
+            <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+              <center>
+                <CardContent>
+                  <Typography variant="h5" component="div">
+                    <h2
+                      style={{
+                        marginTop: "-5px",
+                        marginBottom: "-15px",
+                        letterSpacing: ".5px",
+                      }}
+                    >
+                      Active Customer List
+                    </h2>
+                  </Typography>
+                </CardContent>
+              </center>
+            </Card>
+            <br />
+            <Button
+              style={{ backgroundColor: "#008080", color: "white" }}
+              variant="contained"
+              type="button"
+              onClick={toggleCustomerForm}
+            >
+              Add New Customer
+            </Button>
           </div>
         )}
-        {showCustomerForm && (<>
-          <form onSubmit={addNewCustomer}>
-          <Box
-            className="formFields"
-            sx={{
-              "& .MuiTextField-root": { m: .4, width: "40ch",}
-            }}
-            noValidate
-            autoComplete="off"
-          >
-           <TextField
-            label="First Name"
-            value={firstName}
-            onChange={(event) => setFirstName(event.target.value)}
-          />
-    <br />
-          <TextField
-            label="Last Name"
-            value={lastName}
-            onChange={(event) => setLastName(event.target.value)}
-          />
-          <br />
-    
-          <TextField
-            label="Address"
-            value={address}
-            onChange={(event) => setAddress(event.target.value)}
-          />
-    <br />
-          <TextField
-            label="City"
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
-          />
-    <br />
-          <TextField
-            label="State"
-            value={state}
-            onChange={(event) => setState(event.target.value)}
-          />
-    <br />
-          <TextField
-            label="Zip Code"
-            type="number"
-            value={zip}
-            onChange={(event) => setZip(Number(event.target.value))}
-          />
-    <br />
-          <TextField
-            label="Email Address"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-          <br />
-            <TextField
-              className="phoneInput"
-              type="number"
-              label="Phone Number"
-              value={phone}
-              onChange={(event) => setPhone(Number(event.target.value))}
-            />
+        {showCustomerForm && (
+          <>
+            <Paper
+              style={{ width: "40%", marginTop: "20px", paddingTop: "25px" }}
+              elevation={3}
+            >
+              <form onSubmit={addNewCustomer}>
+                <Box
+                  className="formFields"
+                  sx={{
+                    "& .MuiTextField-root": { m: 0.4, width: "40ch" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    label="First Name"
+                    value={firstName}
+                    onChange={(event) => setFirstName(event.target.value)}
+                  />
+                  <br />
+                  <TextField
+                    label="Last Name"
+                    value={lastName}
+                    onChange={(event) => setLastName(event.target.value)}
+                  />
+                  <br />
+                  <TextField
+                    label="Address"
+                    value={address}
+                    onChange={(event) => setAddress(event.target.value)}
+                  />
+                  <br />
+                  <TextField
+                    label="City"
+                    value={city}
+                    onChange={(event) => setCity(event.target.value)}
+                  />
+                  <br />
+                  <TextField
+                    label="State"
+                    value={state}
+                    onChange={(event) => setState(event.target.value)}
+                  />
+                  <br />
+                  <TextField
+                    label="Zip Code"
+                    type="number"
+                    value={zip}
+                    onChange={(event) => setZip(Number(event.target.value))}
+                  />
+                  <br />
+                  <TextField
+                    label="Email Address"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                  />
+                  <br />
+                  <TextField
+                    className="phoneInput"
+                    type="number"
+                    label="Phone Number"
+                    value={phone}
+                    onChange={(event) => setPhone(Number(event.target.value))}
+                  />
+                  <br />
+                  <br />
+                  <Button
+                    style={{ backgroundColor: "#A09084", color: "white" }}
+                    variant="contained"
+                    type="button"
+                    onClick={cancelAddCustomer}
+                  >
+                    Cancel
+                  </Button>{" "}
+                  <Button
+                    style={{ backgroundColor: "#008080", color: "white" }}
+                    variant="contained"
+                    type="submit"
+                  >
+                    Add New Customer
+                  </Button>
+                </Box>
+              </form>
+              <br />
+            </Paper>
             <br />
             <br />
-          <Button color="secondary" variant="contained" type="submit">
-            Add New Customer
-          </Button>{" "}
-          <Button color="secondary" variant="contained" type="button" onClick={cancelAddCustomer}>
-            Cancel
-          </Button>
-          </Box>
-          <br />
-           <h2>Active Customer List</h2>
-        </form>
-       </>
+          </>
         )}
       </center>
-      <br />
-      <br />
       <br />
       <table className="invoice-table">
         <thead>
@@ -215,9 +272,7 @@ export default function AdminCustomerPage() {
                 <td>{customer.phone}</td>
                 <td>{customer.email}</td>
                 <td>
-                  <button
-                    onClick={() => handleArchive(customer.id)}
-                  >
+                  <button onClick={() => handleArchive(customer.id)}>
                     Archive Customer
                   </button>
                 </td>
@@ -231,23 +286,29 @@ export default function AdminCustomerPage() {
       <center>
         <br />
         <br />
-          <Button
-            style={{ backgroundColor: "#9a5c6f", color: "white" }}
-            variant="contained"
-            onClick={() => {
-              history.push("/admin")
-            }}
-          >
-            Back to Admin Main Page
-          </Button>
-        </center>
-        <br />
-        <br />
+        <Button
+          style={{ backgroundColor: "#996887", color: "white" }}
+          variant="contained"
+          onClick={() => {
+            history.push("/admin");
+          }}
+        >
+          Back to Admin Main Page
+        </Button>
+      </center>
+      <br />
       <center>
         {showArchived ? (
-          <ArchivedCutomerList toggleArchived={toggleArchived}/>
+          <ArchivedCutomerList toggleArchived={toggleArchived} />
         ) : (
-          <button onClick={toggleArchived}>Show Archived Customers</button>
+          <Button
+          style={{ backgroundColor: "#A09084", color: "white"}}
+          variant="contained"
+          type="button"
+          onClick={toggleArchived}
+        >
+          Show Archived Customers
+        </Button>
         )}
       </center>
     </>

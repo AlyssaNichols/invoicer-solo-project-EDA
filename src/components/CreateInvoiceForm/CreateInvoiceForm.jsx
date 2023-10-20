@@ -47,6 +47,7 @@ export default function CreateInvoicePage() {
               <h1
                 style={{
                   marginTop: "-5px",
+                  letterSpacing: ".5px"
                 }}
               >
                 Let's Get Started!
