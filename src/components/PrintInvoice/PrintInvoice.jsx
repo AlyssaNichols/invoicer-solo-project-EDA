@@ -105,7 +105,7 @@ export default function PrintInvoice() {
         </div>
       </div>
 
-      <div className="footer">
+      <div className="bottom">
         <h2 className="balance-footer">Balance Due: ${parseFloat(details.total_price).toFixed(2)}</h2>
       </div>
     </div>

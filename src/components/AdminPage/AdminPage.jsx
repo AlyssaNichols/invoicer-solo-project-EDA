@@ -27,14 +27,14 @@ export default function AdminPage() {
     </center>
   </Card>    <nav className="adminNav">
       <div className="adminNavLinks">
-        <Link to="/admin/services">Services List</Link>
-        <Link to="/admin/customers">Customer List</Link>
-        <Link to="/admin/employees">Employee List</Link>
+        <Link to="/admin/services">Services</Link>
+        <Link to="/admin/customers">Customers</Link>
+        <Link to="/admin/employees">Employees</Link>
       </div>
     </nav> <div className="aboutDiv">
         <h1 className="mainUserHeader">
-          Easily Generate A <br />
-          <span className="professionalInvoice">Professional Invoice</span>
+          Thanks for chooseing <br />
+          <span className="professionalInvoice">Invoicer</span>
           <br />
           for your Business
         </h1>

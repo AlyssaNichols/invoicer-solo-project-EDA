@@ -5,6 +5,7 @@ import ServiceData from "../ServiceData/ServiceData";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import "./InvoiceHistory.css"
 
 export default function InvoiceHistory() {
   const history = useHistory();
@@ -147,7 +148,7 @@ export default function InvoiceHistory() {
                     ) : (
                       <>
              
-                        <button
+                        <button className="paidButton"
                           onClick={() => {
                             setEditedDate(invoice.date_paid || "");
                             setEditMode(invoice.id);
@@ -155,16 +156,16 @@ export default function InvoiceHistory() {
                         >
                           Mark Date Paid
                         </button>
-                        <button onClick={() => printInvoice(invoice.id)}>
+                        <button className="printButton" onClick={() => printInvoice(invoice.id)}>
                           Print
                         </button>{" "}
                         <br />
-                        <button onClick={() => moreDetails(invoice.id)}>
+                        <button className="detailsButton" onClick={() => moreDetails(invoice.id)}>
                           More Details
                         </button>
                         <br />
                         {user.is_admin && (
-                          <button
+                          <button className="deleteButton"
                             onClick={() => handleDeleteInvoice(invoice.id)}
                           >
                             Delete

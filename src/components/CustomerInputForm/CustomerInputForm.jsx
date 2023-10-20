@@ -81,7 +81,7 @@ export default function CustomerInputForm() {
           </CardContent>
         </center>
       </Card>
-        <Paper style={{ width: "40%", marginTop: "20px", paddingTop: "30px" }} elevation={3}>
+        <Paper style={{ width: "40%", marginTop: "20px", paddingTop: "25px" }} elevation={3}>
           <form onSubmit={addNewCustomer}>
             <Box
               className="formFields"
@@ -167,7 +167,6 @@ export default function CustomerInputForm() {
                 Cancel
               </Button>
             </Box>
-            <br />
             <br />
           </form>
         </Paper>

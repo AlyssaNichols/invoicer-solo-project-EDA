@@ -4,7 +4,7 @@ import {
   Redirect,
   Route,
   Switch,
-  useLocation
+  useLocation,
 } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -41,11 +41,10 @@ function App() {
     dispatch({ type: "FETCH_USER" });
   }, [dispatch]);
 
-
   return (
     <Router>
       <div>
-      <Nav />
+        <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -71,13 +70,13 @@ function App() {
             <UserPage />
           </ProtectedRoute>
 
-          {/* <ProtectedRoute
+          <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
             path="/info"
           >
             <InfoPage />
-          </ProtectedRoute> */}
+          </ProtectedRoute>
 
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
@@ -111,19 +110,21 @@ function App() {
           <ProtectedRoute exact path="/invoiceHistory">
             <InvoiceHistory />
           </ProtectedRoute>
+          {user.is_admin && (
+            <ProtectedRoute exact path="/admin">
+              <AdminPage />
+            </ProtectedRoute>
+          )}
 
-          <ProtectedRoute exact path="/admin">
-            <AdminPage />
-          </ProtectedRoute>
           <ProtectedRoute exact path="/admin/services">
-              <AdminPageServices />
-            </ProtectedRoute>
-            <ProtectedRoute  exact path="/admin/customers">
+            <AdminPageServices />
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/admin/customers">
             <AdminCustomerPage />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/admin/employees">
-              <AdminEmployeeList />
-            </ProtectedRoute>
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/admin/employees">
+            <AdminEmployeeList />
+          </ProtectedRoute>
           <Route exact path="/login">
             {user.id ? (
               // If the user is already logged in,

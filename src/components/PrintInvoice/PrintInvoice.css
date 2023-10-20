@@ -20,7 +20,12 @@
   .nav {
     display: none;
   }
-  .footer {display:none;}
+  footer {display:none;}
+
+  /* Remove box shadow on the .print-invoice element */
+  .print-invoice {
+    box-shadow: none !important;;
+  }
 }
 
 .print-invoice {
@@ -120,7 +125,7 @@
 } */
 
 /* Define the footer section */
-.footer {
+.bottom {
   text-align: right;
   font-size: 20px;
   margin-top: 20px;
