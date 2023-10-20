@@ -82,9 +82,6 @@ export default function CreateInvoicePage() {
                 setNewInvoice({ ...newInvoice, customer_id: e.target.value })
               }
               fullWidth
-              InputLabelProps={{
-                shrink: false,
-              }}
             >
               {customerList.map((customer) => (
                 <MenuItem key={customer.id} value={customer.id}>

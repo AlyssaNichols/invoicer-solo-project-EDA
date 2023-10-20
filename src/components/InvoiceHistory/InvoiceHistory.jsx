@@ -143,6 +143,7 @@ export default function InvoiceHistory() {
                         <button onClick={() => moreDetails(invoice.id)}>
                           More Details
                         </button>
+                        <br />
                         <button onClick={() => printInvoice(invoice.id)}>
                           Print
                         </button>

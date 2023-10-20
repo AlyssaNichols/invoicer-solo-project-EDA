@@ -116,12 +116,14 @@ input {
   margin-right: auto;
   width: 90%;
   border-collapse: collapse;
+  text-align: center;
 }
 
 .invoice-table th, .invoice-table td {
   padding: 10px;
   border: 1px solid #ccc;
   text-align: left;
+  text-align: center;
 }
 
 .invoice-table th {
@@ -194,7 +196,8 @@ input {
   background-color: #555;
 }
 
-
-
+.hidden-label {
+  display: none;
+}
 
 

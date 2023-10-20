@@ -9,12 +9,10 @@ import { CardActionArea } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
-
-
 function UserPage() {
-const history = useHistory();
-  function invoicePage(){
-    history.push("/invoice")
+  const history = useHistory();
+  function invoicePage() {
+    history.push("/invoice");
   }
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
@@ -23,24 +21,23 @@ const history = useHistory();
       <br />
       <br />
       <br />
-      <Card sx={{ minWidth: 275 }}>
+      <Card sx={{ minWidth: 275}}>
         <center>
           <CardContent>
             <Typography
               variant="h5"
               component="div"
-              sx={{ marginTop: "-15px", fontWeight: "normal",
-              fontSize: "22px",
-              color: "black", }}
-              
+              sx={{
+                marginTop: "0px",
+                fontWeight: "normal",
+                fontSize: "22px",
+                color: "black",
+              }}
             >
               Welcome,{" "}
               {user.username.charAt(0).toUpperCase() + user.username.slice(1)}!
             </Typography>
-            <Typography
-              sx={{ mb: 1.5, marginBottom: "-2px" }}
-              color="black"
-            >
+            <Typography sx={{ mb: 1.5, marginBottom: "-10px" }} color="black">
               Your ID is: {user.id}
             </Typography>
           </CardContent>
@@ -60,17 +57,19 @@ const history = useHistory();
           today!
         </p>
         <br />
-        <center><Button variant="contained"
-          onClick={() => {
-            invoicePage()
-          }}
-        >
-          Create an Invoice Now
-        </Button></center>
+        <center>
+          <Button
+           style={{ backgroundColor: "#9a5c6f", color: "white" }}
+            variant="contained"
+            onClick={() => {
+              invoicePage();
+            }}
+          >
+            Create an Invoice Now
+          </Button>
+        </center>
       </div>
-<div>
-
-</div>
+      <div></div>
       {/* <div style={{ display: "flex", marginLeft: "120px", marginTop: "100px" }}>
         <Card sx={{ maxWidth: 450, marginRight: "110px" }}>
           <CardActionArea>
