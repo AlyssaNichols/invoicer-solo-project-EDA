@@ -21,7 +21,6 @@ export default function AdminPageServices() {
   const [employee, setEmployee] = useState({
     username: "",
     password: "",
-    is_admin: "",
   });
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export default function AdminPageServices() {
       alert("Please make sure you enter a new Employee!");
     } else {
       dispatch({ type: "ADD_EMPLOYEE", payload: employee });
-      setEmployee({ username: "", password: "", is_admin: "" });
+      setEmployee({ username: "", password: "" });
     }
   };
 
@@ -95,7 +94,7 @@ export default function AdminPageServices() {
                   setEmployee({ ...employee, password: event.target.value })
                 }
               />
-              <TextField
+              {/* <TextField
                 select
                 label="Admin Status"
                 id="is_admin"
@@ -105,9 +104,8 @@ export default function AdminPageServices() {
                 }
                 fullWidth
               >
-                <MenuItem value={true}>True</MenuItem>
-                <MenuItem value={false}>False</MenuItem>
-              </TextField>
+                <MenuItem value={false}>Not Admin</MenuItem>
+              </TextField> */}
               <br />
               <br />
               <Button

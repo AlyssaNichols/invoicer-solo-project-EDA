@@ -22,10 +22,10 @@ router.get("/", (req, res) => {
       const employee = req.body;
       console.log(req.body);
       const queryText = `
-      INSERT INTO "user" (username, is_admin, password)
-    VALUES ($1, $2, $3);`;
+      INSERT INTO "user" (username, password)
+    VALUES ($1, $2);`;
       pool
-        .query(queryText, [employee.username, employee.is_admin, employee.password])
+        .query(queryText, [employee.username, employee.password])
         .then((response) => {
           res.sendStatus(201);
         })
