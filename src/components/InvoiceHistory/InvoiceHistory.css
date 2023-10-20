@@ -1,4 +1,4 @@
-.deleteButton {
+.history-deleteButton {
     font-size: 14px;
     color: rgb(0, 0, 0);
     border-radius: 3px;
@@ -12,11 +12,11 @@
     margin-bottom: -10px;
   }
   
-  .deleteButton:hover {
-    background-color: rgb(241, 57, 50);
+  .history-deleteButton:hover {
+    background-color: rgb(255, 120, 115);
   }
   
-  .deleteButton:active {
+  .history-deleteButton:active {
     transform: scale(0.93);
     /* Scaling button to 0.98 to its original size */
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);

@@ -42,6 +42,9 @@ export default function InvoiceDetails() {
   // );
 
   const handleAddLineItem = () => {
+    if (!newLineItem.service_id || !newLineItem.date_performed || !newLineItem.service_price){
+      alert ("please fill in all the fields before submitting!")
+    }
     setNewLineItem(newLineItem);
     dispatch({
       type: "ADD_LINE_ITEM",

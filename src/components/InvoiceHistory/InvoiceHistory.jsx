@@ -126,7 +126,17 @@ export default function InvoiceHistory() {
                   <td>
                     {inEditMode ? (
                       <>
+                        {" "}
                         <button
+                          className="history-deleteButton"
+                          onClick={() => {
+                            setEditMode(null);
+                          }}
+                        >
+                          Cancel
+                        </button>{" "}
+                        <button
+                          className="paidButton"
                           onClick={() => {
                             dispatch({
                               type: "EDIT_INVOICE",
@@ -136,13 +146,6 @@ export default function InvoiceHistory() {
                           }}
                         >
                           Save
-                        </button>
-                        <button
-                          onClick={() => {
-                            setEditMode(null);
-                          }}
-                        >
-                          Cancel
                         </button>
                       </>
                     ) : (
@@ -172,7 +175,7 @@ export default function InvoiceHistory() {
                         <br />
                         {user.is_admin && (
                           <button
-                            className="deleteButton"
+                            className="history-deleteButton"
                             onClick={() => handleDeleteInvoice(invoice.id)}
                           >
                             Delete

@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Button from "@mui/material/Button";
+import {
+  Box,
+  TextField,
+  Button,
+  Paper,
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/material";
 
 export default function AdminPageServices() {
   const history = useHistory();
@@ -12,9 +20,12 @@ export default function AdminPageServices() {
   useEffect(() => {
     dispatch({ type: "FETCH_SERVICES" });
   }, []);
+
+
+
   const addNewService = (event) => {
     event.preventDefault();
-    if (!serviceName) {
+    if (!serviceName.service) {
         alert("Please make sure you enter a new Service!");
       } else {
     dispatch({ type: "ADD_SERVICE", payload: serviceName});
@@ -31,16 +42,56 @@ export default function AdminPageServices() {
     <br />
     <br />
       <center>
-      <h2>Add a New Service</h2>
-      <form onSubmit={addNewService}>
-        <input
-          placeholder="Service Name"
-          type="text"
-          value={serviceName.service}
-          onChange={(event) => setServiceName({...serviceName, service: event.target.value})}
-        />
-        <button type="submit">Add New Service</button>
+      <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+          <center>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                <h2
+                  style={{
+                    marginTop: "-5px",
+                    marginBottom: "-10px",
+                  }}
+                >
+                  Add New Service
+                </h2>
+              </Typography>
+            </CardContent>
+          </center>
+        </Card>
+        <Paper
+          style={{ width: "40%", marginTop: "20px", paddingTop: "25px"}}
+          elevation={3}
+        >
+              <form onSubmit={addNewService}>
+            <Box
+              className="formFields"
+              sx={{
+                "& .MuiTextField-root": { m: 0.4, width: "40ch" },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <TextField
+                style={{ backgroundColor: "white" }}
+                placeholder="Service Name"
+                label="Service Name"
+                type="text"
+                value={serviceName.service}
+                onChange={(event) => setServiceName({...serviceName, service: event.target.value})}
+              />
+              <br />
+              <br />
+              <Button
+                style={{ backgroundColor: "#008080", color: "white", marginBottom: "20px" }}
+                variant="contained"
+                type="submit"
+              >
+                Add New Service
+              </Button>
+
+        </Box>
       </form>
+      </Paper>
       </center>
       <br />
       <br />
