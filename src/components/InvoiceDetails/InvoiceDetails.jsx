@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import ServiceListItem from "../ServiceLineItems/ServiceLineItems";
 import { InputLabel, Select } from "@mui/material";
-import { MenuItem, Box, FormControl } from "@mui/material";
+import { MenuItem, Box, Paper } from "@mui/material";
 import { Button, TextField } from "@mui/material";
 import ServiceData from "../ServiceData/ServiceData";
 import Card from "@mui/material/Card";
@@ -83,7 +83,11 @@ export default function InvoiceDetails() {
           </Typography>
         </CardContent>
       </Card>
-
+      <center>
+      <Paper elevation={3} style={{
+          width: "30%",
+          marginTop: "30px"
+        }}>
       <div
         style={{
           display: "flex",
@@ -91,7 +95,9 @@ export default function InvoiceDetails() {
           alignItems: "center",
         }}
       >
+   
         <center>
+    
           <Box
             sx={{
               display: "flex",
@@ -206,6 +212,9 @@ export default function InvoiceDetails() {
           </Button>
         </center>
       </div>
+      <br />
+      </Paper>
+      </center>
       <br />
       <br />
       <table className="invoice-table">
