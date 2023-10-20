@@ -5,7 +5,7 @@ import ServiceData from "../ServiceData/ServiceData";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import "./InvoiceHistory.css"
+import "./InvoiceHistory.css";
 
 export default function InvoiceHistory() {
   const history = useHistory();
@@ -53,8 +53,8 @@ export default function InvoiceHistory() {
     <>
       <br />
       <br />
-      <Card sx={{ minWidth: 275, marginTop: "20px" }}>
-        <center>
+      <center>
+        <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
           <CardContent>
             <Typography variant="h5" component="div">
               <h2
@@ -67,8 +67,8 @@ export default function InvoiceHistory() {
               </h2>
             </Typography>
           </CardContent>
-        </center>
-      </Card>
+        </Card>
+      </center>
       <br />
       <div>
         <table className="invoice-table">
@@ -147,8 +147,8 @@ export default function InvoiceHistory() {
                       </>
                     ) : (
                       <>
-             
-                        <button className="paidButton"
+                        <button
+                          className="paidButton"
                           onClick={() => {
                             setEditedDate(invoice.date_paid || "");
                             setEditMode(invoice.id);
@@ -156,16 +156,23 @@ export default function InvoiceHistory() {
                         >
                           Mark Date Paid
                         </button>
-                        <button className="printButton" onClick={() => printInvoice(invoice.id)}>
+                        <button
+                          className="printButton"
+                          onClick={() => printInvoice(invoice.id)}
+                        >
                           Print
                         </button>{" "}
                         <br />
-                        <button className="detailsButton" onClick={() => moreDetails(invoice.id)}>
+                        <button
+                          className="detailsButton"
+                          onClick={() => moreDetails(invoice.id)}
+                        >
                           More Details
                         </button>
                         <br />
                         {user.is_admin && (
-                          <button className="deleteButton"
+                          <button
+                            className="deleteButton"
                             onClick={() => handleDeleteInvoice(invoice.id)}
                           >
                             Delete

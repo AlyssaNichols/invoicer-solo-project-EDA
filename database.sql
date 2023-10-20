@@ -47,7 +47,17 @@ CREATE TABLE line_item (
     "service_price" DECIMAL NOT NULL,
     "invoice_id" INT REFERENCES invoice(id)
 );
-    
+
+CREATE TABLE "companies" (
+	"id" serial primary key,
+	"company_name" varchar(50) NOT NULL,
+	"address" varchar(30) NOT NULL,
+	"city" varchar(20) NOT NULL,
+	"state" varchar(20) NOT NULL,
+	"zip" BIGINT NOT NULL,
+	"email" varchar(40),
+	"phone" BIGINT NOT NULL
+);   
 -- Insert users into the "customers" table
 INSERT INTO customers ("first_name", "last_name", "address", "city", "state", "zip", "email", "phone")
 VALUES

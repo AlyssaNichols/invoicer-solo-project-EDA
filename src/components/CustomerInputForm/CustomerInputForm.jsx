@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Box, TextField, Button, Paper, Card, CardContent, Typography } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Button,
+  Paper,
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/material";
 
 export default function CustomerInputForm() {
   const history = useHistory();
@@ -67,21 +75,28 @@ export default function CustomerInputForm() {
     <>
       <br />
       <br />
-      <center>      <Card sx={{ minWidth: 275, marginTop: "20px" }}>
-        <center>
-          <CardContent>
-            <Typography
-              variant="h5"
-              component="div"
-            >
-              <h2 style={{
-                  marginTop: "-5px", marginBottom: "-5px"
-                }}>Input New Customer</h2>
-            </Typography>
-          </CardContent>
-        </center>
-      </Card>
-        <Paper style={{ width: "40%", marginTop: "20px", paddingTop: "25px" }} elevation={3}>
+      <center>
+        {" "}
+        <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+          <center>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                <h2
+                  style={{
+                    marginTop: "-5px",
+                    marginBottom: "-5px",
+                  }}
+                >
+                  Input New Customer
+                </h2>
+              </Typography>
+            </CardContent>
+          </center>
+        </Card>
+        <Paper
+          style={{ width: "40%", marginTop: "20px", paddingTop: "25px"}}
+          elevation={3}
+        >
           <form onSubmit={addNewCustomer}>
             <Box
               className="formFields"
@@ -152,19 +167,19 @@ export default function CustomerInputForm() {
               <br />
               <br />
               <Button
-                style={{ backgroundColor: "#008080", color: "white" }}
-                variant="contained"
-                type="submit"
-              >
-                Add New Customer
-              </Button>{" "}
-              <Button
                 style={{ backgroundColor: "#7d5e51", color: "white" }}
                 variant="contained"
                 type="button"
                 onClick={cancelAdd}
               >
                 Cancel
+              </Button>{" "}
+              <Button
+                style={{ backgroundColor: "#008080", color: "white" }}
+                variant="contained"
+                type="submit"
+              >
+                Add New Customer
               </Button>
             </Box>
             <br />

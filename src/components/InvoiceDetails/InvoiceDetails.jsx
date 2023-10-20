@@ -66,10 +66,11 @@ export default function InvoiceDetails() {
     <div>
       <br />
       <br />
-      <Card sx={{ minWidth: 275, marginTop: "20px" }}>
+      <center>
+      <Card sx={{ minWidth: 275, marginTop: "20px", width: '98%' }}>
         <CardContent>
           <Typography variant="h5" component="div">
-            <center>
+       
               <h1
                 style={{
                   marginTop: "-5px",
@@ -104,10 +105,11 @@ export default function InvoiceDetails() {
                 {details.address} <br />
                 {details.city}, {details.state} {details.zip}
               </h3>
-            </center>
+            
           </Typography>
         </CardContent>
       </Card>
+      </center>
       <center>
         <Paper
           elevation={3}

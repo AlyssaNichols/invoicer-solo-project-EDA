@@ -7,6 +7,7 @@ import invoice from './invoice.reducer';
 import invoiceDetails from './invoiceDetails.reducer';
 import employees from './employees.reducer';
 import archived from './archivedCustomers.reducer';
+import companyReducer from './companies.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   invoice,
   employees,
   archived,
-  invoiceDetails
+  invoiceDetails,
+  companyReducer,
 });
 
 export default rootReducer;

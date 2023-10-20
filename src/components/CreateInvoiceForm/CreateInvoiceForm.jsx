@@ -40,8 +40,9 @@ export default function CreateInvoicePage() {
       <br />
       <br />
       <div className="createInvoice-header-section">
-        <Card sx={{ minWidth: 275, marginTop: "20px" }}>
-          <center>
+      <center>
+        <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%"  }}>
+        
             <CardContent>
               <h1
                 style={{
@@ -62,8 +63,9 @@ export default function CreateInvoicePage() {
                 invoice to be issued <br /> Step 3: Click Create Invoice
               </Typography>
             </CardContent>
-          </center>
+
         </Card>
+        </center>
       </div>
       <div
         style={{

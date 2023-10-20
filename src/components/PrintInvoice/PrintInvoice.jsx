@@ -2,11 +2,14 @@ import "./PrintInvoice.css";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 export default function PrintInvoice() {
   const dispatch = useDispatch();
   const params = useParams();
   const details = useSelector((store) => store.invoiceDetails);
+  const companies = useSelector((store) => store.companyReducer);
+  console.log(companies)
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -21,12 +24,18 @@ export default function PrintInvoice() {
     // Calculate one month from the date issued
     dateIssued.setMonth(dateIssued.getMonth() + 1);
     // To make it exactly one month, subtract one day from the calculated date
-    dateIssued.setDate(dateIssued.getDate() - 1);
+    dateIssued.setDate(dateIssued.getDate() + 0);
 
     // Format the calculated date
     return formatDate(dateIssued);
   };
+
+  const handlePrint = () => {
+    window.print(); // This will trigger the print dialog
+  };
+
   useEffect(() => {
+    dispatch({ type: "FETCH_COMPANIES" });
     dispatch({ type: "FETCH_SERVICES" });
     dispatch({
       type: "FETCH_INVOICE_DETAILS",
@@ -34,19 +43,43 @@ export default function PrintInvoice() {
     });
   }, [dispatch, params.id]);
 
+  const phone_number = `${companies[0].phone}`;
+  const formatted_phone = `${phone_number.slice(0, 3)}-${phone_number.slice(3, 6)}-${phone_number.slice(6)}`;
+
+  const printButtonStyle = {
+    display: 'none', // Hide the button for printing
+  };
+  const buttonStyle = {
+    marginTop: '-250px',
+    marginLeft: "620px",
+    backgroundColor: '#9a5c6f',
+    color: 'white',
+    fontSize: "20px",
+    padding: "10px 20px"
+  };
   return (
     <>
+    <div className="topSpace">  <br /><br /></div>
     <div className="print-invoice">
       <div className="header">
-        <img className="logo" src="/Logo.jpg" alt="Company Logo" />
+        <img className="logo" src={companies[0].url} alt="Company Logo" />
         <div className="company-info">
-          <p>2407 34th Ave S.</p>
-          <p>Fargo, ND 58104</p>
-          <p>701-371-5514</p>
+          <p>{companies[0].address}</p>
+          <p>{companies[0].city}, {companies[0].state} {companies[0].zip}</p>
+          <p>{formatted_phone}</p>
+          <Button
+            className="printInvoiceButton" // Use className for the button
+            style={buttonStyle}
+            variant="contained"
+            onClick={handlePrint}
+          >
+            Print This Invoice!
+          </Button>
         </div>
       </div>
 
       <div className="print-details">
+
   <h1 className="print-h1">Invoice</h1>
   <div className="table-container">
     <table className="date-table">
@@ -109,7 +142,8 @@ export default function PrintInvoice() {
         <h2 className="balance-footer">Balance Due: ${parseFloat(details.total_price).toFixed(2)}</h2>
       </div>
     </div>
-        
+        <br />
+
         </>
   );
 }

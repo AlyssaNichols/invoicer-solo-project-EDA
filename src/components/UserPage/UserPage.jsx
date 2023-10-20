@@ -19,11 +19,12 @@ function UserPage() {
       <br />
       <br />
       <br />
-      <Card sx={{ minWidth: 275 }}>
+      <center>
+      <Card sx={{ minWidth: "275", width: "98%" }}>
         <center>
           <CardContent>
           <h2 style={{
-                  marginTop: "-5px", marginBottom: "0px", fontSize: "22px"
+                  marginTop: "-5px", marginBottom: "0px", fontSize: "22px",
                 }}>              Welcome,{" "}
                 {user.username.charAt(0).toUpperCase() + user.username.slice(1)}!</h2>
             <p style={{
@@ -34,6 +35,7 @@ function UserPage() {
           </CardContent>
         </center>
       </Card>
+      </center>
       <div className="aboutDiv">
         <h1 className="mainUserHeader">
           Easily Generate A <br />

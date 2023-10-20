@@ -9,6 +9,7 @@ import invoiceDetails from './invoiceDetails.saga';
 import lineItemSaga from './lineItem.saga';
 import employeesSaga from './employees.saga';
 import archivedCustomersSaga from './archivedCustomers.saga';
+import companiesSaga from './companies.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -28,6 +29,7 @@ export default function* rootSaga() {
     invoiceDetails(),
     lineItemSaga(),
     employeesSaga(),
-    archivedCustomersSaga()
+    archivedCustomersSaga(),
+    companiesSaga()
   ]);
 }
