@@ -10,6 +10,7 @@ import ServiceData from "../ServiceData/ServiceData";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import Swal from 'sweetalert2'
 
 export default function InvoiceDetails() {
   const dispatch = useDispatch();
@@ -44,17 +45,22 @@ export default function InvoiceDetails() {
   const handleAddLineItem = () => {
     if (!newLineItem.service_id || !newLineItem.date_performed || !newLineItem.service_price){
       alert ("please fill in all the fields before submitting!")
-    }
+    } else {
     setNewLineItem(newLineItem);
     dispatch({
       type: "ADD_LINE_ITEM",
       payload: { newLineItem, invoice_id: params.id },
     });
+    Swal.fire({
+      icon: 'success',
+      title: 'Service Added',
+      text: 'The new service has been successfully added.',
+    });
     setNewLineItem({
       service_id: "",
       date_performed: "",
       service_price: "",
-    });
+    });}
   };
 
   useEffect(() => {

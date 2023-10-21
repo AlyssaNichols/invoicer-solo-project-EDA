@@ -6,6 +6,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import "./InvoiceHistory.css";
+import Swal from "sweetalert2";
 
 export default function InvoiceHistory() {
   const history = useHistory();
@@ -30,9 +31,22 @@ export default function InvoiceHistory() {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
   };
+
   const handleDeleteInvoice = (invoiceId) => {
-    // Dispatch an action to delete the invoice with the given ID
-    dispatch({ type: "DELETE_INVOICE", payload: invoiceId });
+    Swal.fire({
+      title: "Are you sure you want to delete this Invoice?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Dispatch an action to delete the invoice with the given ID
+        dispatch({ type: "DELETE_INVOICE", payload: invoiceId });
+        Swal.fire("Invoice Successfully Deleted!");
+      }
+    });
   };
 
   const moreDetails = (invoiceId) => {
@@ -43,12 +57,38 @@ export default function InvoiceHistory() {
     history.push(`/invoice/print/${invoiceId}`);
   }
 
-  const formatPrice = (price) => {
-    if (typeof price === "number") {
-      return price.toFixed(2);
-    }
-    return "";
+  const handleEditDate = (invoice) => {
+    // Convert the date string to a Date object
+    const date = new Date(editedDate);
+  
+    // Get the year, month, and day components
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1; // Month is zero-based, so add 1
+    const day = date.getDate();
+  
+    // Create a formatted date string in 'YYYY-MM-DD' format
+    const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+  
+    Swal.fire({
+      icon: 'success',
+      title: 'Marked as Paid',
+      text: `The invoice was marked as paid on ${formattedDate}.`,
+    });
+  
+    dispatch({
+      type: 'EDIT_INVOICE',
+      payload: { ...invoice, date_paid: formattedDate },
+    });
+  
+    setEditMode(null);
   };
+
+  // const formatPrice = (price) => {
+  //   if (typeof price === "number") {
+  //     return price.toFixed(2);
+  //   }
+  //   return "";
+  // };
   return (
     <>
       <br />
@@ -116,6 +156,7 @@ export default function InvoiceHistory() {
                     {inEditMode ? (
                       <input
                         type="date"
+                        className="custom-date-input"
                         value={editedDate}
                         onChange={(e) => setEditedDate(e.target.value)}
                       />
@@ -127,18 +168,14 @@ export default function InvoiceHistory() {
                   <td>
                     {inEditMode ? (
                       <>
-                        {" "}
-                        <button
-                          className="history-deleteButton"
-                          onClick={() => {
-                            setEditMode(null);
-                          }}
-                        >
-                          Cancel
-                        </button>{" "}
                         <button
                           className="paidButton"
                           onClick={() => {
+                            Swal.fire({
+                              icon: 'success',
+                              title: 'Marked as Paid',
+                              text: `The invoice was marked as paid.`,
+                            });
                             dispatch({
                               type: "EDIT_INVOICE",
                               payload: { ...invoice, date_paid: editedDate },
@@ -147,6 +184,14 @@ export default function InvoiceHistory() {
                           }}
                         >
                           Save
+                        </button>
+                        <button
+                          className="history-deleteButton"
+                          onClick={() => {
+                            setEditMode(null);
+                          }}
+                        >
+                          Cancel
                         </button>
                       </>
                     ) : (

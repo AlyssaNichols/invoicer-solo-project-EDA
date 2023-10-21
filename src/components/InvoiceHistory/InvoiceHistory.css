@@ -98,3 +98,19 @@
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
     /* Lowering the shadow */
   }
+
+  /* CSS in a separate .css file or using styled-components, etc. */
+
+.custom-date-input {
+  width: 90%; /* Fill the entire cell width */
+  padding: 6px;
+  border: none;
+  border-bottom: 2px solid #008080; /* Custom bottom border color */
+  font-size: 16px;
+  text-align: center;
+}
+
+.custom-date-input:focus {
+  outline: none; /* Remove the default focus outline */
+  border-color: #c81ff3; /* Custom color when focused */
+}

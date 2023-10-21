@@ -11,6 +11,7 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
+import Swal from "sweetalert2";
 
 export default function AdminCustomerPage() {
   const history = useHistory();
@@ -42,6 +43,11 @@ export default function AdminCustomerPage() {
     ) {
       alert("Please make sure all fields are filled in before submitting!");
     } else {
+      Swal.fire({
+        icon: "success",
+        title: "Customer Added",
+        text: "The new customer has been successfully added.",
+      });
       dispatch({
         type: "ADD_CUSTOMER",
         payload: {
@@ -94,10 +100,22 @@ export default function AdminCustomerPage() {
   }, []);
 
   const handleArchive = (customerId) => {
-    // Dispatch an action to delete the invoice with the given ID
-    dispatch({ type: "DELETE_CUSTOMER", payload: customerId });
-    dispatch({ type: "FETCH_CUSTOMERS" });
-    dispatch({ type: "FETCH_ARCHIVED_CUSTOMERS" });
+    Swal.fire({
+      title: "Are you sure you want to delete this Customer?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete them",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Dispatch an action to delete the invoice with the given ID
+        dispatch({ type: "DELETE_CUSTOMER", payload: customerId });
+        dispatch({ type: "FETCH_CUSTOMERS" });
+        dispatch({ type: "FETCH_ARCHIVED_CUSTOMERS" });
+        Swal.fire("Customer Successfully Deleted!");
+      }
+    });
   };
 
   return (
@@ -246,43 +264,46 @@ export default function AdminCustomerPage() {
       </center>
       <br />
       {!showCustomerForm && (
-  <table className="invoice-table">
-    <thead>
-      <tr>
-        <th>Last, First Name</th>
-        <th>Address</th>
-        <th>City</th>
-        <th>State</th>
-        <th>ZIP</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {customerList?.map((customer, index) => {
-        return (
-          <tr key={index}>
-            <td>
-              {customer.last_name}, {customer.first_name}{" "}
-            </td>
-            <td>{customer.address}</td>
-            <td>{customer.city}</td>
-            <td>{customer.state}</td>
-            <td>{customer.zip}</td>
-            <td>{customer.phone}</td>
-            <td>{customer.email}</td>
-            <td>
-              <button className="history-deleteButton" onClick={() => handleArchive(customer.id)}>
-                Archive Customer
-              </button>
-            </td>
-          </tr>
-        );
-      })}
-    </tbody>
-  </table>
-)}
+        <table className="invoice-table">
+          <thead>
+            <tr>
+              <th>Last, First Name</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>ZIP</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {customerList?.map((customer, index) => {
+              return (
+                <tr key={index}>
+                  <td>
+                    {customer.last_name}, {customer.first_name}{" "}
+                  </td>
+                  <td>{customer.address}</td>
+                  <td>{customer.city}</td>
+                  <td>{customer.state}</td>
+                  <td>{customer.zip}</td>
+                  <td>{customer.phone}</td>
+                  <td>{customer.email}</td>
+                  <td>
+                    <button
+                      className="history-deleteButton"
+                      onClick={() => handleArchive(customer.id)}
+                    >
+                      Archive Customer
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
       <br />
       <br />
       <center>
@@ -304,13 +325,13 @@ export default function AdminCustomerPage() {
           <ArchivedCutomerList toggleArchived={toggleArchived} />
         ) : (
           <Button
-          style={{ backgroundColor: "#A09084", color: "white"}}
-          variant="contained"
-          type="button"
-          onClick={toggleArchived}
-        >
-          Show Archived Customers
-        </Button>
+            style={{ backgroundColor: "#A09084", color: "white" }}
+            variant="contained"
+            type="button"
+            onClick={toggleArchived}
+          >
+            Show Archived Customers
+          </Button>
         )}
       </center>
     </>

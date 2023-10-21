@@ -10,6 +10,7 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
+import Swal from "sweetalert2";
 
 export default function AdminPageServices() {
   const history = useHistory();
@@ -28,11 +29,33 @@ export default function AdminPageServices() {
     if (!serviceName.service) {
         alert("Please make sure you enter a new Service!");
       } else {
+        Swal.fire({
+          icon: 'success',
+          title: 'Service Added',
+          text: 'The new service has been successfully added.',
+        });
     dispatch({ type: "ADD_SERVICE", payload: serviceName});
     setServiceName({service: ""});
 
   }
 }
+
+const handleArchive = (serviceId) => {
+  Swal.fire({
+    title: "Are you sure you want to delete this Service?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Dispatch an action to delete the invoice with the given ID
+      dispatch({ type: "DELETE_SERVICE", payload: serviceId })
+      Swal.fire("Service Successfully Deleted!");
+    }
+  });
+};
 
   const [serviceName, setServiceName] = useState( {service: ""});
 
@@ -108,7 +131,7 @@ export default function AdminPageServices() {
             return (
               <tr key={index}>
                 <td>{service.service}</td>
-                <td><button className="history-deleteButton" onClick={() => dispatch({ type: "DELETE_SERVICE", payload: service.id })}>Delete Service</button></td>
+                <td><button className="history-deleteButton" onClick={() => handleArchive(service.id)}>Delete Service</button></td>
               </tr>
             );
           })}

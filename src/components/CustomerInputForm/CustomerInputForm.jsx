@@ -10,6 +10,8 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
+import Swal from 'sweetalert2'
+
 
 export default function CustomerInputForm() {
   const history = useHistory();
@@ -50,6 +52,11 @@ export default function CustomerInputForm() {
       setEmail("");
       setPhone("");
     }
+    Swal.fire({
+      icon: 'success',
+      title: 'Customer Added',
+      text: 'The new customer has been successfully added.',
+    });
   };
   function cancelAdd() {
     setFirstName("");

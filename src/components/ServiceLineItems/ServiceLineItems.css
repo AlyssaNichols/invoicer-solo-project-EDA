@@ -13,7 +13,7 @@
 }
 
 .deleteButton:hover {
-  background-color: rgb(238, 57, 25);
+  background-color: rgb(250, 140, 120);
 }
 
 .deleteButton:active {
@@ -24,7 +24,7 @@
 }
 
 .editButton:hover {
-  background-color: rgb(66, 227, 141);
+  background-color: rgb(136, 220, 175);
 }
 
 .editButton {
@@ -47,4 +47,20 @@
   /* Scaling button to 0.98 to its original size */
   box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
   /* Lowering the shadow */
+}
+
+/* CSS for the text input, matching the style of the date input */
+
+.custom-text-input {
+  width: 80%;
+  padding: 6px;
+  border: none;
+  border-bottom: 2px solid #008080;
+  font-size: 16px;
+  text-align: center;
+}
+
+.custom-text-input:focus {
+  outline: none;
+  border-color: #c81ff3;
 }

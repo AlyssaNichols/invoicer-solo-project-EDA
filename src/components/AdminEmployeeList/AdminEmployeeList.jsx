@@ -12,6 +12,7 @@ import {
   Typography,
   MenuItem,
 } from "@mui/material";
+import Swal from "sweetalert2";
 
 export default function AdminPageServices() {
   const history = useHistory();
@@ -32,6 +33,11 @@ export default function AdminPageServices() {
     if (!employee.username) {
       alert("Please make sure you enter a new Employee!");
     } else {
+      Swal.fire({
+        icon: 'success',
+        title: 'Employee Added',
+        text: 'The new Employee has been successfully added.',
+      });
       dispatch({ type: "ADD_EMPLOYEE", payload: employee });
       setEmployee({ username: "", password: "" });
     }
