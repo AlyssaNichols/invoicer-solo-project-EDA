@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 
-export default function AdminListCustomers({ customer, index }) {
+export default function AdminListCustomers({ customer }) {
   const dispatch = useDispatch();
+  console.log("-----------------------------Customer Data:", customer);
 
   const handleArchive = (customerId) => {
     Swal.fire({
@@ -24,7 +25,7 @@ export default function AdminListCustomers({ customer, index }) {
   };
 
   const [edit, setEdit] = useState(false);
-  const [editFirst, setEditFirst] = useState(customer.first_name);
+  const [editAddress, setEditAddress] = useState(customer.address);
   const [editCity, setEditCity] = useState(customer.city);
   const [editState, setEditState] = useState(customer.state);
   const [editZip, setEditZip] = useState(customer.zip);
@@ -33,6 +34,12 @@ export default function AdminListCustomers({ customer, index }) {
 
   const handleEdit = () => {
     setEdit(!edit);
+    setEditAddress(customer.address);
+    setEditCity(customer.city);
+    setEditState(customer.state);
+    setEditZip(customer.zip);
+    setEditPhone(customer.phone);
+    setEditEmail(customer.email);
   };
 
   const saveEdit = () => {
@@ -45,9 +52,8 @@ export default function AdminListCustomers({ customer, index }) {
     dispatch({
       type: "EDIT_CUSTOMER",
       payload: {
-        id: customer.id,
-        first_name: editFirst,
-        last_name: editLast,
+        id: params.id,
+        address: editAddress,
         city: editCity,
         zip: editZip,
         state: editState,
@@ -62,14 +68,17 @@ export default function AdminListCustomers({ customer, index }) {
   return (
     <tr key={index}>
       <td>
+        ${customer.last_name}, ${customer.first_name} HIIIIII
+      </td>
+      <td>
         {edit ? (
           <input
             type="text"
-            value={editFirst}
-            onChange={(e) => setEditFirst(e.target.value)}
+            value={editAddress}
+            onChange={(e) => setEditAddress(e.target.value)}
           />
         ) : (
-          `${customer.last_name}, ${customer.first_name}`
+          `${customer.address}`
         )}
       </td>
       <td>
@@ -80,7 +89,7 @@ export default function AdminListCustomers({ customer, index }) {
             onChange={(e) => setEditCity(e.target.value)}
           />
         ) : (
-          customer.city
+          `${customer.city}`
         )}
       </td>
       <td>
@@ -91,7 +100,7 @@ export default function AdminListCustomers({ customer, index }) {
             onChange={(e) => setEditState(e.target.value)}
           />
         ) : (
-          customer.state
+          `${customer.state}`
         )}
       </td>
       <td>
@@ -102,7 +111,7 @@ export default function AdminListCustomers({ customer, index }) {
             onChange={(e) => setEditZip(e.target.value)}
           />
         ) : (
-          customer.zip
+          `${customer.zip}`
         )}
       </td>
       <td>
@@ -113,7 +122,7 @@ export default function AdminListCustomers({ customer, index }) {
             onChange={(e) => setEditPhone(e.target.value)}
           />
         ) : (
-          customer.phone
+          `${customer.phone}`
         )}
       </td>
       <td>
@@ -124,7 +133,7 @@ export default function AdminListCustomers({ customer, index }) {
             onChange={(e) => setEditEmail(e.target.value)}
           />
         ) : (
-          customer.email
+          `${customer.email}`
         )}
       </td>
       <td>

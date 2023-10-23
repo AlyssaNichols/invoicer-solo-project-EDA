@@ -13,6 +13,8 @@ import {
 } from "@mui/material";
 import Swal from "sweetalert2";
 import AdminListCustomers from "../AdminListCustomers/AdminListCustomers";
+import CustomerInputForm from "../CustomerInputForm/CustomerInputForm";
+import AdminTable from "../AdminTable/AdminTable";
 
 export default function AdminCustomerPage() {
   const history = useHistory();
@@ -43,6 +45,7 @@ export default function AdminCustomerPage() {
       !phone
     ) {
       alert("Please make sure all fields are filled in before submitting!");
+      return
     } else {
       Swal.fire({
         icon: "success",
@@ -100,27 +103,7 @@ export default function AdminCustomerPage() {
     dispatch({ type: "FETCH_ARCHIVED_CUSTOMERS" });
   }, []);
 
-  const handleArchive = (customerId) => {
-    Swal.fire({
-      title: "Are you sure you want to archive this Customer?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, archive them",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Dispatch an action to delete the invoice with the given ID
-        dispatch({ type: "DELETE_CUSTOMER", payload: customerId });
-        dispatch({ type: "FETCH_CUSTOMERS" });
-        dispatch({ type: "FETCH_ARCHIVED_CUSTOMERS" });
-        Swal.fire("Customer Successfully archived!");
-      }
-    });
-  };
 
-
-  
   return (
     <>
       <center>
@@ -267,60 +250,7 @@ export default function AdminCustomerPage() {
       </center>
       <br />
       {!showCustomerForm && (
-        <table className="invoice-table">
-          <thead>
-            <tr>
-              <th>Last, First Name</th>
-              <th>Address</th>
-              <th>City</th>
-              <th>State</th>
-              <th>ZIP</th>
-              <th>Phone</th>
-              <th>Email</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {customerList?.map((customer, index) => {
-              // <AdminListCustomers key={index} customer={customer} />
-              return (
-                <tr key={index}>
-                  <td>
-                    {customer.last_name}, {customer.first_name}{" "}
-                  </td>
-                  <td>{customer.address}</td>
-                  <td>{customer.city}</td>
-                  <td>{customer.state}</td>
-                  <td>{customer.zip}</td>
-                  <td>{customer.phone}</td>
-                  <td>{customer.email}</td>
-                  <td>
-                    <Button
-                      style={{
-                        fontSize: "12px",
-                        padding: "2px 10px",
-                        color: "black",
-                        fontWeight: "bold",
-                        border: "1px solid black",
-                        transition: "background-color 0.3s",
-                      }}
-                      variant="outlined"
-                      onClick={() => handleArchive(customer.id)}
-                      onMouseEnter={(e) =>
-                        (e.target.style.backgroundColor = "#D16965")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.target.style.backgroundColor = "transparent")
-                      }
-                    >
-                      Archive
-                    </Button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+       <AdminTable />
       )}
       <br />
       <br />
@@ -355,3 +285,4 @@ export default function AdminCustomerPage() {
     </>
   );
 }
+

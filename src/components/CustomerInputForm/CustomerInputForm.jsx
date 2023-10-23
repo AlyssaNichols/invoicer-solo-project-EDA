@@ -29,6 +29,7 @@ export default function CustomerInputForm() {
       !phone
     ) {
       alert("Please make sure all fields are filled in before submitting!");
+      return
     } else {
       dispatch({
         type: "ADD_CUSTOMER",

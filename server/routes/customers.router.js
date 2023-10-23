@@ -89,4 +89,28 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  const queryText = `UPDATE "customers"
+  SET "address" = $1,
+      "city" = $2,
+      "state" = $3,
+      "zip" = $4,
+      "phone" = $5,
+      "email" = $6
+  WHERE "id" = $7;`;
+  pool
+    .query(queryText, [
+      req.body.address, req.body.city, req.body.state, 
+      Number(req.body.zip), Number(req.body.phone),
+      req.body.email, req.params.id
+    ])
+    .then((response) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("error saving to database", err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

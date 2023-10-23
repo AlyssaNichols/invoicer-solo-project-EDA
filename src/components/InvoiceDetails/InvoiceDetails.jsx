@@ -125,197 +125,207 @@ export default function InvoiceDetails() {
         </Card>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <Paper
-        elevation={3}
-        style={{
-          width: "30%",
-          marginTop: "30px",
-          marginLeft: "1%",
-          minWidth: "360px",
-        }}
-      >
-        <div
+        <Paper
+          elevation={3}
           style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            width: "30%",
+            marginTop: "30px",
+            marginLeft: "1%",
+            minWidth: "360px",
           }}
         >
-          <center>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                padding: "5px",
-                "& .MuiTextField-root": { m: 0.4, width: "40ch" },
-              }}
-            >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <center>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  padding: "5px",
+                  "& .MuiTextField-root": { m: 0.4, width: "40ch" },
+                }}
+              >
+                <br />
+                <InputLabel
+                  sx={{
+                    fontWeight: "normal",
+                    fontSize: "18px",
+                    color: "black",
+                  }}
+                >
+                  Select a Service:
+                </InputLabel>
+                <TextField
+                  select
+                  label="Select a Service"
+                  id="serviceSelect"
+                  value={newLineItem.service_id}
+                  onChange={(e) =>
+                    setNewLineItem({
+                      ...newLineItem,
+                      service_id: e.target.value,
+                    })
+                  }
+                  fullWidth
+                >
+                  {servicesList.map((service, index) => (
+                    <MenuItem key={service.id} value={service.id}>
+                      {service.service}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  padding: "5px",
+                  "& .MuiTextField-root": { m: 0.4, width: "40ch" },
+                }}
+              >
+                <InputLabel
+                  sx={{
+                    fontWeight: "normal",
+                    fontSize: "18px",
+                    color: "black",
+                  }}
+                >
+                  Date Service was Performed:
+                </InputLabel>
+                <TextField
+                  type="date"
+                  id="date_performed"
+                  value={newLineItem.date_performed}
+                  onChange={(e) =>
+                    setNewLineItem({
+                      ...newLineItem,
+                      date_performed: e.target.value,
+                    })
+                  }
+                  fullWidth
+                />
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  padding: "5px",
+                  "& .MuiTextField-root": { m: 0.4, width: "40ch" },
+                }}
+              >
+                <InputLabel
+                  sx={{
+                    fontWeight: "normal",
+                    fontSize: "18px",
+                    color: "black",
+                  }}
+                >
+                  Service Price:
+                </InputLabel>
+                <TextField
+                  type="text"
+                  id="service_price"
+                  label="Service Price"
+                  value={newLineItem.service_price}
+                  onChange={(e) =>
+                    setNewLineItem({
+                      ...newLineItem,
+                      service_price: e.target.value,
+                    })
+                  }
+                  fullWidth
+                />
+              </Box>
               <br />
-              <InputLabel
-                sx={{
-                  fontWeight: "normal",
-                  fontSize: "18px",
-                  color: "black",
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "#008080",
+                  color: "white",
+                  fontSize: "16px",
+                  marginTop: "0px",
                 }}
+                onClick={handleAddLineItem}
+                sx={{ padding: "10px 28px" }}
               >
-                Select a Service:
-              </InputLabel>
-              <TextField
-                select
-                label="Select a Service"
-                id="serviceSelect"
-                value={newLineItem.service_id}
-                onChange={(e) =>
-                  setNewLineItem({
-                    ...newLineItem,
-                    service_id: e.target.value,
-                  })
-                }
-                fullWidth
-              >
-                {servicesList.map((service, index) => (
-                  <MenuItem key={service.id} value={service.id}>
-                    {service.service}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                padding: "5px",
-                "& .MuiTextField-root": { m: 0.4, width: "40ch" },
-              }}
-            >
-              <InputLabel
-                sx={{
-                  fontWeight: "normal",
-                  fontSize: "18px",
-                  color: "black",
-                }}
-              >
-                Date Service was Performed:
-              </InputLabel>
-              <TextField
-                type="date"
-                id="date_performed"
-                value={newLineItem.date_performed}
-                onChange={(e) =>
-                  setNewLineItem({
-                    ...newLineItem,
-                    date_performed: e.target.value,
-                  })
-                }
-                fullWidth
-              />
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                padding: "5px",
-                "& .MuiTextField-root": { m: 0.4, width: "40ch" },
-              }}
-            >
-              <InputLabel
-                sx={{
-                  fontWeight: "normal",
-                  fontSize: "18px",
-                  color: "black",
-                }}
-              >
-                Service Price:
-              </InputLabel>
-              <TextField
-                type="text"
-                id="service_price"
-                label="Service Price"
-                value={newLineItem.service_price}
-                onChange={(e) =>
-                  setNewLineItem({
-                    ...newLineItem,
-                    service_price: e.target.value,
-                  })
-                }
-                fullWidth
-              />
-            </Box>
-            <br />
+                Add Line Item
+              </Button>
+            </center>
+          </div>
+          <br />
+        </Paper>
+        <Paper
+          elevation={3}
+          style={{
+            width: "66%",
+            marginTop: "30px",
+            marginRight: "1%",
+            minWidth: "700px",
+          }}
+        >
+          <br />
+          <br />
+          <table className="invoice-table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Date Performed</th>
+                <th>Service Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {details.service_data?.map((item, index) => (
+                <ServiceListItem key={index} item={item} index={index} />
+              ))}
+            </tbody>
+          </table>
+          <center>
+            {details.total_price ? (
+              <center>
+                {" "}
+                <Typography variant="h5" component="div">
+                  <h1
+                    style={{
+                      marginTop: "30px",
+                      fontSize: "28px",
+                      letterSpacing: ".5px",
+                    }}
+                  >
+                    Total Price: ${parseFloat(details.total_price).toFixed(2)}
+                  </h1>
+                </Typography>
+              </center>
+            ) : (
+              <h3></h3>
+            )}
+          </center>
+          <center>
             <Button
               variant="contained"
               style={{
-                backgroundColor: "#008080",
+                backgroundColor: "#996887",
                 color: "white",
                 fontSize: "16px",
                 marginTop: "0px",
               }}
-              onClick={handleAddLineItem}
               sx={{ padding: "10px 28px" }}
+              onClick={generateInvoice}
             >
-              Add Line Item
+              Print Invoice!
             </Button>
+            <br />
+            <br />
           </center>
-        </div>
-        <br />
-      </Paper>
-      <Paper
-        elevation={3}
-        style={{
-          width: "66%",
-          marginTop: "30px",
-          marginRight: "1%",
-          minWidth: "700px",
-        }}
-      >
-        <br />
-        <br />
-      <table className="invoice-table">
-        <thead>
-          <tr>
-            <th>Service</th>
-            <th>Date Performed</th>
-            <th>Service Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {details.service_data?.map((item, index) => (
-            <ServiceListItem key={index} item={item} index={index} />
-          ))}
-        </tbody>
-      </table>
-      <center>
-        {details.total_price ? (
-          <h3>Total Price: ${parseFloat(details.total_price).toFixed(2)}</h3>
-        ) : (
-          <h3></h3>
-        )}
-      </center>
-      <br />
-      <br />
-      <br />
-      <center>
-        <Button
-          variant="contained"
-          style={{
-            backgroundColor: "#996887",
-            color: "white",
-            fontSize: "16px",
-            marginTop: "0px",
-          }}
-          sx={{ padding: "10px 28px" }}
-          onClick={generateInvoice}
-        >
-          Print Invoice!
-        </Button>
-        <br />
-        <br />
-      </center>
-      </Paper>
+        </Paper>
       </div>
     </div>
   );
