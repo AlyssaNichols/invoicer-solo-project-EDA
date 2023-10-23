@@ -26,26 +26,25 @@ export default function AdminPageServices() {
 
   const registerUser = (event) => {
     event.preventDefault();
-      Swal.fire({
-        icon: "success",
-        title: "Employee Added",
-        text: "The new Employee has been successfully added.",
-      });
-      dispatch({
-        type: "REGISTER",
-        payload: {
-          username: username,
-          password: password,
-        },
-      });
-      setUsername("");
-      setPassword("");
-    } // end registerUser
+    Swal.fire({
+      icon: "success",
+      title: "Employee Added",
+      text: "The new Employee has been successfully added.",
+    });
+    dispatch({
+      type: "REGISTER",
+      payload: {
+        username: username,
+        password: password,
+      },
+    });
+    setUsername("");
+    setPassword("");
+  }; // end registerUser
 
   useEffect(() => {
     dispatch({ type: "FETCH_EMPLOYEES" });
   }, []);
-
 
   const handleDelete = (employeeId) => {
     Swal.fire({
@@ -208,8 +207,8 @@ export default function AdminPageServices() {
   );
 }
 
-
-       {/* <TextField
+{
+  /* <TextField
                 select
                 label="Admin Status"
                 id="is_admin"
@@ -220,4 +219,5 @@ export default function AdminPageServices() {
                 fullWidth
               >
                 <MenuItem value={false}>Not Admin</MenuItem>
-              </TextField> */}
+              </TextField> */
+}

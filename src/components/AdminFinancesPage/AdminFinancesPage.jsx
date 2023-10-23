@@ -1,96 +1,121 @@
-import  { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import React from 'react';
 import {
   Chart as ChartJS,
+  BarElement,
   CategoryScale,
   LinearScale,
-  BarElement,
-  Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 export default function AdminFinancialPage() {
+  const dispatch = useDispatch();
+  const finances = useSelector((store) => store.financesReducer);
 
-    const dispatch = useDispatch();
-  const finances = useSelector((store) => store.finances);
-    useEffect(() => {
+  // Initialize objects to hold monthly income and expense totals
+  const monthlyIncome = {};
+  const monthlyExpenses = {};
+
+  useEffect(() => {
     dispatch({ type: "FETCH_FINANCES" });
-  }, [dispatch]);
+  }, []);
 
-  function calculateMonthlyTotals(finances) {
-    // Create an object to store monthly totals
-    const monthlyTotals = {};
-  
-    // Iterate through each financial entry
-    finances?.forEach((entry) => {
-      const date = new Date(entry.date_paid);
-      const year = date.getFullYear();
-      const month = date.getMonth() + 1; // Month is zero-based, so add 1
-  
-      // Create a unique key for each month (e.g., "2023-01" for January 2023)
-      const monthKey = `${year}-${month.toString().padStart(2, '0')}`;
-  
-      // Initialize the total for the month if it doesn't exist
-      if (!monthlyTotals[monthKey]) {
-        monthlyTotals[monthKey] = 0;
-      }
-  
-      // Add the total_price to the corresponding month
-      monthlyTotals[monthKey] += entry.total_price;
+  // Iterate through the finances array to calculate monthly totals
+  finances.forEach((item) => {
+    const dateIssued = new Date(item.date_issued);
+    const monthKey = dateIssued.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
     });
-  
-    return monthlyTotals;
-  }
-  
-  // Calculate monthly totals
-  const monthlyTotals = calculateMonthlyTotals(finances);
-  
-  // Resulting object with monthly totals
-  console.log("TOTALS", monthlyTotals);
 
-  
-  
-  
+    if (item.total_price > 0) {
+      // Add to income
+      if (!monthlyIncome[monthKey]) {
+        monthlyIncome[monthKey] = 0;
+      }
+      monthlyIncome[monthKey] += Number(item.total_price);
+    } else {
+      // Add to expenses
+      if (!monthlyExpenses[monthKey]) {
+        monthlyExpenses[monthKey] = 0;
+      }
+      monthlyExpenses[monthKey] -= Number(item.total_price); // Assuming expenses are represented as negative values
+    }
+  });
 
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  );
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  // Extract months and corresponding income and expense data
+  const months = Object.keys(monthlyIncome)
+    .map((month) => {
+      // Convert month names to their numerical values
+
+      const monthIndex = monthNames?.indexOf(month.split(" ")[0]);
+      const year = parseInt(month.split(" ")[1]);
+      return year * 12 + monthIndex; // Convert to a numeric value based on year and month
+    })
+    .sort((a, b) => a - b); // Sort the numerical values
+
+  const sortedMonths = months.map((numericMonth) => {
+    const year = Math.floor(numericMonth / 12);
+    const monthIndex = numericMonth % 12;
+    return `${monthNames[monthIndex]} ${year}`;
+  });
+
+  const incomeData = sortedMonths.map((month) => monthlyIncome[month] || 0);
+
+  const data = {
+    labels: sortedMonths,
+    datasets: [
+      {
+        label: "Amount Invoiced",
+        data: incomeData,
+        backgroundColor: "#55768a",
+      },
+    ],
+  };
 
   const options = {
-    responsive: true,
     plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Bar Chart',
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            let label = context.dataset.label || "";
+            if (label) {
+              label += ": ";
+            }
+            label += `$${context.parsed.y.toFixed(2)}`; // Add "$" sign and format value
+            return label;
+          },
+        },
       },
     },
   };
-  
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: 'Monthly Invoice Amounts',
-        data: finances?.map((invoice) => invoice.total_price),
-        backgroundColor: 'rgba(255, 99, 132, 0.5',
-      }
-    ],
-  };
-  return <Bar options={options} data={data} />;
+
+
+
+  return (
+    <div>
+      <h2>Monthly Financial Data</h2>
+      <div>
+        <Bar data={data} options={options}></Bar>
+      </div>
+    </div>
+  );
 }
-
-

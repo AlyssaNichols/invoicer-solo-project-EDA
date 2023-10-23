@@ -16,6 +16,7 @@ function* fetchCustomersSaga() {
     try {
       yield axios.delete(`/api/archived//${action.payload}`);
       yield put({ type: "FETCH_ARCHIVED_CUSTOMERS" });
+      yield put({ type: "FETCH_CUSTOMERS" });
     } catch (error) {
       console.log("error with DELETE saga request", error);
     }

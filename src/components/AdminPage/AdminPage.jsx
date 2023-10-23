@@ -47,7 +47,7 @@ export default function AdminPage() {
           <Link to="/admin/customers">Customers</Link>
           <Link to="/admin/employees">Employees</Link>
         </div>
-      </nav>{" "}
+      </nav>
       <div className="aboutDiv">
         <h1 className="mainUserHeader">
           Thanks for choosing <br />
@@ -56,21 +56,14 @@ export default function AdminPage() {
           for your Business
         </h1>
         <p className="infoParagraph">
-          As an Admin, you have the control to:
-          <br />
-          - Add New Services
-          <br />
-          - Remove Old Services
-          <br />
-          - Add Customers
-          <br />
-          - Archive Customers
-          <br />
-          - Create New Employee Credentials
-          <br />- Remove Old Employees
+          As the Admin, you have the control to Add and Remove: Services, Customers, and Employees
+        </p>
+        <p className="infoParagraph">
+         Below you will find a Month by Month Financial <br />overview of how much your company has Invoiced.
+
         </p>
         <br />
-        {/* <AdminFinancialPage /> */}
+        <AdminFinancialPage />
       </div>
     </>
   );
