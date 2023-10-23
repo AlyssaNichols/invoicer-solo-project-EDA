@@ -1,8 +1,11 @@
 import React from "react";
 import "./Footer.css";
 import Box from '@mui/material/Box';
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 function Footer() {
+
+  const history = useHistory();
   const bullet = (
     <Box
       component="span"
@@ -11,10 +14,15 @@ function Footer() {
       •
     </Box>
   );
+  const handleMoreInfoClick = (e) => {
+    e.preventDefault(); // Prevent the default anchor behavior (page reload)
+    history.push("/info");
+  };
 
   return (
     <footer>
-      &copy; Invoicer 2023 {bullet} Alyssa Nichols
+      &copy; Invoicer 2023 {bullet} {" "}
+      <a href="#" onClick={handleMoreInfoClick}>More Info</a> {bullet} Alyssa Nichols
       <br />
     </footer>
   );

@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom"; // Import useParams
 import ServiceData from "../ServiceData/ServiceData";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import "./InvoiceHistory.css";
 import Swal from "sweetalert2";
 import Fuse from "fuse.js";
-import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
-import Button from "@mui/material/Button";
-
+import {
+  TextField,
+  Button,
+  Paper,
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/material";
 export default function InvoiceHistory() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -63,7 +65,7 @@ export default function InvoiceHistory() {
 
   const [query, setQuery] = useState(" ");
   const fuse = new Fuse(invoices, {
-    keys: ["id", "first_name", "last_name"],
+    keys: ["id", "first_name", "last_name", ],
     includeScore: true,
     threshold: 0.3, // Adjust this threshold (0.0 to 1.0) for strictness
     minMatchCharLength: 2, // Adjust the minimum character length for a match
@@ -114,7 +116,7 @@ export default function InvoiceHistory() {
           }}
           variant="outlined"
           fullWidth
-          label="Search Invoice History"
+          label="Search By Name"
           value={query}
           onChange={(e) => handleOnSearch(e.target.value)}
           InputProps={{
@@ -132,6 +134,11 @@ export default function InvoiceHistory() {
         >
           Clear
         </Button>
+        <center>
+        <Paper
+          style={{ width: "95%", marginTop: "20px", paddingTop: "25px", paddingBottom: "25px"}}
+          elevation={3}
+        >
         <table className="invoice-table">
           <thead>
             <tr>
@@ -261,6 +268,8 @@ export default function InvoiceHistory() {
             })}
           </tbody>
         </table>
+        </Paper>
+        </center>
       </div>
     </>
   );
