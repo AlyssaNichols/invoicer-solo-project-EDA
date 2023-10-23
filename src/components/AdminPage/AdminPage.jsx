@@ -13,7 +13,6 @@ export default function AdminPage() {
 
   return (
     <>
-      {" "}
       <br /> <br /> <br />
       <center>
         <Card sx={{ minWidth: 275, width: "98%" }}>

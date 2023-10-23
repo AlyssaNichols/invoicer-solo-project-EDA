@@ -195,11 +195,11 @@ input {
   background-color: #b0b0b0;
   color: black;
   width: 150px;
-  position: fixed;
-  height: 100%;
+  position: absolute;
+  height: 110%;
   overflow-y: auto;
   transition: width 0.3s;
-  right: 19px;
+  right: 1%;
 
 }
 
@@ -226,6 +226,7 @@ input {
 /* Cool Hover Effect */
 .adminNavLinks a:hover {
   transform: scale(1.05); /* Scale the link on hover */
+  text-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
 /* Active Link Style with Click Event */
