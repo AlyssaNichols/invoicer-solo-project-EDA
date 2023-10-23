@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import ArchivedCutomerList from "../ArchivedCustomerList/ArchivedCustomerList";
+import ArchivedCustomerList from "../ArchivedCustomerList/ArchivedCustomerList";
 import {
   Box,
   TextField,
@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import Swal from "sweetalert2";
+import AdminListCustomers from "../AdminListCustomers/AdminListCustomers";
 
 export default function AdminCustomerPage() {
   const history = useHistory();
@@ -118,6 +119,8 @@ export default function AdminCustomerPage() {
     });
   };
 
+
+  
   return (
     <>
       <center>
@@ -279,6 +282,7 @@ export default function AdminCustomerPage() {
           </thead>
           <tbody>
             {customerList?.map((customer, index) => {
+              // <AdminListCustomers key={index} customer={customer} />
               return (
                 <tr key={index}>
                   <td>
@@ -291,12 +295,26 @@ export default function AdminCustomerPage() {
                   <td>{customer.phone}</td>
                   <td>{customer.email}</td>
                   <td>
-                    <button
-                      className="history-deleteButton"
+                    <Button
+                      style={{
+                        fontSize: "12px",
+                        padding: "2px 10px",
+                        color: "black",
+                        fontWeight: "bold",
+                        border: "1px solid black",
+                        transition: "background-color 0.3s",
+                      }}
+                      variant="outlined"
                       onClick={() => handleArchive(customer.id)}
+                      onMouseEnter={(e) =>
+                        (e.target.style.backgroundColor = "#D16965")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.target.style.backgroundColor = "transparent")
+                      }
                     >
-                      Archive Customer
-                    </button>
+                      Archive
+                    </Button>
                   </td>
                 </tr>
               );
@@ -322,7 +340,7 @@ export default function AdminCustomerPage() {
       <br />
       <center>
         {showArchived ? (
-          <ArchivedCutomerList toggleArchived={toggleArchived} />
+          <ArchivedCustomerList toggleArchived={toggleArchived} />
         ) : (
           <Button
             style={{ backgroundColor: "#A09084", color: "white" }}

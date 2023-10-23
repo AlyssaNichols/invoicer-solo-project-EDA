@@ -9,6 +9,7 @@ import {
   Card,
   CardContent,
   Typography,
+  InputLabel,
 } from "@mui/material";
 import Swal from "sweetalert2";
 
@@ -89,6 +90,15 @@ export default function AdminPageServices() {
               noValidate
               autoComplete="off"
             >
+              <InputLabel
+                sx={{
+                  fontWeight: "normal",
+                  fontSize: "16px",
+                  color: "black",
+                }}
+              >
+                New Service:
+              </InputLabel>
               <TextField
                 style={{ backgroundColor: "white" }}
                 placeholder="Service Name"
@@ -120,54 +130,60 @@ export default function AdminPageServices() {
         </Paper>
       </center>
       <br />
+      <br />
+      <br />
       <center>
-        <Paper
-          style={{
-            width: "95%",
-            marginTop: "20px",
-            paddingTop: "20px",
-            paddingBottom: "20px",
-          }}
-          elevation={3}
-        >
-          <table className="invoice-table">
-            <thead>
-              <tr>
-                <th>Service</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {serviceList?.map((service, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{service.service}</td>
-                    <td>
-                      <button
-                        className="history-deleteButton"
-                        onClick={() => handleArchive(service.id)}
-                      >
-                        Delete Service
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <center>
-            <br />
-            <Button
-              style={{ backgroundColor: "#996887", color: "white" }}
-              variant="contained"
-              onClick={() => {
-                history.push("/admin");
-              }}
-            >
-              Back to Admin Main Page
-            </Button>
-          </center>
-        </Paper>
+        <table className="invoice-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {serviceList?.map((service, index) => {
+              return (
+                <tr key={index}>
+                  <td>{service.service}</td>
+                  <td>
+                    <Button
+                      style={{
+                        fontSize: "12px",
+                        padding: "2px 10px",
+                        color: "black",
+                        fontWeight: "bold",
+                        border: "1px solid black",
+                        transition: "background-color 0.3s",
+                      }}
+                      variant="outlined"
+                      onClick={() => handleArchive(service.id)}
+                      onMouseEnter={(e) =>
+                        (e.target.style.backgroundColor = "#D16965")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.target.style.backgroundColor = "transparent")
+                      }
+                    >
+                      Delete
+                    </Button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <center>
+          <br />
+          <Button
+            style={{ backgroundColor: "#996887", color: "white" }}
+            variant="contained"
+            onClick={() => {
+              history.push("/admin");
+            }}
+          >
+            Back to Admin Main Page
+          </Button>
+        </center>
       </center>
     </>
   );

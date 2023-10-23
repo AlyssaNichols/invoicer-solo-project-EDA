@@ -65,7 +65,7 @@ export default function InvoiceHistory() {
 
   const [query, setQuery] = useState(" ");
   const fuse = new Fuse(invoices, {
-    keys: ["id", "first_name", "last_name", ],
+    keys: ["id", "first_name", "last_name"],
     includeScore: true,
     threshold: 0.3, // Adjust this threshold (0.0 to 1.0) for strictness
     minMatchCharLength: 2, // Adjust the minimum character length for a match
@@ -108,7 +108,7 @@ export default function InvoiceHistory() {
       <div>
         <TextField
           style={{
-            marginLeft: "60px",
+            marginLeft: "3%",
             borderRadius: "4px",
             width: "300px",
             marginBottom: "20px",
@@ -126,7 +126,15 @@ export default function InvoiceHistory() {
           }}
         />
         <Button
-          style={{ marginTop: "10px", marginLeft: "10px", backgroundColor: "#996887", height: "30px", color: "white", width: "80px", fontSize: "13px"  }}
+          style={{
+            marginTop: "10px",
+            marginLeft: "10px",
+            backgroundColor: "#996887",
+            height: "30px",
+            color: "white",
+            width: "80px",
+            fontSize: "13px",
+          }}
           variant="contained"
           onClick={() => {
             clearInput();
@@ -135,140 +143,194 @@ export default function InvoiceHistory() {
           Clear
         </Button>
         <center>
-        <Paper
-          style={{ width: "95%", marginTop: "20px", paddingTop: "25px", paddingBottom: "25px"}}
-          elevation={3}
-        >
-        <table className="invoice-table">
-          <thead>
-            <tr>
-              <th>Invoice Number</th>
-              <th>Date Issued</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Contact Info</th>
-              <th>Service Data</th>
-              <th>Total Price</th>
-              <th>Date Paid</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {((query ? searchResult : invoices).length > 0
-              ? query
-                ? searchResult
+          <table style={{ width: "94%" }} className="invoice-table">
+            <thead>
+              <tr>
+                <th>Invoice Number</th>
+                <th>Date Issued</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Contact Info</th>
+                <th>Service Data</th>
+                <th>Total Price</th>
+                <th>Date Paid</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {((query ? searchResult : invoices).length > 0
+                ? query
+                  ? searchResult
+                  : invoices
                 : invoices
-              : invoices
-            ).map((invoice) => {
-              const inEditMode = editMode === invoice.id;
-              return (
-                <tr key={invoice.id}>
-                  <td>{invoice.id}</td>
-                  <td>{formatDate(invoice.date_issued)}</td>
-                  <td>
-                    {invoice.first_name} {invoice.last_name}
-                  </td>
-                  <td>
-                    {invoice.address} <br /> {invoice.city}, {invoice.state}{" "}
-                    {invoice.zip}
-                  </td>
-                  <td>
-                    Phone: {invoice.phone}
-                    <br /> Email: {invoice.email}
-                  </td>
-                  <td>
-                    <ul>
-                      {invoice.service_data.map((service, index) => (
-                        <ServiceData key={index} service={service} />
-                      ))}
-                    </ul>
-                  </td>
-                  <td>{parseFloat(invoice.total_price).toFixed(2)}</td>
-                  <td>
-                    {inEditMode ? (
-                      <input
-                        type="date"
-                        className="custom-date-input"
-                        value={editedDate}
-                        onChange={(e) => setEditedDate(e.target.value)}
-                      />
-                    ) : (
-                      formatDate(invoice.date_paid)
-                    )}
-                  </td>
+              ).map((invoice) => {
+                const inEditMode = editMode === invoice.id;
+                return (
+                  <tr key={invoice.id}>
+                    <td>{invoice.id}</td>
+                    <td>{formatDate(invoice.date_issued)}</td>
+                    <td>
+                      {invoice.first_name} {invoice.last_name}
+                    </td>
+                    <td>
+                      {invoice.address} <br /> {invoice.city}, {invoice.state}{" "}
+                      {invoice.zip}
+                    </td>
+                    <td>
+                      Phone: {invoice.phone}
+                      <br /> Email: {invoice.email}
+                    </td>
+                    <td>
+                      <ul>
+                        {invoice.service_data.map((service, index) => (
+                          <ServiceData key={index} service={service} />
+                        ))}
+                      </ul>
+                    </td>
+                    <td>{parseFloat(invoice.total_price).toFixed(2)}</td>
+                    <td>
+                      {inEditMode ? (
+                        <input
+                          type="date"
+                          className="custom-date-input"
+                          value={editedDate}
+                          onChange={(e) => setEditedDate(e.target.value)}
+                        />
+                      ) : (
+                        formatDate(invoice.date_paid)
+                      )}
+                    </td>
 
-                  <td>
-                    {inEditMode ? (
-                      <>
-                        <button
-                          className="paidButton"
-                          onClick={() => {
-                            Swal.fire({
-                              icon: "success",
-                              title: "Marked as Paid",
-                              text: `The invoice was marked as paid.`,
-                            });
-                            dispatch({
-                              type: "EDIT_INVOICE",
-                              payload: { ...invoice, date_paid: editedDate },
-                            });
-                            setEditMode(null);
-                          }}
-                        >
-                          Save
-                        </button>
-                        <button
-                          className="history-deleteButton"
-                          onClick={() => {
-                            setEditMode(null);
-                          }}
-                        >
-                          Cancel
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <button
-                          className="paidButton"
-                          onClick={() => {
-                            setEditedDate(invoice.date_paid || "");
-                            setEditMode(invoice.id);
-                          }}
-                        >
-                          Mark Date Paid
-                        </button>
-                        <button
-                          className="printButton"
-                          onClick={() => printInvoice(invoice.id)}
-                        >
-                          Print
-                        </button>{" "}
-                        <br />
-                        <button
-                          className="detailsButton"
-                          onClick={() => moreDetails(invoice.id)}
-                        >
-                          More Details
-                        </button>
-                        <br />
-                        {user.is_admin && (
+                    <td>
+                      {inEditMode ? (
+                        <>
+                          <button
+                            className="paidButton"
+                            onClick={() => {
+                              Swal.fire({
+                                icon: "success",
+                                title: "Marked as Paid",
+                                text: `The invoice was marked as paid.`,
+                              });
+                              dispatch({
+                                type: "EDIT_INVOICE",
+                                payload: { ...invoice, date_paid: editedDate },
+                              });
+                              setEditMode(null);
+                            }}
+                          >
+                            Save
+                          </button>
                           <button
                             className="history-deleteButton"
-                            onClick={() => handleDeleteInvoice(invoice.id)}
+                            onClick={() => {
+                              setEditMode(null);
+                            }}
                           >
-                            Delete
+                            Cancel
                           </button>
-                        )}
-                        <br />
-                      </>
-                    )}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        </Paper>
+                        </>
+                      ) : (
+                        <>
+                          <Button
+                              style={{
+                                marginBottom: "5px",
+                                fontSize: "12px",
+                                padding: "2px 10px",
+                                color: "black",
+                                fontWeight: "bold",
+                                border: "1px solid black",
+                                transition: "background-color 0.3s",
+                              }}
+                              variant="outlined"
+                              onClick={() => {
+                                setEditedDate(invoice.date_paid || "");
+                                setEditMode(invoice.id);
+                              }}
+                              onMouseEnter={(e) =>
+                                (e.target.style.backgroundColor = "rgb(173, 216, 195)")
+                              }
+                              onMouseLeave={(e) =>
+                                (e.target.style.backgroundColor = "transparent")
+                              }
+                            >
+                              Mark Date Paid
+                            </Button>
+                          <Button
+                              style={{
+                                marginBottom: "5px",
+                                fontSize: "12px",
+                                padding: "2px 10px",
+                                color: "black",
+                                fontWeight: "bold",
+                                border: "1px solid black",
+                                transition: "background-color 0.3s",
+                              }}
+                              variant="outlined"
+                              onClick={() => printInvoice(invoice.id)}
+                              onMouseEnter={(e) =>
+                                (e.target.style.backgroundColor = "rgb(203, 178, 228)")
+                              }
+                              onMouseLeave={(e) =>
+                                (e.target.style.backgroundColor = "transparent")
+                              }
+                            >
+                              Print
+                            </Button>
+                          <br />
+                          <Button
+                              style={{
+                                marginBottom: "5px",
+                                fontSize: "12px",
+                                padding: "2px 10px",
+                                color: "black",
+                                fontWeight: "bold",
+                                border: "1px solid black",
+                                transition: "background-color 0.3s",
+                              }}
+                              variant="outlined"
+                              onClick={() => moreDetails(invoice.id)}
+                              onMouseEnter={(e) =>
+                                (e.target.style.backgroundColor = "rgb(152, 188, 193)")
+                              }
+                              onMouseLeave={(e) =>
+                                (e.target.style.backgroundColor = "transparent")
+                              }
+                            >
+                              More Details
+                            </Button>
+                          <br />
+                          {user.is_admin && (
+                            <Button
+                              style={{
+                                fontSize: "12px",
+                                padding: "2px 10px",
+                                color: "black",
+                                fontWeight: "bold",
+                                border: "1px solid black",
+                                transition: "background-color 0.3s",
+                              }}
+                              variant="outlined"
+                              onClick={() => handleDeleteInvoice(invoice.id)}
+                              onMouseEnter={(e) =>
+                                (e.target.style.backgroundColor = "#D16965")
+                              }
+                              onMouseLeave={(e) =>
+                                (e.target.style.backgroundColor = "transparent")
+                              }
+                            >
+                              Delete
+                            </Button>
+                          )}
+                          <br />
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </center>
       </div>
     </>

@@ -14,53 +14,54 @@ import {
 } from "@mui/material";
 import Swal from "sweetalert2";
 
-
-
 export default function AdminPageServices() {
   const history = useHistory();
   const dispatch = useDispatch();
   const employeeList = useSelector((store) => store.employees);
   console.log(employeeList);
-  const [employee, setEmployee] = useState({
-    username: "",
-    password: "",
-  });
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const errors = useSelector((store) => store.errors);
+
+  const registerUser = (event) => {
+    event.preventDefault();
+      Swal.fire({
+        icon: "success",
+        title: "Employee Added",
+        text: "The new Employee has been successfully added.",
+      });
+      dispatch({
+        type: "REGISTER",
+        payload: {
+          username: username,
+          password: password,
+        },
+      });
+      setUsername("");
+      setPassword("");
+    } // end registerUser
 
   useEffect(() => {
     dispatch({ type: "FETCH_EMPLOYEES" });
   }, []);
 
-  const addNewEmployee = (event) => {
-    event.preventDefault();
-    if (!employee.username) {
-      alert("Please make sure you enter a new Employee!");
-    } else {
-      Swal.fire({
-        icon: 'success',
-        title: 'Employee Added',
-        text: 'The new Employee has been successfully added.',
-      });
-      dispatch({ type: "ADD_EMPLOYEE", payload: employee });
-      setEmployee({ username: "", password: "" });
-    }
+
+  const handleDelete = (employeeId) => {
+    Swal.fire({
+      title: "Are you sure you want to delete this Employee?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Delete Them",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({ type: "DELETE_EMPLOYEE", payload: employeeId });
+        Swal.fire("Employee Successfully Deleted!");
+      }
+    });
   };
-
-  // const handleDelete = (employeeId) => {
-  //   Swal.fire({
-  //     title: "Are you sure you want to delete this Employee?",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, Delete them",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //      dispatch({ type: "DELETE_EMPLOYEE", payload: employeeId })
-  //       Swal.fire("Employee Successfully Deleted!");
-  //     }
-  //   });
-
-  // };
 
   return (
     <>
@@ -90,7 +91,7 @@ export default function AdminPageServices() {
           style={{ width: "35%", marginTop: "20px", paddingTop: "25px" }}
           elevation={3}
         >
-          <form onSubmit={addNewEmployee}>
+          <form onSubmit={registerUser}>
             <Box
               className="formFields"
               sx={{
@@ -98,39 +99,31 @@ export default function AdminPageServices() {
               }}
               noValidate
               autoComplete="off"
-            > <h2 style={{marginTop: "-30px", paddingTop: "25px" }}>New Employee Form</h2>
+            >
+              {" "}
+              <h2 style={{ marginTop: "-30px", paddingTop: "25px" }}>
+                New Employee Form
+              </h2>
               <TextField
                 style={{ backgroundColor: "white" }}
                 placeholder="Username"
-                label="Userame"
+                label="Username"
                 type="text"
-                value={employee.username}
-                onChange={(event) =>
-                  setEmployee({ ...employee, username: event.target.value })
-                }
-              /> <br />
-                            <TextField
+                name="username"
+                value={username}
+                required
+                onChange={(event) => setUsername(event.target.value)}
+              />{" "}
+              <br />
+              <TextField
                 style={{ backgroundColor: "white" }}
-                placeholder="Password"
+                type="password"
+                name="password"
                 label="Password"
-                type="text"
-                value={employee.password}
-                onChange={(event) =>
-                  setEmployee({ ...employee, password: event.target.value })
-                }
+                value={password}
+                required
+                onChange={(event) => setPassword(event.target.value)}
               />
-              {/* <TextField
-                select
-                label="Admin Status"
-                id="is_admin"
-                value={employee.is_admin}
-                onChange={(event) =>
-                  setEmployee({ ...employee, is_admin: event.target.value })
-                }
-                fullWidth
-              >
-                <MenuItem value={false}>Not Admin</MenuItem>
-              </TextField> */}
               <br />
               <br />
               <Button
@@ -141,12 +134,15 @@ export default function AdminPageServices() {
                 }}
                 variant="contained"
                 type="submit"
+                name="submit"
+                value="Register"
               >
                 Add New Employee
               </Button>
             </Box>
           </form>
         </Paper>
+        <br />
         <br />
       </center>
       <table className="invoice-table">
@@ -168,7 +164,28 @@ export default function AdminPageServices() {
                     employee.username.slice(1)}
                 </td>
                 <td>{employee.is_admin ? "Admin" : "No"}</td>
-                <td><button className="history-deleteButton" onClick={() => dispatch({ type: "DELETE_EMPLOYEE", payload: employee.id })}>Remove Employee</button></td>
+                <td>
+                  <Button
+                    style={{
+                      fontSize: "12px",
+                      padding: "2px 10px",
+                      color: "black",
+                      fontWeight: "bold",
+                      border: "1px solid black",
+                      transition: "background-color 0.3s",
+                    }}
+                    variant="outlined"
+                    onClick={() => handleDelete(employee.id)}
+                    onMouseEnter={(e) =>
+                      (e.target.style.backgroundColor = "#D16965")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.backgroundColor = "transparent")
+                    }
+                  >
+                    Remove Employee
+                  </Button>
+                </td>
               </tr>
             );
           })}
@@ -190,3 +207,17 @@ export default function AdminPageServices() {
     </>
   );
 }
+
+
+       {/* <TextField
+                select
+                label="Admin Status"
+                id="is_admin"
+                value={employee.is_admin}
+                onChange={(event) =>
+                  setEmployee({ ...employee, is_admin: event.target.value })
+                }
+                fullWidth
+              >
+                <MenuItem value={false}>Not Admin</MenuItem>
+              </TextField> */}
