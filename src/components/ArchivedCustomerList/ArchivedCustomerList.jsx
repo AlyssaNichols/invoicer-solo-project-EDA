@@ -9,6 +9,7 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
+import Swal from "sweetalert2";
 
 export default function ArchivedCutomerList({ toggleArchived }) {
   const dispatch = useDispatch();
@@ -19,9 +20,23 @@ export default function ArchivedCutomerList({ toggleArchived }) {
   }, []);
 
   const handleReset = (customerId) => {
-    // Dispatch an action to delete the invoice with the given ID
-    dispatch({ type: "RESET_CUSTOMER", payload: customerId });
-    dispatch({ type: "FETCH_CUSTOMERS" });
+    Swal.fire({
+      title: "Are you sure you want to un-archive this Customer?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, un-archive them",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Dispatch an action to delete the invoice with the given ID
+       // Dispatch an action to delete the invoice with the given ID
+       dispatch({ type: "RESET_CUSTOMER", payload: customerId });
+       dispatch({ type: "FETCH_CUSTOMERS" });
+        Swal.fire("Customer Successfully un-archived!");
+      }
+    });
+
   };
 
   return (

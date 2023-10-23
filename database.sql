@@ -8,7 +8,7 @@ CREATE TABLE "user" (
 	"username" varchar(80) NOT NULL UNIQUE,
 	"password" varchar(1000) NOT NULL,
 	"is_admin" BOOLEAN DEFAULT false NOT NULL,
-    "company_id" int DEFAULT 1 NOT NULL,
+    "company_id" int DEFAULT 1 REFERENCES companies(id) NOT NULL,
     "isdeleted" BOOLEAN DEFAULT FALSE NOT NULL
 );
 

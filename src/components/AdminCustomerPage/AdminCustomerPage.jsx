@@ -101,19 +101,19 @@ export default function AdminCustomerPage() {
 
   const handleArchive = (customerId) => {
     Swal.fire({
-      title: "Are you sure you want to delete this Customer?",
+      title: "Are you sure you want to archive this Customer?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete them",
+      confirmButtonText: "Yes, archive them",
     }).then((result) => {
       if (result.isConfirmed) {
         // Dispatch an action to delete the invoice with the given ID
         dispatch({ type: "DELETE_CUSTOMER", payload: customerId });
         dispatch({ type: "FETCH_CUSTOMERS" });
         dispatch({ type: "FETCH_ARCHIVED_CUSTOMERS" });
-        Swal.fire("Customer Successfully Deleted!");
+        Swal.fire("Customer Successfully archived!");
       }
     });
   };

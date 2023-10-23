@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import Swal from "sweetalert2";
 
+
+
 export default function AdminPageServices() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -43,6 +45,23 @@ export default function AdminPageServices() {
     }
   };
 
+  // const handleDelete = (employeeId) => {
+  //   Swal.fire({
+  //     title: "Are you sure you want to delete this Employee?",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes, Delete them",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //      dispatch({ type: "DELETE_EMPLOYEE", payload: employeeId })
+  //       Swal.fire("Employee Successfully Deleted!");
+  //     }
+  //   });
+
+  // };
+
   return (
     <>
       <br />
@@ -68,7 +87,7 @@ export default function AdminPageServices() {
       </center>
       <center>
         <Paper
-          style={{ width: "40%", marginTop: "20px", paddingTop: "25px" }}
+          style={{ width: "35%", marginTop: "20px", paddingTop: "25px" }}
           elevation={3}
         >
           <form onSubmit={addNewEmployee}>
@@ -79,7 +98,7 @@ export default function AdminPageServices() {
               }}
               noValidate
               autoComplete="off"
-            >
+            > <h2 style={{marginTop: "-30px", paddingTop: "25px" }}>New Employee Form</h2>
               <TextField
                 style={{ backgroundColor: "white" }}
                 placeholder="Username"
@@ -89,7 +108,7 @@ export default function AdminPageServices() {
                 onChange={(event) =>
                   setEmployee({ ...employee, username: event.target.value })
                 }
-              />
+              /> <br />
                             <TextField
                 style={{ backgroundColor: "white" }}
                 placeholder="Password"

@@ -7,14 +7,17 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import "./InvoiceHistory.css";
 import Swal from "sweetalert2";
+import Fuse from "fuse.js";
+import TextField from "@mui/material/TextField";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function InvoiceHistory() {
   const history = useHistory();
   const dispatch = useDispatch();
   const params = useParams();
-
   const invoices = useSelector((state) => state.invoice);
   const user = useSelector((store) => store.user);
+  console.log("INVOICES", invoices);
 
   useEffect(() => {
     dispatch({ type: "FETCH_INVOICES", payload: params.id });
@@ -31,6 +34,14 @@ export default function InvoiceHistory() {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString(undefined, options);
   };
+
+  const moreDetails = (invoiceId) => {
+    history.push(`/invoice/details/${invoiceId}`);
+  };
+
+  function printInvoice(invoiceId) {
+    history.push(`/invoice/print/${invoiceId}`);
+  }
 
   const handleDeleteInvoice = (invoiceId) => {
     Swal.fire({
@@ -49,46 +60,22 @@ export default function InvoiceHistory() {
     });
   };
 
-  const moreDetails = (invoiceId) => {
-    history.push(`/invoice/details/${invoiceId}`);
-  };
+  const [query, setQuery] = useState(" ");
+  const fuse = new Fuse(invoices, {
+    keys: ["id", "first_name", "last_name"],
+    includeScore: true,
+    threshold: 0.3, // Adjust this threshold (0.0 to 1.0) for strictness
+    minMatchCharLength: 2, // Adjust the minimum character length for a match
+  });
+  const results = fuse.search(query);
+  const searchResult = results.map((result) => result.item);
+  console.log("RESULTS", results);
 
-  function printInvoice(invoiceId) {
-    history.push(`/invoice/print/${invoiceId}`);
+  function handleOnSearch(value) {
+    console.log(value); // Add this line for debugging
+    setQuery(value);
   }
 
-  const handleEditDate = (invoice) => {
-    // Convert the date string to a Date object
-    const date = new Date(editedDate);
-  
-    // Get the year, month, and day components
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1; // Month is zero-based, so add 1
-    const day = date.getDate();
-  
-    // Create a formatted date string in 'YYYY-MM-DD' format
-    const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-  
-    Swal.fire({
-      icon: 'success',
-      title: 'Marked as Paid',
-      text: `The invoice was marked as paid on ${formattedDate}.`,
-    });
-  
-    dispatch({
-      type: 'EDIT_INVOICE',
-      payload: { ...invoice, date_paid: formattedDate },
-    });
-  
-    setEditMode(null);
-  };
-
-  // const formatPrice = (price) => {
-  //   if (typeof price === "number") {
-  //     return price.toFixed(2);
-  //   }
-  //   return "";
-  // };
   return (
     <>
       <br />
@@ -112,6 +99,26 @@ export default function InvoiceHistory() {
       </center>
       <br />
       <div>
+        <TextField
+          style={{
+            marginLeft: "60px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+            width: "300px",
+            marginBottom: "20px",
+            backgroundColor: "white",
+          }}
+          variant="outlined"
+          fullWidth
+          label="Search invoices"
+          value={query}
+          onChange={(e) => handleOnSearch(e.target.value)}
+          InputProps={{
+            startAdornment: (
+              <SearchIcon color="primary" style={{ marginRight: "10px" }} />
+            ),
+          }}
+        />
         <table className="invoice-table">
           <thead>
             <tr>
@@ -127,7 +134,7 @@ export default function InvoiceHistory() {
             </tr>
           </thead>
           <tbody>
-            {invoices.map((invoice) => {
+          {((query ? searchResult : invoices).length > 0 ? (query ? searchResult : invoices) : invoices).map((invoice) => {
               const inEditMode = editMode === invoice.id;
               return (
                 <tr key={invoice.id}>
@@ -172,8 +179,8 @@ export default function InvoiceHistory() {
                           className="paidButton"
                           onClick={() => {
                             Swal.fire({
-                              icon: 'success',
-                              title: 'Marked as Paid',
+                              icon: "success",
+                              title: "Marked as Paid",
                               text: `The invoice was marked as paid.`,
                             });
                             dispatch({
@@ -240,3 +247,25 @@ export default function InvoiceHistory() {
     </>
   );
 }
+
+// const handleEditDate = (invoice) => {
+//   // Convert the date string to a Date object
+//   const date = new Date(editedDate)
+//   // Get the year, month, and day components
+//   const year = date.getFullYear();
+//   const month = date.getMonth() + 1; // Month is zero-based, so add 1
+//   const day = date.getDate();
+//   const formattedDate = `${year}-${month.toString().padStart(2, "0")}-${day
+//     .toString()
+//     .padStart(2, "0")}`;
+//   Swal.fire({
+//     icon: "success",
+//     title: "Marked as Paid",
+//     text: `The invoice was marked as paid on ${formattedDate}.`,
+//   });
+//   dispatch({
+//     type: "EDIT_INVOICE",
+//     payload: { ...invoice, date_paid: formattedDate },
+// //   });
+//   setEditMode(null);
+// };

@@ -59,14 +59,15 @@ export default function AdminPage() {
         </h1>
         <p className="infoParagraph">
       As an Admin, you have the control to:<br />
-      -Add New Services<br />
-      -Remove Old Services<br />
-      -Add Customers<br />
-      -Archive Customers<br />
-      -Create New Employee Credentials<br />
+      - Add New Services<br />
+      - Remove Old Services<br />
+      - Add Customers<br />
+      - Archive Customers<br />
+      - Create New Employee Credentials<br />
+      - Remove Old Employees
         </p>
         <br />
-        {/* <AdminFinancialPage /> */}
+        <AdminFinancialPage />
 
       </div>
     </>
