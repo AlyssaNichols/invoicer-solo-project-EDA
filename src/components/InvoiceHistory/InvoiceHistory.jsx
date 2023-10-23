@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import Fuse from "fuse.js";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
+import Button from "@mui/material/Button";
 
 export default function InvoiceHistory() {
   const history = useHistory();
@@ -76,6 +77,10 @@ export default function InvoiceHistory() {
     setQuery(value);
   }
 
+  function clearInput() {
+    setQuery(" ");
+  }
+
   return (
     <>
       <br />
@@ -102,7 +107,6 @@ export default function InvoiceHistory() {
         <TextField
           style={{
             marginLeft: "60px",
-            border: "1px solid #ccc",
             borderRadius: "4px",
             width: "300px",
             marginBottom: "20px",
@@ -110,7 +114,7 @@ export default function InvoiceHistory() {
           }}
           variant="outlined"
           fullWidth
-          label="Search invoices"
+          label="Search Invoice History"
           value={query}
           onChange={(e) => handleOnSearch(e.target.value)}
           InputProps={{
@@ -119,6 +123,15 @@ export default function InvoiceHistory() {
             ),
           }}
         />
+        <Button
+          style={{ marginTop: "10px", marginLeft: "10px", backgroundColor: "#996887", height: "30px", color: "white", width: "80px", fontSize: "13px"  }}
+          variant="contained"
+          onClick={() => {
+            clearInput();
+          }}
+        >
+          Clear
+        </Button>
         <table className="invoice-table">
           <thead>
             <tr>
@@ -134,7 +147,12 @@ export default function InvoiceHistory() {
             </tr>
           </thead>
           <tbody>
-          {((query ? searchResult : invoices).length > 0 ? (query ? searchResult : invoices) : invoices).map((invoice) => {
+            {((query ? searchResult : invoices).length > 0
+              ? query
+                ? searchResult
+                : invoices
+              : invoices
+            ).map((invoice) => {
               const inEditMode = editMode === invoice.id;
               return (
                 <tr key={invoice.id}>

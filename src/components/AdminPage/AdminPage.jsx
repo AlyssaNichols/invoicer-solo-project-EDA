@@ -67,7 +67,7 @@ export default function AdminPage() {
       - Remove Old Employees
         </p>
         <br />
-        <AdminFinancialPage />
+        {/* <AdminFinancialPage /> */}
 
       </div>
     </>
