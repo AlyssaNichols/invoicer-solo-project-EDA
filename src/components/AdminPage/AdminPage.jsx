@@ -13,11 +13,9 @@ export default function AdminPage() {
 
   return (
     <>
-      {" "}
       <br /> <br /> <br />
       <center>
-      <Card sx={{ minWidth: 275, width: "98%" }}>
-  
+        <Card sx={{ minWidth: 275, width: "98%" }}>
           <CardContent>
             <h2
               style={{
@@ -40,8 +38,7 @@ export default function AdminPage() {
               Your ID Number is: {user.id}
             </p>
           </CardContent>
-       
-      </Card>{" "}
+        </Card>{" "}
       </center>
       <nav className="adminNav">
         <div className="adminNavLinks">
@@ -49,26 +46,21 @@ export default function AdminPage() {
           <Link to="/admin/customers">Customers</Link>
           <Link to="/admin/employees">Employees</Link>
         </div>
-      </nav>{" "}
+      </nav>
       <div className="aboutDiv">
         <h1 className="mainUserHeader">
-          Thanks for chooseing <br />
+          Thanks for choosing <br />
           <span className="professionalInvoice">Invoicer</span>
-          <br />
-          for your Business
         </h1>
         <p className="infoParagraph">
-      As an Admin, you have the control to:<br />
-      - Add New Services<br />
-      - Remove Old Services<br />
-      - Add Customers<br />
-      - Archive Customers<br />
-      - Create New Employee Credentials<br />
-      - Remove Old Employees
+        As the administrator, you have the authority to add or remove services, customers, and employees.
+        </p>
+        <p className="infoParagraph">
+        Here, you will discover a comprehensive month-by-month financial overview, detailing your company's invoicing history.
+
         </p>
         <br />
         <AdminFinancialPage />
-
       </div>
     </>
   );

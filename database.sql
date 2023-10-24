@@ -78,7 +78,25 @@ VALUES
 	('Sarah', 'Miller', '789 Oakwood Ave', 'Fargo', 'ND', 58103, 'sarah.miller@email.com', 7776665555),
 	('Michael', 'Wilson', '1010 Birch Ln', 'Fargo', 'ND', 58102, 'michael.wilson@email.com', 6665554444),
 	('Emily', 'Anderson', '321 Cedar Dr', 'Fargo', 'ND', 58104, 'emily.anderson@email.com', 5554443333),
-	('Robert', 'Martinez', '456 Pine Cone Rd', 'Fargo', 'ND', 58103, 'robert.martinez@email.com', 4443332222);
+	('Robert', 'Martinez', '456 Pine Cone Rd', 'Fargo', 'ND', 58103, 'robert.martinez@email.com', 4443332222),
+    ('Robert', 'Miller', '789 Oak St', 'Fargo', 'ND', 58103, 'robert@example.com', 5552468137, FALSE),
+    ('Susan', 'Brown', '101 Pine St', 'Fargo', 'ND', 58103, 'susan@example.com', 5553692581, FALSE),
+    ('Michael', 'Williams', '234 Birch St', 'Fargo', 'ND', 58103, 'michael@example.com', 5551357924, FALSE),
+    ('Jennifer', 'Jones', '567 Willow St', 'Fargo', 'ND', 58103, 'jennifer@example.com', 5557894561, FALSE),
+    ('William', 'Davis', '890 Cedar St', 'Moorhead', 'MN', 56560, 'william@example.com', 5552589637, FALSE),
+    ('Nancy', 'Miller', '123 Spruce St', 'Moorhead', 'MN', 56560, 'nancy@example.com', 5551236987, FALSE),
+    ('James', 'Wilson', '456 Maple St', 'Moorhead', 'MN', 56560, 'james@example.com', 5559871234, FALSE),
+    ('Linda', 'Martinez', '789 Pine St', 'Moorhead', 'MN', 56560, 'linda@example.com', 5553698741, FALSE),
+    ('David', 'Garcia', '101 Oak St', 'Moorhead', 'MN', 56560, 'david@example.com', 5557856321, FALSE),
+    ('Patricia', 'Lee', '234 Birch St', 'West Fargo', 'ND', 58078, 'patricia@example.com', 5551597536, FALSE),
+    ('Richard', 'Hernandez', '567 Elm St', 'West Fargo', 'ND', 58078, 'richard@example.com', 5553659872, FALSE),
+    ('Mary', 'Walker', '890 Oak St', 'West Fargo', 'ND', 58078, 'mary@example.com', 5554563219, FALSE),
+    ('George', 'Young', '123 Maple St', 'West Fargo', 'ND', 58078, 'george@example.com', 5552587413, FALSE),
+    ('Karen', 'Scott', '456 Cedar St', 'West Fargo', 'ND', 58078, 'karen@example.com', 5559871236, FALSE),
+    ('Charles', 'Green', '789 Willow St', 'Fargo', 'ND', 58103, 'charles@example.com', 5556325871, FALSE),
+    ('Betty', 'Adams', '101 Elm St', 'Moorhead', 'MN', 56560, 'betty@example.com', 5551478523, FALSE),
+    ('Lisa', 'Perez', '234 Cedar St', 'Fargo', 'ND', 58103, 'lisa@example.com', 5559874561, FALSE),
+    ('Daniel', 'Hall', '567 Spruce St', 'West Fargo', 'ND', 58078, 'daniel@example.com', 5556325879, FALSE);
 
 -- Insert users into the "services" table    
 INSERT INTO services ("service") VALUES ('Weekly Mow and Trim'), ('Spring Clean-up'), ('Fall Clean-up'), ('Aeration'), ('Dethatching'), ('One-Time Mow and Trim');
@@ -128,7 +146,16 @@ VALUES
     ((SELECT id FROM services WHERE "service" = 'Spring Clean-up'), '2023-10-14', 75.00, 4),
     ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-10', 50.00, 3),
     ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-16', 50.00, 3),
-    ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-24', 50.00, 3);
+    ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-24', 50.00, 3),
+    ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-05', 50.00, 75),
+    ((SELECT id FROM services WHERE "service" = 'Spring Clean-up'), '2023-10-20', 75.00, 75),
+    ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-12', 50.00, 75),
+    ((SELECT id FROM services WHERE "service" = 'Fall Clean-up'), '2023-10-22', 60.00, 76),
+    ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-02', 50.00, 79),
+    ((SELECT id FROM services WHERE "service" = 'Spring Clean-up'), '2023-10-14', 75.00, 79),
+    ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-10', 50.00, 80),
+    ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-16', 50.00, 82),
+    ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-24', 50.00, 83);
 
     -- this gets each customer id in one column and then all the
 -- customer info into an object in the next column

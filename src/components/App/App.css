@@ -111,28 +111,30 @@ input {
   margin-bottom: 10px;
 }
 
+/* Improved Styles for the Invoice Table */
 .invoice-table {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   width: 90%;
   border-collapse: collapse;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
 }
 
 .invoice-table th, .invoice-table td {
   padding: 10px;
   border: 1px solid #ccc;
-  text-align: left;
   text-align: center;
 }
 
 .invoice-table th {
-  background-color: #d5d4d4;
+  background-color: #dcdcdc;
   font-weight: bold;
+  text-transform: uppercase; /* Uppercase the header text */
 }
+
 .invoice-table tr td {
-  background-color: #ffffff;
-  font-weight:bold;
+  background-color: #f8f8f8;
+  font-weight: bold;
 }
 
 .invoice-table ul {
@@ -145,8 +147,15 @@ input {
 }
 
 .invoice-table tr:nth-child(even) td {
-  background-color: #eef1f3;
+  background-color: #ededed; /* Lighter background for even rows */
 }
+
+/* Hover effect for rows */
+.invoice-table tr:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.2s;
+}
+
 
 .logo{
   width: 350px;
@@ -186,11 +195,11 @@ input {
   background-color: #b0b0b0;
   color: black;
   width: 150px;
-  position: fixed;
-  height: 100%;
+  position: absolute;
+  height: 110%;
   overflow-y: auto;
   transition: width 0.3s;
-  right: 19px;
+  right: 1%;
 
 }
 
@@ -217,6 +226,7 @@ input {
 /* Cool Hover Effect */
 .adminNavLinks a:hover {
   transform: scale(1.05); /* Scale the link on hover */
+  text-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
 /* Active Link Style with Click Event */
@@ -233,4 +243,23 @@ input {
 
 
 
+.infoContent {
+  max-width: 800px;
+  margin: -25px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.infoHeading {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.infoParagraph {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
 

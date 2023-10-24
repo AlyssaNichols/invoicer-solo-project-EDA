@@ -10,7 +10,7 @@ import ServiceData from "../ServiceData/ServiceData";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 export default function InvoiceDetails() {
   const dispatch = useDispatch();
@@ -43,24 +43,29 @@ export default function InvoiceDetails() {
   // );
 
   const handleAddLineItem = () => {
-    if (!newLineItem.service_id || !newLineItem.date_performed || !newLineItem.service_price){
-      alert ("please fill in all the fields before submitting!")
+    if (
+      !newLineItem.service_id ||
+      !newLineItem.date_performed ||
+      !newLineItem.service_price
+    ) {
+      alert("please fill in all the fields before submitting!");
     } else {
-    setNewLineItem(newLineItem);
-    dispatch({
-      type: "ADD_LINE_ITEM",
-      payload: { newLineItem, invoice_id: params.id },
-    });
-    Swal.fire({
-      icon: 'success',
-      title: 'Service Added',
-      text: 'The new service has been successfully added.',
-    });
-    setNewLineItem({
-      service_id: "",
-      date_performed: "",
-      service_price: "",
-    });}
+      setNewLineItem(newLineItem);
+      dispatch({
+        type: "ADD_LINE_ITEM",
+        payload: { newLineItem, invoice_id: params.id },
+      });
+      Swal.fire({
+        icon: "success",
+        title: "Service Added",
+        text: "The new service has been successfully added.",
+      });
+      setNewLineItem({
+        service_id: "",
+        date_performed: "",
+        service_price: "",
+      });
+    }
   };
 
   useEffect(() => {
@@ -75,56 +80,58 @@ export default function InvoiceDetails() {
     <div>
       <br />
       <br />
-      <center>
-      <Card sx={{ minWidth: 275, marginTop: "20px", width: '98%' }}>
-        <CardContent>
-          <Typography variant="h5" component="div">
-       
-              <h1
-                style={{
-                  marginTop: "-5px",
-                  marginBottom: "5px",
-                  fontSize: "34px",
-                  letterSpacing: ".5px",
-                }}
-              >
-                Invoice: #{details.id}
-              </h1>
-              <h2
-                style={{
-                  marginTop: "0px",
-                  marginBottom: "-10px",
-                  fontSize: "24px",
-                }}
-              >
-                Issued: {formatDate(details.date_issued)}
-              </h2>
-              <h3
-                style={{
-                  width: "70%",
-                  letterSpacing: ".5px",
-                  borderTop: "1px solid black",
-                  paddingTop: "10px",
-                  marginBottom: "-10px",
-                  fontSize: "20px",
-                  fontWeight: "normal",
-                }}
-              >
-                {details.first_name} {details.last_name} <br />{" "}
-                {details.address} <br />
-                {details.city}, {details.state} {details.zip}
-              </h3>
-            
-          </Typography>
-        </CardContent>
-      </Card>
-      </center>
-      <center>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+          <center>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                <h1
+                  style={{
+                    marginTop: "-5px",
+                    marginBottom: "5px",
+                    fontSize: "34px",
+                    letterSpacing: ".5px",
+                  }}
+                >
+                  Invoice: #{details.id}
+                </h1>
+                <h2
+                  style={{
+                    marginTop: "0px",
+                    marginBottom: "-10px",
+                    fontSize: "24px",
+                  }}
+                >
+                  Issued: {formatDate(details.date_issued)}
+                </h2>
+                <h3
+                  style={{
+                    width: "70%",
+                    letterSpacing: ".5px",
+                    borderTop: "1px solid black",
+                    paddingTop: "10px",
+                    marginBottom: "-10px",
+                    fontSize: "20px",
+                    fontWeight: "normal",
+                  }}
+                >
+                  {details.first_name} {details.last_name} <br />{" "}
+                  {details.address} <br />
+                  {details.city}, {details.state} {details.zip}
+                </h3>
+              </Typography>
+            </CardContent>
+          </center>
+        </Card>
+      </div>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Paper
           elevation={3}
           style={{
             width: "30%",
             marginTop: "30px",
+            marginLeft: "1%",
+            minWidth: "360px",
           }}
         >
           <div
@@ -144,6 +151,7 @@ export default function InvoiceDetails() {
                   "& .MuiTextField-root": { m: 0.4, width: "40ch" },
                 }}
               >
+                <br />
                 <InputLabel
                   sx={{
                     fontWeight: "normal",
@@ -191,7 +199,7 @@ export default function InvoiceDetails() {
                 >
                   Date Service was Performed:
                 </InputLabel>
-                <TextField
+                <TextField 
                   type="date"
                   id="date_performed"
                   value={newLineItem.date_performed}
@@ -254,49 +262,71 @@ export default function InvoiceDetails() {
           </div>
           <br />
         </Paper>
-      </center>
-      <br />
-      <br />
-      <table className="invoice-table">
-        <thead>
-          <tr>
-            <th>Service</th>
-            <th>Date Performed</th>
-            <th>Service Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {details.service_data?.map((item, index) => (
-            <ServiceListItem key={index} item={item} index={index} />
-          ))}
-        </tbody>
-      </table>
-      <center>
-        {details.total_price ? (
-          <h3>Total Price: ${parseFloat(details.total_price).toFixed(2)}</h3>
-        ) : (
-          <h3></h3>
-        )}
-      </center>
-      <br />
-      <br />
-      <br />
-      <center>
-        <Button
-          variant="contained"
+        <Paper
+          elevation={3}
           style={{
-            backgroundColor: "#996887",
-            color: "white",
-            fontSize: "16px",
-            marginTop: "0px",
+            width: "66%",
+            marginTop: "30px",
+            marginRight: "1%",
+            minWidth: "700px",
           }}
-          sx={{ padding: "10px 28px" }}
-          onClick={generateInvoice}
         >
-          Print Invoice!
-        </Button>
-      </center>
+          <br />
+          <br />
+          <table className="invoice-table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Date Performed</th>
+                <th>Service Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {details.service_data?.map((item, index) => (
+                <ServiceListItem key={index} item={item} index={index} />
+              ))}
+            </tbody>
+          </table>
+          <center>
+            {details.total_price ? (
+              <center>
+                {" "}
+                <Typography variant="h5" component="div">
+                  <h1
+                    style={{
+                      marginTop: "30px",
+                      fontSize: "28px",
+                      letterSpacing: ".5px",
+                    }}
+                  >
+                    Total Price: ${parseFloat(details.total_price).toFixed(2)}
+                  </h1>
+                </Typography>
+              </center>
+            ) : (
+              <h3></h3>
+            )}
+          </center>
+          <center>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#996887",
+                color: "white",
+                fontSize: "16px",
+                marginTop: "0px",
+              }}
+              sx={{ padding: "10px 28px" }}
+              onClick={generateInvoice}
+            >
+              Print Invoice!
+            </Button>
+            <br />
+            <br />
+          </center>
+        </Paper>
+      </div>
     </div>
   );
 }

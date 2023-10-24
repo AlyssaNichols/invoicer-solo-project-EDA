@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import ArchivedCutomerList from "../ArchivedCustomerList/ArchivedCustomerList";
+import ArchivedCustomerList from "../ArchivedCustomerList/ArchivedCustomerList";
 import {
   Box,
   TextField,
@@ -12,6 +12,9 @@ import {
   Typography,
 } from "@mui/material";
 import Swal from "sweetalert2";
+import AdminListCustomers from "../AdminListCustomers/AdminListCustomers";
+import CustomerInputForm from "../CustomerInputForm/CustomerInputForm";
+import AdminTable from "../AdminTable/AdminTable";
 
 export default function AdminCustomerPage() {
   const history = useHistory();
@@ -42,6 +45,7 @@ export default function AdminCustomerPage() {
       !phone
     ) {
       alert("Please make sure all fields are filled in before submitting!");
+      return
     } else {
       Swal.fire({
         icon: "success",
@@ -98,25 +102,10 @@ export default function AdminCustomerPage() {
     dispatch({ type: "FETCH_CUSTOMERS" });
     dispatch({ type: "FETCH_ARCHIVED_CUSTOMERS" });
   }, []);
+  function capitalizeFirstLetters(input) {
+    return input.replace(/(^|\s)\S/g, (match) => match.toUpperCase());
+  }
 
-  const handleArchive = (customerId) => {
-    Swal.fire({
-      title: "Are you sure you want to archive this Customer?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, archive them",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Dispatch an action to delete the invoice with the given ID
-        dispatch({ type: "DELETE_CUSTOMER", payload: customerId });
-        dispatch({ type: "FETCH_CUSTOMERS" });
-        dispatch({ type: "FETCH_ARCHIVED_CUSTOMERS" });
-        Swal.fire("Customer Successfully archived!");
-      }
-    });
-  };
 
   return (
     <>
@@ -187,15 +176,21 @@ export default function AdminCustomerPage() {
                   autoComplete="off"
                 >
                   <TextField
+                    inputProps={{
+                      style: { textTransform: "capitalize" }
+                    }}
                     label="First Name"
                     value={firstName}
-                    onChange={(event) => setFirstName(event.target.value)}
+                    onChange={(event) => setFirstName(capitalizeFirstLetters(event.target.value))}
                   />
                   <br />
                   <TextField
+                    inputProps={{
+                      style: { textTransform: "capitalize" }
+                    }}
                     label="Last Name"
                     value={lastName}
-                    onChange={(event) => setLastName(event.target.value)}
+                    onChange={(event) => setLastName(capitalizeFirstLetters(event.target.value))}
                   />
                   <br />
                   <TextField
@@ -264,45 +259,7 @@ export default function AdminCustomerPage() {
       </center>
       <br />
       {!showCustomerForm && (
-        <table className="invoice-table">
-          <thead>
-            <tr>
-              <th>Last, First Name</th>
-              <th>Address</th>
-              <th>City</th>
-              <th>State</th>
-              <th>ZIP</th>
-              <th>Phone</th>
-              <th>Email</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {customerList?.map((customer, index) => {
-              return (
-                <tr key={index}>
-                  <td>
-                    {customer.last_name}, {customer.first_name}{" "}
-                  </td>
-                  <td>{customer.address}</td>
-                  <td>{customer.city}</td>
-                  <td>{customer.state}</td>
-                  <td>{customer.zip}</td>
-                  <td>{customer.phone}</td>
-                  <td>{customer.email}</td>
-                  <td>
-                    <button
-                      className="history-deleteButton"
-                      onClick={() => handleArchive(customer.id)}
-                    >
-                      Archive Customer
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+       <AdminTable />
       )}
       <br />
       <br />
@@ -322,7 +279,7 @@ export default function AdminCustomerPage() {
       <br />
       <center>
         {showArchived ? (
-          <ArchivedCutomerList toggleArchived={toggleArchived} />
+          <ArchivedCustomerList toggleArchived={toggleArchived} />
         ) : (
           <Button
             style={{ backgroundColor: "#A09084", color: "white" }}
@@ -337,3 +294,4 @@ export default function AdminCustomerPage() {
     </>
   );
 }
+

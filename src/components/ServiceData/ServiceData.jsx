@@ -3,10 +3,14 @@ import React from "react";
 // import { Link } from "react-router-dom";
 
 export default function ServiceData({ service }) {
-  const formatDate = (dateString) => {
-
+  const formatDate = (dateString, timeZone = 'UTC') => {
+    if (!dateString) {
+      return " ";
+    }
+    const date = new Date(dateString + 'T00:00:00.000Z'); // Assuming the date string is in 'YYYY-MM-DD' format
     const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    const timeZoneOptions = { timeZone };
+    return date.toLocaleDateString(undefined, { ...options, ...timeZoneOptions });
   };
 
   return (

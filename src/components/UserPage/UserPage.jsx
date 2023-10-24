@@ -52,7 +52,7 @@ function UserPage() {
         <br />
         <center>
           <Button
-            style={{ backgroundColor: "#996887", color: "white" }}
+            style={{ backgroundColor: "#996887", color: "white", fontSize: "16px"}}
             variant="contained"
             onClick={() => {
               invoicePage();

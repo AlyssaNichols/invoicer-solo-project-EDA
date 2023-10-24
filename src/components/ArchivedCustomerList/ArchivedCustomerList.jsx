@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import Swal from "sweetalert2";
 
-export default function ArchivedCutomerList({ toggleArchived }) {
+export default function ArchivedCustomerList({ toggleArchived }) {
   const dispatch = useDispatch();
   const archivedList = useSelector((store) => store.archived);
 
@@ -30,13 +30,12 @@ export default function ArchivedCutomerList({ toggleArchived }) {
     }).then((result) => {
       if (result.isConfirmed) {
         // Dispatch an action to delete the invoice with the given ID
-       // Dispatch an action to delete the invoice with the given ID
-       dispatch({ type: "RESET_CUSTOMER", payload: customerId });
-       dispatch({ type: "FETCH_CUSTOMERS" });
+        // Dispatch an action to delete the invoice with the given ID
+        dispatch({ type: "RESET_CUSTOMER", payload: customerId });
+        dispatch({ type: "FETCH_CUSTOMERS" });
         Swal.fire("Customer Successfully un-archived!");
       }
     });
-
   };
 
   return (
@@ -98,12 +97,26 @@ export default function ArchivedCutomerList({ toggleArchived }) {
                 <td>{customer.phone}</td>
                 <td>{customer.email}</td>
                 <td>
-                  <button
-                    className="paidButton"
+                  <Button
+                    style={{
+                      fontSize: "12px",
+                      padding: "2px 10px",
+                      color: "black",
+                      fontWeight: "bold",
+                      border: "1px solid black",
+                      transition: "background-color 0.3s",
+                    }}
+                    variant="outlined"
                     onClick={() => handleReset(customer.id)}
+                    onMouseEnter={(e) =>
+                      (e.target.style.backgroundColor = "rgb(173, 216, 195)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.backgroundColor = "transparent")
+                    }
                   >
-                    Un-Archive Customer
-                  </button>
+                    Un-Archive
+                  </Button>
                 </td>
               </tr>
             );

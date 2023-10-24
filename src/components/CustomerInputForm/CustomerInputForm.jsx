@@ -29,6 +29,7 @@ export default function CustomerInputForm() {
       !phone
     ) {
       alert("Please make sure all fields are filled in before submitting!");
+      return
     } else {
       dispatch({
         type: "ADD_CUSTOMER",
@@ -78,6 +79,10 @@ export default function CustomerInputForm() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
+  function capitalizeFirstLetters(input) {
+    return input.replace(/(^|\s)\S/g, (match) => match.toUpperCase());
+  }
+
   return (
     <>
       <br />
@@ -116,16 +121,22 @@ export default function CustomerInputForm() {
             >
               <TextField
                 style={{ backgroundColor: "white" }}
+                inputProps={{
+                  style: { textTransform: "capitalize" }
+                }}
                 label="First Name"
                 value={firstName}
-                onChange={(event) => setFirstName(event.target.value)}
+                onChange={(event) => setFirstName(capitalizeFirstLetters(event.target.value))}
               />
               <br />
               <TextField
                 style={{ backgroundColor: "white" }}
+                inputProps={{
+                  style: { textTransform: "capitalize" }
+                }}
                 label="Last Name"
                 value={lastName}
-                onChange={(event) => setLastName(event.target.value)}
+                onChange={(event) => setLastName(capitalizeFirstLetters(event.target.value))}
               />
               <br />
               <TextField

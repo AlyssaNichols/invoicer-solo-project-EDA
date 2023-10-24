@@ -3,7 +3,16 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import "./ServiceLineItems.css";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import {
+  Box,
+  TextField,
+  Button,
+  Paper,
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/material";
 
 export default function ServiceListItem({ item, index }) {
   const formatDate = (dateString) => {
@@ -30,9 +39,9 @@ export default function ServiceListItem({ item, index }) {
 
   const saveEdit = () => {
     Swal.fire({
-      icon: 'success',
-      title: 'Service Edited',
-      text: 'The new service has been successfully edited.',
+      icon: "success",
+      title: "Service Edited",
+      text: "The new service has been successfully edited.",
     });
     dispatch({
       type: "EDIT_LINE_ITEM",
@@ -47,78 +56,142 @@ export default function ServiceListItem({ item, index }) {
   };
 
   function handleDelete(itemId) {
-        Swal.fire({
-          title: "Are you sure you want to delete this Service?",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            dispatch({
-              type: "DELETE_LINE_ITEM",
-              payload: { itemId, invoice_id: params.id },
-            });
-            Swal.fire(
-              "Service Deleted!",
-            );
-          }
+    Swal.fire({
+      title: "Are you sure you want to delete this Service?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({
+          type: "DELETE_LINE_ITEM",
+          payload: { itemId, invoice_id: params.id },
         });
+        Swal.fire("Service Deleted!");
       }
+    });
+  }
 
-      return (
-        <tr key={index}>
-          <td>
-            {item.type || "No service selected"}
-          </td>
-          <td>
-            {edit ? (
-              <input
-                type="date"
-                className="custom-date-input"
-                value={editDate}
-                onChange={(e) => setEditDate(e.target.value)}
-              />
-            ) : item.date ? (
-              formatDate(item.date)
-            ) : (
-              "No date selected"
-            )}
-          </td>
-          <td>
-            {edit ? (
-              <input
-                type="number"
-                className="custom-text-input"
-                value={editPrice}
-                onChange={(e) => setEditPrice(e.target.value)}
-              />
-            ) : item.price ? (
-              `$${parseFloat(item.price).toFixed(2)}`
-            ) : (
-              "No price selected"
-            )}
-          </td>
-          <td>
-            {edit ? (
-              <>
-                <button className="editButton" onClick={saveEdit}>Save</button> <br />
-                <button className="deleteButton" onClick={() => setEdit(!edit)}>Cancel</button>
-              </>
-            ) : (
-              <>
-                <button className="editButton" onClick={() => handleEdit(item)}>
-                  Edit Service
-                </button>
-                <br />
-                <button className="deleteButton" onClick={() => handleDelete(item.id)}>
-                  Delete Service
-                </button>
-              </>
-            )}
-          </td>
-        </tr>
-      );
-      
+  return (
+    <tr key={index}>
+      <td>{item.type || "No service selected"}</td>
+      <td>
+        {edit ? (
+          <input
+            type="date"
+            className="custom-date-input"
+            value={editDate}
+            onChange={(e) => setEditDate(e.target.value)}
+          />
+        ) : item.date ? (
+          formatDate(item.date)
+        ) : (
+          "No date selected"
+        )}
+      </td>
+      <td>
+        {edit ? (
+          <input
+            type="number"
+            className="custom-text-input"
+            value={editPrice}
+            onChange={(e) => setEditPrice(e.target.value)}
+          />
+        ) : item.price ? (
+          `$${parseFloat(item.price).toFixed(2)}`
+        ) : (
+          "No price selected"
+        )}
+      </td>
+      <td>
+        {item.date ? (
+        edit ? (
+          <>
+            <Button
+              style={{
+                fontSize: "12px",
+                padding: "2px 10px",
+                color: "black",
+                fontWeight: "bold",
+                border: "1px solid black",
+                transition: "background-color 0.3s",
+              }}
+              variant="outlined"
+              onClick={saveEdit}
+              onMouseEnter={(e) =>
+                (e.target.style.backgroundColor = "rgb(173, 216, 195)")
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = "transparent")
+              }
+            >
+              Save
+            </Button>{" "}
+            <Button
+              style={{
+                fontSize: "12px",
+                padding: "2px 10px",
+                color: "black",
+                fontWeight: "bold",
+                border: "1px solid black",
+                transition: "background-color 0.3s",
+              }}
+              variant="outlined"
+              onClick={() => setEdit(!edit)}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#D16965")}
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = "transparent")
+              }
+            >
+              Cancel
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button
+              style={{
+                fontSize: "12px",
+                padding: "2px 10px",
+                color: "black",
+                fontWeight: "bold",
+                border: "1px solid black",
+                transition: "background-color 0.3s",
+              }}
+              variant="outlined"
+              onClick={() => handleEdit(item)}
+              onMouseEnter={(e) =>
+                (e.target.style.backgroundColor = "rgb(173, 216, 195)")
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = "transparent")
+              }
+            >
+              Edit
+            </Button>{" "}
+            <Button
+              style={{
+                fontSize: "12px",
+                padding: "2px 10px",
+                color: "black",
+                fontWeight: "bold",
+                border: "1px solid black",
+                transition: "background-color 0.3s",
+              }}
+              variant="outlined"
+              onClick={() => handleDelete(item.id)}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#D16965")}
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = "transparent")
+              }
+            >
+              Delete
+            </Button> 
+          </>
+        )
+        ) : "No actions available"}
+      </td>
+    </tr>
+  );
 }
