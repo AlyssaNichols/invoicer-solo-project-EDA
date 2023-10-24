@@ -277,7 +277,7 @@ export default function InvoiceHistory() {
                                 (e.target.style.backgroundColor = "transparent")
                               }
                             >
-                              Print
+                              Preview
                             </Button>
                           <br />
                           <Button

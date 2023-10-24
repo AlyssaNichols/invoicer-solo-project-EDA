@@ -87,24 +87,19 @@ export default function AdminListCustomers({ customer, index }) {
         {edit ? (
           <><input
           className="custom-date-input-name"
-          inputProps={{
-            style: { textTransform: "capitalize" }
-          }}
             type="text"
             value={editLast}
             onChange={(e) => setEditLast(e.target.value)}
           />,
           <input
            className="custom-date-input-name"
-           inputProps={{
-            style: { textTransform: "capitalize" }
-          }}
+
           type="text"
           value={editFirst}
           onChange={(e) => setEditFirst(e.target.value)}
         />
         </> ) : (
-          `${customer.last_name.charAt(0).toUpperCase() + customer.last_name.slice(1)}, ${customer.first_name.charAt(0).toUpperCase() + customer.first_name.slice(1)}`
+          `${customer.last_name}, ${customer.first_name}`
         )}
       </td>
       <td>

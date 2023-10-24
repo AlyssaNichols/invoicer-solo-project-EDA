@@ -28,6 +28,7 @@ import AdminPageServices from "../AdminPageServices/AdminPageServices";
 // import RegisterPage from '../RegisterPage/RegisterPage';
 import PrintInvoice from "../PrintInvoice/PrintInvoice";
 import AdminEmployeeList from "../AdminEmployeeList/AdminEmployeeList";
+import EmailPage from "../PDF/EmailPage";
 
 import "./App.css";
 import InvoiceDetails from "../InvoiceDetails/InvoiceDetails";
@@ -107,6 +108,9 @@ function App() {
           >
             <PrintInvoice />
           </ProtectedRoute>
+          <Route path="/email/:id">
+            <EmailPage />
+          </Route>
           <ProtectedRoute exact path="/invoiceHistory">
             <InvoiceHistory />
           </ProtectedRoute>

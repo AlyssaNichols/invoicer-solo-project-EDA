@@ -320,7 +320,7 @@ export default function InvoiceDetails() {
               sx={{ padding: "10px 28px" }}
               onClick={generateInvoice}
             >
-              Print Invoice!
+              Preview Invoice!
             </Button>
             <br />
             <br />
