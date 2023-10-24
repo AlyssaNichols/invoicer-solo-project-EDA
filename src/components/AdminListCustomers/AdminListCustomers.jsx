@@ -86,22 +86,31 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <><input
+          className="custom-date-input-name"
+          inputProps={{
+            style: { textTransform: "capitalize" }
+          }}
             type="text"
             value={editLast}
             onChange={(e) => setEditLast(e.target.value)}
           />,
           <input
+           className="custom-date-input-name"
+           inputProps={{
+            style: { textTransform: "capitalize" }
+          }}
           type="text"
           value={editFirst}
           onChange={(e) => setEditFirst(e.target.value)}
         />
         </> ) : (
-          `${customer.last_name}, ${customer.first_name}`
+          `${customer.last_name.charAt(0).toUpperCase() + customer.last_name.slice(1)}, ${customer.first_name.charAt(0).toUpperCase() + customer.first_name.slice(1)}`
         )}
       </td>
       <td>
         {edit ? (
           <input
+          className="custom-date-input"
             type="text"
             value={editAddress}
             onChange={(e) => setEditAddress(e.target.value)}
@@ -113,6 +122,7 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <input
+          className="custom-date-input"
             type="text"
             value={editCity}
             onChange={(e) => setEditCity(e.target.value)}
@@ -124,6 +134,7 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <input
+          className="custom-date-input"
             type="text"
             value={editState}
             onChange={(e) => setEditState(e.target.value)}
@@ -135,7 +146,8 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <input
-            type="text"
+          className="custom-date-input"
+            type="number"
             value={editZip}
             onChange={(e) => setEditZip(e.target.value)}
           />
@@ -146,7 +158,8 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <input
-            type="text"
+          className="custom-date-input"
+            type="number"
             value={editPhone}
             onChange={(e) => setEditPhone(e.target.value)}
           />
@@ -157,6 +170,7 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <input
+          className="custom-date-input"
             type="text"
             value={editEmail}
             onChange={(e) => setEditEmail(e.target.value)}
@@ -168,32 +182,13 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <>
-             <Button
-              style={{
-                fontSize: "12px",
-                padding: "2px 10px",
-                color: "black",
-                fontWeight: "bold",
-                border: "1px solid black",
-                transition: "background-color 0.3s",
-              }}
-              variant="outlined"
-              onClick={() => setEdit(!edit)}
-              onMouseEnter={(e) =>
-                (e.target.style.backgroundColor = "rgb(173, 216, 195)")
-              }
-              onMouseLeave={(e) =>
-                (e.target.style.backgroundColor = "transparent")
-              }
-            >
-              Cancel
-            </Button>{" "}
             <Button
               style={{
                 fontSize: "12px",
                 padding: "2px 10px",
                 color: "black",
                 fontWeight: "bold",
+                marginBottom: "5px",
                 border: "1px solid black",
                 transition: "background-color 0.3s",
               }}
@@ -208,6 +203,26 @@ export default function AdminListCustomers({ customer, index }) {
             >
               Save
             </Button>
+            <Button
+              style={{
+                fontSize: "12px",
+                padding: "2px 10px",
+                color: "black",
+                fontWeight: "bold",
+                border: "1px solid black",
+                transition: "background-color 0.3s",
+              }}
+              variant="outlined"
+              onClick={() => setEdit(!edit)}
+              onMouseEnter={(e) =>
+                (e.target.style.backgroundColor = "#D16965")
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = "transparent")
+              }
+            >
+              Cancel
+            </Button>
           </>
         ) : (
           <><Button
@@ -215,6 +230,7 @@ export default function AdminListCustomers({ customer, index }) {
               fontSize: "12px",
               padding: "2px 10px",
               color: "black",
+              marginBottom: "5px",
               fontWeight: "bold",
               border: "1px solid black",
               transition: "background-color 0.3s",
@@ -229,7 +245,7 @@ export default function AdminListCustomers({ customer, index }) {
             }
           >
             Edit
-          </Button>{" "}
+          </Button><br />
           <Button
           style={{
             fontSize: "12px",
@@ -242,7 +258,7 @@ export default function AdminListCustomers({ customer, index }) {
           variant="outlined"
           onClick={() => handleArchive(customer.id)}
           onMouseEnter={(e) =>
-            (e.target.style.backgroundColor = "rgb(173, 216, 195)")
+            (e.target.style.backgroundColor = "#D16965")
           }
           onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
         >

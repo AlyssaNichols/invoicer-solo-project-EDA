@@ -51,14 +51,12 @@ export default function AdminPage() {
         <h1 className="mainUserHeader">
           Thanks for choosing <br />
           <span className="professionalInvoice">Invoicer</span>
-          <br />
-          for your Business
         </h1>
         <p className="infoParagraph">
-          As the Admin, you have the control to Add and Remove: Services, Customers, and Employees
+        As the administrator, you have the authority to add or remove services, customers, and employees.
         </p>
         <p className="infoParagraph">
-         Below you will find a Month by Month Financial <br />overview of how much your company has Invoiced.
+        Here, you will discover a comprehensive month-by-month financial overview, detailing your company's invoicing history.
 
         </p>
         <br />

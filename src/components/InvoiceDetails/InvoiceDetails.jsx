@@ -199,7 +199,7 @@ export default function InvoiceDetails() {
                 >
                   Date Service was Performed:
                 </InputLabel>
-                <TextField
+                <TextField 
                   type="date"
                   id="date_performed"
                   value={newLineItem.date_performed}

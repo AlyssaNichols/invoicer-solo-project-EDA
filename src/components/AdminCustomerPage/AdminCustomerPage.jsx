@@ -102,6 +102,9 @@ export default function AdminCustomerPage() {
     dispatch({ type: "FETCH_CUSTOMERS" });
     dispatch({ type: "FETCH_ARCHIVED_CUSTOMERS" });
   }, []);
+  function capitalizeFirstLetters(input) {
+    return input.replace(/(^|\s)\S/g, (match) => match.toUpperCase());
+  }
 
 
   return (
@@ -173,15 +176,21 @@ export default function AdminCustomerPage() {
                   autoComplete="off"
                 >
                   <TextField
+                    inputProps={{
+                      style: { textTransform: "capitalize" }
+                    }}
                     label="First Name"
                     value={firstName}
-                    onChange={(event) => setFirstName(event.target.value)}
+                    onChange={(event) => setFirstName(capitalizeFirstLetters(event.target.value))}
                   />
                   <br />
                   <TextField
+                    inputProps={{
+                      style: { textTransform: "capitalize" }
+                    }}
                     label="Last Name"
                     value={lastName}
-                    onChange={(event) => setLastName(event.target.value)}
+                    onChange={(event) => setLastName(capitalizeFirstLetters(event.target.value))}
                   />
                   <br />
                   <TextField

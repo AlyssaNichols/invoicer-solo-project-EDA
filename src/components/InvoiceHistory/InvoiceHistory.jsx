@@ -238,11 +238,11 @@ export default function InvoiceHistory() {
                               style={{
                                 marginBottom: "5px",
                                 fontSize: "12px",
-                                padding: "2px 10px",
+                                padding: "2px 4px",
                                 color: "black",
                                 fontWeight: "bold",
                                 border: "1px solid black",
-                                transition: "background-color 0.3s",
+                                transition: "background-color 0.2s",
                               }}
                               variant="outlined"
                               onClick={() => {
@@ -256,13 +256,13 @@ export default function InvoiceHistory() {
                                 (e.target.style.backgroundColor = "transparent")
                               }
                             >
-                              Mark Date Paid
+                              Mark as Paid
                             </Button>
                           <Button
                               style={{
                                 marginBottom: "5px",
                                 fontSize: "12px",
-                                padding: "2px 10px",
+                                padding: "2px 6px",
                                 color: "black",
                                 fontWeight: "bold",
                                 border: "1px solid black",
@@ -284,7 +284,7 @@ export default function InvoiceHistory() {
                               style={{
                                 marginBottom: "5px",
                                 fontSize: "12px",
-                                padding: "2px 10px",
+                                padding: "2px 4px",
                                 color: "black",
                                 fontWeight: "bold",
                                 border: "1px solid black",
@@ -306,7 +306,7 @@ export default function InvoiceHistory() {
                             <Button
                               style={{
                                 fontSize: "12px",
-                                padding: "2px 10px",
+                                padding: "2px 6px",
                                 color: "black",
                                 fontWeight: "bold",
                                 border: "1px solid black",
