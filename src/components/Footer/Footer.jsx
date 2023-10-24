@@ -1,15 +1,14 @@
 import React from "react";
 import "./Footer.css";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 function Footer() {
-
   const history = useHistory();
   const bullet = (
     <Box
       component="span"
-      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+      sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
     >
       •
     </Box>
@@ -21,8 +20,11 @@ function Footer() {
 
   return (
     <footer>
-      &copy; Invoicer 2023 {bullet} {" "}
-      <a href="#" onClick={handleMoreInfoClick}>More Info</a> {bullet} Alyssa Nichols
+      &copy; Invoicer 2023 {bullet}{" "}
+      <a href="#" onClick={handleMoreInfoClick}>
+        More Info
+      </a>{" "}
+      {bullet} Alyssa
       <br />
     </footer>
   );

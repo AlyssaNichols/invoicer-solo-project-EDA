@@ -1,4 +1,3 @@
-
 .nav {
   background-color: #55768a;
   color: black;
@@ -29,7 +28,6 @@
   padding: 10px 15px;
 }
 
-
 .nav ul li:last-child {
   margin-right: 0; /* Remove the margin on the last item to prevent extra spacing */
 }
@@ -47,10 +45,9 @@
   text-shadow: 0 0 10px rgb(255, 255, 255); /* Add a glow effect */
 }
 
-
 /* Add a cool hover effect for the navbar */
 .nav:hover {
-  background-color:  #76a3bd;
+  background-color: #76a3bd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -60,8 +57,8 @@
   color: white;
   transition: transform 0.3s ease; /* Add a transition for the transform property */
   font-size: 36px;
-  margin-top:20px;
-  margin-bottom:20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   color: #fff;
   letter-spacing: 1px;
 }
@@ -70,7 +67,6 @@
   transform: scale(1.1); /* Increase the scale on hover */
   text-shadow: 0 0 30px rgb(7, 7, 7);
 }
-
 
 .content {
   padding-top: 50px;
@@ -85,7 +81,6 @@
   font-size: 18px;
   padding: 10px 15px;
   margin-left: -18px;
-  
 }
 .navLink.logout-button:hover {
   color: #f70505;

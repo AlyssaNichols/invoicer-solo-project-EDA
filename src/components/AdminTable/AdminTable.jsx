@@ -1,16 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import AdminListCustomers from "../AdminListCustomers/AdminListCustomers";
-import {
-  Box,
-  TextField,
-  Button,
-  Paper,
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
 import Swal from "sweetalert2";
 
 export default function AdminTable() {
@@ -53,7 +43,7 @@ export default function AdminTable() {
         </thead>
         <tbody>
           {customerList?.map((customer, index) => {
-           return  <AdminListCustomers key={index} customer={customer} />;
+            return <AdminListCustomers key={index} customer={customer} />;
             // return (
             //     <tr key={index}>
             //       <td>

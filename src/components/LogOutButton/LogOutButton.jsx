@@ -1,7 +1,6 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import Swal from 'sweetalert2'
-
+import React from "react";
+import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 
 function LogOutButton(props) {
   const dispatch = useDispatch();
@@ -22,14 +21,12 @@ function LogOutButton(props) {
             confirmButtonText: "Yes, logout",
           }).then((result) => {
             if (result.isConfirmed) {
-              dispatch({ type: "LOGOUT"});
-              Swal.fire(
-                "Logged out!",
-              );
+              dispatch({ type: "LOGOUT" });
+              Swal.fire("Logged out!");
             }
           });
-        }}
-      }
+        }
+      }}
     >
       Log Out
     </button>

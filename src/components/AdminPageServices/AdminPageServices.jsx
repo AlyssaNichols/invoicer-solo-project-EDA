@@ -175,7 +175,7 @@ export default function AdminPageServices() {
         <center>
           <br />
           <Button
-            style={{ backgroundColor: "#996887", color: "white" }}
+            style={{ backgroundColor: "#946E6D", color: "white" }}
             variant="contained"
             onClick={() => {
               history.push("/admin");

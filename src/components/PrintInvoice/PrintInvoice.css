@@ -4,7 +4,7 @@
   @page {
     margin: 0; /* Remove default margin */
     size: auto;
-    margin-top: -40px !important /* Auto-size the page */
+    margin-top: -40px !important; /* Auto-size the page */
   }
 
   /* Hide specific elements within the .invoice container */
@@ -12,9 +12,9 @@
   .invoice .print-footer {
     display: none;
   }
-.topSpace{
-  display:none;
-}
+  .topSpace {
+    display: none;
+  }
 
   /* You can also set custom margins, page breaks, and other print styles here */
   .invoice {
@@ -24,8 +24,12 @@
   .nav {
     display: none;
   }
-  footer {display:none;}
-  .printInvoiceButton{display:none !important;}
+  footer {
+    display: none;
+  }
+  .printInvoiceButton {
+    display: none !important;
+  }
 
   /* Remove box shadow on the .print-invoice element */
   .print-invoice {
@@ -74,7 +78,7 @@
 }
 
 .print-details {
-    margin-top: -20px;
+  margin-top: -20px;
   margin-bottom: 20px;
   font-size: 20px;
   text-align: right;
@@ -138,11 +142,11 @@
 }
 
 .logo {
-    max-width: 300px;
-    height: auto;
-    margin-bottom: 0;
-    margin-top: -40px;
-  }
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 0;
+  margin-top: -40px;
+}
 
 .company-info {
   margin-top: 10px; /* Add top margin to separate it from the logo */
@@ -164,12 +168,12 @@ p {
   margin: 0;
 }
 .printPage-header {
-    margin-top: -50px;
-    display: flex;
-    flex-direction: column; 
-    align-items: flex-start;
-    justify-content: space-between,
-  }
+  margin-top: -50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
 /* .invoice-table {
   margin-left: auto;
   margin-right: auto;
@@ -198,7 +202,6 @@ p {
   margin: 5px 0;
 } */
 
-
 /* Define the main invoice container */
 /* .invoice {
   width: 90%;
@@ -211,4 +214,3 @@ p {
 } */
 
 /* Define the header section with logo and company info */
-

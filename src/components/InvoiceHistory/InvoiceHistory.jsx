@@ -9,12 +9,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import {
   TextField,
   Button,
-  Paper,
   Card,
   CardContent,
   Typography,
 } from "@mui/material";
-
 
 export default function InvoiceHistory() {
   const history = useHistory();
@@ -67,7 +65,7 @@ export default function InvoiceHistory() {
 
   const [query, setQuery] = useState(" ");
   const fuse = new Fuse(invoices, {
-    keys: ["id", "first_name", "last_name"],
+    keys: ["id", "first_name", "last_name", "email"],
     includeScore: true,
     threshold: 0.3, // Adjust this threshold (0.0 to 1.0) for strictness
     minMatchCharLength: 2, // Adjust the minimum character length for a match
@@ -131,7 +129,7 @@ export default function InvoiceHistory() {
           style={{
             marginTop: "10px",
             marginLeft: "10px",
-            backgroundColor: "#996887",
+            backgroundColor: "#946E6D",
             height: "30px",
             color: "white",
             width: "80px",
@@ -235,72 +233,75 @@ export default function InvoiceHistory() {
                       ) : (
                         <>
                           <Button
-                              style={{
-                                marginBottom: "5px",
-                                fontSize: "12px",
-                                padding: "2px 4px",
-                                color: "black",
-                                fontWeight: "bold",
-                                border: "1px solid black",
-                                transition: "background-color 0.2s",
-                              }}
-                              variant="outlined"
-                              onClick={() => {
-                                setEditedDate(invoice.date_paid || "");
-                                setEditMode(invoice.id);
-                              }}
-                              onMouseEnter={(e) =>
-                                (e.target.style.backgroundColor = "rgb(173, 216, 195)")
-                              }
-                              onMouseLeave={(e) =>
-                                (e.target.style.backgroundColor = "transparent")
-                              }
-                            >
-                              Mark as Paid
-                            </Button>
+                            style={{
+                              marginBottom: "5px",
+                              fontSize: "12px",
+                              padding: "2px 4px",
+                              color: "black",
+                              fontWeight: "bold",
+                              border: "1px solid black",
+                              transition: "background-color 0.2s",
+                            }}
+                            variant="outlined"
+                            onClick={() => {
+                              setEditedDate(invoice.date_paid || "");
+                              setEditMode(invoice.id);
+                            }}
+                            onMouseEnter={(e) =>
+                              (e.target.style.backgroundColor =
+                                "rgb(173, 216, 195)")
+                            }
+                            onMouseLeave={(e) =>
+                              (e.target.style.backgroundColor = "transparent")
+                            }
+                          >
+                            Mark as Paid
+                          </Button>
                           <Button
-                              style={{
-                                marginBottom: "5px",
-                                fontSize: "12px",
-                                padding: "2px 6px",
-                                color: "black",
-                                fontWeight: "bold",
-                                border: "1px solid black",
-                                transition: "background-color 0.3s",
-                              }}
-                              variant="outlined"
-                              onClick={() => printInvoice(invoice.id)}
-                              onMouseEnter={(e) =>
-                                (e.target.style.backgroundColor = "rgb(203, 178, 228)")
-                              }
-                              onMouseLeave={(e) =>
-                                (e.target.style.backgroundColor = "transparent")
-                              }
-                            >
-                              Preview
-                            </Button>
+                            style={{
+                              marginBottom: "5px",
+                              fontSize: "12px",
+                              padding: "2px 6px",
+                              color: "black",
+                              fontWeight: "bold",
+                              border: "1px solid black",
+                              transition: "background-color 0.3s",
+                            }}
+                            variant="outlined"
+                            onClick={() => printInvoice(invoice.id)}
+                            onMouseEnter={(e) =>
+                              (e.target.style.backgroundColor =
+                                "rgb(203, 178, 228)")
+                            }
+                            onMouseLeave={(e) =>
+                              (e.target.style.backgroundColor = "transparent")
+                            }
+                          >
+                            Preview
+                          </Button>
                           <br />
                           <Button
-                              style={{
-                                marginBottom: "5px",
-                                fontSize: "12px",
-                                padding: "2px 4px",
-                                color: "black",
-                                fontWeight: "bold",
-                                border: "1px solid black",
-                                transition: "background-color 0.3s",
-                              }}
-                              variant="outlined"
-                              onClick={() => moreDetails(invoice.id)}
-                              onMouseEnter={(e) =>
-                                (e.target.style.backgroundColor = "rgb(152, 188, 193)")
-                              }
-                              onMouseLeave={(e) =>
-                                (e.target.style.backgroundColor = "transparent")
-                              }
-                            >
-                              More Details
-                            </Button>
+                            style={{
+                              marginBottom: "5px",
+                              fontSize: "12px",
+                              padding: "2px 4px",
+                              color: "black",
+                              fontWeight: "bold",
+                              border: "1px solid black",
+                              transition: "background-color 0.3s",
+                            }}
+                            variant="outlined"
+                            onClick={() => moreDetails(invoice.id)}
+                            onMouseEnter={(e) =>
+                              (e.target.style.backgroundColor =
+                                "rgb(152, 188, 193)")
+                            }
+                            onMouseLeave={(e) =>
+                              (e.target.style.backgroundColor = "transparent")
+                            }
+                          >
+                            More Details
+                          </Button>
                           <br />
                           {user.is_admin && (
                             <Button

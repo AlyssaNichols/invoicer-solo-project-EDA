@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { InputLabel } from "@mui/material";
-import "./CreateInvoiceForm.css";
 import { MenuItem, Box } from "@mui/material";
 import { Button, TextField, Paper } from "@mui/material";
 import Card from "@mui/material/Card";
@@ -40,14 +39,13 @@ export default function CreateInvoicePage() {
       <br />
       <br />
       <div className="createInvoice-header-section">
-      <center>
-        <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%"  }}>
-        
+        <center>
+          <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
             <CardContent>
               <h1
                 style={{
                   marginTop: "-5px",
-                  letterSpacing: ".5px"
+                  letterSpacing: ".5px",
                 }}
               >
                 Let's Get Started!
@@ -64,8 +62,7 @@ export default function CreateInvoicePage() {
                 invoice to be issued <br /> Step 3: Click Create Invoice
               </Typography>
             </CardContent>
-
-        </Card>
+          </Card>
         </center>
       </div>
       <div

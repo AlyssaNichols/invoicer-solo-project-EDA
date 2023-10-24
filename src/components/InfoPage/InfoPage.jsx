@@ -66,8 +66,8 @@ function InfoPage() {
 
 export default InfoPage;
 
-
-{/* <div className="aboutDiv">
+{
+  /* <div className="aboutDiv">
 <h1 className="mainUserHeader">
   Easily Generate A <br />
   <span className="professionalInvoice">Professional Invoice</span>
@@ -147,4 +147,5 @@ export default InfoPage;
   </Button>
 </center>
 </div>
-</div> */}
+</div> */
+}

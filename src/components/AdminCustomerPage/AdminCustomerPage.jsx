@@ -12,8 +12,6 @@ import {
   Typography,
 } from "@mui/material";
 import Swal from "sweetalert2";
-import AdminListCustomers from "../AdminListCustomers/AdminListCustomers";
-import CustomerInputForm from "../CustomerInputForm/CustomerInputForm";
 import AdminTable from "../AdminTable/AdminTable";
 
 export default function AdminCustomerPage() {
@@ -45,7 +43,7 @@ export default function AdminCustomerPage() {
       !phone
     ) {
       alert("Please make sure all fields are filled in before submitting!");
-      return
+      return;
     } else {
       Swal.fire({
         icon: "success",
@@ -105,7 +103,6 @@ export default function AdminCustomerPage() {
   function capitalizeFirstLetters(input) {
     return input.replace(/(^|\s)\S/g, (match) => match.toUpperCase());
   }
-
 
   return (
     <>
@@ -177,20 +174,24 @@ export default function AdminCustomerPage() {
                 >
                   <TextField
                     inputProps={{
-                      style: { textTransform: "capitalize" }
+                      style: { textTransform: "capitalize" },
                     }}
                     label="First Name"
                     value={firstName}
-                    onChange={(event) => setFirstName(capitalizeFirstLetters(event.target.value))}
+                    onChange={(event) =>
+                      setFirstName(capitalizeFirstLetters(event.target.value))
+                    }
                   />
                   <br />
                   <TextField
                     inputProps={{
-                      style: { textTransform: "capitalize" }
+                      style: { textTransform: "capitalize" },
                     }}
                     label="Last Name"
                     value={lastName}
-                    onChange={(event) => setLastName(capitalizeFirstLetters(event.target.value))}
+                    onChange={(event) =>
+                      setLastName(capitalizeFirstLetters(event.target.value))
+                    }
                   />
                   <br />
                   <TextField
@@ -258,16 +259,14 @@ export default function AdminCustomerPage() {
         )}
       </center>
       <br />
-      {!showCustomerForm && (
-       <AdminTable />
-      )}
+      {!showCustomerForm && <AdminTable />}
       <br />
       <br />
       <center>
         <br />
         <br />
         <Button
-          style={{ backgroundColor: "#996887", color: "white" }}
+          style={{ backgroundColor: "#946563", color: "white" }}
           variant="contained"
           onClick={() => {
             history.push("/admin");
@@ -294,4 +293,3 @@ export default function AdminCustomerPage() {
     </>
   );
 }
-

@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import ServiceListItem from "../ServiceLineItems/ServiceLineItems";
-import { InputLabel, Select } from "@mui/material";
+import ServiceListItem from "../ServiceListItem/ServiceListItem";
+import { InputLabel } from "@mui/material";
 import { MenuItem, Box, Paper } from "@mui/material";
 import { Button, TextField } from "@mui/material";
-import ServiceData from "../ServiceData/ServiceData";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -62,7 +61,7 @@ export default function InvoiceDetails() {
       });
       setNewLineItem({
         service_id: "",
-        date_performed: "",
+        // date_performed: "",
         service_price: "",
       });
     }
@@ -199,7 +198,7 @@ export default function InvoiceDetails() {
                 >
                   Date Service was Performed:
                 </InputLabel>
-                <TextField 
+                <TextField
                   type="date"
                   id="date_performed"
                   value={newLineItem.date_performed}

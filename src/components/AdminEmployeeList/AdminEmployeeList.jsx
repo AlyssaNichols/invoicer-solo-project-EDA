@@ -48,16 +48,16 @@ export default function AdminPageServices() {
 
   const handleDelete = (employeeId) => {
     Swal.fire({
-      title: "Are you sure you want to delete this Employee?",
+      title: "Are you sure you want to remove this Employee?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Delete Them",
+      confirmButtonText: "Yes, Remove Them",
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch({ type: "DELETE_EMPLOYEE", payload: employeeId });
-        Swal.fire("Employee Successfully Deleted!");
+        Swal.fire("Employee Successfully Removed!");
       }
     });
   };
@@ -194,7 +194,7 @@ export default function AdminPageServices() {
         <br />
         <br />
         <Button
-          style={{ backgroundColor: "#996887", color: "white" }}
+          style={{ backgroundColor: "#946563", color: "white" }}
           variant="contained"
           onClick={() => {
             history.push("/admin");

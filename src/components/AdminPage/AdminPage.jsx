@@ -3,9 +3,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import AdminFinancialPage from "../AdminFinancesPage/AdminFinancesPage";
 
 export default function AdminPage() {
@@ -53,11 +50,11 @@ export default function AdminPage() {
           <span className="professionalInvoice">Invoicer</span>
         </h1>
         <p className="infoParagraph">
-        As the administrator, you have the authority to add or remove services, customers, and employees.
-        </p>
-        <p className="infoParagraph">
-        Here, you will discover a comprehensive month-by-month financial overview, detailing your company's invoicing history.
-
+          As the administrator, you have the authority to add or remove
+          services, customers, and employees. You will also have the ability to
+          edit customer details. <br />
+          Below you will discover a comprehensive month-by-month financial
+          overview, detailing your company's invoicing history.
         </p>
         <br />
         <AdminFinancialPage />

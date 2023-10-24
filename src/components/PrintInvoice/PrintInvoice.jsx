@@ -1,10 +1,8 @@
 import "./PrintInvoice.css";
-import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom"; // Import useParams
 import Button from "@mui/material/Button";
-
 
 export default function PrintInvoice() {
   const dispatch = useDispatch();

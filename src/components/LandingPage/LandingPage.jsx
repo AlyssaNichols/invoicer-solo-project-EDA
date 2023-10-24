@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import "./LandingPage.css";
-import { MenuItem, Box, Paper } from "@mui/material";
-import { Button, TextField } from "@mui/material";
-import ServiceData from "../ServiceData/ServiceData";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
+import { Button, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-// CUSTOM COMPONENTS
-import RegisterForm from "../RegisterForm/RegisterForm";
+
 
 function LandingPage() {
   const history = useHistory();

@@ -1,15 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import {
-  Box,
-  TextField,
-  Button,
-  Paper,
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { Button } from "@mui/material";
 import Swal from "sweetalert2";
 
 export default function AdminListCustomers({ customer, index }) {
@@ -46,8 +38,8 @@ export default function AdminListCustomers({ customer, index }) {
 
   const handleEdit = () => {
     setEdit(!edit);
-    setEditFirst(customer.first_name)
-    setEditLast(customer.last_name)
+    setEditFirst(customer.first_name);
+    setEditLast(customer.last_name);
     setEditAddress(customer.address);
     setEditCity(customer.city);
     setEditState(customer.state);
@@ -85,27 +77,29 @@ export default function AdminListCustomers({ customer, index }) {
     <tr key={index}>
       <td>
         {edit ? (
-          <><input
-          className="custom-date-input-name"
-            type="text"
-            value={editLast}
-            onChange={(e) => setEditLast(e.target.value)}
-          />,
-          <input
-           className="custom-date-input-name"
-
-          type="text"
-          value={editFirst}
-          onChange={(e) => setEditFirst(e.target.value)}
-        />
-        </> ) : (
+          <>
+            <input
+              className="custom-date-input-name"
+              type="text"
+              value={editLast}
+              onChange={(e) => setEditLast(e.target.value)}
+            />
+            ,
+            <input
+              className="custom-date-input-name"
+              type="text"
+              value={editFirst}
+              onChange={(e) => setEditFirst(e.target.value)}
+            />
+          </>
+        ) : (
           `${customer.last_name}, ${customer.first_name}`
         )}
       </td>
       <td>
         {edit ? (
           <input
-          className="custom-date-input"
+            className="custom-date-input"
             type="text"
             value={editAddress}
             onChange={(e) => setEditAddress(e.target.value)}
@@ -117,7 +111,7 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <input
-          className="custom-date-input"
+            className="custom-date-input"
             type="text"
             value={editCity}
             onChange={(e) => setEditCity(e.target.value)}
@@ -129,7 +123,7 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <input
-          className="custom-date-input"
+            className="custom-date-input"
             type="text"
             value={editState}
             onChange={(e) => setEditState(e.target.value)}
@@ -141,7 +135,7 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <input
-          className="custom-date-input"
+            className="custom-date-input"
             type="number"
             value={editZip}
             onChange={(e) => setEditZip(e.target.value)}
@@ -153,7 +147,7 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <input
-          className="custom-date-input"
+            className="custom-date-input"
             type="number"
             value={editPhone}
             onChange={(e) => setEditPhone(e.target.value)}
@@ -165,7 +159,7 @@ export default function AdminListCustomers({ customer, index }) {
       <td>
         {edit ? (
           <input
-          className="custom-date-input"
+            className="custom-date-input"
             type="text"
             value={editEmail}
             onChange={(e) => setEditEmail(e.target.value)}
@@ -209,9 +203,7 @@ export default function AdminListCustomers({ customer, index }) {
               }}
               variant="outlined"
               onClick={() => setEdit(!edit)}
-              onMouseEnter={(e) =>
-                (e.target.style.backgroundColor = "#D16965")
-              }
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#D16965")}
               onMouseLeave={(e) =>
                 (e.target.style.backgroundColor = "transparent")
               }
@@ -220,47 +212,49 @@ export default function AdminListCustomers({ customer, index }) {
             </Button>
           </>
         ) : (
-          <><Button
-            style={{
-              fontSize: "12px",
-              padding: "2px 10px",
-              color: "black",
-              marginBottom: "5px",
-              fontWeight: "bold",
-              border: "1px solid black",
-              transition: "background-color 0.3s",
-            }}
-            variant="outlined"
-            onClick={handleEdit}
-            onMouseEnter={(e) =>
-              (e.target.style.backgroundColor = "rgb(173, 216, 195)")
-            }
-            onMouseLeave={(e) =>
-              (e.target.style.backgroundColor = "transparent")
-            }
-          >
-            Edit
-          </Button><br />
-          <Button
-          style={{
-            fontSize: "12px",
-            padding: "2px 10px",
-            color: "black",
-            fontWeight: "bold",
-            border: "1px solid black",
-            transition: "background-color 0.3s",
-          }}
-          variant="outlined"
-          onClick={() => handleArchive(customer.id)}
-          onMouseEnter={(e) =>
-            (e.target.style.backgroundColor = "#D16965")
-          }
-          onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
-        >
-          Archive
-        </Button>
-          </> )}{" "}
-
+          <>
+            <Button
+              style={{
+                fontSize: "12px",
+                padding: "2px 10px",
+                color: "black",
+                marginBottom: "5px",
+                fontWeight: "bold",
+                border: "1px solid black",
+                transition: "background-color 0.3s",
+              }}
+              variant="outlined"
+              onClick={handleEdit}
+              onMouseEnter={(e) =>
+                (e.target.style.backgroundColor = "rgb(173, 216, 195)")
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = "transparent")
+              }
+            >
+              Edit
+            </Button>
+            <br />
+            <Button
+              style={{
+                fontSize: "12px",
+                padding: "2px 10px",
+                color: "black",
+                fontWeight: "bold",
+                border: "1px solid black",
+                transition: "background-color 0.3s",
+              }}
+              variant="outlined"
+              onClick={() => handleArchive(customer.id)}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#D16965")}
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = "transparent")
+              }
+            >
+              Archive
+            </Button>
+          </>
+        )}{" "}
       </td>
     </tr>
   );

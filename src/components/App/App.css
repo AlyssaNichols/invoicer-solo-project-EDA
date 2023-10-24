@@ -5,7 +5,7 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
 }
 
@@ -120,7 +120,8 @@ input {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
 }
 
-.invoice-table th, .invoice-table td {
+.invoice-table th,
+.invoice-table td {
   padding: 10px;
   border: 1px solid #ccc;
   text-align: center;
@@ -156,12 +157,10 @@ input {
   transition: background-color 0.2s;
 }
 
-
-.logo{
+.logo {
   width: 350px;
   height: auto;
   margin-bottom: 0;
-
 }
 /* Define the main invoice container */
 .invoice {
@@ -185,8 +184,7 @@ input {
   display: none;
 }
 
-
-.history-header{
+.history-header {
   padding-top: -20px;
 }
 
@@ -200,11 +198,10 @@ input {
   overflow-y: auto;
   transition: width 0.3s;
   right: 1%;
-
 }
 
-.adminNav:hover{
-  background-color:  #bab8b8;
+.adminNav:hover {
+  background-color: #bab8b8;
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -241,8 +238,6 @@ input {
   background-color: #555; /* Keep the background color the same on hover */
 }
 
-
-
 .infoContent {
   max-width: 800px;
   margin: -25px auto;
@@ -262,4 +257,3 @@ input {
   line-height: 1.5;
   margin-bottom: 20px;
 }
-

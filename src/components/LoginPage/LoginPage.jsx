@@ -1,15 +1,6 @@
 import React from "react";
 import LoginForm from "../LoginForm/LoginForm";
 import { useHistory } from "react-router-dom";
-import {
-  Box,
-  TextField,
-  Button,
-  Paper,
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
 
 function LoginPage() {
   const history = useHistory();
@@ -17,15 +8,13 @@ function LoginPage() {
   return (
     <div>
       <center>
-      <br />
+        <br />
         <br />
         <br />
         <LoginForm />
-
       </center>
     </div>
   );
 }
 
 export default LoginPage;
-

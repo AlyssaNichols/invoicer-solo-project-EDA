@@ -1,105 +1,105 @@
 .history-deleteButton {
-    font-size: 14px;
-    color: rgb(0, 0, 0);
-    border-radius: 3px;
-    cursor: pointer;
-    outline: none;
-    transition: 0.2s all;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 3px 10px;
-    background-color: rgb(246, 244, 246);
-    margin-bottom: -10px;
-  }
-  
-  .history-deleteButton:hover {
-    background-color: rgb(255, 126, 121);
-  }
-  
-  .history-deleteButton:active {
-    transform: scale(0.93);
-    /* Scaling button to 0.98 to its original size */
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-    /* Lowering the shadow */
-  }
-  
-  .detailsButton:hover {
-    background-color: rgb(152, 188, 193);
-  }
-  
-  .detailsButton {
-    font-size: 14px;
-    color: black;
-    border-radius: 3px;
-    cursor: pointer;
-    outline: none;
-    transition: 0.2s all;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 3px 10px;
-    background-color: rgb(246, 244, 246);
-    margin-bottom: 5px;
-    margin-top: -15px;
-  }
-  /* Adding transformation when the button is active */
-  .detailsButton:active {
-    transform: scale(0.93);
-    /* Scaling button to 0.98 to its original size */
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-    /* Lowering the shadow */
-  }
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s all;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 3px 10px;
+  background-color: rgb(246, 244, 246);
+  margin-bottom: -10px;
+}
 
-  .printButton {
-    font-size: 14px;
-    color: rgb(0, 0, 0);
-    border-radius: 3px;
-    cursor: pointer;
-    outline: none;
-    transition: 0.2s all;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 2px 10px;
-    background-color: rgb(246, 244, 246);
-    margin-bottom: 5px;
-  }
-  
-  .printButton:hover {
-    background-color: rgb(203, 178, 228);
-  }
-  
-  .printButton:active {
-    transform: scale(0.93);
-    /* Scaling button to 0.98 to its original size */
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-    /* Lowering the shadow */
-  }
+.history-deleteButton:hover {
+  background-color: rgb(255, 126, 121);
+}
 
-  .paidButton {
-    font-size: 14px;
-    color: rgb(0, 0, 0);
-    border-radius: 3px;
-    cursor: pointer;
-    outline: none;
-    transition: 0.2s all;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 3px 10px;
-    background-color: rgb(246, 244, 246);
-    margin-bottom: 5px;
-  }
-  
-  .paidButton:hover {
-    background-color: rgb(173, 216, 195);
-  }
-  
-  .paidButton:active {
-    transform: scale(0.93);
-    /* Scaling button to 0.98 to its original size */
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-    /* Lowering the shadow */
-  }
+.history-deleteButton:active {
+  transform: scale(0.93);
+  /* Scaling button to 0.98 to its original size */
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  /* Lowering the shadow */
+}
 
-  /* CSS in a separate .css file or using styled-components, etc. */
+.detailsButton:hover {
+  background-color: rgb(152, 188, 193);
+}
+
+.detailsButton {
+  font-size: 14px;
+  color: black;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s all;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 3px 10px;
+  background-color: rgb(246, 244, 246);
+  margin-bottom: 5px;
+  margin-top: -15px;
+}
+/* Adding transformation when the button is active */
+.detailsButton:active {
+  transform: scale(0.93);
+  /* Scaling button to 0.98 to its original size */
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  /* Lowering the shadow */
+}
+
+.printButton {
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s all;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 2px 10px;
+  background-color: rgb(246, 244, 246);
+  margin-bottom: 5px;
+}
+
+.printButton:hover {
+  background-color: rgb(203, 178, 228);
+}
+
+.printButton:active {
+  transform: scale(0.93);
+  /* Scaling button to 0.98 to its original size */
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  /* Lowering the shadow */
+}
+
+.paidButton {
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s all;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 3px 10px;
+  background-color: rgb(246, 244, 246);
+  margin-bottom: 5px;
+}
+
+.paidButton:hover {
+  background-color: rgb(173, 216, 195);
+}
+
+.paidButton:active {
+  transform: scale(0.93);
+  /* Scaling button to 0.98 to its original size */
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  /* Lowering the shadow */
+}
+
+/* CSS in a separate .css file or using styled-components, etc. */
 
 .custom-date-input {
   width: 90%; /* Fill the entire cell width */

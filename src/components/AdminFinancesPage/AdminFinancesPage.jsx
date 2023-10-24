@@ -9,6 +9,8 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { Paper } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
@@ -86,7 +88,7 @@ export default function AdminFinancialPage() {
       {
         label: "Amount Invoiced",
         data: incomeData,
-        backgroundColor: "#55768a",
+        backgroundColor: "#93757A",
       },
     ],
   };
@@ -108,14 +110,33 @@ export default function AdminFinancialPage() {
     },
   };
 
-
-
   return (
     <div>
-      <h2>Monthly Financial Data</h2>
-      <div>
-        <Bar data={data} options={options}></Bar>
-      </div>
+      <center>
+        <Paper
+          elevation={3}
+          style={{ paddingLeft: "10px", paddingRight: "10px" }}
+        >
+          <Typography variant="h5" component="div">
+            <h2
+              style={{
+                fontSize: "32px",
+                marginTop: "-10px",
+                paddingTop: "10px",
+                paddingBottom: "15px",
+                letterSpacing: ".5px",
+                borderBottom: "1px solid black",
+                width: "80%",
+              }}
+            >
+              Monthly Financial Overview
+            </h2>
+          </Typography>
+          <Bar data={data} options={options}></Bar>
+          <br />
+          <br />
+        </Paper>
+      </center>
     </div>
   );
 }

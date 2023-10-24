@@ -1,14 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Box,
-  TextField,
-  Button,
-  Paper,
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Button, Card, CardContent, Typography } from "@mui/material";
 import Swal from "sweetalert2";
 
 export default function ArchivedCustomerList({ toggleArchived }) {

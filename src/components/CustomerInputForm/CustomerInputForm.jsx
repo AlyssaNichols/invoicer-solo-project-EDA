@@ -10,8 +10,7 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import Swal from 'sweetalert2'
-
+import Swal from "sweetalert2";
 
 export default function CustomerInputForm() {
   const history = useHistory();
@@ -29,7 +28,7 @@ export default function CustomerInputForm() {
       !phone
     ) {
       alert("Please make sure all fields are filled in before submitting!");
-      return
+      return;
     } else {
       dispatch({
         type: "ADD_CUSTOMER",
@@ -54,9 +53,9 @@ export default function CustomerInputForm() {
       setPhone("");
     }
     Swal.fire({
-      icon: 'success',
-      title: 'Customer Added',
-      text: 'The new customer has been successfully added.',
+      icon: "success",
+      title: "Customer Added",
+      text: "The new customer has been successfully added.",
     });
   };
   function cancelAdd() {
@@ -97,7 +96,7 @@ export default function CustomerInputForm() {
                   style={{
                     marginTop: "-5px",
                     marginBottom: "-5px",
-                    letterSpacing: ".5px"
+                    letterSpacing: ".5px",
                   }}
                 >
                   Input New Customer
@@ -107,7 +106,7 @@ export default function CustomerInputForm() {
           </center>
         </Card>
         <Paper
-          style={{ width: "40%", marginTop: "20px", paddingTop: "25px"}}
+          style={{ width: "40%", marginTop: "20px", paddingTop: "25px" }}
           elevation={3}
         >
           <form onSubmit={addNewCustomer}>
@@ -122,21 +121,25 @@ export default function CustomerInputForm() {
               <TextField
                 style={{ backgroundColor: "white" }}
                 inputProps={{
-                  style: { textTransform: "capitalize" }
+                  style: { textTransform: "capitalize" },
                 }}
                 label="First Name"
                 value={firstName}
-                onChange={(event) => setFirstName(capitalizeFirstLetters(event.target.value))}
+                onChange={(event) =>
+                  setFirstName(capitalizeFirstLetters(event.target.value))
+                }
               />
               <br />
               <TextField
                 style={{ backgroundColor: "white" }}
                 inputProps={{
-                  style: { textTransform: "capitalize" }
+                  style: { textTransform: "capitalize" },
                 }}
                 label="Last Name"
                 value={lastName}
-                onChange={(event) => setLastName(capitalizeFirstLetters(event.target.value))}
+                onChange={(event) =>
+                  setLastName(capitalizeFirstLetters(event.target.value))
+                }
               />
               <br />
               <TextField
@@ -186,7 +189,7 @@ export default function CustomerInputForm() {
               <br />
               <br />
               <Button
-                style={{ backgroundColor: "#A09084", color: "white"}}
+                style={{ backgroundColor: "#A09084", color: "white" }}
                 variant="contained"
                 type="button"
                 onClick={cancelAdd}

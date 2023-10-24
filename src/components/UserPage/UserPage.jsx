@@ -4,7 +4,6 @@ import "./UserPage.css";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 function UserPage() {
@@ -20,21 +19,33 @@ function UserPage() {
       <br />
       <br />
       <center>
-      <Card sx={{ minWidth: "275", width: "98%" }}>
-        <center>
-          <CardContent>
-          <h2 style={{
-                  marginTop: "-5px", marginBottom: "0px", fontSize: "22px",
-                }}>              Welcome,{" "}
-                {user.username.charAt(0).toUpperCase() + user.username.slice(1)}!</h2>
-            <p style={{
-                  marginTop: "5px", marginBottom: "-5px", fontSize: "16px"
-                }}> 
-              Your ID Number is: {user.id}
-            </p>
-          </CardContent>
-        </center>
-      </Card>
+        <Card sx={{ minWidth: "275", width: "98%" }}>
+          <center>
+            <CardContent>
+              <h2
+                style={{
+                  marginTop: "-5px",
+                  marginBottom: "0px",
+                  fontSize: "22px",
+                }}
+              >
+                {" "}
+                Welcome,{" "}
+                {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
+                !
+              </h2>
+              <p
+                style={{
+                  marginTop: "5px",
+                  marginBottom: "-5px",
+                  fontSize: "16px",
+                }}
+              >
+                Your ID Number is: {user.id}
+              </p>
+            </CardContent>
+          </center>
+        </Card>
       </center>
       <div className="aboutDiv">
         <h1 className="mainUserHeader">
@@ -52,7 +63,11 @@ function UserPage() {
         <br />
         <center>
           <Button
-            style={{ backgroundColor: "#996887", color: "white", fontSize: "16px"}}
+            style={{
+              backgroundColor: "#946E6D",
+              color: "white",
+              fontSize: "16px",
+            }}
             variant="contained"
             onClick={() => {
               invoicePage();
