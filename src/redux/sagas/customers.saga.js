@@ -34,19 +34,18 @@ function* deleteCustomerSaga(action) {
 function* editCustomerSaga(action) {
   try {
     console.log("ACTION PAYLOAD IS", action.payload);
-    const response = yield axios.put(
-      `/api/customers/${action.payload.id}`,
-      {
-       address: action.payload.address,
-       city: action.payload.city,
-       state: action.payload.state,
-       zip: action.payload.zip,
-       phone: action.payload.phone,
-       email: action.payload.email,
-      }
-    );
+    const response = yield axios.put(`/api/customers/${action.payload.id}`, {
+      first_name: action.payload.first_name,
+      last_name: action.payload.last_name,
+      address: action.payload.address,
+      city: action.payload.city,
+      state: action.payload.state,
+      zip: action.payload.zip,
+      phone: action.payload.phone,
+      email: action.payload.email,
+    });
     console.log("RESPONSE IS", response);
-      yield put({ type: "FETCH_CUSTOMERS", payload: action.payload });
+    yield put({ type: "FETCH_CUSTOMERS", payload: action.payload });
   } catch (error) {
     console.log("error in edit invoice", error);
   }

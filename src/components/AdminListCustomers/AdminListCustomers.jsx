@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
+import {
+  Box,
+  TextField,
+  Button,
+  Paper,
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/material";
 import Swal from "sweetalert2";
-import { useDispatch } from "react-redux";
 
-export default function AdminListCustomers({ customer }) {
+export default function AdminListCustomers({ customer, index }) {
+  const params = useParams();
   const dispatch = useDispatch();
-  console.log("-----------------------------Customer Data:", customer);
 
   const handleArchive = (customerId) => {
     Swal.fire({
@@ -25,6 +35,8 @@ export default function AdminListCustomers({ customer }) {
   };
 
   const [edit, setEdit] = useState(false);
+  const [editFirst, setEditFirst] = useState(customer.first_name);
+  const [editLast, setEditLast] = useState(customer.last_name);
   const [editAddress, setEditAddress] = useState(customer.address);
   const [editCity, setEditCity] = useState(customer.city);
   const [editState, setEditState] = useState(customer.state);
@@ -34,6 +46,8 @@ export default function AdminListCustomers({ customer }) {
 
   const handleEdit = () => {
     setEdit(!edit);
+    setEditFirst(customer.first_name)
+    setEditLast(customer.last_name)
     setEditAddress(customer.address);
     setEditCity(customer.city);
     setEditState(customer.state);
@@ -52,7 +66,9 @@ export default function AdminListCustomers({ customer }) {
     dispatch({
       type: "EDIT_CUSTOMER",
       payload: {
-        id: params.id,
+        id: customer.id,
+        first_name: editFirst,
+        last_name: editLast,
         address: editAddress,
         city: editCity,
         zip: editZip,
@@ -68,7 +84,20 @@ export default function AdminListCustomers({ customer }) {
   return (
     <tr key={index}>
       <td>
-        ${customer.last_name}, ${customer.first_name} HIIIIII
+        {edit ? (
+          <><input
+            type="text"
+            value={editLast}
+            onChange={(e) => setEditLast(e.target.value)}
+          />,
+          <input
+          type="text"
+          value={editFirst}
+          onChange={(e) => setEditFirst(e.target.value)}
+        />
+        </> ) : (
+          `${customer.last_name}, ${customer.first_name}`
+        )}
       </td>
       <td>
         {edit ? (
@@ -138,18 +167,89 @@ export default function AdminListCustomers({ customer }) {
       </td>
       <td>
         {edit ? (
-          <button onClick={saveEdit}>Save</button>
+          <>
+             <Button
+              style={{
+                fontSize: "12px",
+                padding: "2px 10px",
+                color: "black",
+                fontWeight: "bold",
+                border: "1px solid black",
+                transition: "background-color 0.3s",
+              }}
+              variant="outlined"
+              onClick={() => setEdit(!edit)}
+              onMouseEnter={(e) =>
+                (e.target.style.backgroundColor = "rgb(173, 216, 195)")
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = "transparent")
+              }
+            >
+              Cancel
+            </Button>{" "}
+            <Button
+              style={{
+                fontSize: "12px",
+                padding: "2px 10px",
+                color: "black",
+                fontWeight: "bold",
+                border: "1px solid black",
+                transition: "background-color 0.3s",
+              }}
+              variant="outlined"
+              onClick={saveEdit}
+              onMouseEnter={(e) =>
+                (e.target.style.backgroundColor = "rgb(173, 216, 195)")
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = "transparent")
+              }
+            >
+              Save
+            </Button>
+          </>
         ) : (
-          <button className="history-editButton" onClick={handleEdit}>
+          <><Button
+            style={{
+              fontSize: "12px",
+              padding: "2px 10px",
+              color: "black",
+              fontWeight: "bold",
+              border: "1px solid black",
+              transition: "background-color 0.3s",
+            }}
+            variant="outlined"
+            onClick={handleEdit}
+            onMouseEnter={(e) =>
+              (e.target.style.backgroundColor = "rgb(173, 216, 195)")
+            }
+            onMouseLeave={(e) =>
+              (e.target.style.backgroundColor = "transparent")
+            }
+          >
             Edit
-          </button>
-        )}
-        <button
-          className="history-deleteButton"
+          </Button>{" "}
+          <Button
+          style={{
+            fontSize: "12px",
+            padding: "2px 10px",
+            color: "black",
+            fontWeight: "bold",
+            border: "1px solid black",
+            transition: "background-color 0.3s",
+          }}
+          variant="outlined"
           onClick={() => handleArchive(customer.id)}
+          onMouseEnter={(e) =>
+            (e.target.style.backgroundColor = "rgb(173, 216, 195)")
+          }
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
         >
-          Archive Customer
-        </button>
+          Archive
+        </Button>
+          </> )}{" "}
+
       </td>
     </tr>
   );

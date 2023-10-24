@@ -76,10 +76,9 @@ router.post("/", (req, res) => {
 // DELETE
 router.delete("/:id", (req, res) => {
   pool
-    .query(
-      `UPDATE customers SET isdeleted = true WHERE id = $1;`,
-      [req.params.id]
-    )
+    .query(`UPDATE customers SET isdeleted = true WHERE id = $1;`, [
+      req.params.id,
+    ])
     .then((response) => {
       res.sendStatus(200);
     })
@@ -91,18 +90,24 @@ router.delete("/:id", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const queryText = `UPDATE "customers"
-  SET "address" = $1,
-      "city" = $2,
-      "state" = $3,
-      "zip" = $4,
-      "phone" = $5,
-      "email" = $6
-  WHERE "id" = $7;`;
+  SET "first_name" = $1, "last_name" = $2, "address" = $3,
+      "city" = $4,
+      "state" = $5,
+      "zip" = $6,
+      "phone" = $7,
+      "email" = $8
+  WHERE "id" = $9;`;
   pool
     .query(queryText, [
-      req.body.address, req.body.city, req.body.state, 
-      Number(req.body.zip), Number(req.body.phone),
-      req.body.email, req.params.id
+      req.body.first_name,
+      req.body.last_name,
+      req.body.address,
+      req.body.city,
+      req.body.state,
+      Number(req.body.zip),
+      Number(req.body.phone),
+      req.body.email,
+      req.params.id,
     ])
     .then((response) => {
       res.sendStatus(200);
