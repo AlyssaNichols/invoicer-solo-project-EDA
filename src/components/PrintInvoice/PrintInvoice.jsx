@@ -33,10 +33,10 @@ export default function PrintInvoice() {
   const handlePrint = () => {
     window.print(); // This will trigger the print dialog
   };
-  // const handleEmail = () => {
-  //   // Navigate to the email sending page with the email and details ID
-  //   history.push(`/email/${details.id}`);
-  // };
+  const handleEmail = () => {
+    // Navigate to the email sending page with the email and details ID
+    history.push(`/email/${details.id}`);
+  };
   useEffect(() => {
     dispatch({ type: "FETCH_COMPANIES" });
     dispatch({ type: "FETCH_SERVICES" });
@@ -106,7 +106,7 @@ export default function PrintInvoice() {
               >
                 Edit Details
               </Button>
-              {/* <Button
+              <Button
                 className="printInvoiceButton"
                 style={{
                   marginTop: "-110px",
@@ -119,7 +119,7 @@ export default function PrintInvoice() {
                 variant="contained"
                 onClick={() => handleEmail(details.email, details.id)}
               > Email
-              </Button> */}
+              </Button>
             </div>
           </div>
         </div>

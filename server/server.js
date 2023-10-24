@@ -1,7 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-
 const app = express();
 const sgMail = require("@sendgrid/mail");
 const sessionMiddleware = require("./modules/session-middleware");
@@ -26,25 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-app.post('/send-email', (req, res) => {
-// Get the recipient email from the request body
-  const msg = {
-    to: req.body.recipient, // Use the recipient email from the request body
-    from: 'Grassmastersfargo@gmail.com',
-    subject: req.body.subject,
-    text: req.body.html,
-  };
 
-  sgMail
-    .send(msg)
-    .then(() => {
-      res.send('Email sent successfully');
-    })
-    .catch((error) => {
-      console.error('Error sending email:', error);
-      res.status(500).send('Error sending email');
-    });
-});
 // Passport Session Configuration //
 app.use(sessionMiddleware);
 
