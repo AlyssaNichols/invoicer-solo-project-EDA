@@ -82,17 +82,17 @@ Grid
 .landing-container{
   margin-top: -60px;
   padding-bottom: 18%;
-  background-image: url(./background.jpg);
+  background-image: url(./plant-background.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
-.landingDiv{
-  background-color: #DFD9D9;
-margin-left: 2%;
-margin-right: 2%;
-margin-top: 5%;
-padding-bottom: 20px;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+.landingDiv {
+  background-color: rgba(223, 217, 217, 0.7); /* 0.7 specifies 70% opacity */
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 5%;
+  padding-bottom: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 }

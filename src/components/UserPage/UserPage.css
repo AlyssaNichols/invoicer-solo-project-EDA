@@ -6,6 +6,12 @@ padding-bottom: 40px;
 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
 
+financialDiv{
+width: 50%;
+margin: 0 auto;
+padding: 20px;
+}
+
 .homeDiv{
   background-color: #DFD9D9;
 margin-left: 2%;

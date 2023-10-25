@@ -19,7 +19,7 @@ function LandingPage() {
       <center>
       <div
         className="landingDiv"
-        style={{ display: "flex", width: "60%" }}
+        style={{ display: "flex", width: "50%" }}
       >
         <div style={{ flex: 1}}>
           <h1 className="mainUserHeader" >
@@ -33,7 +33,7 @@ function LandingPage() {
           <Paper
           elevation={3}
           style={{
-            width: "40%",
+            width: "60%",
             paddingBottom: "40px",
             paddingTop: "20px",
           }}

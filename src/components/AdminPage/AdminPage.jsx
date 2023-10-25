@@ -44,7 +44,8 @@ export default function AdminPage() {
           <Link to="/admin/employees">Employees</Link>
         </div>
       </nav>
-      <div className="aboutDiv">
+      <div className="financialDiv">
+      <br /> <br />
         <h1 className="mainUserHeader">
           Thanks for choosing <br />
           <span className="professionalInvoice">Invoicer</span>
