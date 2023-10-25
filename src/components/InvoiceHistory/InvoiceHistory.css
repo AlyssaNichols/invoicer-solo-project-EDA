@@ -127,3 +127,78 @@
   outline: none; /* Remove the default focus outline */
   border-color: #c81ff3; /* Custom color when focused */
 }
+
+.sortable-header {
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.sorted {
+  background-color: #f0f0f0;
+}
+
+.sort-icon {
+  display: inline-block;
+  margin-left: 4px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  vertical-align: middle;
+}
+
+.asc {
+  border-width: 0 4px 5px 4px;
+  border-color: transparent transparent #000 transparent;
+}
+
+.desc {
+  border-width: 5px 4px 0 4px;
+  border-color: #000 transparent transparent transparent;
+}
+.sort-select {
+  padding: 6px 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  margin-right: 5px;
+  float: right; /* Align on the right side */ /* Add some space between the buttons and select */
+}
+
+.sort-button {
+  padding: 4px 6px;
+  font-size: 16px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.sort-button.active {
+  background-color: #e0e0e0; /* Highlight the active button */
+}
+
+/* Add some space between the buttons */
+.sort-button + .sort-button {
+  margin-left: 5px;
+}
+
+/* Style the Font Awesome icons */
+.sort-button svg {
+  margin-left: 5px;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+  justify-content: center;
+}
+
+.button-icon {
+  vertical-align: middle;
+}

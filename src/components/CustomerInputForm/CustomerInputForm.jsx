@@ -113,7 +113,7 @@ export default function CustomerInputForm() {
             <Box
               className="formFields"
               sx={{
-                "& .MuiTextField-root": { m: 0.4, width: "40ch" },
+                "& .MuiTextField-root": { m: 0.3, width: "40ch" },
               }}
               noValidate
               autoComplete="off"
@@ -131,7 +131,7 @@ export default function CustomerInputForm() {
               />
               <br />
               <TextField
-                style={{ backgroundColor: "white" }}
+                style={{ backgroundColor: "white", }}
                 inputProps={{
                   style: { textTransform: "capitalize" },
                 }}

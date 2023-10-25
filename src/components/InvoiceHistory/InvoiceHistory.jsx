@@ -6,6 +6,8 @@ import "./InvoiceHistory.css";
 import Swal from "sweetalert2";
 import Fuse from "fuse.js";
 import SearchIcon from "@mui/icons-material/Search";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import {
   TextField,
   Button,
@@ -21,6 +23,8 @@ export default function InvoiceHistory() {
   const invoices = useSelector((state) => state.invoice);
   const user = useSelector((store) => store.user);
   console.log("INVOICES", invoices);
+  const [sortOrder, setSortOrder] = useState("asc"); // Default sorting order is ascending
+  const [sortOption, setSortOption] = useState("id");
 
   useEffect(() => {
     dispatch({ type: "FETCH_INVOICES", payload: params.id });
@@ -72,7 +76,6 @@ export default function InvoiceHistory() {
   });
   const results = fuse.search(query);
   const searchResult = results.map((result) => result.item);
-  console.log("RESULTS", results);
 
   function handleOnSearch(value) {
     console.log(value); // Add this line for debugging
@@ -81,6 +84,23 @@ export default function InvoiceHistory() {
 
   function clearInput() {
     setQuery(" ");
+  }
+  const handleSortClick = (option) => {
+    if (option === sortOption) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortOption(option);
+      setSortOrder("asc");
+    }
+  };
+  function formatPhoneNumber(phoneNumber) {
+    const cleaned = phoneNumber.replace(/\D/g, "");
+    if (cleaned.length === 10) {
+      return `${cleaned.slice(0, 3)}-${cleaned.slice(3, 6)}-${cleaned.slice(
+        6
+      )}`;
+    }
+    return cleaned;
   }
 
   return (
@@ -142,170 +162,291 @@ export default function InvoiceHistory() {
         >
           Clear
         </Button>
+        <div
+          style={{ display: "flex", alignItems: "center", float: "right", marginRight: "3%", marginTop: "10px" }}
+        >
+          <select
+            className="sort-select"
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+          >
+            <option value="id">Sort by ID</option>
+            <option value="date_issued">Sort by Date Issued</option>
+            <option value="last_name">Sort by Last Name</option>
+            <option value="total_price">Sort by Total Price</option>
+            <option value="date_paid">Sort by Date Paid</option>
+          </select>
+          <button
+  onClick={() => setSortOrder("asc")}
+  className={`sort-button ${sortOrder === "asc" ? "active" : ""}`}
+>
+  <div className="button-content">
+    <span className="button-icon">
+      <FontAwesomeIcon icon={faSortUp} />
+    </span>
+  </div>
+</button>
+<button
+  onClick={() => setSortOrder("desc")}
+  className={`sort-button ${sortOrder === "desc" ? "active" : ""}`}
+>
+  <div className="button-content">
+    <span className="button-icon">
+      <FontAwesomeIcon icon={faSortDown} />
+    </span>
+  </div>
+</button>
+
+        </div>
+
         <center>
           <table style={{ width: "94%" }} className="invoice-table">
             <thead>
               <tr>
-                <th>Invoice Number</th>
-                <th>Date Issued</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Contact Info</th>
-                <th>Service Data</th>
-                <th>Total Price</th>
-                <th>Date Paid</th>
-                <th>Actions</th>
+                <th
+                  className={`sortable-header ${
+                    sortOption === "id" ? "sorted" : ""
+                  }`}
+                  onClick={() => handleSortClick("id")}
+                >
+                  <div>
+                    Invoice Number{" "}
+                    {sortOption === "id" && (
+                      <span
+                        className={`sort-icon ${
+                          sortOrder === "asc" ? "asc" : "desc"
+                        }`}
+                      ></span>
+                    )}
+                  </div>
+                </th>
+                <th
+                  className={`sortable-header ${
+                    sortOption === "date_issued" ? "sorted" : ""
+                  }`}
+                  onClick={() => handleSortClick("date_issued")}
+                >
+                  <div>
+                    Date Issued{" "}
+                    {sortOption === "date_issued" && (
+                      <span
+                        className={`sort-icon ${
+                          sortOrder === "asc" ? "asc" : "desc"
+                        }`}
+                      ></span>
+                    )}
+                  </div>
+                </th>
+                <th
+                  className={`sortable-header ${
+                    sortOption === "last_name" ? "sorted" : ""
+                  }`}
+                  onClick={() => handleSortClick("last_name")}
+                >
+                  <div>
+                    Name{" "}
+                    {sortOption === "last_name" && (
+                      <span
+                        className={`sort-icon ${
+                          sortOrder === "asc" ? "asc" : "desc"
+                        }`}
+                      ></span>
+                    )}
+                  </div>
+                </th>
+                <th className="sortable-header">
+                  <div>Address</div>
+                </th>
+                <th className="sortable-header">
+                  <div>Contact Info</div>
+                </th>
+                <th className="sortable-header" style={{ width: "22%" }}>
+                  <div>Service Data</div>
+                </th>
+                <th
+                  className={`sortable-header ${
+                    sortOption === "total_price" ? "sorted" : ""
+                  }`}
+                  onClick={() => handleSortClick("total_price")}
+                >
+                  <div>
+                    Total Price{" "}
+                    {sortOption === "total_price" && (
+                      <span
+                        className={`sort-icon ${
+                          sortOrder === "asc" ? "asc" : "desc"
+                        }`}
+                      ></span>
+                    )}
+                  </div>
+                </th>
+                <th
+                  className={`sortable-header ${
+                    sortOption === "date_paid" ? "sorted" : ""
+                  }`}
+                  onClick={() => handleSortClick("date_paid")}
+                >
+                  <div>
+                    Date Paid{" "}
+                    {sortOption === "date_paid" && (
+                      <span
+                        className={`sort-icon ${
+                          sortOrder === "asc" ? "asc" : "desc"
+                        }`}
+                      ></span>
+                    )}
+                  </div>
+                </th>
+                <th className="sortable-header">
+                  <div>Actions</div>
+                </th>
               </tr>
             </thead>
+
             <tbody>
               {((query ? searchResult : invoices).length > 0
                 ? query
                   ? searchResult
                   : invoices
                 : invoices
-              ).map((invoice) => {
-                const inEditMode = editMode === invoice.id;
-                return (
-                  <tr key={invoice.id}>
-                    <td>{invoice.id}</td>
-                    <td>{formatDate(invoice.date_issued)}</td>
-                    <td>
-                      {invoice.first_name} {invoice.last_name}
-                    </td>
-                    <td>
-                      {invoice.address} <br /> {invoice.city}, {invoice.state}{" "}
-                      {invoice.zip}
-                    </td>
-                    <td>
-                      Phone: {invoice.phone}
-                      <br /> Email: {invoice.email}
-                    </td>
-                    <td>
-                      <ul>
-                        {invoice.service_data.map((service, index) => (
-                          <ServiceData key={index} service={service} />
-                        ))}
-                      </ul>
-                    </td>
-                    <td>{parseFloat(invoice.total_price).toFixed(2)}</td>
-                    <td>
-                      {inEditMode ? (
-                        <input
-                          type="date"
-                          className="custom-date-input"
-                          value={editedDate}
-                          onChange={(e) => setEditedDate(e.target.value)}
-                        />
-                      ) : (
-                        formatDate(invoice.date_paid)
-                      )}
-                    </td>
+              )
+                .sort((a, b) => {
+                  switch (sortOption) {
+                    case "last_name":
+                      return sortOrder === "asc"
+                        ? a.last_name.localeCompare(b.last_name)
+                        : b.last_name.localeCompare(a.last_name);
+                    case "id":
+                      return sortOrder === "asc" ? a.id - b.id : b.id - a.id;
+                    case "date_issued":
+                      const dateA = new Date(a.date_issued);
+                      const dateB = new Date(b.date_issued);
+                      return sortOrder === "asc"
+                        ? dateA - dateB
+                        : dateB - dateA;
+                    case "total_price":
+                      return sortOrder === "asc"
+                        ? a.total_price - b.total_price
+                        : b.total_price - a.total_price;
+                    case "date_paid":
+                      const datePaidA = a.date_paid
+                        ? new Date(a.date_paid)
+                        : null;
+                      const datePaidB = b.date_paid
+                        ? new Date(b.date_paid)
+                        : null;
+                      return sortOrder === "asc"
+                        ? datePaidA - datePaidB
+                        : datePaidB - datePaidA;
+                    default:
+                      return 0;
+                  }
+                })
+                .map((invoice) => {
+                  const inEditMode = editMode === invoice.id;
+                  return (
+                    <tr key={invoice.id}>
+                      <td>{invoice.id}</td>
+                      <td>{formatDate(invoice.date_issued)}</td>
+                      <td>
+                        {invoice.first_name} {invoice.last_name}
+                      </td>
+                      <td>
+                        {invoice.address} <br /> {invoice.city}, {invoice.state}{" "}
+                        {invoice.zip}
+                      </td>
+                      <td>
+                        {formatPhoneNumber(invoice.phone)}
+                        <br />
+                        <br />
+                        {invoice.email}
+                      </td>
+                      <td>
+                        <ul>
+                          {invoice.service_data
+                            .slice()
+                            .sort((a, b) => new Date(a.date) - new Date(b.date))
+                            .map((service, index) => (
+                              <ServiceData key={index} service={service} />
+                            ))}
+                        </ul>
+                      </td>
+                      <td>{parseFloat(invoice.total_price).toFixed(2)}</td>
+                      <td>
+                        {inEditMode ? (
+                          <input
+                            type="date"
+                            className="custom-date-input"
+                            value={editedDate}
+                            onChange={(e) => setEditedDate(e.target.value)}
+                          />
+                        ) : (
+                          formatDate(invoice.date_paid)
+                        )}
+                      </td>
 
-                    <td>
-                      {inEditMode ? (
-                        <>
-                          <button
-                            className="paidButton"
-                            onClick={() => {
-                              Swal.fire({
-                                icon: "success",
-                                title: "Marked as Paid",
-                                text: `The invoice was marked as paid.`,
-                              });
-                              dispatch({
-                                type: "EDIT_INVOICE",
-                                payload: { ...invoice, date_paid: editedDate },
-                              });
-                              setEditMode(null);
-                            }}
-                          >
-                            Save
-                          </button>
-                          <button
-                            className="history-deleteButton"
-                            onClick={() => {
-                              setEditMode(null);
-                            }}
-                          >
-                            Cancel
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <Button
-                            style={{
-                              marginBottom: "5px",
-                              fontSize: "12px",
-                              padding: "2px 4px",
-                              color: "black",
-                              fontWeight: "bold",
-                              border: "1px solid black",
-                              transition: "background-color 0.2s",
-                            }}
-                            variant="outlined"
-                            onClick={() => {
-                              setEditedDate(invoice.date_paid || "");
-                              setEditMode(invoice.id);
-                            }}
-                            onMouseEnter={(e) =>
-                              (e.target.style.backgroundColor =
-                                "rgb(173, 216, 195)")
-                            }
-                            onMouseLeave={(e) =>
-                              (e.target.style.backgroundColor = "transparent")
-                            }
-                          >
-                            Mark as Paid
-                          </Button>
-                          <Button
-                            style={{
-                              marginBottom: "5px",
-                              fontSize: "12px",
-                              padding: "2px 6px",
-                              color: "black",
-                              fontWeight: "bold",
-                              border: "1px solid black",
-                              transition: "background-color 0.3s",
-                            }}
-                            variant="outlined"
-                            onClick={() => printInvoice(invoice.id)}
-                            onMouseEnter={(e) =>
-                              (e.target.style.backgroundColor =
-                                "rgb(203, 178, 228)")
-                            }
-                            onMouseLeave={(e) =>
-                              (e.target.style.backgroundColor = "transparent")
-                            }
-                          >
-                            Preview
-                          </Button>
-                          <br />
-                          <Button
-                            style={{
-                              marginBottom: "5px",
-                              fontSize: "12px",
-                              padding: "2px 4px",
-                              color: "black",
-                              fontWeight: "bold",
-                              border: "1px solid black",
-                              transition: "background-color 0.3s",
-                            }}
-                            variant="outlined"
-                            onClick={() => moreDetails(invoice.id)}
-                            onMouseEnter={(e) =>
-                              (e.target.style.backgroundColor =
-                                "rgb(152, 188, 193)")
-                            }
-                            onMouseLeave={(e) =>
-                              (e.target.style.backgroundColor = "transparent")
-                            }
-                          >
-                            More Details
-                          </Button>
-                          <br />
-                          {user.is_admin && (
+                      <td>
+                        {inEditMode ? (
+                          <>
+                            <button
+                              className="paidButton"
+                              onClick={() => {
+                                Swal.fire({
+                                  icon: "success",
+                                  title: "Marked as Paid",
+                                  text: `The invoice was marked as paid.`,
+                                });
+                                dispatch({
+                                  type: "EDIT_INVOICE",
+                                  payload: {
+                                    ...invoice,
+                                    date_paid: editedDate,
+                                  },
+                                });
+                                setEditMode(null);
+                              }}
+                            >
+                              Save
+                            </button>
+                            <button
+                              className="history-deleteButton"
+                              onClick={() => {
+                                setEditMode(null);
+                              }}
+                            >
+                              Cancel
+                            </button>
+                          </>
+                        ) : (
+                          <>
                             <Button
                               style={{
+                                marginBottom: "5px",
+                                fontSize: "12px",
+                                padding: "2px 4px",
+                                color: "black",
+                                fontWeight: "bold",
+                                border: "1px solid black",
+                                transition: "background-color 0.2s",
+                              }}
+                              variant="outlined"
+                              onClick={() => {
+                                setEditedDate(invoice.date_paid || "");
+                                setEditMode(invoice.id);
+                              }}
+                              onMouseEnter={(e) =>
+                                (e.target.style.backgroundColor =
+                                  "rgb(173, 216, 195)")
+                              }
+                              onMouseLeave={(e) =>
+                                (e.target.style.backgroundColor = "transparent")
+                              }
+                            >
+                              Mark as Paid
+                            </Button>
+                            <Button
+                              style={{
+                                marginBottom: "5px",
                                 fontSize: "12px",
                                 padding: "2px 6px",
                                 color: "black",
@@ -314,24 +455,71 @@ export default function InvoiceHistory() {
                                 transition: "background-color 0.3s",
                               }}
                               variant="outlined"
-                              onClick={() => handleDeleteInvoice(invoice.id)}
+                              onClick={() => printInvoice(invoice.id)}
                               onMouseEnter={(e) =>
-                                (e.target.style.backgroundColor = "#D16965")
+                                (e.target.style.backgroundColor =
+                                  "rgb(203, 178, 228)")
                               }
                               onMouseLeave={(e) =>
                                 (e.target.style.backgroundColor = "transparent")
                               }
                             >
-                              Delete
+                              Preview
                             </Button>
-                          )}
-                          <br />
-                        </>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
+                            <br />
+                            <Button
+                              style={{
+                                marginBottom: "5px",
+                                fontSize: "12px",
+                                padding: "2px 4px",
+                                color: "black",
+                                fontWeight: "bold",
+                                border: "1px solid black",
+                                transition: "background-color 0.3s",
+                              }}
+                              variant="outlined"
+                              onClick={() => moreDetails(invoice.id)}
+                              onMouseEnter={(e) =>
+                                (e.target.style.backgroundColor =
+                                  "rgb(152, 188, 193)")
+                              }
+                              onMouseLeave={(e) =>
+                                (e.target.style.backgroundColor = "transparent")
+                              }
+                            >
+                              More Details
+                            </Button>
+                            <br />
+                            {user.is_admin && (
+                              <Button
+                                style={{
+                                  fontSize: "12px",
+                                  padding: "2px 6px",
+                                  color: "black",
+                                  fontWeight: "bold",
+                                  border: "1px solid black",
+                                  transition: "background-color 0.3s",
+                                }}
+                                variant="outlined"
+                                onClick={() => handleDeleteInvoice(invoice.id)}
+                                onMouseEnter={(e) =>
+                                  (e.target.style.backgroundColor = "#D16965")
+                                }
+                                onMouseLeave={(e) =>
+                                  (e.target.style.backgroundColor =
+                                    "transparent")
+                                }
+                              >
+                                Delete
+                              </Button>
+                            )}
+                            <br />
+                          </>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </center>
