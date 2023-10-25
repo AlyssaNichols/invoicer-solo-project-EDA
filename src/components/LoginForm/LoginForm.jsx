@@ -81,7 +81,7 @@ function LoginForm() {
               <br />
               <br />
               <Button
-                style={{ backgroundColor: "#008080", color: "white" }}
+                style={{ backgroundColor: "#F79D54", color: "white", marginTop: "10px", padding: "6px 40px", fontSize: "18px"}}
                 variant="contained"
                 type="submit"
               >
@@ -95,7 +95,7 @@ function LoginForm() {
         </center>
       </Paper>
       <br />
-      <Button
+      {/* <Button
         style={{
           backgroundColor: "#7d5e51",
           color: "white",
@@ -107,8 +107,8 @@ function LoginForm() {
           history.push("/home");
         }}
       >
-        Back To Home
-      </Button>
+        Go Back
+      </Button> */}
     </>
   );
 }

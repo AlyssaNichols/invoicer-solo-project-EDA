@@ -16,9 +16,9 @@ function Nav() {
           {!user.id && (
             // If there's no user, show login/registration links
             <>
-              <li>
-                <Link className="navLink" to="/info">
-                  More Info
+                  <li>
+                <Link className="navLink" to="/home">
+                  Home
                 </Link>
               </li>
               <li>
@@ -26,6 +26,12 @@ function Nav() {
                   Login
                 </Link>
               </li>
+              <li>
+                <Link className="navLink" to="/info">
+                  More Info
+                </Link>
+              </li>
+         
             </>
           )}
 

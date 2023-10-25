@@ -12,18 +12,18 @@ function InfoPage() {
   return (
     <div className="container">
       <br />
-
-      <div className="aboutDiv">
-        <h1 className="mainUserHeader">
+      <br />
+      <br />
+      <div className="infoDiv">
+        <h1 className="main-info-header">
           Easily Generate A <br />
           <span className="professionalInvoice">Professional Invoice</span>
           <br />
           for your Business
         </h1>
-
-        <div className="infoContent">
+        <div className="info-content">
           <h2 className="infoHeading">Simplify Your Invoicing</h2>
-          <p className="infoParagraph">
+          <p className="info-paragraph">
             Welcome to Invoicer, where we've reimagined the way you create
             invoices. We understand the challenges that often come with
             complicated and overwhelming invoice generation platforms. That's
@@ -32,7 +32,7 @@ function InfoPage() {
           </p>
 
           <h2 className="infoHeading">Effortless & Cost-Free</h2>
-          <p className="infoParagraph">
+          <p className="info-paragraph">
             With Invoicer, we've designed a platform with you in mind, offering
             an easy and intuitive solution for generating invoices. Our mission
             is to empower you to effortlessly create custom, professional

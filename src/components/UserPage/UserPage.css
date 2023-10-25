@@ -1,20 +1,58 @@
 .aboutDiv {
-  width: 50%; /* Adjust the width as needed */
-  margin: 0 auto; /* Center the content horizontally */
-  padding: 20px; /* Add some padding for spacing */
+background-color: #DFD9D9;
+margin: 2%;
+padding-top: 20px;
+padding-bottom: 40px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+.homeDiv{
+  background-color: #DFD9D9;
+margin-left: 2%;
+margin-right: 2%;
+margin-top: 5%;
+padding-bottom: 20px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
 
 .mainUserHeader {
   font-size: 40px;
   font-weight: normal;
-  margin-top: 0px;
+  margin-top: -10px;
   margin-bottom: 20px;
   color: #333;
   text-align: center;
 }
 
+.main-info-header{
+  font-size: 40px;
+  font-weight: normal;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid black;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.info-content {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
 .infoParagraph {
   font-size: 18px;
+  margin: 2% 20%;
+  line-height: 1.4;
+  color: #3e3d3d;
+  text-align: center;
+}
+.info-paragraph {
+  font-size: 18px;
+  margin: 2% 13%;
   line-height: 1.4;
   color: #3e3d3d;
   text-align: center;
@@ -29,3 +67,12 @@
 body {
   background-color: rgb(239, 240, 241);
 }
+
+/* .infoHeader {
+  font-size: 40px;
+  font-weight: normal;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+} */

@@ -1,5 +1,5 @@
 .nav {
-  background-color: #55768a;
+  background-color: #3A486A;
   color: black;
   font-size: 18px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -47,7 +47,7 @@
 
 /* Add a cool hover effect for the navbar */
 .nav:hover {
-  background-color: #76a3bd;
+  background-color: #5579AA;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
