@@ -63,7 +63,7 @@ export default function PrintInvoice() {
   const buttonStyle = {
     marginTop: "-250px",
     marginLeft: "620px",
-    backgroundColor: "#9a5c6f",
+    backgroundColor: "#F69D55",
     color: "white",
     fontSize: "20px",
     padding: "10px 20px",
@@ -102,7 +102,7 @@ export default function PrintInvoice() {
                 style={{
                   marginTop: "-170px",
                   marginLeft: "687px",
-                  backgroundColor: "#A09084",
+                  backgroundColor: "#9a5c6f",
                   color: "white",
                   fontSize: "14px",
                   padding: "8px 16px",
