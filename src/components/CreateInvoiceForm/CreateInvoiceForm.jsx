@@ -48,12 +48,13 @@ export default function CreateInvoicePage() {
       <br />
       <div className="createInvoice-header-section">
         <center>
-          <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%", backgroundColor: "#DFD9D9" }}>
+          <Card sx={{ minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9" }}>
             <CardContent>
               <h1
                 style={{
                   marginTop: "-5px",
-                  letterSpacing: ".5px",
+                  letterSpacing: ".7px",
+
                 }}
               >
                 Let's Get Started!
@@ -64,6 +65,7 @@ export default function CreateInvoicePage() {
                   fontSize: "18px",
                   color: "black",
                   marginBottom: "-5px",
+                  marginTop: "-15px",
                 }}
               >
                 Step 1: Select a customer <br /> Step 2: Select a date for the

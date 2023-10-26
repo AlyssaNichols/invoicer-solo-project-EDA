@@ -134,21 +134,22 @@ export default function InvoiceHistory() {
           sx={{
             minWidth: 275,
             marginTop: "20px",
-            width: "98%",
-            backgroundColor: "#DFD9D9",
+            width: "96%",
+            backgroundColor: "#DFD9D9"
           }}
         >
           <CardContent>
             <Typography variant="h5" component="div">
-              <h2
+              <h1
                 style={{
                   marginTop: "-5px",
                   marginBottom: "-5px",
                   letterSpacing: ".5px",
+
                 }}
               >
                 Invoice History
-              </h2>
+              </h1>
             </Typography>
           </CardContent>
         </Card>
@@ -159,12 +160,13 @@ export default function InvoiceHistory() {
           style={{
             marginLeft: "3%",
             borderRadius: "4px",
-            width: "300px",
+            width: "280px",
             marginBottom: "20px",
             backgroundColor: "white",
           }}
           variant="outlined"
           fullWidth
+          size="small"
           label="Search By Name"
           value={query}
           onChange={(e) => handleOnSearch(e.target.value)}
@@ -176,7 +178,7 @@ export default function InvoiceHistory() {
         />
         <Button
           style={{
-            marginTop: "10px",
+            marginTop: "5px",
             marginLeft: "10px",
             backgroundColor: "#F69D55",
             height: "30px",
@@ -197,7 +199,7 @@ export default function InvoiceHistory() {
             alignItems: "center",
             float: "right",
             marginRight: "3%",
-            marginTop: "10px",
+            marginTop: "3px",
           }}
         >
           <select
@@ -233,7 +235,7 @@ export default function InvoiceHistory() {
           </button>
         </div>
         <center>
-          <table style={{ width: "94%" }} className="invoice-table">
+          <table style={{ width: "96%" }} className="invoice-table">
             <thead>
               <tr>
                 <th
@@ -407,7 +409,7 @@ export default function InvoiceHistory() {
                             ))}
                         </ul>
                       </td>
-                      <td>{parseFloat(invoice.total_price).toFixed(2)}</td>
+                      <td>${parseFloat(invoice.total_price).toFixed(2)}</td>
                       <td>
                         {inEditMode ? (
                           <input
@@ -455,6 +457,7 @@ export default function InvoiceHistory() {
                           </>
                         ) : (
                           <>
+                            {!invoice.date_paid ? (
                             <Button
                               style={{
                                 marginBottom: "5px",
@@ -480,6 +483,7 @@ export default function InvoiceHistory() {
                             >
                               Mark Paid
                             </Button>
+                            ) : null}
                             <Button
                               style={{
                                 marginBottom: "5px",
@@ -518,7 +522,7 @@ export default function InvoiceHistory() {
                                 onClick={() => moreDetails(invoice.id)}
                                 onMouseEnter={(e) =>
                                   (e.target.style.backgroundColor =
-                                    "rgb(152, 188, 193)")
+                                    "#83A2C9")
                                 }
                                 onMouseLeave={(e) =>
                                   (e.target.style.backgroundColor =

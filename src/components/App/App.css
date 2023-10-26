@@ -123,19 +123,22 @@ input {
 .invoice-table th,
 .invoice-table td {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #a5a5a7;
   text-align: center;
 }
 
 .invoice-table th {
-  background-color: #dcdcdc;
+  background-color: #c4cacd;
   font-weight: bold;
   text-transform: uppercase; /* Uppercase the header text */
 }
 
 .invoice-table tr td {
   background-color: #f8f8f8;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  
 }
 
 .invoice-table ul {
@@ -148,7 +151,7 @@ input {
 }
 
 .invoice-table tr:nth-child(even) td {
-  background-color: #ededed; /* Lighter background for even rows */
+  background-color: #eeebeb; /* Lighter background for even rows */
 }
 
 /* Hover effect for rows */
@@ -189,7 +192,7 @@ input {
 }
 
 /* Sidebar Container */
-.adminNav {
+/* .adminNav {
   background-color: #b0b0b0;
   color: black;
   width: 150px;
@@ -197,15 +200,27 @@ input {
   height: 110%;
   overflow-y: auto;
   transition: width 0.3s;
-  right: 1%;
+  right: 2%;
+} */
+.adminNav {
+  background-color: #b0b0b0;
+  color: black;
+  width: 150px;
+  position: fixed; 
+  right: 0; 
+  top: 0; 
+  height: 100%; 
+  overflow-y: auto;
+  transition: width 0.3s;
+  z-index: 1; 
 }
+
 
 .adminNav:hover {
   background-color: #bab8b8;
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Sidebar Links */
 .adminNavLinks {
   padding: 20px;
 }
@@ -219,23 +234,25 @@ input {
   font-size: 22px;
   margin-bottom: 20px;
 }
+.adminNavLinks a:first-child {
+  margin-top: 95px; }
 
-/* Cool Hover Effect */
+
 .adminNavLinks a:hover {
-  transform: scale(1.05); /* Scale the link on hover */
+  transform: scale(1.05); 
   text-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
-/* Active Link Style with Click Event */
+
 .adminNavLinks a.active {
   background-color: #555;
-  color: white; /* Change text color for active link */
+  color: white; 
   transition: background-color 0.3s, color 0.3s;
   transform: scale(1.05);
 }
 
 .adminNavLinks a.active:hover {
-  background-color: #555; /* Keep the background color the same on hover */
+  background-color: #555; 
 }
 
 .infoContent {
@@ -258,3 +275,12 @@ input {
   margin-bottom: 20px;
 }
 
+#react-root{
+  display: felx;
+  flex-direction: column
+}
+
+.footer{
+  flex-shrink: 0;
+margin-top: auto;
+}

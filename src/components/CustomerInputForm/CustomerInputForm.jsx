@@ -84,7 +84,7 @@ export default function CustomerInputForm() {
       <br />
       <center>
         {" "}
-        <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%", backgroundColor: "#DFD9D9"}}>
+        <Card sx={{ minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9"}}>
           <center>
             <CardContent>
               <Typography variant="h5" component="div">

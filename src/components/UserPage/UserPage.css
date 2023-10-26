@@ -13,7 +13,7 @@ padding: 20px;
 }
 
 .homeDiv{
-  background-color: #DFD9D9;
+background-color: #DFD9D9;
 margin-left: 2%;
 margin-right: 2%;
 margin-top: 5%;
@@ -24,10 +24,20 @@ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 .mainUserHeader {
   font-size: 40px;
   font-weight: normal;
-  margin-top: -10px;
+  margin-top: 0; /* Remove negative margin */
   margin-bottom: 20px;
   color: #333;
   text-align: center;
+  letter-spacing: .6px;
+}
+
+.welcomeName {
+  width: 45%; /* Adjust the width to fit the content */
+  margin: 0 auto; /* Center the element horizontally */
+  border-bottom: 1px solid black;
+  padding-bottom: 15px;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
 
 .main-info-header{
@@ -65,9 +75,17 @@ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
 
 .professionalInvoice {
-  font-size: 40px; /* Increase the font size to make it stand out */
-  font-weight: bold; /* Make the text bold */
+  font-size: 40px;
+  font-weight: bold;
   color: black;
+  letter-spacing: 1px;
+}
+
+.menu-icon:hover {
+  transform: scale(1.1); /* Scale the icon on hover */
+  color: #F69D55 !important; /* Change the color on hover */
+  background-color: white !important;
+  padding: "10px" !important;
 }
 
 body {
