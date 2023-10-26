@@ -44,14 +44,14 @@ function LoginForm() {
                 marginBottom: "25px",
               }}
             >
-              Invoicer Members Login:
+              Member Login:
             </h1>
           </Typography>
           <form onSubmit={login}>
             <Box
               className="formFields"
               sx={{
-                "& .MuiTextField-root": { m: 0.4, width: "40ch" },
+                "& .MuiTextField-root": { m: 0.4, width: "35ch" },
               }}
               noValidate
               autoComplete="off"
@@ -78,7 +78,7 @@ function LoginForm() {
               <br />
               <br />
               <Button
-                style={{ backgroundColor: "#F79D54", color: "white", marginTop: "10px", padding: "6px 40px", fontSize: "18px"}}
+                style={{ backgroundColor: "#DA8B4A", color: "white", marginTop: "10px", padding: "6px 40px", fontSize: "18px"}}
                 variant="contained"
                 type="submit"
               >
