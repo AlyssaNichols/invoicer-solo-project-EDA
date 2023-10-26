@@ -30,6 +30,7 @@ import AdminEmployeeList from "../AdminEmployeeList/AdminEmployeeList";
 import EmailPage from "../PDF/EmailPage";
 import "./App.css";
 import InvoiceDetails from "../InvoiceDetails/InvoiceDetails";
+import AdminCompanyPage from "../AdminCompanyPage/AdminCompanyPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -126,6 +127,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute exact path="/admin/employees">
             <AdminEmployeeList />
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/admin/company">
+            <AdminCompanyPage />
           </ProtectedRoute>
           <Route exact path="/login">
             {user.id ? (
