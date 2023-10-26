@@ -140,7 +140,7 @@ export default function InvoiceHistory() {
         >
           <CardContent>
             <Typography variant="h5" component="div">
-              <h1
+              <h2
                 style={{
                   marginTop: "-5px",
                   marginBottom: "-5px",
@@ -149,7 +149,7 @@ export default function InvoiceHistory() {
                 }}
               >
                 Invoice History
-              </h1>
+              </h2>
             </Typography>
           </CardContent>
         </Card>

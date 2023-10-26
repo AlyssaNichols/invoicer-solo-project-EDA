@@ -45,7 +45,7 @@ function InfoPage() {
         <center>
           <Button
             style={{
-              backgroundColor: "#7d5e51",
+              backgroundColor: "#F69D55",
               color: "white",
               marginTop: "20px",
               fontSize: "16px",
