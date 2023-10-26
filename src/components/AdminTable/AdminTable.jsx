@@ -44,41 +44,7 @@ export default function AdminTable() {
         <tbody>
           {customerList?.map((customer, index) => {
             return <AdminListCustomers key={index} customer={customer} />;
-            // return (
-            //     <tr key={index}>
-            //       <td>
-            //         {customer.last_name}, {customer.first_name}{" "}
-            //       </td>
-            //       <td>{customer.address}</td>
-            //       <td>{customer.city}</td>
-            //       <td>{customer.state}</td>
-            //       <td>{customer.zip}</td>
-            //       <td>{customer.phone}</td>
-            //       <td>{customer.email}</td>
-            //       <td>
-            //         <Button
-            //           style={{
-            //             fontSize: "12px",
-            //             padding: "2px 10px",
-            //             color: "black",
-            //             fontWeight: "bold",
-            //             border: "1px solid black",
-            //             transition: "background-color 0.3s",
-            //           }}
-            //           variant="outlined"
-            //           onClick={() => handleArchive(customer.id)}
-            //           onMouseEnter={(e) =>
-            //             (e.target.style.backgroundColor = "#D16965")
-            //           }
-            //           onMouseLeave={(e) =>
-            //             (e.target.style.backgroundColor = "transparent")
-            //           }
-            //         >
-            //           Archive
-            //         </Button>
-            //       </td>
-            //     </tr>
-            //   );
+
           })}
         </tbody>
       </table>

@@ -10,6 +10,8 @@ export default function PrintInvoice() {
   const history = useHistory();
   const details = useSelector((store) => store.invoiceDetails);
   const companies = useSelector((store) => store.companyReducer);
+  const user = useSelector((store) => store.user);
+  console.log("USER", user)
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -66,6 +68,10 @@ export default function PrintInvoice() {
     fontSize: "20px",
     padding: "10px 20px",
   };
+
+  const userCompanyIndex = (user.company_id - 1);
+  console.log(userCompanyIndex)
+  
   return (
     <>
       <div className="topSpace">
@@ -106,7 +112,7 @@ export default function PrintInvoice() {
               >
                 Edit Details
               </Button>
-              <Button
+              {/* <Button
                 className="printInvoiceButton"
                 style={{
                   marginTop: "-110px",
@@ -119,7 +125,7 @@ export default function PrintInvoice() {
                 variant="contained"
                 onClick={() => handleEmail(details.email, details.id)}
               > Email
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

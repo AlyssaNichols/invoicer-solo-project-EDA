@@ -42,7 +42,7 @@ export default function AdminPage() {
           <Link to="/admin/services">Services</Link>
           <Link to="/admin/customers">Customers</Link>
           <Link to="/admin/employees">Employees</Link>
-          <Link to="/admin/company">Company Details</Link>
+          <Link to="/admin/company">Companies</Link>
         </div>
       </nav>
       <div className="financialDiv">
