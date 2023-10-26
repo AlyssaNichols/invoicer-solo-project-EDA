@@ -4,7 +4,7 @@ import "./LandingPage.css";
 import { Button, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import landingImage from "../UserPage/landingImage.jpg"
-import background from "./background.jpg"
+
 
 
 function LandingPage() {

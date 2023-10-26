@@ -35,10 +35,7 @@ function LoginForm() {
 
   return (
     <>
-      <Paper
-        style={{ width: "40%", marginTop: "20px", paddingTop: "30px" }}
-        elevation={3}
-      >
+
         <center>
           <Typography variant="h8" component="div">
             <h1
@@ -47,7 +44,7 @@ function LoginForm() {
                 marginBottom: "25px",
               }}
             >
-              Please Login:
+              Invoicer Members Login:
             </h1>
           </Typography>
           <form onSubmit={login}>
@@ -87,13 +84,9 @@ function LoginForm() {
               >
                 Login
               </Button>
-              <br />
-              <br />
             </Box>
-            <br />
           </form>
         </center>
-      </Paper>
       <br />
       {/* <Button
         style={{

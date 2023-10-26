@@ -1,8 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
 
 function LogOutButton(props) {
+  const history = useHistory();
   const dispatch = useDispatch();
   return (
     <button
@@ -23,7 +25,7 @@ function LogOutButton(props) {
             if (result.isConfirmed) {
               dispatch({ type: "LOGOUT" });
               Swal.fire("Logged out!");
-            }
+            } history.push("/home")
           });
         }
       }}
