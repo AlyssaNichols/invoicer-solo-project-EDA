@@ -23,7 +23,7 @@ export default function InvoiceHistory() {
   const invoices = useSelector((state) => state.invoice);
   const user = useSelector((store) => store.user);
   console.log("INVOICES", invoices);
-  const [sortOrder, setSortOrder] = useState("asc"); // Default sorting order is ascending
+  const [sortOrder, setSortOrder] = useState("desc"); // Default sorting order is ascending
   const [sortOption, setSortOption] = useState("id");
 
   useEffect(() => {
@@ -60,9 +60,31 @@ export default function InvoiceHistory() {
       confirmButtonText: "Yes, delete it",
     }).then((result) => {
       if (result.isConfirmed) {
-        // Dispatch an action to delete the invoice with the given ID
-        dispatch({ type: "DELETE_INVOICE", payload: invoiceId });
-        Swal.fire("Invoice Successfully Deleted!");
+        Swal.fire({
+          title: "Invoice will be PERMANENTLY deleted",
+          text: `You will not be able to recover this Invoice! Are you absolutely sure?`,
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#3085d6",
+          confirmButtonText: "Yes, I'm sure",
+        }).then((doubleConfirmResult) => {
+          if (doubleConfirmResult.isConfirmed) {
+            // Dispatch an action to delete the invoice with the given ID
+            dispatch({ type: "DELETE_INVOICE", payload: invoiceId });
+            Swal.fire({
+              title: "Invoice Successfully Deleted",
+              icon: "success", // You can choose a fun icon here
+            });
+          } else if (
+            doubleConfirmResult.dismiss === Swal.DismissReason.cancel
+          ) {
+            Swal.fire({
+              title: "Invoice saved",
+              icon: "success", // You can choose a fun icon here
+            });
+          }
+        });
       }
     });
   };
@@ -108,7 +130,14 @@ export default function InvoiceHistory() {
       <br />
       <br />
       <center>
-        <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+        <Card
+          sx={{
+            minWidth: 275,
+            marginTop: "20px",
+            width: "98%",
+            backgroundColor: "#DFD9D9",
+          }}
+        >
           <CardContent>
             <Typography variant="h5" component="div">
               <h2
@@ -149,7 +178,7 @@ export default function InvoiceHistory() {
           style={{
             marginTop: "10px",
             marginLeft: "10px",
-            backgroundColor: "#946E6D",
+            backgroundColor: "#F69D55",
             height: "30px",
             color: "white",
             width: "80px",
@@ -163,7 +192,13 @@ export default function InvoiceHistory() {
           Clear
         </Button>
         <div
-          style={{ display: "flex", alignItems: "center", float: "right", marginRight: "3%", marginTop: "10px" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            float: "right",
+            marginRight: "3%",
+            marginTop: "10px",
+          }}
         >
           <select
             className="sort-select"
@@ -177,40 +212,39 @@ export default function InvoiceHistory() {
             <option value="date_paid">Sort by Date Paid</option>
           </select>
           <button
-  onClick={() => setSortOrder("asc")}
-  className={`sort-button ${sortOrder === "asc" ? "active" : ""}`}
->
-  <div className="button-content">
-    <span className="button-icon">
-      <FontAwesomeIcon icon={faSortUp} />
-    </span>
-  </div>
-</button>
-<button
-  onClick={() => setSortOrder("desc")}
-  className={`sort-button ${sortOrder === "desc" ? "active" : ""}`}
->
-  <div className="button-content">
-    <span className="button-icon">
-      <FontAwesomeIcon icon={faSortDown} />
-    </span>
-  </div>
-</button>
-
+            onClick={() => setSortOrder("asc")}
+            className={`sort-button ${sortOrder === "asc" ? "active" : ""}`}
+          >
+            <div className="button-content">
+              <span className="button-icon">
+                <FontAwesomeIcon icon={faSortUp} />
+              </span>
+            </div>
+          </button>
+          <button
+            onClick={() => setSortOrder("desc")}
+            className={`sort-button ${sortOrder === "desc" ? "active" : ""}`}
+          >
+            <div className="button-content">
+              <span className="button-icon">
+                <FontAwesomeIcon icon={faSortDown} />
+              </span>
+            </div>
+          </button>
         </div>
-
         <center>
           <table style={{ width: "94%" }} className="invoice-table">
             <thead>
               <tr>
                 <th
+                  style={{ width: "7%" }}
                   className={`sortable-header ${
                     sortOption === "id" ? "sorted" : ""
                   }`}
                   onClick={() => handleSortClick("id")}
                 >
                   <div>
-                    Invoice Number{" "}
+                    Invoice Number
                     {sortOption === "id" && (
                       <span
                         className={`sort-icon ${
@@ -221,6 +255,7 @@ export default function InvoiceHistory() {
                   </div>
                 </th>
                 <th
+                  style={{ width: "8%" }}
                   className={`sortable-header ${
                     sortOption === "date_issued" ? "sorted" : ""
                   }`}
@@ -237,7 +272,7 @@ export default function InvoiceHistory() {
                     )}
                   </div>
                 </th>
-                <th
+                <th style={{ width: "9%" }}
                   className={`sortable-header ${
                     sortOption === "last_name" ? "sorted" : ""
                   }`}
@@ -254,16 +289,17 @@ export default function InvoiceHistory() {
                     )}
                   </div>
                 </th>
-                <th className="sortable-header">
+                <th style={{ width: "12%" }} className="sortable-header">
                   <div>Address</div>
                 </th>
-                <th className="sortable-header">
+                <th style={{ width: "19%" }} className="sortable-header">
                   <div>Contact Info</div>
                 </th>
-                <th className="sortable-header" style={{ width: "22%" }}>
+                <th className="sortable-header" style={{ width: "20%" }}>
                   <div>Service Data</div>
                 </th>
                 <th
+                style={{ width: "7%" }}
                   className={`sortable-header ${
                     sortOption === "total_price" ? "sorted" : ""
                   }`}
@@ -280,7 +316,7 @@ export default function InvoiceHistory() {
                     )}
                   </div>
                 </th>
-                <th
+                <th style={{ width: "9%" }}
                   className={`sortable-header ${
                     sortOption === "date_paid" ? "sorted" : ""
                   }`}
@@ -297,7 +333,7 @@ export default function InvoiceHistory() {
                     )}
                   </div>
                 </th>
-                <th className="sortable-header">
+                <th style={{ width: "9%" }} className="sortable-header">
                   <div>Actions</div>
                 </th>
               </tr>
@@ -442,7 +478,7 @@ export default function InvoiceHistory() {
                                 (e.target.style.backgroundColor = "transparent")
                               }
                             >
-                              Mark as Paid
+                              Mark Paid
                             </Button>
                             <Button
                               style={{
@@ -467,29 +503,31 @@ export default function InvoiceHistory() {
                               Preview
                             </Button>
                             <br />
-                            <Button
-                              style={{
-                                marginBottom: "5px",
-                                fontSize: "12px",
-                                padding: "2px 4px",
-                                color: "black",
-                                fontWeight: "bold",
-                                border: "1px solid black",
-                                transition: "background-color 0.3s",
-                              }}
-                              variant="outlined"
-                              onClick={() => moreDetails(invoice.id)}
-                              onMouseEnter={(e) =>
-                                (e.target.style.backgroundColor =
-                                  "rgb(152, 188, 193)")
-                              }
-                              onMouseLeave={(e) =>
-                                (e.target.style.backgroundColor = "transparent")
-                              }
-                            >
-                              More Details
-                            </Button>
-                            <br />
+                            {!invoice.date_paid ? (
+                              <Button
+                                style={{
+                                  marginBottom: "5px",
+                                  fontSize: "12px",
+                                  padding: "2px 6px",
+                                  color: "black",
+                                  fontWeight: "bold",
+                                  border: "1px solid black",
+                                  transition: "background-color 0.3s",
+                                }}
+                                variant="outlined"
+                                onClick={() => moreDetails(invoice.id)}
+                                onMouseEnter={(e) =>
+                                  (e.target.style.backgroundColor =
+                                    "rgb(152, 188, 193)")
+                                }
+                                onMouseLeave={(e) =>
+                                  (e.target.style.backgroundColor =
+                                    "transparent")
+                                }
+                              >
+                                Edit Details
+                              </Button>
+                            ) : null}
                             {user.is_admin && (
                               <Button
                                 style={{

@@ -7,6 +7,7 @@ import { Button, TextField, Paper } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import Swal from "sweetalert2";
 
 export default function CreateInvoicePage() {
   const history = useHistory();
@@ -25,7 +26,14 @@ export default function CreateInvoicePage() {
   }, []);
 
   const handleCreateInvoice = async () => {
-    // Dispatch the ADD_INVOICE action and wait for it to complete
+    if (!newInvoice.customer_id || !newInvoice.date_issued) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please make sure all fields are filled in before submitting!",
+      });
+      return;
+    }
     const actionResult = await dispatch({
       type: "ADD_INVOICE",
       payload: { newInvoice, history },
@@ -40,7 +48,7 @@ export default function CreateInvoicePage() {
       <br />
       <div className="createInvoice-header-section">
         <center>
-          <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+          <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%", backgroundColor: "#DFD9D9" }}>
             <CardContent>
               <h1
                 style={{
@@ -139,7 +147,7 @@ export default function CreateInvoicePage() {
             <Button
               variant="contained"
               style={{
-                backgroundColor: "#008080",
+                backgroundColor: "#F69D55",
                 color: "white",
                 fontSize: "16px",
                 marginTop: "20px",

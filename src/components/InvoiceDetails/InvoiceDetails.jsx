@@ -76,11 +76,11 @@ export default function InvoiceDetails() {
   }, []);
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#DFD9D9", paddingBottom: "100px"}}>
       <br />
       <br />
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+        <Card sx={{ minWidth: 275, marginTop: "20px", width: "92%" }}>
           <center>
             <CardContent>
               <Typography variant="h5" component="div">
@@ -247,7 +247,7 @@ export default function InvoiceDetails() {
               <Button
                 variant="contained"
                 style={{
-                  backgroundColor: "#008080",
+                  backgroundColor: "#F69D55",
                   color: "white",
                   fontSize: "16px",
                   marginTop: "0px",
