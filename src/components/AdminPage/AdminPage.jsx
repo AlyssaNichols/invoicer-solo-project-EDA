@@ -24,9 +24,20 @@ export default function AdminPage() {
     fontSize: "50px",
     color: "black",
     borderRadius: "50%",
-    padding:"10px"
-    
+    padding:"10px",
   };
+
+  const navStyle = {
+  textDecoration: "none",
+  color: "black",
+  fontSize: "22px",
+  padding: "10px 0",
+  marginBottom: "20px",
+  display: "block",
+  marginLeft: "auto",
+  marginRight: "auto"
+}
+
 
   return (
     <>
@@ -43,7 +54,7 @@ export default function AdminPage() {
         <Drawer anchor="right" open={menuOpen} onClose={toggleMenu}>
           <List
             style={{
-              backgroundColor: "#b0b0b0",
+              backgroundColor: "#DBDBDB",
               color: "black",
               width: "150px",
               position: "fixed",
@@ -55,61 +66,34 @@ export default function AdminPage() {
             }}
           >
             <ListItem button>
+              
               <Link
-                to="/admin/services"
-                style={{
-                  textDecoration: "none",
-                  color: "black",
-                  fontSize: "22px",
-                  padding: "10px 0",
-                  marginBottom: "20px",
-                  display: "block",
-                }}
+                to="/admin/services" className="nav-link"
+                style={navStyle}
               >
                 Services
               </Link>
             </ListItem>
             <ListItem button>
               <Link
-                to="/admin/customers"
-                style={{
-                  textDecoration: "none",
-                  color: "black",
-                  fontSize: "22px",
-                  padding: "10px 0",
-                  marginBottom: "20px",
-                  display: "block",
-                }}
+                to="/admin/customers" className="nav-link"
+                style={navStyle}
               >
                 Customers
               </Link>
             </ListItem>
             <ListItem button>
               <Link
-                to="/admin/employees"
-                style={{
-                  textDecoration: "none",
-                  color: "black",
-                  fontSize: "22px",
-                  padding: "10px 0",
-                  marginBottom: "20px",
-                  display: "block",
-                }}
+                to="/admin/employees" className="nav-link"
+                style={navStyle}
               >
                 Employees
               </Link>
             </ListItem>
             <ListItem button>
               <Link
-                to="/admin/company"
-                style={{
-                  textDecoration: "none",
-                  color: "black",
-                  fontSize: "22px",
-                  padding: "10px 0",
-                  marginBottom: "20px",
-                  display: "block",
-                }}
+                to="/admin/company" className="nav-link"
+                style={navStyle}
               >
                 Companies
               </Link>

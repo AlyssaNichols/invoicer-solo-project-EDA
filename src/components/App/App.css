@@ -128,7 +128,7 @@ input {
 }
 
 .invoice-table th {
-  background-color: #c4cacd;
+  background-color: #cecaca;
   font-weight: bold;
   text-transform: uppercase; /* Uppercase the header text */
 }
@@ -203,7 +203,7 @@ input {
   right: 2%;
 } */
 .adminNav {
-  background-color: #b0b0b0;
+  background-color: #ffffff;
   color: black;
   width: 150px;
   position: fixed; 
@@ -284,3 +284,23 @@ input {
   flex-shrink: 0;
 margin-top: auto;
 }
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  font-size: 22px;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  display: block;
+  background-color: transparent; /* Set background-color to transparent */
+  transition: text-shadow 0.3s, color 0.3s; /* Add transitions for text-shadow and color */
+}
+
+.nav-link:hover {
+  color: rgb(5, 5, 5);
+  transform: scale(1.2);
+  text-shadow: 0 0 5px #ffffff;
+  background-color: transparent !important; /* Ensure background remains transparent on hover */
+}
+
+

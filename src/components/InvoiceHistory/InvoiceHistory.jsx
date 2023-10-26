@@ -498,7 +498,7 @@ export default function InvoiceHistory() {
                               onClick={() => printInvoice(invoice.id)}
                               onMouseEnter={(e) =>
                                 (e.target.style.backgroundColor =
-                                  "rgb(203, 178, 228)")
+                                  "#F5A877")
                               }
                               onMouseLeave={(e) =>
                                 (e.target.style.backgroundColor = "transparent")

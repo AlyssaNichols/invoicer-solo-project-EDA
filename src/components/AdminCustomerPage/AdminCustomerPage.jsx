@@ -110,7 +110,7 @@ export default function AdminCustomerPage() {
         <br />
         <br />
         {showCustomerForm ? (
-          <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+          <Card sx={{ minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9" }}>
             <center>
               <CardContent>
                 <Typography variant="h5" component="div">
@@ -129,15 +129,25 @@ export default function AdminCustomerPage() {
           </Card>
         ) : (
           <div>
-            <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+            <Card sx={{ minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9" }}>
               <center>
                 <CardContent>
+                <Button
+                    style={{ backgroundColor: "#DFD9D9", color: "black", float: "left", border: "1px solid white" }}
+                    variant="contained"
+                    onClick={() => {
+                      history.push("/admin");
+                    }}
+                  >
+                    Back
+                  </Button>
                   <Typography variant="h5" component="div">
                     <h2
                       style={{
                         marginTop: "-5px",
                         marginBottom: "-15px",
                         letterSpacing: ".5px",
+                        marginRight: "5%"
                       }}
                     >
                       Customer List
@@ -148,7 +158,7 @@ export default function AdminCustomerPage() {
             </Card>
             <br />
             <Button
-              style={{ backgroundColor: "#008080", color: "white" }}
+              style={{ backgroundColor: "#F69D55", color: "white" }}
               variant="contained"
               type="button"
               onClick={toggleCustomerForm}
@@ -235,7 +245,7 @@ export default function AdminCustomerPage() {
                   <br />
                   <br />
                   <Button
-                    style={{ backgroundColor: "#A09084", color: "white" }}
+                    style={{ backgroundColor: "#8F847C", color: "white" }}
                     variant="contained"
                     type="button"
                     onClick={cancelAddCustomer}
@@ -243,7 +253,7 @@ export default function AdminCustomerPage() {
                     Cancel
                   </Button>{" "}
                   <Button
-                    style={{ backgroundColor: "#008080", color: "white" }}
+                    style={{ backgroundColor: "#F69D55", color: "white" }}
                     variant="contained"
                     type="submit"
                   >
@@ -266,7 +276,7 @@ export default function AdminCustomerPage() {
         <br />
         <br />
         <Button
-          style={{ backgroundColor: "#946563", color: "white" }}
+          style={{ backgroundColor: "#996887", color: "white" }}
           variant="contained"
           onClick={() => {
             history.push("/admin");

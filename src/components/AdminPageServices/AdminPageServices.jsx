@@ -61,7 +61,7 @@ export default function AdminPageServices() {
       <br />
       <br />
       <center>
-        <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+        <Card sx={{ minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9" }}>
           <center>
             <CardContent>
               <Typography variant="h5" component="div">
@@ -116,7 +116,7 @@ export default function AdminPageServices() {
               <br />
               <Button
                 style={{
-                  backgroundColor: "#008080",
+                  backgroundColor: "#F69D55",
                   color: "white",
                   marginBottom: "20px",
                 }}
@@ -175,7 +175,7 @@ export default function AdminPageServices() {
         <center>
           <br />
           <Button
-            style={{ backgroundColor: "#946E6D", color: "white" }}
+            style={{ backgroundColor: "#996887", color: "white" }}
             variant="contained"
             onClick={() => {
               history.push("/admin");

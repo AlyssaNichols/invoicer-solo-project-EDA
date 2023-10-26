@@ -103,7 +103,7 @@ export default function AdminCompanyPage() {
         <br />
         <br />
         {showCustomerForm ? (
-          <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+          <Card sx={{ minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9" }}>
             <center>
               <CardContent>
                 <Typography variant="h5" component="div">
@@ -122,7 +122,7 @@ export default function AdminCompanyPage() {
           </Card>
         ) : (
           <div>
-            <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
+            <Card sx={{ minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9" }}>
               <center>
                 <CardContent>
                   <Typography variant="h5" component="div">
@@ -133,7 +133,7 @@ export default function AdminCompanyPage() {
                         letterSpacing: ".5px",
                       }}
                     >
-                      Company List
+                      Your Company
                     </h2>
                   </Typography>
                 </CardContent>
@@ -141,7 +141,7 @@ export default function AdminCompanyPage() {
             </Card>
             <br />
             <Button
-              style={{ backgroundColor: "#008080", color: "white" }}
+              style={{ backgroundColor: "#F69D55", color: "white" }}
               variant="contained"
               type="button"
               onClick={toggleCustomerForm}
@@ -228,7 +228,7 @@ export default function AdminCompanyPage() {
                   <br />
                   <br />
                   <Button
-                    style={{ backgroundColor: "#A09084", color: "white" }}
+                    style={{ backgroundColor: "#8F847C", color: "white" }}
                     variant="contained"
                     type="button"
                     onClick={cancelAddCompany}
@@ -236,7 +236,7 @@ export default function AdminCompanyPage() {
                     Cancel
                   </Button>{" "}
                   <Button
-                    style={{ backgroundColor: "#008080", color: "white" }}
+                    style={{ backgroundColor: "#F69D55", color: "white" }}
                     variant="contained"
                     type="submit"
                   >
@@ -259,7 +259,7 @@ export default function AdminCompanyPage() {
         <br />
         <br />
         <Button
-          style={{ backgroundColor: "#946563", color: "white" }}
+          style={{ backgroundColor: "#996887", color: "white" }}
           variant="contained"
           onClick={() => {
             history.push("/admin");

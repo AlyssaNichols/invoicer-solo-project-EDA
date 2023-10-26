@@ -101,8 +101,8 @@ export default function PrintInvoice() {
                 className="printInvoiceButton" // Use className for the button
                 style={{
                   marginTop: "-170px",
-                  marginLeft: "687px",
-                  backgroundColor: "#9a5c6f",
+                  marginLeft: "690px",
+                  backgroundColor: "#A5A0A0",
                   color: "white",
                   fontSize: "14px",
                   padding: "8px 16px",
@@ -168,20 +168,23 @@ export default function PrintInvoice() {
           <table className="print-table">
             <thead>
               <tr>
-                <th>Date Performed</th>
-                <th>Service Type</th>
-                <th>Service Price</th>
+                <th style={{ width: '33%', textAlign: 'left' }}>Date Performed</th>
+                <th style={{ width: '33%', textAlign: 'center' }}>Service Type</th>
+                <th style={{ width: '33%', textAlign: 'right' }}>Service Price</th>
               </tr>
             </thead>
             <tbody>
-              {details.service_data?.map((item, index) => (
-                <tr key={index}>
-                  <td>{formatDate(item.date)}</td>
-                  <td>{item.type}</td>
-                  <td>${parseFloat(item.price).toFixed(2)}</td>
-                </tr>
-              ))}
-            </tbody>
+  {details.service_data?.map((item, index) => (
+    <tr key={index}>
+      <td style={{ width: '33%', textAlign: 'left' }}>{formatDate(item.date)}</td>
+      <td style={{ width: '33%', textAlign: 'center' }}>{item.type}</td>
+      <td style={{ width: '33%', textAlign: 'right' }}>
+        ${parseFloat(item.price).toFixed(2)}
+      </td>
+    </tr>
+  ))}
+</tbody>
+
           </table>
           <hr />
           <div className="total">

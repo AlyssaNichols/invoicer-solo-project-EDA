@@ -88,7 +88,7 @@ export default function AdminFinancialPage() {
       {
         label: "Amount Invoiced",
         data: incomeData,
-        backgroundColor: "#93757A",
+        backgroundColor: "#FFA459",
       },
     ],
   };
@@ -113,16 +113,13 @@ export default function AdminFinancialPage() {
   return (
     <div>
       <center>
-        <Paper
-          elevation={3}
-          style={{ paddingRight: "10px", width: "60%" }}
-        >
+        <Paper elevation={3} style={{ paddingRight: "10px", paddingLeft: "10px", width: "75%" }}>
           <Typography variant="h5" component="div">
             <h2
               style={{
                 fontSize: "32px",
                 marginTop: "-10px",
-                paddingTop: "10px",
+                padding: "10px",
                 paddingBottom: "15px",
                 letterSpacing: ".5px",
                 borderBottom: "1px solid black",
@@ -132,7 +129,17 @@ export default function AdminFinancialPage() {
               Monthly Financial Overview
             </h2>
           </Typography>
-          <Bar data={data} options={options}></Bar>
+          <Bar
+            data={data}
+            options={options}
+            style={{
+              fontSize: "32px",
+              marginTop: "-10px",
+              paddingLeft: "10px",
+              paddingRight: "10px",
+              width: "80%",
+            }}
+          ></Bar>
           <br />
           <br />
         </Paper>
