@@ -34,7 +34,7 @@ export default function ServiceListItem({ item, index }) {
     Swal.fire({
       icon: "success",
       title: "Service Edited",
-      text: "The new service has been successfully edited.",
+      text: "The Service has been successfully Edited.",
     });
     dispatch({
       type: "EDIT_LINE_ITEM",

@@ -4,7 +4,7 @@ import "./UserPage.css";
 import { Card, CardContent, Button, Box } from "@mui/material";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import landingImage from "./landingImage.jpg";
-import img from "./img.png"
+
 
 export default function UserPage() {
   const history = useHistory();

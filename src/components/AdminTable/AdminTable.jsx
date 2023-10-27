@@ -38,7 +38,7 @@ export default function AdminTable() {
           width: "280px",
           marginBottom: "20px",
           backgroundColor: "white",
-          marginTop: "-60px"
+          marginTop: "-60px",
         }}
         variant="outlined"
         fullWidth
@@ -63,7 +63,7 @@ export default function AdminTable() {
           fontSize: "13px",
           marginTop: "-105px",
           border: "1px solid black",
-          borderRadius: "5px"
+          borderRadius: "5px",
         }}
         variant="contained"
         onClick={() => {

@@ -7,7 +7,6 @@ export default function ServicesList() {
   console.log(services);
 
   useEffect(() => {
-    console.log("component did mount");
     dispatch({ type: "FETCH_SERVICES" });
   }, []);
 

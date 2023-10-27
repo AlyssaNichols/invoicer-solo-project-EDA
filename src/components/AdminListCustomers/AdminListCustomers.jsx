@@ -10,18 +10,18 @@ export default function AdminListCustomers({ customer, index }) {
 
   const handleArchive = (customerId) => {
     Swal.fire({
-      title: "Are you sure you want to archive this Customer?",
+      title: "Are you sure you want to Archive this Customer?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, archive them",
+      confirmButtonText: "Yes, Archive Them",
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch({ type: "DELETE_CUSTOMER", payload: customerId });
         dispatch({ type: "FETCH_CUSTOMERS" });
         dispatch({ type: "FETCH_ARCHIVED_CUSTOMERS" });
-        Swal.fire("Customer Successfully archived!");
+        Swal.fire("Customer Successfully Archived!");
       }
     });
   };

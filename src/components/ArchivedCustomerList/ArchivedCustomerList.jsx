@@ -13,19 +13,19 @@ export default function ArchivedCustomerList({ toggleArchived }) {
 
   const handleReset = (customerId) => {
     Swal.fire({
-      title: "Are you sure you want to un-archive this Customer?",
+      title: "Are you sure you want to Un-Archive this Customer?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, un-archive them",
+      confirmButtonText: "Yes, Un-Archive Them",
     }).then((result) => {
       if (result.isConfirmed) {
         // Dispatch an action to delete the invoice with the given ID
         // Dispatch an action to delete the invoice with the given ID
         dispatch({ type: "RESET_CUSTOMER", payload: customerId });
         dispatch({ type: "FETCH_CUSTOMERS" });
-        Swal.fire("Customer Successfully un-archived!");
+        Swal.fire("Customer Successfully Un-Archived!");
       }
     });
   };
@@ -33,7 +33,11 @@ export default function ArchivedCustomerList({ toggleArchived }) {
   return (
     <center>
       <Button
-        style={{ backgroundColor: "#F69D55", color: "white", marginTop: "-10px" }}
+        style={{
+          backgroundColor: "#F69D55",
+          color: "white",
+          marginTop: "-10px",
+        }}
         variant="contained"
         type="button"
         onClick={toggleArchived}

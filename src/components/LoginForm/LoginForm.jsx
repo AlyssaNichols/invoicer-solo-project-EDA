@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {
-  Box,
-  TextField,
-  Button,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box, TextField, Button, Paper, Typography } from "@mui/material";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -35,58 +29,63 @@ function LoginForm() {
 
   return (
     <>
-
-        <center>
-          <Typography variant="h8" component="div">
-            <h1
+      <center>
+        <Typography variant="h8" component="div">
+          <h1
+            style={{
+              marginTop: "5px",
+              marginBottom: "25px",
+            }}
+          >
+            Member Login:
+          </h1>
+        </Typography>
+        <form onSubmit={login}>
+          <Box
+            className="formFields"
+            sx={{
+              "& .MuiTextField-root": { m: 0.4, width: "35ch" },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <TextField
+              style={{ backgroundColor: "white" }}
+              type="text"
+              label="Username"
+              name="username"
+              required
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+            <br />
+            <TextField
+              style={{ backgroundColor: "white" }}
+              type="password"
+              label="Password"
+              name="Password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <br />
+            <br />
+            <Button
               style={{
-                marginTop: "5px",
-                marginBottom: "25px",
+                backgroundColor: "#DA8B4A",
+                color: "white",
+                marginTop: "10px",
+                padding: "6px 40px",
+                fontSize: "18px",
               }}
+              variant="contained"
+              type="submit"
             >
-              Member Login:
-            </h1>
-          </Typography>
-          <form onSubmit={login}>
-            <Box
-              className="formFields"
-              sx={{
-                "& .MuiTextField-root": { m: 0.4, width: "35ch" },
-              }}
-              noValidate
-              autoComplete="off"
-            >
-              <TextField
-                style={{ backgroundColor: "white" }}
-                type="text"
-                label="Username"
-                name="username"
-                required
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-              />
-              <br />
-              <TextField
-                style={{ backgroundColor: "white" }}
-                type="password"
-                label="Password"
-                name="Password"
-                required
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-              />
-              <br />
-              <br />
-              <Button
-                style={{ backgroundColor: "#DA8B4A", color: "white", marginTop: "10px", padding: "6px 40px", fontSize: "18px"}}
-                variant="contained"
-                type="submit"
-              >
-                Login
-              </Button>
-            </Box>
-          </form>
-        </center>
+              Login
+            </Button>
+          </Box>
+        </form>
+      </center>
       <br />
       {/* <Button
         style={{

@@ -19,8 +19,6 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import { Link } from "react-router-dom";
 
-
-
 export default function AdminPageServices() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -32,22 +30,19 @@ export default function AdminPageServices() {
     fontSize: "50px",
     color: "black",
     borderRadius: "50%",
-    padding:"10px",
+    padding: "10px",
   };
 
   const navStyle = {
-  textDecoration: "none",
-  color: "black",
-  fontSize: "22px",
-  padding: "10px 0",
-  marginBottom: "20px",
-  display: "block",
-  marginLeft: "auto",
-  marginRight: "auto"
-}
-
-
-
+    textDecoration: "none",
+    color: "black",
+    fontSize: "22px",
+    padding: "10px 0",
+    marginBottom: "20px",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+  };
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -74,12 +69,12 @@ export default function AdminPageServices() {
 
   const handleArchive = (serviceId) => {
     Swal.fire({
-      title: "Are you sure you want to delete this Service?",
+      title: "Are you sure you want to Delete this Service?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it",
+      confirmButtonText: "Yes, Delete it",
     }).then((result) => {
       if (result.isConfirmed) {
         // Dispatch an action to delete the invoice with the given ID
@@ -88,12 +83,12 @@ export default function AdminPageServices() {
       }
     });
   };
-function clear(){
-  setServiceName({ service: "" });
-}
+  function clear() {
+    setServiceName({ service: "" });
+  }
   const customStyles = {
-    '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#F69D55', // Change this to your desired color
+    "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#F69D55", // Change this to your desired color
     },
   };
   const [serviceName, setServiceName] = useState({ service: "" });
@@ -103,7 +98,14 @@ function clear(){
       <br />
       <br />
       <center>
-        <Card sx={{ minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9" }}>
+        <Card
+          sx={{
+            minWidth: 275,
+            marginTop: "20px",
+            width: "96%",
+            backgroundColor: "#DFD9D9",
+          }}
+        >
           <center>
             <CardContent>
               <Typography variant="h5" component="div">
@@ -120,73 +122,77 @@ function clear(){
             </CardContent>
           </center>
           <div>
-        <br />
-        <IconButton
-          style={{ float: "right", marginTop: "-70px", marginRight: "20px", verticalAlign: "middle" }}
-          onClick={toggleMenu}
-          color="inherit"
-        >
-          <MenuIcon style={menuIconStyle} className="page-menu-icon" />
-        </IconButton>
-        <Drawer anchor="right" open={menuOpen} onClose={toggleMenu}>
-          <List
-            style={{
-              backgroundColor: "#DBDBDB",
-              color: "black",
-              width: "150px",
-              position: "fixed",
-              right: "0",
-              height: "100%",
-              overflowY: "auto",
-              transition: "width 0.3s",
-              zIndex: "1",
-            }}
-          >
- <ListItem button>
-              
-              <Link
-                to="/admin" className="nav-link"
-                style={navStyle}
+            <br />
+            <IconButton
+              style={{
+                float: "right",
+                marginTop: "-70px",
+                marginRight: "20px",
+                verticalAlign: "middle",
+              }}
+              onClick={toggleMenu}
+              color="inherit"
+            >
+              <MenuIcon style={menuIconStyle} className="page-menu-icon" />
+            </IconButton>
+            <Drawer anchor="right" open={menuOpen} onClose={toggleMenu}>
+              <List
+                style={{
+                  backgroundColor: "#DBDBDB",
+                  color: "black",
+                  width: "150px",
+                  position: "fixed",
+                  right: "0",
+                  height: "100%",
+                  overflowY: "auto",
+                  transition: "width 0.3s",
+                  zIndex: "1",
+                }}
               >
-                Admin
-              </Link>
-            </ListItem>
-            <ListItem button>
-              
-              <Link
-                to="/admin/services" className="nav-link"
-                style={navStyle}
-              >
-                Services
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <Link
-                to="/admin/customers" className="nav-link"
-                style={navStyle}
-              >
-                Customers
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <Link
-                to="/admin/employees" className="nav-link"
-                style={navStyle}
-              >
-                Employees
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <Link
-                to="/admin/company" className="nav-link"
-                style={navStyle}
-              >
-                Companies
-              </Link>
-            </ListItem>
-          </List>
-        </Drawer>
-      </div>
+                <ListItem button>
+                  <Link to="/admin" className="nav-link" style={navStyle}>
+                    Admin
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/services"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Services
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/customers"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Customers
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/employees"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Employees
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/company"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Companies
+                  </Link>
+                </ListItem>
+              </List>
+            </Drawer>
+          </div>
         </Card>
         <Paper
           style={{ width: "40%", marginTop: "20px", paddingTop: "25px" }}
@@ -226,13 +232,17 @@ function clear(){
               <br />
               <br />
               <Button
-                    style={{ backgroundColor: "#AFABAB", color: "white", marginBottom: "20px" }}
-                    variant="contained"
-                    type="button"
-                    onClick={clear}
-                  >
-                    Cancel
-                  </Button>{" "}
+                style={{
+                  backgroundColor: "#AFABAB",
+                  color: "white",
+                  marginBottom: "20px",
+                }}
+                variant="contained"
+                type="button"
+                onClick={clear}
+              >
+                Cancel
+              </Button>{" "}
               <Button
                 style={{
                   backgroundColor: "#F69D55",

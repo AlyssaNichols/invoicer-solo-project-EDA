@@ -55,7 +55,7 @@ export default function AdminPageServices() {
     Swal.fire({
       icon: "success",
       title: "Employee Added",
-      text: "The new Employee has been successfully added.",
+      text: "The New Employee has been successfully added.",
     });
     dispatch({
       type: "REGISTER",
@@ -74,7 +74,7 @@ export default function AdminPageServices() {
 
   const handleDelete = (employeeId) => {
     Swal.fire({
-      title: "Are you sure you want to remove this Employee?",
+      title: "Are you sure you want to Remove this Employee?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -88,7 +88,7 @@ export default function AdminPageServices() {
     });
   };
 
-  function clear(){
+  function clear() {
     setUsername("");
     setPassword("");
   }
@@ -236,13 +236,17 @@ export default function AdminPageServices() {
               <br />
               <br />
               <Button
-                    style={{ backgroundColor: "#AFABAB", color: "white", marginBottom: "20px" }}
-                    variant="contained"
-                    type="button"
-                    onClick={clear}
-                  >
-                    Cancel
-                  </Button>{" "}
+                style={{
+                  backgroundColor: "#AFABAB",
+                  color: "white",
+                  marginBottom: "20px",
+                }}
+                variant="contained"
+                type="button"
+                onClick={clear}
+              >
+                Cancel
+              </Button>{" "}
               <Button
                 style={{
                   backgroundColor: "#F69D55",

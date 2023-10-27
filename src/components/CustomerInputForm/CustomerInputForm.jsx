@@ -52,7 +52,7 @@ export default function CustomerInputForm() {
     Swal.fire({
       icon: "success",
       title: "Customer Added",
-      text: "The new customer has been successfully added.",
+      text: "The New Customer has been successfully Added.",
     });
   };
   function cancelAdd() {

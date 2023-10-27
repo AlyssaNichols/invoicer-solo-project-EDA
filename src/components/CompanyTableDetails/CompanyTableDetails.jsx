@@ -52,7 +52,7 @@ export default function CompanyTableDetails({ company, index }) {
     Swal.fire({
       icon: "success",
       title: "Customer Edited",
-      text: "The customer information has been successfully edited.",
+      text: "The Customer Information has been successfully Edited.",
     });
 
     dispatch({
@@ -66,7 +66,7 @@ export default function CompanyTableDetails({ company, index }) {
         state: editState,
         phone: editPhone,
         email: editEmail,
-        url: editUrl
+        url: editUrl,
       },
     });
 

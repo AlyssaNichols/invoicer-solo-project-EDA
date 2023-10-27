@@ -57,7 +57,7 @@ export default function InvoiceHistory() {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it",
+      confirmButtonText: "Yes, Delete It",
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
@@ -67,14 +67,14 @@ export default function InvoiceHistory() {
           showCancelButton: true,
           confirmButtonColor: "#d33",
           cancelButtonColor: "#3085d6",
-          confirmButtonText: "Yes, I'm sure",
+          confirmButtonText: "Yes, I'm Sure",
         }).then((doubleConfirmResult) => {
           if (doubleConfirmResult.isConfirmed) {
             // Dispatch an action to delete the invoice with the given ID
             dispatch({ type: "DELETE_INVOICE", payload: invoiceId });
             Swal.fire({
               title: "Invoice Successfully Deleted",
-              icon: "success", // You can choose a fun icon here
+              icon: "success", 
             });
           } else if (
             doubleConfirmResult.dismiss === Swal.DismissReason.cancel

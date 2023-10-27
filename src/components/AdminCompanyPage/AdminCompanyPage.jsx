@@ -39,7 +39,7 @@ export default function AdminCompanyPage() {
       Swal.fire({
         icon: "success",
         title: "Company Added",
-        text: "The new Company has been successfully added.",
+        text: "Your New Company has been successfully added.",
       });
       dispatch({
         type: "ADD_COMPANY",

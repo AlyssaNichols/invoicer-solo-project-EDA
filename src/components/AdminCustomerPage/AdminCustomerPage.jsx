@@ -53,8 +53,8 @@ export default function AdminCustomerPage() {
     } else {
       Swal.fire({
         icon: "success",
-        title: "Customer Added",
-        text: "The new customer has been successfully added.",
+        title: "New Customer Added",
+        text: "The New Customer has been successfully added.",
       });
       dispatch({
         type: "ADD_CUSTOMER",
@@ -335,13 +335,19 @@ export default function AdminCustomerPage() {
                 >
                   Add New Customer
                 </Button>
-              )}<br />
+              )}
+              <br />
 
               {showArchived ? (
                 <ArchivedCustomerList toggleArchived={toggleArchived} />
               ) : (
                 <Button
-                  style={{ backgroundColor: "#F69D55", color: "white", marginTop: "10px", marginBottom: "-20px" }}
+                  style={{
+                    backgroundColor: "#F69D55",
+                    color: "white",
+                    marginTop: "10px",
+                    marginBottom: "-20px",
+                  }}
                   variant="contained"
                   type="button"
                   onClick={toggleArchived}

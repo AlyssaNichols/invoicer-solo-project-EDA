@@ -20,7 +20,7 @@ function LogOutButton(props) {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, logout",
+            confirmButtonText: "Yes, Logout",
           }).then((result) => {
             if (result.isConfirmed) {
               dispatch({ type: "LOGOUT" });

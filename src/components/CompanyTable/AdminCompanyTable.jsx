@@ -8,8 +8,6 @@ export default function AdminCompanyTable() {
   const dispatch = useDispatch();
   const companyList = useSelector((store) => store.companyReducer);
 
-
-
   return (
     <>
       <table className="invoice-table">

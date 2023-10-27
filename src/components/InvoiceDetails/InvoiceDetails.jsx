@@ -10,7 +10,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Swal from "sweetalert2";
-import InputAdornment from '@mui/material/InputAdornment';
+import InputAdornment from "@mui/material/InputAdornment";
 
 export default function InvoiceDetails() {
   const dispatch = useDispatch();
@@ -48,7 +48,11 @@ export default function InvoiceDetails() {
       !newLineItem.date_performed ||
       !newLineItem.service_price
     ) {
-      alert("please fill in all the fields before submitting!");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please make sure all fields are filled in before submitting!",
+      });
     } else {
       setNewLineItem(newLineItem);
       dispatch({
@@ -58,7 +62,7 @@ export default function InvoiceDetails() {
       Swal.fire({
         icon: "success",
         title: "Service Added",
-        text: "The new service has been successfully added.",
+        text: "The New Service has been successfully Added.",
       });
       setNewLineItem({
         service_id: "",
@@ -81,7 +85,16 @@ export default function InvoiceDetails() {
       <br />
       <br />
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card sx={{height: "195px", minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9", marginBottom: "-10px" }}>
+        <Card
+          sx={{
+            height: "195px",
+            minWidth: 275,
+            marginTop: "20px",
+            width: "96%",
+            backgroundColor: "#DFD9D9",
+            marginBottom: "-10px",
+          }}
+        >
           <center>
             <CardContent>
               <Typography variant="h5" component="div">
@@ -242,7 +255,9 @@ export default function InvoiceDetails() {
                     })
                   }
                   InputProps={{
-                    startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                    startAdornment: (
+                      <InputAdornment position="start">$</InputAdornment>
+                    ),
                   }}
                   fullWidth
                 />
