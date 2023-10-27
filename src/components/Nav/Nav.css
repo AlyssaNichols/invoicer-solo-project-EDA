@@ -40,9 +40,9 @@
 }
 
 .nav ul li a:hover {
-  color: rgb(5, 5, 5);
+  color: rgb(255, 255, 255);
   transform: scale(1.1);
-  text-shadow: 0 0 10px rgb(255, 255, 255); /* Add a glow effect */
+  text-shadow: 0 0 10px #000000;
 }
 
 /* Add a cool hover effect for the navbar */

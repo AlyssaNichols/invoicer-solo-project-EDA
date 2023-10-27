@@ -77,17 +77,17 @@ export default function InvoiceDetails() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "#DFD9D9", paddingBottom: "100px"}}>
+    <div>
       <br />
       <br />
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Card sx={{ minWidth: 275, marginTop: "20px", width: "92%" }}>
+        <Card sx={{height: "195px", minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9", marginBottom: "-10px" }}>
           <center>
             <CardContent>
               <Typography variant="h5" component="div">
                 <h1
                   style={{
-                    marginTop: "-5px",
+                    marginTop: "-11px",
                     marginBottom: "5px",
                     fontSize: "34px",
                     letterSpacing: ".5px",
@@ -128,9 +128,9 @@ export default function InvoiceDetails() {
         <Paper
           elevation={3}
           style={{
-            width: "30%",
+            width: "29%",
             marginTop: "30px",
-            marginLeft: "1%",
+            marginLeft: "2%",
             minWidth: "360px",
           }}
         >
@@ -270,7 +270,7 @@ export default function InvoiceDetails() {
           style={{
             width: "66%",
             marginTop: "30px",
-            marginRight: "1%",
+            marginRight: "2%",
             minWidth: "700px",
           }}
         >

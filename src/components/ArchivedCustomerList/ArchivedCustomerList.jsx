@@ -32,34 +32,14 @@ export default function ArchivedCustomerList({ toggleArchived }) {
 
   return (
     <center>
-      <Card sx={{ minWidth: 275, marginTop: "20px", width: "98%" }}>
-        <center>
-          <CardContent>
-            <Typography variant="h5" component="div">
-              <h2
-                style={{
-                  marginTop: "-5px",
-                  marginBottom: "-15px",
-                  letterSpacing: ".5px",
-                }}
-              >
-                Archived Customers
-              </h2>
-            </Typography>
-          </CardContent>
-        </center>
-      </Card>
-      <br />
-      <br />
       <Button
-        style={{ backgroundColor: "#996887", color: "white" }}
+        style={{ backgroundColor: "#F69D55", color: "white", marginTop: "-10px" }}
         variant="contained"
         type="button"
         onClick={toggleArchived}
       >
-        Collapse List
+        Back to Active Customers
       </Button>
-      <br />
       <br />
       <br />
       <table className="invoice-table">

@@ -246,7 +246,7 @@ export default function AdminCustomerPage() {
                         marginRight: "-20px",
                       }}
                     >
-                      Customer List
+                      {showArchived ? "Archived List" : "Customer List"}
                     </h2>
                   </Typography>
                 </CardContent>
@@ -325,14 +325,31 @@ export default function AdminCustomerPage() {
               </div>
             </Card>
             <br />
-            <Button
-              style={{ backgroundColor: "#F69D55", color: "white" }}
-              variant="contained"
-              type="button"
-              onClick={toggleCustomerForm}
-            >
-              Add New Customer
-            </Button>
+            <center>
+              {!showArchived && (
+                <Button
+                  style={{ backgroundColor: "#F69D55", color: "white" }}
+                  variant="contained"
+                  type="button"
+                  onClick={toggleCustomerForm}
+                >
+                  Add New Customer
+                </Button>
+              )}<br />
+
+              {showArchived ? (
+                <ArchivedCustomerList toggleArchived={toggleArchived} />
+              ) : (
+                <Button
+                  style={{ backgroundColor: "#996887", color: "white", marginTop: "10px" }}
+                  variant="contained"
+                  type="button"
+                  onClick={toggleArchived}
+                >
+                  Show Archived Customers
+                </Button>
+              )}
+            </center>
           </div>
         )}
         {showCustomerForm && (
@@ -437,23 +454,9 @@ export default function AdminCustomerPage() {
         )}
       </center>
       <br />
-      {!showCustomerForm && <AdminTable />}
+      {!showCustomerForm && !showArchived && <AdminTable />}
       <br />
       <br />
-      <center>
-        {showArchived ? (
-          <ArchivedCustomerList toggleArchived={toggleArchived} />
-        ) : (
-          <Button
-            style={{ backgroundColor: "#996887", color: "white" }}
-            variant="contained"
-            type="button"
-            onClick={toggleArchived}
-          >
-            Show Archived Customers
-          </Button>
-        )}
-      </center>
     </>
   );
 }

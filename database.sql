@@ -61,7 +61,8 @@ CREATE TABLE "companies" (
 	"zip" BIGINT NOT NULL,
 	"email" varchar(40),
 	"phone" BIGINT NOT NULL,
-    "url" varchar(500)
+    "url" varchar(2000),
+    "isdeleted" BOOLEAN DEFAULT FALSE NOT NULL
 );   
 
 -- Insert users into the "customers" table
@@ -99,7 +100,13 @@ VALUES
     ('Daniel', 'Hall', '567 Spruce St', 'West Fargo', 'ND', 58078, 'daniel@example.com', 5556325879, FALSE);
 
 -- Insert users into the "services" table    
-INSERT INTO services ("service") VALUES ('Weekly Mow and Trim'), ('Spring Clean-up'), ('Fall Clean-up'), ('Aeration'), ('Dethatching'), ('One-Time Mow and Trim');
+INSERT INTO services ("service") 
+VALUES ('Weekly Mow and Trim'), 
+('Spring Clean-up'), 
+('Fall Clean-up'), 
+('Aeration'), 
+('Dethatching'), 
+('One-Time Mow and Trim');
 
 -- FOR UPDATING TOTAL PRICE IN INVOICE TABLE
 -- Create a function to update total_price
