@@ -53,10 +53,10 @@ function InfoPage() {
             variant="contained"
             type="button"
             onClick={() => {
-              history.push("/home");
+              history.push("/login");
             }}
           >
-            Back To Home
+            Login
           </Button>
         </center>
       </div>

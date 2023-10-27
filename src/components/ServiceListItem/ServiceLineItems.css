@@ -55,12 +55,12 @@
   width: 80%;
   padding: 6px;
   border: none;
-  border-bottom: 2px solid #008080;
+  border-bottom: 2px solid #3A486A;
   font-size: 16px;
   text-align: center;
 }
 
 .custom-text-input:focus {
   outline: none;
-  border-color: #c81ff3;
+  border-color: #F69D55;
 }
