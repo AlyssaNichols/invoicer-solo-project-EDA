@@ -13,6 +13,7 @@ import {
 import Swal from "sweetalert2";
 
 export default function CustomerInputForm() {
+  
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -109,7 +110,7 @@ export default function CustomerInputForm() {
             <Box
               className="formFields"
               sx={{
-                "& .MuiTextField-root": { m: 0.3, width: "40ch" },
+                "& .MuiTextField-root": { m: 0.5, width: "40ch" },
               }}
               noValidate
               autoComplete="off"
@@ -124,7 +125,8 @@ export default function CustomerInputForm() {
                 onChange={(event) =>
                   setFirstName(capitalizeFirstLetters(event.target.value))
                 }
-              />
+                
+                  />
               <br />
               <TextField
                 style={{ backgroundColor: "white", }}

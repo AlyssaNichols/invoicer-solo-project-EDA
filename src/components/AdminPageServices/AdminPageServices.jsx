@@ -20,6 +20,7 @@ import ListItem from "@mui/material/ListItem";
 import { Link } from "react-router-dom";
 
 
+
 export default function AdminPageServices() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -44,6 +45,10 @@ export default function AdminPageServices() {
   marginLeft: "auto",
   marginRight: "auto"
 }
+
+
+
+
   const history = useHistory();
   const dispatch = useDispatch();
   const serviceList = useSelector((store) => store.services);
@@ -84,6 +89,11 @@ export default function AdminPageServices() {
     });
   };
 
+  const customStyles = {
+    '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#F69D55', // Change this to your desired color
+    },
+  };
   const [serviceName, setServiceName] = useState({ service: "" });
 
   return (

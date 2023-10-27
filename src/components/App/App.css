@@ -303,4 +303,9 @@ margin-top: auto;
   background-color: transparent !important; /* Ensure background remains transparent on hover */
 }
 
+/* input[type="text"]:focus{
+  border-color: #F69D55 !important;
+  box-shadow: 0 0 5px #F69D55;
+  outline: none !important;
+} */
 
