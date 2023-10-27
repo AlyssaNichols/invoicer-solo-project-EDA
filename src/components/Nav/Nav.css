@@ -26,6 +26,7 @@
   font-size: 18px;
   margin: 0 6px;
   padding: 10px 15px;
+  letter-spacing: .1px;
 }
 
 .nav ul li:last-child {
