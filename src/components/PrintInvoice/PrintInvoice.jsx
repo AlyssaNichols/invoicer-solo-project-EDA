@@ -97,6 +97,7 @@ export default function PrintInvoice() {
               >
                 Print This Invoice!
               </Button>
+              {!details.date_paid ? (
               <Button
                 className="printInvoiceButton" // Use className for the button
                 style={{
@@ -112,6 +113,7 @@ export default function PrintInvoice() {
               >
                 Edit Details
               </Button>
+              ) : null}
               {/* <Button
                 className="printInvoiceButton"
                 style={{

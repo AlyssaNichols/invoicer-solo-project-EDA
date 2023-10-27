@@ -10,6 +10,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Swal from "sweetalert2";
+import InputAdornment from '@mui/material/InputAdornment';
 
 export default function InvoiceDetails() {
   const dispatch = useDispatch();
@@ -240,6 +241,9 @@ export default function InvoiceDetails() {
                       service_price: e.target.value,
                     })
                   }
+                  InputProps={{
+                    startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                  }}
                   fullWidth
                 />
               </Box>
