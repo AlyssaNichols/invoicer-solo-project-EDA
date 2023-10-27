@@ -81,7 +81,7 @@ export default function UserPage() {
             </Button>
           </center>
         </div>
-        <div style={{ flex: 0.5, textAlign: "right", marginRight: "5%", marginBottom: "1%" }}>
+        <div style={{ flex: 0.51, textAlign: "right", marginRight: "5%", marginBottom: "1%" }}>
           <img
             src={landingImage}
             alt="heroImg"
