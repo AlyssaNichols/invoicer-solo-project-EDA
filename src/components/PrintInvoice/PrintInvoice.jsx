@@ -61,7 +61,7 @@ export default function PrintInvoice() {
     display: "none", // Hide the button for printing
   };
   const buttonStyle = {
-    marginTop: "-250px",
+    marginTop: "-120px",
     marginLeft: "620px",
     backgroundColor: "#F69D55",
     color: "white",
@@ -101,9 +101,9 @@ export default function PrintInvoice() {
               <Button
                 className="printInvoiceButton" // Use className for the button
                 style={{
-                  marginTop: "-170px",
+                  marginTop: "-280px",
                   marginLeft: "690px",
-                  backgroundColor: "#A5A0A0",
+                  backgroundColor: "#AFABAB",
                   color: "white",
                   fontSize: "14px",
                   padding: "8px 16px",

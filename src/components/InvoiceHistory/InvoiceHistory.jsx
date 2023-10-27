@@ -135,7 +135,7 @@ export default function InvoiceHistory() {
             minWidth: 275,
             marginTop: "20px",
             width: "96%",
-            backgroundColor: "#DFD9D9"
+            backgroundColor: "#DFD9D9",
           }}
         >
           <CardContent>
@@ -145,7 +145,6 @@ export default function InvoiceHistory() {
                   marginTop: "-5px",
                   marginBottom: "-5px",
                   letterSpacing: ".5px",
-
                 }}
               >
                 Invoice History
@@ -274,7 +273,8 @@ export default function InvoiceHistory() {
                     )}
                   </div>
                 </th>
-                <th style={{ width: "9%" }}
+                <th
+                  style={{ width: "9%" }}
                   className={`sortable-header ${
                     sortOption === "last_name" ? "sorted" : ""
                   }`}
@@ -301,7 +301,7 @@ export default function InvoiceHistory() {
                   <div>Service Data</div>
                 </th>
                 <th
-                style={{ width: "7%" }}
+                  style={{ width: "7%" }}
                   className={`sortable-header ${
                     sortOption === "total_price" ? "sorted" : ""
                   }`}
@@ -318,7 +318,8 @@ export default function InvoiceHistory() {
                     )}
                   </div>
                 </th>
-                <th style={{ width: "9%" }}
+                <th
+                  style={{ width: "9%" }}
                   className={`sortable-header ${
                     sortOption === "date_paid" ? "sorted" : ""
                   }`}
@@ -409,7 +410,12 @@ export default function InvoiceHistory() {
                             ))}
                         </ul>
                       </td>
-                      <td>${parseFloat(invoice.total_price).toFixed(2)}</td>
+                      <td>
+
+                        {invoice.total_price
+                          ? `$${parseFloat(invoice.total_price).toFixed(2)}`
+                          : "No price selected"}
+                      </td>
                       <td>
                         {inEditMode ? (
                           <input
@@ -458,47 +464,45 @@ export default function InvoiceHistory() {
                         ) : (
                           <>
                             {!invoice.date_paid ? (
-                            <Button
-                              style={{
-                                marginBottom: "5px",
-                                fontSize: "12px",
-                                padding: "2px 4px",
-                                color: "black",
-                                fontWeight: "bold",
-                                border: "1px solid black",
-                                transition: "background-color 0.2s",
-                              }}
-                              variant="outlined"
-                              onClick={() => {
-                                setEditedDate(invoice.date_paid || "");
-                                setEditMode(invoice.id);
-                              }}
-                              onMouseEnter={(e) =>
-                                (e.target.style.backgroundColor =
-                                  "rgb(173, 216, 195)")
-                              }
-                              onMouseLeave={(e) =>
-                                (e.target.style.backgroundColor = "transparent")
-                              }
-                            >
-                              Mark Paid
-                            </Button>
+                              <Button
+                                style={{
+                                  marginBottom: "6px",
+                                  fontSize: "12px",
+                                  padding: "2px 14px",
+                                  color: "black",
+                                  fontWeight: "bold",
+                                  border: "1px solid black",
+                                }}
+                                variant="outlined"
+                                onClick={() => {
+                                  setEditedDate(invoice.date_paid || "");
+                                  setEditMode(invoice.id);
+                                }}
+                                onMouseEnter={(e) =>
+                                  (e.target.style.backgroundColor =
+                                    "#78E0A3")
+                                }
+                                onMouseLeave={(e) =>
+                                  (e.target.style.backgroundColor =
+                                    "transparent")
+                                }
+                              >
+                                Mark Paid
+                              </Button>
                             ) : null}
                             <Button
                               style={{
-                                marginBottom: "5px",
+                                marginBottom: "6px",
                                 fontSize: "12px",
-                                padding: "2px 6px",
+                                padding: "2px 20px",
                                 color: "black",
                                 fontWeight: "bold",
                                 border: "1px solid black",
-                                transition: "background-color 0.3s",
                               }}
                               variant="outlined"
                               onClick={() => printInvoice(invoice.id)}
                               onMouseEnter={(e) =>
-                                (e.target.style.backgroundColor =
-                                  "#F5A877")
+                                (e.target.style.backgroundColor = "#F5A877")
                               }
                               onMouseLeave={(e) =>
                                 (e.target.style.backgroundColor = "transparent")
@@ -510,19 +514,17 @@ export default function InvoiceHistory() {
                             {!invoice.date_paid ? (
                               <Button
                                 style={{
-                                  marginBottom: "5px",
+                                  marginBottom: "6px",
                                   fontSize: "12px",
                                   padding: "2px 6px",
                                   color: "black",
                                   fontWeight: "bold",
                                   border: "1px solid black",
-                                  transition: "background-color 0.3s",
                                 }}
                                 variant="outlined"
                                 onClick={() => moreDetails(invoice.id)}
                                 onMouseEnter={(e) =>
-                                  (e.target.style.backgroundColor =
-                                    "#83A2C9")
+                                  (e.target.style.backgroundColor = "#83A2C9")
                                 }
                                 onMouseLeave={(e) =>
                                   (e.target.style.backgroundColor =
@@ -536,11 +538,10 @@ export default function InvoiceHistory() {
                               <Button
                                 style={{
                                   fontSize: "12px",
-                                  padding: "2px 6px",
+                                  padding: "2px 24px",
                                   color: "black",
                                   fontWeight: "bold",
                                   border: "1px solid black",
-                                  transition: "background-color 0.3s",
                                 }}
                                 variant="outlined"
                                 onClick={() => handleDeleteInvoice(invoice.id)}

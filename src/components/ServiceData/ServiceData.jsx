@@ -17,7 +17,7 @@ export default function ServiceData({ service }) {
   return (
     <>
       <li>
-        ${service.price} - {service.type} <br /> - {formatDate(service.date)}
+       ${service.price} - {service.type} <br /> - {formatDate(service.date)}
       </li>
     </>
   );

@@ -89,7 +89,7 @@ export default function InvoiceDetails() {
                   style={{
                     marginTop: "-11px",
                     marginBottom: "5px",
-                    fontSize: "34px",
+                    fontSize: "36px",
                     letterSpacing: ".5px",
                   }}
                 >
@@ -98,8 +98,8 @@ export default function InvoiceDetails() {
                 <h2
                   style={{
                     marginTop: "0px",
-                    marginBottom: "-10px",
-                    fontSize: "24px",
+                    marginBottom: "-13px",
+                    fontSize: "25px",
                   }}
                 >
                   Issued: {formatDate(details.date_issued)}
@@ -109,9 +109,9 @@ export default function InvoiceDetails() {
                     width: "70%",
                     letterSpacing: ".5px",
                     borderTop: "1px solid black",
-                    paddingTop: "10px",
-                    marginBottom: "-10px",
-                    fontSize: "20px",
+                    paddingTop: "6px",
+                    marginBottom: "-9px",
+                    fontSize: "21px",
                     fontWeight: "normal",
                   }}
                 >
