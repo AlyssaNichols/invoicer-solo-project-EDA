@@ -113,7 +113,10 @@ export default function AdminFinancialPage() {
   return (
     <div>
       <center>
-        <Paper elevation={3} style={{ paddingRight: "10px", paddingLeft: "10px", width: "65%" }}>
+        <Paper
+          elevation={3}
+          style={{ paddingRight: "10px", paddingLeft: "10px", width: "65%" }}
+        >
           <Typography variant="h5" component="div">
             <h2
               style={{

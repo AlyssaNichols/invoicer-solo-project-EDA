@@ -52,7 +52,7 @@ export default function ArchivedCustomerList({ toggleArchived }) {
       <br />
       <br />
       <Button
-        style={{ backgroundColor: "#A09084", color: "white" }}
+        style={{ backgroundColor: "#996887", color: "white" }}
         variant="contained"
         type="button"
         onClick={toggleArchived}

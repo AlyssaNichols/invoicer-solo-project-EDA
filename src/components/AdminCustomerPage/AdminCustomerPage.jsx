@@ -13,6 +13,12 @@ import {
 } from "@mui/material";
 import Swal from "sweetalert2";
 import AdminTable from "../AdminTable/AdminTable";
+import IconButton from "@mui/material/IconButton";
+import Drawer from "@mui/material/Drawer";
+import MenuIcon from "@mui/icons-material/Menu";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import { Link } from "react-router-dom";
 
 export default function AdminCustomerPage() {
   const history = useHistory();
@@ -103,6 +109,29 @@ export default function AdminCustomerPage() {
   function capitalizeFirstLetters(input) {
     return input.replace(/(^|\s)\S/g, (match) => match.toUpperCase());
   }
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const menuIconStyle = {
+    fontSize: "50px",
+    color: "black",
+    borderRadius: "50%",
+    padding: "10px",
+  };
+
+  const navStyle = {
+    textDecoration: "none",
+    color: "black",
+    fontSize: "22px",
+    padding: "10px 0",
+    marginBottom: "20px",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+  };
 
   return (
     <>
@@ -110,15 +139,22 @@ export default function AdminCustomerPage() {
         <br />
         <br />
         {showCustomerForm ? (
-          <Card sx={{ minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9" }}>
+          <Card
+            sx={{
+              minWidth: 275,
+              marginTop: "20px",
+              width: "96%",
+              backgroundColor: "#DFD9D9",
+            }}
+          >
             <center>
               <CardContent>
                 <Typography variant="h5" component="div">
                   <h2
                     style={{
-                      marginTop: "-5px",
-                      marginBottom: "-15px",
-                      letterSpacing: ".5px",
+                      marginTop: "7px",
+                      marginBottom: "-45px",
+                      marginRight: "-20px",
                     }}
                   >
                     Input New Customer
@@ -126,28 +162,88 @@ export default function AdminCustomerPage() {
                 </Typography>
               </CardContent>
             </center>
+            <div>
+              <br />
+              <IconButton
+                style={{
+                  float: "right",
+                  marginTop: "-70px",
+                  marginRight: "20px",
+                  verticalAlign: "middle",
+                }}
+                onClick={toggleMenu}
+                color="inherit"
+              >
+                <MenuIcon style={menuIconStyle} className="page-menu-icon" />
+              </IconButton>
+              <Drawer anchor="right" open={menuOpen} onClose={toggleMenu}>
+                <List
+                  style={{
+                    backgroundColor: "#DBDBDB",
+                    color: "black",
+                    width: "150px",
+                    position: "fixed",
+                    right: "0",
+                    height: "100%",
+                    overflowY: "auto",
+                    transition: "width 0.3s",
+                    zIndex: "1",
+                  }}
+                >
+                  <ListItem button>
+                    <Link to="/admin" className="nav-link" style={navStyle}>
+                      Admin Home
+                    </Link>
+                  </ListItem>
+                  <ListItem button>
+                    <Link
+                      to="/admin/customers"
+                      className="nav-link"
+                      style={navStyle}
+                    >
+                      Customers
+                    </Link>
+                  </ListItem>
+                  <ListItem button>
+                    <Link
+                      to="/admin/employees"
+                      className="nav-link"
+                      style={navStyle}
+                    >
+                      Employees
+                    </Link>
+                  </ListItem>
+                  <ListItem button>
+                    <Link
+                      to="/admin/company"
+                      className="nav-link"
+                      style={navStyle}
+                    >
+                      Companies
+                    </Link>
+                  </ListItem>
+                </List>
+              </Drawer>
+            </div>
           </Card>
         ) : (
           <div>
-            <Card sx={{ minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9" }}>
+            <Card
+              sx={{
+                minWidth: 275,
+                marginTop: "20px",
+                width: "96%",
+                backgroundColor: "#DFD9D9",
+              }}
+            >
               <center>
                 <CardContent>
-                <Button
-                    style={{ backgroundColor: "#DFD9D9", color: "black", float: "left", border: "1px solid white" }}
-                    variant="contained"
-                    onClick={() => {
-                      history.push("/admin");
-                    }}
-                  >
-                    Back
-                  </Button>
                   <Typography variant="h5" component="div">
                     <h2
                       style={{
-                        marginTop: "-5px",
-                        marginBottom: "-15px",
-                        letterSpacing: ".5px",
-                        marginRight: "5%"
+                        marginTop: "7px",
+                        marginBottom: "-45px",
+                        marginRight: "-20px",
                       }}
                     >
                       Customer List
@@ -155,6 +251,78 @@ export default function AdminCustomerPage() {
                   </Typography>
                 </CardContent>
               </center>
+              <div>
+                <br />
+                <IconButton
+                  style={{
+                    float: "right",
+                    marginTop: "-70px",
+                    marginRight: "20px",
+                    verticalAlign: "middle",
+                  }}
+                  onClick={toggleMenu}
+                  color="inherit"
+                >
+                  <MenuIcon style={menuIconStyle} className="page-menu-icon" />
+                </IconButton>
+                <Drawer anchor="right" open={menuOpen} onClose={toggleMenu}>
+                  <List
+                    style={{
+                      backgroundColor: "#DBDBDB",
+                      color: "black",
+                      width: "150px",
+                      position: "fixed",
+                      right: "0",
+                      height: "100%",
+                      overflowY: "auto",
+                      transition: "width 0.3s",
+                      zIndex: "1",
+                    }}
+                  >
+                    <ListItem button>
+                      <Link to="/admin" className="nav-link" style={navStyle}>
+                        Admin
+                      </Link>
+                    </ListItem>
+                    <ListItem button>
+                      <Link
+                        to="/admin/services"
+                        className="nav-link"
+                        style={navStyle}
+                      >
+                        Services
+                      </Link>
+                    </ListItem>
+                    <ListItem button>
+                      <Link
+                        to="/admin/customers"
+                        className="nav-link"
+                        style={navStyle}
+                      >
+                        Customers
+                      </Link>
+                    </ListItem>
+                    <ListItem button>
+                      <Link
+                        to="/admin/employees"
+                        className="nav-link"
+                        style={navStyle}
+                      >
+                        Employees
+                      </Link>
+                    </ListItem>
+                    <ListItem button>
+                      <Link
+                        to="/admin/company"
+                        className="nav-link"
+                        style={navStyle}
+                      >
+                        Companies
+                      </Link>
+                    </ListItem>
+                  </List>
+                </Drawer>
+              </div>
             </Card>
             <br />
             <Button
@@ -273,25 +441,11 @@ export default function AdminCustomerPage() {
       <br />
       <br />
       <center>
-        <br />
-        <br />
-        <Button
-          style={{ backgroundColor: "#996887", color: "white" }}
-          variant="contained"
-          onClick={() => {
-            history.push("/admin");
-          }}
-        >
-          Back to Admin Main Page
-        </Button>
-      </center>
-      <br />
-      <center>
         {showArchived ? (
           <ArchivedCustomerList toggleArchived={toggleArchived} />
         ) : (
           <Button
-            style={{ backgroundColor: "#A09084", color: "white" }}
+            style={{ backgroundColor: "#996887", color: "white" }}
             variant="contained"
             type="button"
             onClick={toggleArchived}

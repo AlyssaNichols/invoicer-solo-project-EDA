@@ -18,7 +18,7 @@ function Footer() {
 
   return (
     <footer>
-      &copy; Invoicer 2023 {bullet} Alyssa
+      &copy; Invoicer 2023 {bullet} Alyssa Nichols
       <br />
     </footer>
   );

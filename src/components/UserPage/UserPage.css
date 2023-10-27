@@ -81,11 +81,17 @@ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
   letter-spacing: 1px;
 }
 
+.page-menu-icon:hover {
+  transform: scale(1.1); /* Scale the icon on hover */
+  color: #F49885 !important; /* Change the color on hover */
+  background-color: white !important;
+  padding: "5px" !important;
+}
 .menu-icon:hover {
   transform: scale(1.1); /* Scale the icon on hover */
   color: #F49885 !important; /* Change the color on hover */
   background-color: white !important;
-  padding: "10px" !important;
+  padding: "5px" !important;
 }
 
 body {

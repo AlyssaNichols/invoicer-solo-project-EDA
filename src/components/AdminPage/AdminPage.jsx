@@ -9,7 +9,6 @@ import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
 import { useState } from "react";
 
 export default function AdminPage() {
@@ -24,20 +23,19 @@ export default function AdminPage() {
     fontSize: "50px",
     color: "black",
     borderRadius: "50%",
-    padding:"10px",
+    padding: "10px",
   };
 
   const navStyle = {
-  textDecoration: "none",
-  color: "black",
-  fontSize: "22px",
-  padding: "10px 0",
-  marginBottom: "20px",
-  display: "block",
-  marginLeft: "auto",
-  marginRight: "auto"
-}
-
+    textDecoration: "none",
+    color: "black",
+    fontSize: "22px",
+    padding: "10px 0",
+    marginBottom: "20px",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+  };
 
   return (
     <>
@@ -45,7 +43,12 @@ export default function AdminPage() {
       <div>
         <br />
         <IconButton
-          style={{ float: "right", marginTop: "10px", marginRight: "20px", verticalAlign: "middle" }}
+          style={{
+            float: "right",
+            marginTop: "10px",
+            marginRight: "20px",
+            verticalAlign: "middle",
+          }}
           onClick={toggleMenu}
           color="inherit"
         >
@@ -66,35 +69,22 @@ export default function AdminPage() {
             }}
           >
             <ListItem button>
-              
-              <Link
-                to="/admin/services" className="nav-link"
-                style={navStyle}
-              >
+              <Link to="/admin/services" className="nav-link" style={navStyle}>
                 Services
               </Link>
             </ListItem>
             <ListItem button>
-              <Link
-                to="/admin/customers" className="nav-link"
-                style={navStyle}
-              >
+              <Link to="/admin/customers" className="nav-link" style={navStyle}>
                 Customers
               </Link>
             </ListItem>
             <ListItem button>
-              <Link
-                to="/admin/employees" className="nav-link"
-                style={navStyle}
-              >
+              <Link to="/admin/employees" className="nav-link" style={navStyle}>
                 Employees
               </Link>
             </ListItem>
             <ListItem button>
-              <Link
-                to="/admin/company" className="nav-link"
-                style={navStyle}
-              >
+              <Link to="/admin/company" className="nav-link" style={navStyle}>
                 Companies
               </Link>
             </ListItem>
@@ -104,8 +94,12 @@ export default function AdminPage() {
       <div className="financialDiv">
         <br /> <br />
         <h1 className="mainUserHeader">
-          <div className="welcomeName"><span>Welcome{" "}
-          {user.username.charAt(0).toUpperCase() + user.username.slice(1)},</span></div>
+          <div className="welcomeName">
+            <span>
+              Welcome{" "}
+              {user.username.charAt(0).toUpperCase() + user.username.slice(1)},
+            </span>
+          </div>
           Thanks for choosing <br />
           <span className="professionalInvoice">Invoicer</span>
         </h1>
@@ -123,9 +117,8 @@ export default function AdminPage() {
   );
 }
 
-
-
-      {/* <center>
+{
+  /* <center>
         <Card sx={{ minWidth: 275, width: "96%", backgroundColor: "#DFD9D9"}}>
           <CardContent>
             <h2
@@ -150,8 +143,10 @@ export default function AdminPage() {
             </p>
           </CardContent>
         </Card>
-      </center> */}
-      {/* <nav className="adminNav">
+      </center> */
+}
+{
+  /* <nav className="adminNav">
         <div class="menu-icon" id="menuIcon">
           &#9776;
         </div>
@@ -161,4 +156,5 @@ export default function AdminPage() {
           <Link to="/admin/employees">Employees</Link>
           <Link to="/admin/company">Companies</Link>
         </div>
-      </nav> */}
+      </nav> */
+}

@@ -20,7 +20,7 @@ function LoginPage() {
       <div
         style={{ display: "flex", width: "45%", marginTop: "5%" }}
       >
-        <div className="landingDiv" style={{ flex: 1, marginTop: "60px"}}>
+        <div className="landingDiv" style={{ flex: 1, marginTop: "70px"}}>
           <h1  >
             Easily Generate A <br />
             <span className="professionalInvoice">Professional Invoice</span>
