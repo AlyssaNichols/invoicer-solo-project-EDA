@@ -10,7 +10,6 @@ import {
   Card,
   CardContent,
   Typography,
-  MenuItem,
 } from "@mui/material";
 import Swal from "sweetalert2";
 import IconButton from "@mui/material/IconButton";
@@ -88,6 +87,11 @@ export default function AdminPageServices() {
       }
     });
   };
+
+  function clear(){
+    setUsername("");
+    setPassword("");
+  }
 
   return (
     <>
@@ -231,6 +235,14 @@ export default function AdminPageServices() {
               />
               <br />
               <br />
+              <Button
+                    style={{ backgroundColor: "#AFABAB", color: "white", marginBottom: "20px" }}
+                    variant="contained"
+                    type="button"
+                    onClick={clear}
+                  >
+                    Cancel
+                  </Button>{" "}
               <Button
                 style={{
                   backgroundColor: "#F69D55",

@@ -315,7 +315,7 @@ export default function InvoiceDetails() {
             <Button
               variant="contained"
               style={{
-                backgroundColor: "#996887",
+                backgroundColor: "#F69D55",
                 color: "white",
                 fontSize: "16px",
                 marginTop: "0px",
@@ -323,7 +323,7 @@ export default function InvoiceDetails() {
               sx={{ padding: "10px 28px" }}
               onClick={generateInvoice}
             >
-              Preview Invoice!
+              Preview Invoice
             </Button>
             <br />
             <br />

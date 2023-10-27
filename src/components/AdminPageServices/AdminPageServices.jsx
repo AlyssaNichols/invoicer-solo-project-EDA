@@ -88,7 +88,9 @@ export default function AdminPageServices() {
       }
     });
   };
-
+function clear(){
+  setServiceName({ service: "" });
+}
   const customStyles = {
     '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
       borderColor: '#F69D55', // Change this to your desired color
@@ -223,6 +225,14 @@ export default function AdminPageServices() {
               />
               <br />
               <br />
+              <Button
+                    style={{ backgroundColor: "#AFABAB", color: "white", marginBottom: "20px" }}
+                    variant="contained"
+                    type="button"
+                    onClick={clear}
+                  >
+                    Cancel
+                  </Button>{" "}
               <Button
                 style={{
                   backgroundColor: "#F69D55",

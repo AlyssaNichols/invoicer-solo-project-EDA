@@ -341,7 +341,7 @@ export default function AdminCustomerPage() {
                 <ArchivedCustomerList toggleArchived={toggleArchived} />
               ) : (
                 <Button
-                  style={{ backgroundColor: "#996887", color: "white", marginTop: "10px" }}
+                  style={{ backgroundColor: "#F69D55", color: "white", marginTop: "10px", marginBottom: "-20px" }}
                   variant="contained"
                   type="button"
                   onClick={toggleArchived}
@@ -430,7 +430,7 @@ export default function AdminCustomerPage() {
                   <br />
                   <br />
                   <Button
-                    style={{ backgroundColor: "#8F847C", color: "white" }}
+                    style={{ backgroundColor: "#AFABAB", color: "white" }}
                     variant="contained"
                     type="button"
                     onClick={cancelAddCustomer}

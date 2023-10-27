@@ -405,7 +405,7 @@ export default function AdminCompanyPage() {
                   <br />
                   <br />
                   <Button
-                    style={{ backgroundColor: "#8F847C", color: "white" }}
+                    style={{ backgroundColor: "#AFABAB", color: "white" }}
                     variant="contained"
                     type="button"
                     onClick={cancelAddCompany}
