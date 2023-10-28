@@ -8,17 +8,21 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Swal from "sweetalert2";
+import Autocomplete from "@mui/material/Autocomplete";
 
 export default function CreateInvoicePage() {
   const history = useHistory();
   const dispatch = useDispatch();
-
-  const [newInvoice, setNewInvoice] = useState({
-    date_issued: "",
-    customer_id: "",
-  });
-
   const customerList = useSelector((store) => store.customers);
+  const [newInvoice, setNewInvoice] = useState({
+    date_issued: " ",
+    customer_id: " ",
+  });
+  const defaultProps = {
+    options: customerList,
+    getOptionLabel: (customer) =>
+      `${customer.last_name}, ${customer.first_name}`,
+  };
 
   useEffect(() => {
     console.log("fetching services and customers");
@@ -40,21 +44,25 @@ export default function CreateInvoicePage() {
     });
   };
 
-  console.log(newInvoice);
-
   return (
     <div>
       <br />
       <br />
       <div className="createInvoice-header-section">
         <center>
-          <Card sx={{ minWidth: 275, marginTop: "20px", width: "96%", backgroundColor: "#DFD9D9" }}>
+          <Card
+            sx={{
+              minWidth: 275,
+              marginTop: "20px",
+              width: "96%",
+              backgroundColor: "#DFD9D9",
+            }}
+          >
             <CardContent>
               <h1
                 style={{
                   marginTop: "-5px",
                   letterSpacing: ".7px",
-
                 }}
               >
                 Let's Get Started!
@@ -103,22 +111,30 @@ export default function CreateInvoicePage() {
               >
                 Select a Customer:
               </InputLabel>
-              <TextField
-                select
-                label="Select a Customer"
+              <Autocomplete
+                {...defaultProps}
                 id="customerSelect"
-                value={newInvoice.customer_id}
-                onChange={(e) =>
-                  setNewInvoice({ ...newInvoice, customer_id: e.target.value })
+                value={
+                  customerList.find(
+                    (customer) => customer.id === newInvoice.customer_id
+                  ) || null
                 }
-                fullWidth
-              >
-                {customerList.map((customer) => (
-                  <MenuItem key={customer.id} value={customer.id}>
-                    {customer.last_name}, {customer.first_name}
-                  </MenuItem>
-                ))}
-              </TextField>
+                onChange={(_, newValue) => {
+                  setNewInvoice({
+                    ...newInvoice,
+                    customer_id: newValue ? newValue.id : null,
+                  });
+                }}
+                includeInputInList
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Select a Customer"
+                    variant="outlined"
+                    placeholder="Start typing to select a customer"
+                  />
+                )}
+              />
             </Box>
             <Box
               sx={{
@@ -144,6 +160,7 @@ export default function CreateInvoicePage() {
                   setNewInvoice({ ...newInvoice, date_issued: e.target.value })
                 }
                 fullWidth
+                variant="outlined"
               />
             </Box>
             <Button
