@@ -130,7 +130,7 @@ export default function CreateInvoicePage() {
                   <TextField
                     {...params}
                     label="Select a Customer"
-                    variant="outlined"
+                    variant="standard"
                     placeholder="Start typing to select a customer"
                   />
                 )}
@@ -160,7 +160,7 @@ export default function CreateInvoicePage() {
                   setNewInvoice({ ...newInvoice, date_issued: e.target.value })
                 }
                 fullWidth
-                variant="outlined"
+                variant="standard"
               />
             </Box>
             <Button
