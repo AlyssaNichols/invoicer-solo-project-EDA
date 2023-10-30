@@ -19,11 +19,13 @@ router.get("/", (req, res) => {
       c.state,
       c.zip,
       c.email,
-      c.phone
+      c.phone,
+      i.isdeleted
 FROM invoice i
 LEFT JOIN line_item li ON i.id = li.invoice_id
 LEFT JOIN services AS s ON li.service_id = s.id
 LEFT JOIN customers AS c ON i.customer_id = c.id
+WHERE i.isdeleted = false
 GROUP BY i.id, i.total_price, i.customer_id, c.first_name, c.last_name, c.address, c.city, c.state, c.zip, c.email, c.phone
 ORDER BY i.id desc;`)
       .then((response) => {

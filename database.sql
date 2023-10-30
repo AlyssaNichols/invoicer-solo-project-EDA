@@ -41,6 +41,7 @@ CREATE TABLE invoice (
     "date_paid" DATE,
     "total_price" DECIMAL,
     "customer_id" INT REFERENCES customers(id) NOT NULL
+    "isdeleted" BOOLEAN DEFAULT FALSE NOT NULL
 );
 
 -- create table line_item
