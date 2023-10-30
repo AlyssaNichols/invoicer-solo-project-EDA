@@ -171,7 +171,7 @@ export default function CustomerInputForm() {
               <br />
               <TextField
                 style={{ backgroundColor: "white" }}
-                label="Email Address"
+                label="Email Address (optional)"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
               />
