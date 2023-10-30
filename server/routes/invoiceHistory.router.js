@@ -63,6 +63,7 @@ ORDER BY i.id desc;`)
     //       res.sendStatus(500);
     //     });
     // });
+    
     router.delete("/:id", async (req, res) => {
       const invoiceId = req.params.id;
     

@@ -7,7 +7,7 @@ router.get("/:id", (req, res) => {
   console.log("GET /api/lineItems");
   console.log("id:", id);
   pool
-    .query(`SELECT * from "line_item" WHERE "invoice_id" = $1;`, [id])
+    .query(`SELECT * from "line_item" WHERE "invoice_id" = $1 AND isDeleted = false;`, [id])
     .then((response) => {
       res.send(response.rows);
     })

@@ -3,7 +3,7 @@ import { takeEvery, put } from "redux-saga/effects";
 
 function* fetchArchivedHistory() {
     try {
-      const response = yield axios.get("/api/archived");
+      const response = yield axios.get("/api/archivedInvoices");
       console.log("FETCH request customersSaga");
       yield put({ type: "SET_ARCHIVED_INVOICES", payload: response.data });
     } catch {

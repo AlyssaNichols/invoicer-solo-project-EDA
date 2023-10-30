@@ -26,6 +26,7 @@ import EmailPage from "../PDF/EmailPage";
 import "./App.css";
 import InvoiceDetails from "../InvoiceDetails/InvoiceDetails";
 import AdminCompanyPage from "../AdminCompanyPage/AdminCompanyPage.jsx";
+import ArchivedHistory from "../ArchivedHistory/ArchivedHistory";
 
 function App() {
   const dispatch = useDispatch();
@@ -118,6 +119,12 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute exact path="/admin/company">
             <AdminCompanyPage />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/admin/archivedInvoices"
+          >
+            <ArchivedHistory />
           </ProtectedRoute>
           <Route exact path="/login">
             {user.id ? (
