@@ -11,6 +11,7 @@ import employeesSaga from './employees.saga';
 import archivedCustomersSaga from './archivedCustomers.saga';
 import companiesSaga from './companies.saga';
 import financesSaga from './finances.saga';
+import archivedHistorySaga from './archivedHistory.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -32,6 +33,7 @@ export default function* rootSaga() {
     employeesSaga(),
     archivedCustomersSaga(),
     companiesSaga(),
-    financesSaga()
+    financesSaga(),
+    archivedHistorySaga()
   ]);
 }
