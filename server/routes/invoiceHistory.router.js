@@ -77,6 +77,7 @@ ORDER BY i.id desc;`)
     //     res.sendStatus(500);
     //   } 
     // });
+
     router.delete("/:id", async (req, res) => {
       const invoiceId = req.params.id;
     
@@ -85,7 +86,7 @@ ORDER BY i.id desc;`)
         await pool.query('BEGIN');
     
         // Step 1: Update the isDeleted flag for the invoice
-        await pool.query('UPDATE invoice SET isDeleted = true WHERE id = $1', [invoiceId]);
+        await pool.query('UPDATE invoice SET isdeleted = true WHERE id = $1', [invoiceId]);
     
         // Commit the transaction
         await pool.query('COMMIT');
