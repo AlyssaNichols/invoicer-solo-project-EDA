@@ -102,7 +102,7 @@ export default function PrintInvoice() {
                 className="printInvoiceButton" // Use className for the button
                 style={{
                   marginTop: "-280px",
-                  marginLeft: "690px",
+                  marginLeft: "685px",
                   backgroundColor: "#AFABAB",
                   color: "white",
                   fontSize: "14px",
