@@ -40,7 +40,7 @@ CREATE TABLE invoice (
     "date_issued" DATE NOT NULL,
     "date_paid" DATE,
     "total_price" DECIMAL,
-    "customer_id" INT REFERENCES customers(id) NOT NULL
+    "customer_id" INT REFERENCES customers(id) NOT NULL,
     "isdeleted" BOOLEAN DEFAULT FALSE NOT NULL
 );
 
@@ -50,7 +50,8 @@ CREATE TABLE line_item (
     "service_id" INT REFERENCES services(id) NOT NULL,
     "date_performed" DATE NOT NULL,
     "service_price" DECIMAL NOT NULL,
-    "invoice_id" INT REFERENCES invoice(id)
+    "invoice_id" INT REFERENCES invoice(id) ON DELETE CASCADE,
+    "isdeleted" BOOLEAN DEFAULT FALSE NOT NULL
 );
 
 CREATE TABLE "companies" (

@@ -89,8 +89,13 @@ export default function AdminPage() {
               </Link>
             </ListItem>
             <ListItem button>
-              <Link to="/admin/archivedInvoices" className="nav-link" style={navStyle}>
-                Archived Invoices
+              <Link
+                to="/admin/archivedInvoices"
+                className="nav-link"
+                style={navStyle}
+              >
+                Archived <br />
+                Invoices
               </Link>
             </ListItem>
           </List>
