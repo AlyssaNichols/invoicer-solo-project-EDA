@@ -28,6 +28,7 @@ export default function CreateInvoicePage() {
     console.log("fetching services and customers");
     dispatch({ type: "FETCH_CUSTOMERS" });
   }, []);
+  
 
   const handleCreateInvoice = async () => {
     if (!newInvoice.customer_id || !newInvoice.date_issued) {
@@ -130,8 +131,9 @@ export default function CreateInvoicePage() {
                   <TextField
                     {...params}
                     label="Select a Customer"
-                    variant="standard"
+                    variant="outlined"
                     placeholder="Start typing to select a customer"
+                    
                   />
                 )}
               />
@@ -160,7 +162,7 @@ export default function CreateInvoicePage() {
                   setNewInvoice({ ...newInvoice, date_issued: e.target.value })
                 }
                 fullWidth
-                variant="standard"
+                variant="outlined"
               />
             </Box>
             <Button

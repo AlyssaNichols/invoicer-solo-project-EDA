@@ -309,3 +309,7 @@ margin-top: auto;
   outline: none !important;
 } */
 
+
+.autocomplete-dropdown {
+  top: 100%; /* Ensure the drop-down is below the input field */
+}
