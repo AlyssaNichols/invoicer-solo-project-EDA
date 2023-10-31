@@ -1,15 +1,13 @@
 
 # Invoicer
+Invoicer is my Solo Project from my time at Emerging Digital Academy. It is a business facing application that simplifies and streamlines the invoice generating process.
+
+## Description
+Invoicer is a simple alternative to generating invoices, aimed at small business owners or anyone that needs to create service based invoices. It offers customer management, service input, and takes that information to create a formatted printable invoice that can be customized with your company information. I was inspired to create this web application after seeing my mom struggle with complex invoicing programs while running our family lawn care business. I managed the company for a few years and knew the ins and outs of some of those more complicated programs and wanted to design something that was more user friendly and digestible for non technical users without sacrificing functionality.
+
+### Prerequisites
+
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
-
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
-
-## Use the Template for This Repository (Don't Clone)
-
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account. Make the project `PUBLIC`!
-
-
-## Prerequisites
 
 Before you get started, make sure you have the following software installed on your computer:
 
@@ -17,98 +15,81 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
-## Create database and table
+### Create database and table
 
-Create a new database called `prime_app` and create a `user` table:
-
+Create a new database called `prime_app` and use the queries in the database.sql file to set up your tables.
 
 If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
 
-## Development Setup Instructions
+### Development Setup Instructions
 
 - Run `npm install`
-- Create a `.env` file at the root of the project and paste this line into the file:
-  ```
-  SERVER_SESSION_SECRET=superDuperSecret
-  ```
-  While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-- Start postgres if not running already by using `brew services start postgresql`
+- Start postgres by using `brew services start postgresql`
 - Run `npm run server`
 - Run `npm run client`
 - Navigate to `localhost:3000`
 
-## Debugging
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
+## Base User Usage
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
+1. If database is setup and the app is running in browser you may login or look at the More Info page to learn more about the web application. Since registerring is not an option at this point a username that can be used is "alyssa" and password is "1234".
+2. After logging in, the user can navigate to a Customer Input Form, Create Invoice Page, or the Invoice History page. 
+3. To add a new customer to the database the user just navigates to that page and fills out the input form.
+4. To create an invoice, you are brought to a form to select a customer and a date to issue the invoice. Once selected it brings you to the Invoice Details view where you can see all the invoice and customer details and add services with date performed and price for each service. 
+5. Once all the invoice line items are inputted, you can edit or delete them if you need to make any changes, then you can preview your invoice.
+6. After the invoice has been created it is automatically added into the invoice history table.
+7. The invoice history page has a fuzzy search option, and various sorting features to more easily access certain invoices that may be sought out.
+8. In the invoice history table there are options to mark the invoice as paid, edit the invoice details, preview the printable invoice. Only the Admin has access to archive invoices.
+9. This completes the base user functionality.
 
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
+## Admin Usage
 
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
+1. The Admin user has all the same features as the base user but they have access to the Admin page which has some added features.
+2. Admin is the only user that can archive invoices on the invoice history table as well.
+3. The Admin page has a main page that has a financial overview of the month by month invoice amount using reach charts.
+4. From that page there is its own seperate navbar that can be accessed using a hamburger menu and that has links to Service, Customer, Employee, Company, and Archvied Invoices pages.
+5. The services page has the capibility to add a new service as well as delete services.
+6. The customers page has the same fuzzy search as the invoice history page, as well as the ability to edit every piece of customer information, to add new customers, and archive old customers.
+7. There is a button on the customers page to bring you to the archvied customers table as well and there is an option to "un-archive" the customers in case you start servicing them again.
+8. The employee page has the ability to add new employees (passwords are all encrypted) and delete old employees.
+9. The Company page has an input form to add your company's information and that is what populates in the printable invoice page.
+10. The last page is the archived invoice page which just shows which invoices have been archived. There is a search and sort feature on that page but no actions to edit or un-archive.
 
-## Testing Routes with Postman
 
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum.
 
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
+## Project Wireframe
+I have attached a photo of my Landing Page, the Invoice Details Page, and the view of the generated invoice.
+![landing page ](wireframe/landing.png)
+![details view](wireframe/details.png)
+![print page](wireframe/print-page.png)
+![printed template](wireframe/printed-template.png)
+![invoice history page](wireframe/history-table.png)
 
-1. Start the server - `npm run server`
-2. Import the sample routes JSON file [v2](./PostmanPrimeSoloRoutesv2.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-   1. `POST /api/user/register` registers a new user, see body to change username/password
-   2. `POST /api/user/login` will login a user, see body to change username/password
-   3. `GET /api/user` will get user information, by default it's not very much
+### Built With
 
-After running the login route above, you can try any other route you've created that requires a logged in user!
+ - HTML
+ - CSS
+ - Javascript
+ - React.js
+ - Redux/ Sagas
+ - PG
+ - Express.js
+ - PostgresSQL
+ - Postico
+ - Postman
+ - Git
+ - GitHub
+ - VScode
+ - Nodemon (for development)
+ - React Charts
+ - Fuse.js
+ - Sweet Alerts
+ - Material UI
 
-## Production Build
+### Acknowledgement
 
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
+Thanks to [Emerging Digital Academy](http://www.emergingacademy.org) who equipped and helped me to make this application a reality. It will be something that I implement in my small business and I hope to keep developing to make a customer-facing application as well.
 
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm start`
-- Navigate to `localhost:5000`
+### Support
 
-## Lay of the Land
-
-There are a few videos linked below that show a walkthrough the client and sever setup to help acclimatize to the boilerplate. Please take some time to watch the videos in order to get a better understanding of what the boilerplate is like.
-
-- [Initial Set](https://vimeo.com/453297271)
-- [Server Walkthrough](https://vimeo.com/453297212)
-- [Client Walkthrough](https://vimeo.com/453297124)
-
-Directory Structure:
-
-- `src/` contains the React application
-- `public/` contains static assets for the client-side
-- `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-- `server/` contains the Express App
-
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
-
-- src/components
-  - App/App
-  - Footer/Footer
-  - Nav/Nav
-  - AboutPage/AboutPage
-  - InfoPage/InfoPage
-  - UserPage/UserPage
-  - LoginPage/LoginPage
-  - RegisterPage/RegisterPage
-  - LogOutButton/LogOutButton
-  - ProtectedRoute/ProtectedRoute
-
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+If you have suggestions or issues, please email me at [alyssa.s.nichols94@gmail.com](mailto:alyssa.s.nichols94@gmail.com)

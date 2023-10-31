@@ -18,35 +18,6 @@ export default function UserPage() {
       <br />
       <br />
       <br />
-      {/* <center>
-        <Card sx={{ minWidth: "275", width: "98%" }}>
-          <center>
-            <CardContent>
-              <h2
-                style={{
-                  marginTop: "-5px",
-                  marginBottom: "0px",
-                  fontSize: "22px",
-                }}
-              >
-                {" "}
-                Welcome,{" "}
-                {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
-                !
-              </h2>
-              <p
-                style={{
-                  marginTop: "5px",
-                  marginBottom: "-5px",
-                  fontSize: "16px",
-                }}
-              >
-                Your ID Number is: {user.id}
-              </p>
-            </CardContent>
-          </center>
-        </Card>
-      </center> */}
       <div
         className="aboutDiv"
         style={{ display: "flex", alignItems: "center" }}

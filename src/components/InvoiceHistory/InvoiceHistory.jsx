@@ -52,16 +52,16 @@ export default function InvoiceHistory() {
 
   const handleDeleteInvoice = (invoiceId) => {
     Swal.fire({
-      title: "Are you sure you want to delete this Invoice?",
+      title: "Are you sure you want to archive this Invoice?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Delete It",
+      confirmButtonText: "Yes, Archive It",
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
-          title: "Invoice will be PERMANENTLY deleted",
+          title: "Invoice will be PERMANENTLY archived",
           text: `You will not be able to recover this Invoice! Are you absolutely sure?`,
           icon: "question",
           showCancelButton: true,
@@ -553,7 +553,7 @@ export default function InvoiceHistory() {
                                     "transparent")
                                 }
                               >
-                                Delete
+                                Archive
                               </Button>
                             )}
                             <br />

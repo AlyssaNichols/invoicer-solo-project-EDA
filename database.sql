@@ -1,8 +1,4 @@
-
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
+-- create table user
 CREATE TABLE "user" (
 	"id" serial primary key,
 	"username" varchar(80) NOT NULL UNIQUE,
@@ -54,6 +50,7 @@ CREATE TABLE line_item (
     "isdeleted" BOOLEAN DEFAULT FALSE NOT NULL
 );
 
+-- create table companies
 CREATE TABLE "companies" (
 	"id" serial primary key,
 	"company_name" varchar(50) NOT NULL,
@@ -67,6 +64,41 @@ CREATE TABLE "companies" (
     "isdeleted" BOOLEAN DEFAULT FALSE NOT NULL
 );   
 
+-- FOR UPDATING TOTAL PRICE IN INVOICE TABLE
+-- Create a function to update total_price
+CREATE OR REPLACE FUNCTION update_invoice_total_price()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Update total_price when a new line item is inserted or an existing one is updated
+    IF TG_OP = 'INSERT' OR TG_OP = 'UPDATE' THEN
+        UPDATE invoice AS i
+        SET total_price = (
+            SELECT COALESCE(SUM(service_price), 0)
+            FROM line_item AS li
+            WHERE li.invoice_id = i.id
+        )
+        WHERE i.id = NEW.invoice_id;
+    -- Update total_price when a line item is deleted
+    ELSIF TG_OP = 'DELETE' THEN
+        UPDATE invoice AS i
+        SET total_price = (
+            SELECT COALESCE(SUM(service_price), 0)
+            FROM line_item AS li
+            WHERE li.invoice_id = i.id
+        )
+        WHERE i.id = OLD.invoice_id;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql; 
+
+-- Create a trigger to call the function after INSERT or UPDATE on line_item
+CREATE TRIGGER update_invoice_total_price_trigger
+AFTER INSERT OR UPDATE OR DELETE ON line_item
+FOR EACH ROW
+EXECUTE FUNCTION update_invoice_total_price();
+
+--------------------information to fill tables if wanted-------------------------------------
 -- Insert users into the "customers" table
 INSERT INTO customers ("first_name", "last_name", "address", "city", "state", "zip", "email", "phone")
 VALUES
@@ -110,40 +142,6 @@ VALUES ('Weekly Mow and Trim'),
 ('Dethatching'), 
 ('One-Time Mow and Trim');
 
--- FOR UPDATING TOTAL PRICE IN INVOICE TABLE
--- Create a function to update total_price
-CREATE OR REPLACE FUNCTION update_invoice_total_price()
-RETURNS TRIGGER AS $$
-BEGIN
-    -- Update total_price when a new line item is inserted or an existing one is updated
-    IF TG_OP = 'INSERT' OR TG_OP = 'UPDATE' THEN
-        UPDATE invoice AS i
-        SET total_price = (
-            SELECT COALESCE(SUM(service_price), 0)
-            FROM line_item AS li
-            WHERE li.invoice_id = i.id
-        )
-        WHERE i.id = NEW.invoice_id;
-    -- Update total_price when a line item is deleted
-    ELSIF TG_OP = 'DELETE' THEN
-        UPDATE invoice AS i
-        SET total_price = (
-            SELECT COALESCE(SUM(service_price), 0)
-            FROM line_item AS li
-            WHERE li.invoice_id = i.id
-        )
-        WHERE i.id = OLD.invoice_id;
-    END IF;
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql; 
-
--- Create a trigger to call the function after INSERT or UPDATE on line_item
-CREATE TRIGGER update_invoice_total_price_trigger
-AFTER INSERT OR UPDATE OR DELETE ON line_item
-FOR EACH ROW
-EXECUTE FUNCTION update_invoice_total_price();
-
 
 INSERT INTO line_item ("service_id", "date_performed", "service_price", "invoice_id")
 VALUES
@@ -166,8 +164,11 @@ VALUES
     ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-16', 50.00, 82),
     ((SELECT id FROM services WHERE "service" = 'Weekly Mow and Trim'), '2023-10-24', 50.00, 83);
 
-    -- this gets each customer id in one column and then all the
+
+--------------------------------queryText references, not needed in postico---------------------------------------------
+-- this gets each customer id in one column and then all the
 -- customer info into an object in the next column
+-- NOT NEEDED for database, used for querytexts in the routers
 SELECT
     id,
     json_build_object(
@@ -182,7 +183,8 @@ SELECT
     ) AS customer_data
 FROM customers;
 
--- ARRAY OF OBJECTS with key value pairs with service, price, and date
+-- ARRAY OF OBJECTS with key value pairs with service, price, and date 
+-- NOT NEEDED for database, used for querytexts in the routers
 SELECT i.id AS invoice_id,
        json_agg(json_build_object('type', s.service, 'date', li.date_performed, 'price', li.service_price )) AS service_data,
        i.total_price,

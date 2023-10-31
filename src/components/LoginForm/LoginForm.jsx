@@ -87,20 +87,6 @@ function LoginForm() {
         </form>
       </center>
       <br />
-      {/* <Button
-        style={{
-          backgroundColor: "#7d5e51",
-          color: "white",
-          marginTop: "20px",
-        }}
-        variant="contained"
-        type="button"
-        onClick={() => {
-          history.push("/home");
-        }}
-      >
-        Go Back
-      </Button> */}
     </>
   );
 }

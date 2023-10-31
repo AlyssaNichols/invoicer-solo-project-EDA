@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
     pool
       .query('SELECT * from "services" WHERE "isdeleted" = false ORDER by "id" ASC;')
       .then((response) => {
-        res.send(response.rows);
+        res.send(response.rows).status(200);
       })
       .catch((error) => {
         console.log("Error GET /api/services", error);

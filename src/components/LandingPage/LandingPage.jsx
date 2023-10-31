@@ -16,6 +16,7 @@ function LandingPage() {
 
   return (
     <div className="landing-container">
+      <br />
       <center>
       <div
         className="landingDiv"

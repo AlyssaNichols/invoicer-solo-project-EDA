@@ -222,6 +222,16 @@ export default function AdminCustomerPage() {
                       Companies
                     </Link>
                   </ListItem>
+                  <ListItem button>
+                    <Link
+                      to="/admin/archivedInvoices"
+                      className="nav-link"
+                      style={navStyle}
+                    >
+                      Archived <br />
+                      Invoices
+                    </Link>
+                  </ListItem>
                 </List>
               </Drawer>
             </div>
