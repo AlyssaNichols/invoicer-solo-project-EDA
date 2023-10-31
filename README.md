@@ -5,9 +5,10 @@ Invoicer is my Solo Project from my time at Emerging Digital Academy. It is a bu
 ## Description
 Invoicer is a simple alternative to generating invoices, aimed at small business owners or anyone that needs to create service based invoices. It offers customer management, service input, and takes that information to create a formatted printable invoice that can be customized with your company information. I was inspired to create this web application after seeing my mom struggle with complex invoicing programs while running our family lawn care business. I managed the company for a few years and knew the ins and outs of some of those more complicated programs and wanted to design something that was more user friendly and digestible for non technical users without sacrificing functionality.
 
-### Prerequisites
+### Duration
+- 2 week sprint
 
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+### Prerequisites
 
 Before you get started, make sure you have the following software installed on your computer:
 
@@ -17,9 +18,8 @@ Before you get started, make sure you have the following software installed on y
 
 ### Create database and table
 
-Create a new database called `prime_app` and use the queries in the database.sql file to set up your tables.
-
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+- Create a new database called `prime_app` and use the queries in the database.sql file to set up your tables.
+- If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
 
 ### Development Setup Instructions
 
@@ -28,6 +28,14 @@ If you would like to name your database something else, you will need to change 
 - Run `npm run server`
 - Run `npm run client`
 - Navigate to `localhost:3000`
+
+## Project Wireframes
+I have attached a photo of my Landing Page, the Invoice Details Page, and the view of the generated invoice.
+![landing page ](wireframe/landing.png)
+![details view](wireframe/details.png)
+![print page](wireframe/print-page.png)
+![printed template](wireframe/printed-template.png)
+![invoice history page](wireframe/history-table.png)
 
 
 ## Base User Usage
@@ -57,34 +65,26 @@ If you would like to name your database something else, you will need to change 
 
 
 
-## Project Wireframe
-I have attached a photo of my Landing Page, the Invoice Details Page, and the view of the generated invoice.
-![landing page ](wireframe/landing.png)
-![details view](wireframe/details.png)
-![print page](wireframe/print-page.png)
-![printed template](wireframe/printed-template.png)
-![invoice history page](wireframe/history-table.png)
-
 ### Built With
 
  - HTML
  - CSS
  - Javascript
- - React.js
+ - ReactJS
  - Redux/ Sagas
- - PG
+ - Axios
  - Express.js
  - PostgresSQL
  - Postico
  - Postman
  - Git
- - GitHub
- - VScode
- - Nodemon (for development)
+ - Bcrypt.js
+ - Passport.js
  - React Charts
  - Fuse.js
- - Sweet Alerts
+ - SweetAlert2
  - Material UI
+
 
 ### Acknowledgement
 
