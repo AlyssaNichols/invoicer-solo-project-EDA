@@ -11,7 +11,7 @@ export default function PrintInvoice() {
   const details = useSelector((store) => store.invoiceDetails);
   const companies = useSelector((store) => store.companyReducer);
   const user = useSelector((store) => store.user);
-  console.log("USER", user)
+  console.log("USER", user);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -35,10 +35,7 @@ export default function PrintInvoice() {
   const handlePrint = () => {
     window.print(); // This will trigger the print dialog
   };
-  const handleEmail = () => {
-    // Navigate to the email sending page with the email and details ID
-    history.push(`/email/${details.id}`);
-  };
+
   useEffect(() => {
     dispatch({ type: "FETCH_COMPANIES" });
     dispatch({ type: "FETCH_SERVICES" });
@@ -69,9 +66,9 @@ export default function PrintInvoice() {
     padding: "10px 20px",
   };
 
-  const userCompanyIndex = (user.company_id - 1);
-  console.log(userCompanyIndex)
-  
+  const userCompanyIndex = user.company_id - 1;
+  console.log(userCompanyIndex);
+
   return (
     <>
       <div className="topSpace">
@@ -98,36 +95,22 @@ export default function PrintInvoice() {
                 Print This Invoice!
               </Button>
               {!details.date_paid ? (
-              <Button
-                className="printInvoiceButton" // Use className for the button
-                style={{
-                  marginTop: "-280px",
-                  marginLeft: "687px",
-                  backgroundColor: "#AFABAB",
-                  color: "white",
-                  fontSize: "14px",
-                  padding: "8px 16px",
-                }}
-                variant="contained"
-                onClick={() => moreDetails(details.id)}
-              >
-                Edit Details
-              </Button>
+                <Button
+                  className="printInvoiceButton" // Use className for the button
+                  style={{
+                    marginTop: "-280px",
+                    marginLeft: "687px",
+                    backgroundColor: "#AFABAB",
+                    color: "white",
+                    fontSize: "14px",
+                    padding: "8px 16px",
+                  }}
+                  variant="contained"
+                  onClick={() => moreDetails(details.id)}
+                >
+                  Edit Details
+                </Button>
               ) : null}
-              {/* <Button
-                className="printInvoiceButton"
-                style={{
-                  marginTop: "-110px",
-                  marginLeft: "716px",
-                  backgroundColor: "#BCBBED",
-                  color: "white",
-                  fontSize: "14px",
-                  padding: "4px 14px",
-                }}
-                variant="contained"
-                onClick={() => handleEmail(details.email, details.id)}
-              > Email
-              </Button> */}
             </div>
           </div>
         </div>
@@ -170,23 +153,32 @@ export default function PrintInvoice() {
           <table className="print-table">
             <thead>
               <tr>
-                <th style={{ width: '33%', textAlign: 'left' }}>Date Performed</th>
-                <th style={{ width: '33%', textAlign: 'center' }}>Service Type</th>
-                <th style={{ width: '33%', textAlign: 'right' }}>Service Price</th>
+                <th style={{ width: "33%", textAlign: "left" }}>
+                  Date Performed
+                </th>
+                <th style={{ width: "33%", textAlign: "center" }}>
+                  Service Type
+                </th>
+                <th style={{ width: "33%", textAlign: "right" }}>
+                  Service Price
+                </th>
               </tr>
             </thead>
             <tbody>
-  {details.service_data?.map((item, index) => (
-    <tr key={index}>
-      <td style={{ width: '33%', textAlign: 'left' }}>{formatDate(item.date)}</td>
-      <td style={{ width: '33%', textAlign: 'center' }}>{item.type}</td>
-      <td style={{ width: '33%', textAlign: 'right' }}>
-        ${parseFloat(item.price).toFixed(2)}
-      </td>
-    </tr>
-  ))}
-</tbody>
-
+              {details.service_data?.map((item, index) => (
+                <tr key={index}>
+                  <td style={{ width: "33%", textAlign: "left" }}>
+                    {formatDate(item.date)}
+                  </td>
+                  <td style={{ width: "33%", textAlign: "center" }}>
+                    {item.type}
+                  </td>
+                  <td style={{ width: "33%", textAlign: "right" }}>
+                    ${parseFloat(item.price).toFixed(2)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
           <hr />
           <div className="total">

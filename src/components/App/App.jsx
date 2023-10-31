@@ -120,10 +120,7 @@ function App() {
           <ProtectedRoute exact path="/admin/company">
             <AdminCompanyPage />
           </ProtectedRoute>
-          <ProtectedRoute
-            exact
-            path="/admin/archivedInvoices"
-          >
+          <ProtectedRoute exact path="/admin/archivedInvoices">
             <ArchivedHistory />
           </ProtectedRoute>
           <Route exact path="/login">

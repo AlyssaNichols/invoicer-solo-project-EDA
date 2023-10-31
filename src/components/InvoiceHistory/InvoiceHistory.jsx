@@ -571,24 +571,3 @@ export default function InvoiceHistory() {
   );
 }
 
-// const handleEditDate = (invoice) => {
-//   // Convert the date string to a Date object
-//   const date = new Date(editedDate)
-//   // Get the year, month, and day components
-//   const year = date.getFullYear();
-//   const month = date.getMonth() + 1; // Month is zero-based, so add 1
-//   const day = date.getDate();
-//   const formattedDate = `${year}-${month.toString().padStart(2, "0")}-${day
-//     .toString()
-//     .padStart(2, "0")}`;
-//   Swal.fire({
-//     icon: "success",
-//     title: "Marked as Paid",
-//     text: `The invoice was marked as paid on ${formattedDate}.`,
-//   });
-//   dispatch({
-//     type: "EDIT_INVOICE",
-//     payload: { ...invoice, date_paid: formattedDate },
-// //   });
-//   setEditMode(null);
-// };

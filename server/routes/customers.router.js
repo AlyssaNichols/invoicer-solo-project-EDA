@@ -18,31 +18,6 @@ router.get("/", (req, res) => {
     });
 });
 
-// GET ROUTE - array of customer objects
-// router.get("/", (req, res) => {
-//   console.log("GET /api/customers");
-//   pool
-//     .query(`SELECT
-//     id,
-//     json_build_object(
-//         'first_name', first_name,
-//         'last_name', last_name,
-//         'address', address,
-//         'city', city,
-//         'state', state,
-//         'zip', zip,
-//         'email', email,
-//         'phone', phone
-//     ) AS customer_data
-// FROM customers;`)
-//     .then((response) => {
-//       res.send(response.rows);
-//     })
-//     .catch((error) => {
-//       console.log("Error GET /api/customers", error);
-//       res.sendStatus(500);
-//     });
-// });
 
 // POST ROUTE
 router.post("/", (req, res) => {

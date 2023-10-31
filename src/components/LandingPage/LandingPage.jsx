@@ -3,9 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./LandingPage.css";
 import { Button, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import landingImage from "../UserPage/landingImage.jpg"
-
-
+import landingImage from "../UserPage/landingImage.jpg";
 
 function LandingPage() {
   const history = useHistory();
@@ -18,76 +16,71 @@ function LandingPage() {
     <div className="landing-container">
       <br />
       <center>
-      <div
-        className="landingDiv"
-        style={{ display: "flex", width: "50%" }}
-      >
-        <div style={{ flex: 1}}>
-          <h1 className="mainUserHeader" >
-          <br />
-            Easily Generate A <br />
-            <span className="professionalInvoice">Professional Invoice</span>
-            <br />
-            for your Business
-          </h1>
-          <center>
-          <Paper
-          elevation={3}
-          style={{
-            width: "60%",
-            paddingBottom: "40px",
-            paddingTop: "20px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+        <div className="landingDiv" style={{ display: "flex", width: "50%" }}>
+          <div style={{ flex: 1 }}>
+            <h1 className="mainUserHeader">
+              <br />
+              Easily Generate A <br />
+              <span className="professionalInvoice">Professional Invoice</span>
+              <br />
+              for your Business
+            </h1>
             <center>
-              <Typography variant="h8" component="div">
-                <h2
+              <Paper
+                elevation={3}
+                style={{
+                  width: "60%",
+                  paddingBottom: "40px",
+                  paddingTop: "20px",
+                }}
+              >
+                <div
                   style={{
-                    marginTop: "5px",
-                    marginBottom: "25px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                  Invoicer Members: <br />
-                  Please Login
-                </h2>
-              </Typography>
-              <center>
-                <Button
-                  style={{
-                    backgroundColor: "#F69D55",
-                    color: "white",
-                    width: "140px",
-                    height: "40px",
-                    fontSize: "16px",
-                  }}
-                  variant="contained"
-                  onClick={onLogin}
-                >
-                  Login
-                </Button>
-              </center>
+                  <center>
+                    <Typography variant="h8" component="div">
+                      <h2
+                        style={{
+                          marginTop: "5px",
+                          marginBottom: "25px",
+                        }}
+                      >
+                        Invoicer Members: <br />
+                        Please Login
+                      </h2>
+                    </Typography>
+                    <center>
+                      <Button
+                        style={{
+                          backgroundColor: "#F69D55",
+                          color: "white",
+                          width: "140px",
+                          height: "40px",
+                          fontSize: "16px",
+                        }}
+                        variant="contained"
+                        onClick={onLogin}
+                      >
+                        Login
+                      </Button>
+                    </center>
+                  </center>
+                </div>
+              </Paper>
+              <br />
             </center>
           </div>
-        </Paper>
-        <br />
-        </center>
         </div>
-        </div>
-        </center>
+      </center>
     </div>
   );
 }
 
 export default LandingPage;
-
-
 
 // return (
 //   <div className="container">

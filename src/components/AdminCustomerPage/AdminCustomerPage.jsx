@@ -177,63 +177,72 @@ export default function AdminCustomerPage() {
                 <MenuIcon style={menuIconStyle} className="page-menu-icon" />
               </IconButton>
               <Drawer anchor="right" open={menuOpen} onClose={toggleMenu}>
-                <List
-                  style={{
-                    backgroundColor: "#DBDBDB",
-                    color: "black",
-                    width: "150px",
-                    position: "fixed",
-                    right: "0",
-                    height: "100%",
-                    overflowY: "auto",
-                    transition: "width 0.3s",
-                    zIndex: "1",
-                  }}
-                >
-                  <ListItem button>
-                    <Link to="/admin" className="nav-link" style={navStyle}>
-                      Admin Home
-                    </Link>
-                  </ListItem>
-                  <ListItem button>
-                    <Link
-                      to="/admin/customers"
-                      className="nav-link"
-                      style={navStyle}
-                    >
-                      Customers
-                    </Link>
-                  </ListItem>
-                  <ListItem button>
-                    <Link
-                      to="/admin/employees"
-                      className="nav-link"
-                      style={navStyle}
-                    >
-                      Employees
-                    </Link>
-                  </ListItem>
-                  <ListItem button>
-                    <Link
-                      to="/admin/company"
-                      className="nav-link"
-                      style={navStyle}
-                    >
-                      Companies
-                    </Link>
-                  </ListItem>
-                  <ListItem button>
-                    <Link
-                      to="/admin/archivedInvoices"
-                      className="nav-link"
-                      style={navStyle}
-                    >
-                      Archived <br />
-                      Invoices
-                    </Link>
-                  </ListItem>
-                </List>
-              </Drawer>
+              <List
+                style={{
+                  backgroundColor: "#DBDBDB",
+                  color: "black",
+                  width: "150px",
+                  position: "fixed",
+                  right: "0",
+                  height: "100%",
+                  overflowY: "auto",
+                  transition: "width 0.3s",
+                  zIndex: "1",
+                }}
+              >
+                <ListItem button>
+                  <Link to="/admin" className="nav-link" style={navStyle}>
+                    Admin
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/services"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Services
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/customers"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Customers
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/employees"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Employees
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/company"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Companies
+                  </Link>
+                </ListItem>
+                <ListItem button>
+              <Link
+                to="/admin/archivedInvoices"
+                className="nav-link"
+                style={navStyle}
+              >
+                Archived <br />
+                Invoices
+              </Link>
+            </ListItem>
+              </List>
+            </Drawer>
             </div>
           </Card>
         ) : (
@@ -276,62 +285,72 @@ export default function AdminCustomerPage() {
                   <MenuIcon style={menuIconStyle} className="page-menu-icon" />
                 </IconButton>
                 <Drawer anchor="right" open={menuOpen} onClose={toggleMenu}>
-                  <List
-                    style={{
-                      backgroundColor: "#DBDBDB",
-                      color: "black",
-                      width: "150px",
-                      position: "fixed",
-                      right: "0",
-                      height: "100%",
-                      overflowY: "auto",
-                      transition: "width 0.3s",
-                      zIndex: "1",
-                    }}
+              <List
+                style={{
+                  backgroundColor: "#DBDBDB",
+                  color: "black",
+                  width: "150px",
+                  position: "fixed",
+                  right: "0",
+                  height: "100%",
+                  overflowY: "auto",
+                  transition: "width 0.3s",
+                  zIndex: "1",
+                }}
+              >
+                <ListItem button>
+                  <Link to="/admin" className="nav-link" style={navStyle}>
+                    Admin
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/services"
+                    className="nav-link"
+                    style={navStyle}
                   >
-                    <ListItem button>
-                      <Link to="/admin" className="nav-link" style={navStyle}>
-                        Admin
-                      </Link>
-                    </ListItem>
-                    <ListItem button>
-                      <Link
-                        to="/admin/services"
-                        className="nav-link"
-                        style={navStyle}
-                      >
-                        Services
-                      </Link>
-                    </ListItem>
-                    <ListItem button>
-                      <Link
-                        to="/admin/customers"
-                        className="nav-link"
-                        style={navStyle}
-                      >
-                        Customers
-                      </Link>
-                    </ListItem>
-                    <ListItem button>
-                      <Link
-                        to="/admin/employees"
-                        className="nav-link"
-                        style={navStyle}
-                      >
-                        Employees
-                      </Link>
-                    </ListItem>
-                    <ListItem button>
-                      <Link
-                        to="/admin/company"
-                        className="nav-link"
-                        style={navStyle}
-                      >
-                        Companies
-                      </Link>
-                    </ListItem>
-                  </List>
-                </Drawer>
+                    Services
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/customers"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Customers
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/employees"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Employees
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/company"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Companies
+                  </Link>
+                </ListItem>
+                <ListItem button>
+              <Link
+                to="/admin/archivedInvoices"
+                className="nav-link"
+                style={navStyle}
+              >
+                Archived <br />
+                Invoices
+              </Link>
+            </ListItem>
+              </List>
+            </Drawer>
               </div>
             </Card>
             <br />

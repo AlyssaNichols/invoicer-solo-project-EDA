@@ -26,16 +26,6 @@ export default function AdminCompanyTable() {
         <tbody>
           {companyList?.map((company, index) => {
             return <CompanyTableDetails key={index} company={company} />;
-            //   <tr key={index}>
-            //     <td>{company.company_name}</td>
-            //     <td>{company.address}</td>
-            //     <td>{company.city}</td>
-            //     <td>{company.state}</td>
-            //     <td>{company.zip}</td>
-            //     <td>{company.phone}</td>
-            //     <td>{company.email}</td>
-
-            //   </tr>
           })}
         </tbody>
       </table>
