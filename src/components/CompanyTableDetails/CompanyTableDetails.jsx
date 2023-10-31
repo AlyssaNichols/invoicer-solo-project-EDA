@@ -18,7 +18,7 @@ export default function CompanyTableDetails({ company, index }) {
       confirmButtonText: "Yes, delete it",
     }).then((result) => {
       if (result.isConfirmed) {
-        // Dispatch an action to delete the invoice with the given ID
+        // Dispatch an action to delete the company with the given ID
         dispatch({ type: "DELETE_COMPANY", payload: companyId });
         dispatch({ type: "FETCH_COMPANIES" });
         Swal.fire("Company Successfully archived!");

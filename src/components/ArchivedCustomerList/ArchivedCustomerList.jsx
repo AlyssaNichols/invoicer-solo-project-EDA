@@ -22,7 +22,6 @@ export default function ArchivedCustomerList({ toggleArchived }) {
     }).then((result) => {
       if (result.isConfirmed) {
         // Dispatch an action to delete the invoice with the given ID
-        // Dispatch an action to delete the invoice with the given ID
         dispatch({ type: "RESET_CUSTOMER", payload: customerId });
         dispatch({ type: "FETCH_CUSTOMERS" });
         Swal.fire("Customer Successfully Un-Archived!");
