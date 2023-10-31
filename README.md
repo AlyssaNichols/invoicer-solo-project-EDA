@@ -89,6 +89,7 @@ I have attached a photo of my Landing Page, the Invoice Details Page, and the vi
 ### Acknowledgement
 
 Thanks to [Emerging Digital Academy](http://www.emergingacademy.org) who equipped and helped me to make this application a reality. It will be something that I implement in my small business and I hope to keep developing to make a customer-facing application as well.
+Also, a huge thanks to my cohort mates, we all leaned on each other and helped each other through these projects and I'm grateful to have gone through this process with you.
 
 ### Support
 
