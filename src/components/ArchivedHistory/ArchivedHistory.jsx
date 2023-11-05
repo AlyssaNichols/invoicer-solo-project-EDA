@@ -13,6 +13,12 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import Drawer from "@mui/material/Drawer";
+import MenuIcon from "@mui/icons-material/Menu";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import { Link } from "react-router-dom";
 
 export default function ArchivedHistory() {
   const history = useHistory();
@@ -23,6 +29,29 @@ export default function ArchivedHistory() {
   console.log("INVOICES", invoices);
   const [sortOrder, setSortOrder] = useState("desc"); // Default sorting order is ascending
   const [sortOption, setSortOption] = useState("id");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const menuIconStyle = {
+    fontSize: "50px",
+    color: "black",
+    borderRadius: "50%",
+    padding: "10px",
+  };
+
+  const navStyle = {
+    textDecoration: "none",
+    color: "black",
+    fontSize: "22px",
+    padding: "10px 0",
+    marginBottom: "20px",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+  };
 
   useEffect(() => {
     dispatch({ type: "FETCH_ARCHIVED_INVOICES", payload: params.id });
@@ -127,7 +156,7 @@ export default function ArchivedHistory() {
       <br />
       <br />
       <center>
-        <Card
+      <Card
           sx={{
             minWidth: 275,
             marginTop: "20px",
@@ -135,19 +164,103 @@ export default function ArchivedHistory() {
             backgroundColor: "#DFD9D9",
           }}
         >
-          <CardContent>
-            <Typography variant="h5" component="div">
-              <h2
+          <center>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                <h2
+                  style={{
+                    marginTop: "7px",
+                    marginBottom: "-45px",
+                    marginRight: "-20px",
+                  }}
+                >
+                  Archived Invoices
+                </h2>
+              </Typography>
+            </CardContent>
+          </center>
+          <div>
+            <br />
+            <IconButton
+              style={{
+                float: "right",
+                marginTop: "-70px",
+                marginRight: "20px",
+                verticalAlign: "middle",
+              }}
+              onClick={toggleMenu}
+              color="inherit"
+            >
+              <MenuIcon style={menuIconStyle} className="page-menu-icon" />
+            </IconButton>
+            <Drawer anchor="right" open={menuOpen} onClose={toggleMenu}>
+              <List
                 style={{
-                  marginTop: "-5px",
-                  marginBottom: "-5px",
-                  letterSpacing: ".5px",
+                  backgroundColor: "#DBDBDB",
+                  color: "black",
+                  width: "150px",
+                  position: "fixed",
+                  right: "0",
+                  height: "100%",
+                  overflowY: "auto",
+                  transition: "width 0.3s",
+                  zIndex: "1",
                 }}
               >
-                Archived Invoices
-              </h2>
-            </Typography>
-          </CardContent>
+                <ListItem button>
+                  <Link to="/admin" className="nav-link" style={navStyle}>
+                    Admin
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/services"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Services
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/customers"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Customers
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/employees"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Employees
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/company"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Companies
+                  </Link>
+                </ListItem>
+                <ListItem button>
+                  <Link
+                    to="/admin/archivedInvoices"
+                    className="nav-link"
+                    style={navStyle}
+                  >
+                    Archived <br />
+                    Invoices
+                  </Link>
+                </ListItem>
+              </List>
+            </Drawer>
+          </div>
         </Card>
       </center>
       <br />
