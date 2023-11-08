@@ -2,6 +2,7 @@
   background-color: #3A486A;
   color: black;
   font-size: 18px;
+  text-shadow: 2px 2px 4px rgb(1, 1, 1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 100%;
@@ -23,7 +24,7 @@
 }
 
 .nav ul li {
-  font-size: 18px;
+  font-size: 19px;
   margin: 0 6px;
   padding: 10px 15px;
   letter-spacing: .1px;
@@ -43,7 +44,7 @@
 .nav ul li a:hover {
   color: rgb(255, 255, 255);
   transform: scale(1.1);
-  text-shadow: 0 0 10px #000000;
+  text-shadow: 0 1px 10px #000000;
 }
 
 /* Add a cool hover effect for the navbar */
@@ -79,13 +80,14 @@
   border: none;
   cursor: pointer;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 19px;
   padding: 10px 15px;
   margin-left: -18px;
+  text-shadow: 2px 2px 4px rgb(1, 1, 1);
 }
 .navLink.logout-button:hover {
   color: #f70505;
   background: none;
   transform: scale(1.1);
-  text-shadow: 0 0 10px rgb(255, 255, 255);
+  text-shadow: 0 2px 10px rgb(255, 255, 255);
 }
