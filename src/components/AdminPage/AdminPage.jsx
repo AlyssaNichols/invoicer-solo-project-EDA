@@ -54,7 +54,7 @@ export default function AdminPage() {
         >
           <MenuIcon style={menuIconStyle} className="menu-icon" />
         </IconButton>
-        <Drawer anchor="right" open={menuOpen} onClose={toggleMenu}>
+        <Drawer anchor="right" open={menuOpen} onClose={toggleMenu} >
           <List
             style={{
               backgroundColor: "#DBDBDB",

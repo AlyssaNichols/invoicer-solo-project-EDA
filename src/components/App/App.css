@@ -313,3 +313,27 @@ margin-top: auto;
 .autocomplete-dropdown {
   top: 100%; /* Ensure the drop-down is below the input field */
 }
+
+/* Closed state */
+.drawer-closed {
+  width: 0;
+  transition: width 0.3s;
+  overflow: hidden;
+}
+
+/* Open state with fill animation */
+.drawer-open {
+  width: 150px; /* The desired width of the drawer */
+  transition: width 0.3s;
+  overflow-y: auto;
+  animation: fillAnimation 0.5s forwards; /* Apply the fill animation */
+}
+
+@keyframes fillAnimation {
+  0% {
+    width: 0; /* Start with zero width */
+  }
+  100% {
+    width: 150px; /* End with the desired width */
+  }
+}
