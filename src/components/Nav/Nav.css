@@ -24,8 +24,8 @@
 }
 
 .nav ul li {
-  font-size: 19px;
-  margin: 0 6px;
+  font-size: 1.2vw;
+  margin: 0 5px;
   padding: 10px 15px;
   letter-spacing: .1px;
 }
@@ -80,7 +80,7 @@
   border: none;
   cursor: pointer;
   text-decoration: none;
-  font-size: 19px;
+  font-size: 1.2vw;
   padding: 10px 15px;
   margin-left: -18px;
   text-shadow: 2px 2px 4px rgb(1, 1, 1);
